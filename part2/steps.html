@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concepts &amp; Build · Module 2 · Maestro (BPMN)</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+    <div class="nav">
+      <p class="nav-title">Insurance Claim Approval Workshop</p>
+      <a href="../index.html">Home</a>
+      <details>
+        <summary>Module 1 · Conversational Agent</summary>
+        <div class="group-items">
+          <a href="../part1/index.html">Overview</a>
+          <a href="../part1/steps.html#group-concepts">Concepts</a>
+          <a href="../part1/steps.html#group-create-agent">Create Agent</a>
+          <a href="../part1/steps.html#group-system-prompt">System Prompt</a>
+          <a href="../part1/steps.html#group-context-grounding">Context Grounding</a>
+          <a href="../part1/steps.html#group-tools">Tools</a>
+          <a href="../part1/steps.html#group-deploy">Deploy and Publish</a>
+          <a href="../part1/steps.html#group-apps">Apps</a>
+          <a href="../part1/steps.html#group-observe">Observing Your Agent</a>
+          <a href="../part1/complete.html">Module 1 Complete</a>
+        </div>
+      </details>
+      <details open>
+        <summary>Module 2 · Maestro (BPMN)</summary>
+        <div class="group-items">
+          <a href="index.html">Overview</a>
+          <a class="active" href="steps.html#group-concepts">Concepts</a>
+          <a href="steps.html#group-build">Set Up the Process</a>
+          <a href="steps.html#group-start-event">Start Event</a>
+          <a href="steps.html#group-fraud-agent">Fraud Detection Agent</a>
+          <a href="steps.html#group-download">Retrieve the Document</a>
+          <a href="steps.html#group-hitl">Human-in-the-Loop Review</a>
+          <a href="steps.html#group-coded-agent">Settlement Coded Agent</a>
+          <a href="steps.html#group-notify">GenAI Activities</a>
+          <a href="steps.html#group-email-process">Email Process</a>
+          <a href="complete.html">Module 2 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 3 · Agent Builder</summary>
+        <div class="group-items">
+          <a href="../part3/index.html">Overview</a>
+          <a href="../part3/steps.html#group-concepts">Concepts</a>
+          <a href="../part3/steps.html#group-build">Build the Agent</a>
+          <a href="../part3/complete.html">Module 3 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 4 · Coded Agent</summary>
+        <div class="group-items">
+          <a href="../part4/index.html">Overview</a>
+          <a href="../part4/steps.html#group-concepts">Concepts</a>
+          <a href="../part4/steps.html#group-build">Build the Agent</a>
+          <a href="../part4/steps.html#group-publish">Publish &amp; Run</a>
+          <a href="../part4/complete.html">Module 4 Complete</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 2 · Maestro (BPMN)</span>
+    <h1>Orchestrate the Claim Approval Process</h1>
+    <p class="lead">Learn what Maestro BPMN is and why it matters, then create the flow and import the Insurance Claim Approval Process diagram.</p>
+
+    <!-- GROUP: Concepts -->
+    <div class="group-header" id="group-concepts">
+      <h2 style="margin-top:0;">Concepts</h2>
+    </div>
+
+    <h3>What's Maestro BPMN?</h3>
+    <p><b>Maestro</b> is UiPath's orchestration platform for coordinating humans, robots, and AI agents across long-running business processes. <b>BPMN</b> (Business Process Model and Notation) is one of two ways to design a Maestro process — a visual canvas using the same standard notation process analysts have used for years: start/end events, tasks, gateways, and sequence flows. Where a conversational agent handles one interaction and a coded agent handles one calculation, a BPMN process ties many steps — agents, humans, and system actions — together into a single process with a clear beginning, a clear end, and a visual record of every path in between.</p>
+
+    <h3>Why Maestro?</h3>
+    <p>Real business processes rarely live inside a single agent. An insurance claim needs a fraud check, a human sign-off, a settlement calculation, and a notification back to the customer — each potentially owned by a different system or person, running at a different pace. Maestro exists to coordinate exactly that: long-running, multi-actor processes that need to be visible, auditable, and resilient to the fact that a human reviewer might not respond for hours.</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🧭</div><h4>Visual, auditable flow</h4><p>Every step, decision, and handoff is drawn on the canvas — easy to review, easy to explain to auditors.</p></div>
+      <div class="card"><div class="ico">🤝</div><h4>Humans and agents together</h4><p>Mix agent tasks, RPA connectors, GenAI activities, and human review steps in one process.</p></div>
+      <div class="card"><div class="ico">⏳</div><h4>Built for long-running work</h4><p>A process can pause for hours or days waiting on a human, then resume exactly where it left off.</p></div>
+    </div>
+
+    <h3>Pillars of a Maestro BPMN Process</h3>
+    <div class="grid g2">
+      <div class="card"><h4>Start &amp; End Events</h4><p style="font-size:13.5px;margin:0;">Every process begins with a trigger — here, a Data Fabric entity creation — and ends at a single defined end event.</p></div>
+      <div class="card"><h4>Tasks</h4><p style="font-size:13.5px;margin:0;">Individual units of work: an agent call, a connector action, a GenAI activity, or a human task.</p></div>
+      <div class="card"><h4>Gateways</h4><p style="font-size:13.5px;margin:0;">Decision points that branch the flow — like the Reviewer Action Gateway routing to Approve or Reject.</p></div>
+      <div class="card"><h4>Human-in-the-loop (HITL)</h4><p style="font-size:13.5px;margin:0;">Explicit steps where a person reviews and acts before the process continues.</p></div>
+    </div>
+
+    <!-- GROUP: Set Up the Process -->
+    <div class="group-header" id="group-build">
+      <h2 style="margin-top:0;">Set Up the Process</h2>
+    </div>
+
+    <h3>What you'll build</h3>
+    <p>You'll design the Insurance Claim Approval Process end to end: it starts the moment a new claim record is created in Data Fabric, runs a Fraud Detection Agent, downloads the supporting document, and routes the claim to a supervisor for validation. Once notified, a Reviewer Action Gateway splits the flow into two paths — <b>Approve</b>, which invokes the Settlement Coded Agent and drafts an approval email with GenAI, or <b>Reject</b>, which drafts a rejection email instead — both of which converge back into a single Outlook send step and a shared end event.</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">Insurance Claim Approval Process — BPMN diagram</span>
+        </div>
+        <img src="assets/claim_bpmn_flow.png" alt="Insurance Claim Approval Process BPMN diagram: Trigger (Data Fabric entity creation) to Fraud Detection Agent, Download File from Record Field, Supervisor_ClaimValidation (HITL), Send Notify Email to Claimant, then a Reviewer Action Gateway branching to Approve (SettlementCodedAgent, Generate Approval Email, Send Approve Email) or Reject (Generate Rejection Email, Send Rejection Email), converging to a shared end event" style="display:block;max-width:100%;height:auto;">
+      </div>
+      <figcaption>The full Insurance Claim Approval Process, as modeled on the BPMN canvas.</figcaption>
+    </figure>
+
+    <div class="step" id="step-1">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Create the Maestro BPMN process</h3>
+        <p>From the "Start building" dialog in UiPath Studio Web, choose <b>Maestro BPMN</b> to design and build a business process on a BPMN canvas — as opposed to Maestro Flow, Agent, or RPA Workflow.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/start-building</span>
+            </div>
+            <img src="assets/bpmn_step1.png" alt="Start building dialog showing Maestro Flow, Maestro BPMN, Agent, and RPA Workflow options" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Choose Maestro BPMN from the Start building dialog.</figcaption>
+        </figure>
+
+        <p>Name the solution and the Maestro process following the same naming convention you used in Module 1 — for example, reuse your existing <code>Insurance Claim Approval Process (YourName)</code> solution folder, and name the BPMN process something identifiable, such as <code>Insurance Claim Approval Process</code>.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Selected <b>Maestro BPMN</b> from the Start building dialog.</div></div>
+          <div class="row"><span class="box"></span><div>Named the solution and process following the workshop's naming convention.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-2">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Import the BPMN file</h3>
+        <p>If you already have a <code>.bpmn</code> file for the Insurance Claim Approval Process — for example, one exported from another tool or provided by your instructor — you can import it directly instead of building the diagram from scratch. In the Explorer panel, right-click your Maestro BPMN item and choose <b>Add to project</b>, then select <b>Import BPMN</b>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/explorer/add-to-project</span>
+            </div>
+            <img src="assets/bpmn_step2.png" alt="Explorer panel Add to project menu showing Maestro BPMN and Import BPMN options" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add to project → Import BPMN, to bring in an existing .bpmn file.</figcaption>
+        </figure>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">Importing is the fastest way to get the exact flow shown above onto your canvas. If you don't have a <code>.bpmn</code> file to import, you can build the same diagram manually on the canvas using the image above as your reference — start with the Trigger Start Event and work left to right.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened Add to project → Import BPMN from the Explorer panel.</div></div>
+          <div class="row"><span class="box"></span><div>Imported the Insurance Claim Approval Process <code>.bpmn</code> file (or built it manually on the canvas).</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Start Event -->
+    <div class="group-header" id="group-start-event">
+      <h2 style="margin-top:0;">Start Event</h2>
+    </div>
+
+    <p>With the process created (and the diagram imported or drawn), the next job is to make it actually start on its own — the moment a new claim shows up. That takes two pieces: an event trigger registered in Orchestrator, and the Trigger Start Event node on the canvas configured to listen for the same signal.</p>
+
+    <div class="step" id="step-3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Create the event trigger in Orchestrator</h3>
+        <p>The process needs a trigger that kicks it off whenever a new claim record appears. In Orchestrator, go to <b>My Workspace → Automations → Triggers → Time Triggers</b> and choose <b>Create Time Trigger</b>. Name it something identifiable — for example <code>Insurance_Claim_EventTrigger</code> — and set the <b>Process</b> to your Maestro BPMN process (for example, <code>InsuranceClaim_Create_Entity_Trigger</code>).</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/orchestrator/triggers/create-time-trigger</span>
+            </div>
+            <img src="assets/start_event_orchestrator_trigger.png" alt="Create Time Trigger dialog in Orchestrator: Name Insurance_Claim_EventTrigger, Process InsuranceClaim_Create_Entity_Trigger (Maestro BPMN), Entry point Record Created, Input ClaimID, Enable trigger toggled on" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Create Time Trigger — name the trigger, point it at your Maestro BPMN process, and set the entry point.</figcaption>
+        </figure>
+
+        <p>Under <b>Runtime Arguments</b>, set the <b>Entry point</b> to <code>Record Created</code> and add an input argument named <code>ClaimID</code>. Leave <b>Enable trigger</b> switched on so the trigger is active as soon as it's created.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Created a Time Trigger in Orchestrator (My Workspace → Automations → Triggers → Time Triggers).</div></div>
+          <div class="row"><span class="box"></span><div>Pointed the trigger at the Maestro BPMN process for the Insurance Claim Approval Process.</div></div>
+          <div class="row"><span class="box"></span><div>Set the entry point to <code>Record Created</code> and added the <code>ClaimID</code> input argument.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-4">
+      <div class="num">4</div>
+      <div class="body">
+        <h3>Configure the Trigger Start Event on the canvas</h3>
+        <p>Back on the BPMN canvas, select the <b>Trigger Start Event</b> node — the one labeled <i>"Trigger Start Event – Data Fabric entity creation"</i> at the beginning of the flow.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Insurance Claim Approval Process — BPMN diagram</span>
+            </div>
+            <img src="assets/start_event_diagram_node.png" alt="Trigger Start Event node on the BPMN canvas, labeled Trigger Start Event – Data Fabric entity creation" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Trigger Start Event node — this is what you'll wire up to Data Fabric.</figcaption>
+        </figure>
+
+        <p>Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Wait for connector</b>, then choose <b>Connector</b> from the options that appear (as opposed to None or Queues).</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Implementation panel — Action</span>
+            </div>
+            <img src="assets/start_event_action_connector.png" alt="Implementation panel Action dropdown set to Wait for connector, with Connector highlighted among None, Connector, and Queues" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Set Action to "Wait for connector," then select Connector.</figcaption>
+        </figure>
+
+        <p>In the "Change the trigger for your automation" search, look for <b>Data Fabric Record Create</b> and select <b>UiPath Data Fabric: Record Created</b> — the trigger that fires when a new record is added in UiPath Data Fabric.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Change the trigger for your automation</span>
+            </div>
+            <img src="assets/start_event_search_trigger.png" alt="Change the trigger for your automation search dialog, searching Data Fabric Record Create and showing the UiPath Data Fabric: Record Created result" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search for and select the "UiPath Data Fabric: Record Created" trigger.</figcaption>
+        </figure>
+
+        <p>Finish configuring the connector's implementation: set <b>Select activity</b> to <b>Record Updated</b>, choose your <b>UiPath Data Fabric connection</b> (for example, <i>Shared Data Fabric Connection</i>), set <b>Select object</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and edit the <b>Filter</b> to scope which record changes should fire the trigger.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Implementation panel — connector details</span>
+            </div>
+            <img src="assets/start_event_implementation.png" alt="Implementation panel with Action Wait for connector, Select activity Record Updated, UiPath Data Fabric connection Shared Data Fabric Connection, Select object IntakeClaimEntity, and Filter Edit filter (1 condition)" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The fully configured Trigger Start Event, listening for Data Fabric changes on the claim entity.</figcaption>
+        </figure>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Selected the Trigger Start Event node and set Action to Wait for connector → Connector.</div></div>
+          <div class="row"><span class="box"></span><div>Selected the "UiPath Data Fabric: Record Created" trigger.</div></div>
+          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, object, and filter so the trigger fires on the right claim records.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Fraud Detection Agent -->
+    <div class="group-header" id="group-fraud-agent">
+      <h2 style="margin-top:0;">Fraud Detection Agent</h2>
+    </div>
+
+    <p>Right after the Start Event, the process needs to actually call the Fraud Detection Agent — the autonomous agent you built in <a href="../part3/index.html">Module 3</a> — before anything else happens to the claim.</p>
+
+    <div class="step" id="step-5">
+      <div class="num">5</div>
+      <div class="body">
+        <h3>Add the Fraud Detection Agent step</h3>
+        <p>Add a <b>Service task</b> to the canvas right after the Trigger Start Event, and connect the two. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b> — this pauses the process until the agent finishes running and returns its full output.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Service task — Start and wait for agent</span>
+            </div>
+            <img src="assets/fraud_detection_agent_service_task.png" alt="Service task on the BPMN canvas named Fraud Detection Agent, Implementation panel with Action Start and wait for agent, Agent FraudDetectionAgent, Inputs in_ClaimData, Outputs out_ClaimDetails" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Fraud Detection Agent step, calling the agent you built and published in Module 3.</figcaption>
+        </figure>
+
+        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the claim record ID carried by the process (the same ID the Start Event trigger picked up). Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Before integrating the agent</div>
+          <div class="adm-body">This step only works once the Fraud Detection Agent from Module 3 is built and published — the "Agent" field above is where that agent gets connected into the Maestro process. If you haven't built it yet, complete <a href="../part3/index.html">Module 3</a> first, then come back and wire it in here.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a Service task right after the Trigger Start Event and connected them.</div></div>
+          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to FraudDetectionAgent.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped in_ClaimData as input, and mapped all four output objects to process variables.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Retrieve the Document -->
+    <div class="group-header" id="group-download">
+      <h2 style="margin-top:0;">Retrieve the Document</h2>
+    </div>
+
+    <p>Once the Fraud Detection Agent has run, the process needs the claim's supporting document before anyone can act on it. Add a connector activity right after the agent step that pulls the file straight out of the Data Fabric record.</p>
+
+    <div class="step" id="step-6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Download the supporting document from Data Fabric</h3>
+        <p>Add a <b>UiPath Data Fabric</b> connector activity to the canvas and set its <b>Action</b> to <b>Execute connector activity</b>, with <b>Select activity</b> set to <b>Download File from Record Field</b> — this pulls a file straight out of a specified field on a Data Fabric entity record.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Connector: Download Supporting Document from DataFabric</span>
+            </div>
+            <img src="assets/download_supporting_document.png" alt="Connector activity Download File from Record Field, with UiPath Data Fabric connection Shared Data Fabric Connection, Entity IntakeClaimEntity, Field ClaimPDF, and Record ID set to vars.calimId.toUpperCase()" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Download File from Record Field — configured to pull the claim's PDF from Data Fabric.</figcaption>
+        </figure>
+
+        <p>Configure the activity: set the <b>UiPath Data Fabric connection</b> to your shared connection (for example, <i>Shared Data Fabric Connection</i>), the <b>Entity</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and the <b>Field</b> to the entity field that stores the file (for example, <i>ClaimPDF</i>). For <b>Record ID</b>, reference the claim ID carried through the process — for example, an expression like <code>vars.calimId.toUpperCase()</code> — so the activity downloads the file for the correct record.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a Data Fabric connector activity set to Download File from Record Field.</div></div>
+          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, Entity, and Field to match your claim entity and document field.</div></div>
+          <div class="row"><span class="box"></span><div>Set Record ID to an expression that resolves to the current claim's ID.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Human-in-the-Loop Review -->
+    <div class="group-header" id="group-hitl">
+      <h2 style="margin-top:0;">Human-in-the-Loop Review</h2>
+    </div>
+
+    <p>With the document in hand, the process hands off to a person: a supervisor needs to look at the claim and its supporting document before anything is approved or rejected. This is where an Action App task brings a human explicitly into the flow.</p>
+
+    <div class="step" id="step-7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Add the Supervisor Claim Validation HITL task</h3>
+        <p>Add a human-in-the-loop task to the canvas and set its <b>Action</b> to <b>Create action app task</b>. For <b>Action</b>, choose the Action App you want the supervisor to work in — for example, <i>Supervisor_ClaimValidation-App</i> — and give the task a clear <b>Task title</b>, such as <code>Claim_Process</code>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">HITL - Supervisor Claim Validation</span>
+            </div>
+            <img src="assets/hitl_supervisor_claim_validation.png" alt="HITL task Supervisor_ClaimValidation with Action Create action app task, Action Supervisor_ClaimValidation-App, Task title Claim_Process, Assignment Criteria User, Enable actionable notifications on, and Assignee set to a named user" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Supervisor_ClaimValidation — an Action App task that routes the claim to a human reviewer.</figcaption>
+        </figure>
+
+        <p>Under <b>Assignments</b>, turn on <b>Enable actionable notifications</b> so the reviewer is notified directly, set <b>Assignment Criteria</b> to <b>User</b>, and set <b>Assignee</b> to the supervisor who should review the claim. Once assigned, the process pauses here until that person approves or rejects the claim in the app.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a human task set to Create action app task, pointed at the Supervisor Claim Validation Action App.</div></div>
+          <div class="row"><span class="box"></span><div>Named the task and enabled actionable notifications.</div></div>
+          <div class="row"><span class="box"></span><div>Set Assignment Criteria to User and chose the supervisor as Assignee.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-8">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Build the Action App</h3>
+        <p>The HITL task you configured in the previous step references an Action App named <i>Supervisor_ClaimValidation-App</i>, which needs to be built before that task can run. In UiPath, an <b>Action App</b> (also called an <b>Escalation app</b> when created this way) is a low-code app that brings a person into an otherwise automated process: it's built with the same low-code Apps designer, but instead of standing alone, it's backed by a <b>task</b> in <b>Action Center</b>. When a workflow, agent, or Maestro process needs a human decision, it creates a task; the assigned person opens that task — as this app — reviews whatever context was passed in, and submits one of a fixed set of <b>outcomes</b> (like Approve or Reject). That decision, plus anything else they entered, flows straight back into the process, which resumes automatically.</p>
+
+        <h4>Create the Escalation app</h4>
+        <p>From your solution in Studio Web, use <b>+ → Add project to solution</b> and choose <b>Escalation app</b> from the list (alongside options like Agent, RPA Workflow, and App). Name it to match what you referenced in the HITL task — for example, <code>Supervisor_ClaimValidation-App</code>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Add project to solution</span>
+            </div>
+            <img src="assets/add_to_project_escalation_app.png" alt="Add project to solution menu listing Maestro Flow, Maestro BPMN, Agent, RPA Workflow, API Workflow, App, Function, Maestro Case, Escalation app (highlighted), and Import existing" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add project to solution → Escalation app.</figcaption>
+        </figure>
+
+        <h4>Define the Action Schema</h4>
+        <p>Every Action App is built around an <b>Action Schema</b> — it defines the structure of data exchanged between the app and the calling workflow or agent, so the two sides agree on exactly what gets passed in, what the reviewer can edit, what gets returned, and what decisions are possible. It has four parts:</p>
+
+        <ul class="clean">
+          <li><b>Outcomes</b> — the decisions available to the reviewer: <code>Approve</code>, <code>Reject</code>.</li>
+          <li><b>Input Properties</b> — read-only context the app displays, populated by the Fraud Detection Agent and the claim record: <code>ClaimId</code>, <code>CustomerName</code>, <code>PolicyNumber</code>, <code>IncidentType</code>, <code>ClaimAmount</code> (System.Decimal), <code>FraudRiskScore</code> (System.Int32), <code>FraudRiskLevel</code>, <code>FraudVerdict</code>, <code>FraudIndicators</code>, <code>RecommendedAction</code>, <code>SuggestedEmailBody</code>, and <code>in_ClaimRecordDocument</code> (a File — the supporting document from Data Fabric).</li>
+          <li><b>Input/Output Properties</b> — fields that start pre-filled but the reviewer can edit before submitting: <code>io_ApprovedEmailBody</code> (the suggested approval email, editable before it's sent).</li>
+          <li><b>Output Properties</b> — new data the reviewer provides: <code>out_ReviewerComments</code> (optional free-text comments on their decision).</li>
+        </ul>
+
+        <h4>What the reviewer sees in Action Center</h4>
+        <p>Lay out a "Claim Processing" screen and bind each field to its matching Action Schema property: <code>ClaimId</code>, <code>CustomerName</code>, <code>PolicyNumber</code>, <code>IncidentType</code>, and <code>ClaimAmount</code> on the left, and the fraud analysis fields — <code>FraudRiskScore</code>, <code>FraudRiskLevel</code>, <code>FraudVerdict</code>, and <code>FraudIndicators</code> — alongside <code>RecommendedAction</code> on the right, so the reviewer sees the full picture the Fraud Detection Agent produced. Below that, place a <b>Claim Document View</b> control bound to <code>in_ClaimRecordDocument</code> next to an editable <b>Approved email body</b> field bound to <code>io_ApprovedEmailBody</code>, then a <b>Reviewer comments</b> box bound to <code>out_ReviewerComments</code>, and finally the <b>Approve</b>/<b>Reject</b> buttons wired to the Outcomes you defined. Once published, this same layout is what the assigned reviewer opens as their task in Action Center.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Apps designer — Claim Processing</span>
+            </div>
+            <img src="assets/claim_processing_app_design.png" alt="Claim Processing app design canvas with fields bound to expressions: Claim Id, Customer Name, Policy Number, Incident Type, Claim Amount, Fraud Risk Score, Fraud Risk Level, Fraud Verdict, Fraud Indicators, Recommended Action, a Claim Document View control, an Approved email body field, a Reviewer comments box, and Approve/Reject buttons" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Claim Processing app layout, with each field bound to its Action Schema property.</figcaption>
+        </figure>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Created an Escalation app named to match the HITL task's Action (Supervisor_ClaimValidation-App).</div></div>
+          <div class="row"><span class="box"></span><div>Defined the Action Schema: Outcomes (Approve, Reject), Input Properties, an Input/Output property for the editable email, and an Output property for reviewer comments.</div></div>
+          <div class="row"><span class="box"></span><div>Confirmed the app displays the claim details, document, and decision buttons as expected in Action Center.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Settlement Coded Agent -->
+    <div class="group-header" id="group-coded-agent">
+      <h2 style="margin-top:0;">Settlement Coded Agent</h2>
+    </div>
+
+    <p>Once the supervisor approves the claim, the process needs to calculate what to actually pay out. That's the job of the <b>Settlement Coded Agent</b> you'll build in <a href="../part4/index.html">Module 4</a> — a pure-Python, deterministic agent with no LLM involved, matching the "SettlementCodedAgent" step on the Approve branch of the BPMN diagram.</p>
+
+    <div class="step" id="step-9">
+      <div class="num">9</div>
+      <div class="body">
+        <h3>Add the Settlement Coded Agent step</h3>
+        <p>On the Approve branch coming out of the Reviewer Action Gateway, add another <b>Service task</b> and name it <code>Settlement CodedAgent</code>. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b>, the same pattern used for the Fraud Detection Agent earlier in this flow.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Service task — Settlement CodedAgent</span>
+            </div>
+            <img src="assets/settlement_coded_agent_service_task.png" alt="Service task named Settlement CodedAgent, Implementation Action Start and wait for agent, Agent SettlementCodedAgent, Inputs insurance_type, coverage_type, claim_amount, Outputs insurance_type, coverage_type, claim_amount, eligible, settlement_percentage, settlement_amount, message, Error" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Settlement Coded Agent step, calling the coded agent you'll build in Module 4.</figcaption>
+        </figure>
+
+        <p>For <b>Agent</b>, select <code>SettlementCodedAgent</code>. Under <b>Inputs</b>, map <code>insurance_type</code>, <code>coverage_type</code>, and <code>claim_amount</code> to the corresponding claim fields carried through the process. Under <b>Outputs</b>, map <code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code>, <code>message</code>, and <code>Error</code> to process variables — the eligibility and settlement figures the agent calculates, which the approval email and Outlook send step further down the flow will use.</p>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Before integrating the agent</div>
+          <div class="adm-body">Just like the Fraud Detection Agent, this step depends on the Settlement Coded Agent being built and published first. Complete <a href="../part4/index.html">Module 4</a> to build it, then come back and select it here.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a Service task named Settlement CodedAgent on the Approve branch, after the Reviewer Action Gateway.</div></div>
+          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to SettlementCodedAgent.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped insurance_type, coverage_type, and claim_amount as inputs, and mapped all five outputs to process variables.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Route, Notify, and End -->
+    <div class="group-header" id="group-notify">
+      <h2 style="margin-top:0;">GenAI Activities</h2>
+    </div>
+
+    <p>The last stretch of the process branches on the supervisor's decision, then uses GenAI to draft one status email covering either outcome. Rather than building separate GenAI activities for Approve and Reject, this section uses a single one, driven by <code>vars.action</code>.</p>
+
+    <div class="step" id="step-10">
+      <div class="num">10</div>
+      <div class="body">
+        <h3>Configure the Reviewer Action Gateway</h3>
+        <p>Right after the Human-in-the-Loop Review step, add a <b>Gateway</b> node named <code>Reviewer Action Gateway</code> and connect it to two outgoing paths: an <b>Approve</b> path and a <b>Reject</b> path, each guarded by a condition on <code>vars.action</code> — for example <code>vars.action == "Approve"</code> and <code>vars.action == "Reject"</code>. The Approve path leads into the <b>Settlement Coded Agent</b> step from Step 9; the Reject path skips straight ahead. Both paths converge again right before the email step below.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added the Reviewer Action Gateway right after the HITL step, with two outgoing paths.</div></div>
+          <div class="row"><span class="box"></span><div>Set the Approve and Reject path conditions on vars.action.</div></div>
+          <div class="row"><span class="box"></span><div>Routed the Approve path through the Settlement Coded Agent, then converged both paths.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-11">
+      <div class="num">11</div>
+      <div class="body">
+        <h3>Generate the status email with GenAI</h3>
+        <p><b>UiPath GenAI Activities</b> is a family of ready-made connector activities backed by a large language model — instead of writing a prompt-calling agent yourself, you drop in an activity like <b>Generate Email</b>, wire up its inputs, and it returns generated text you can use directly in the process. It's the right tool here because this step doesn't need memory, tools, or multi-turn reasoning — just one well-specified piece of text generated from data already sitting in process variables.</p>
+
+        <p>Where both the Approve and Reject paths converge, add a single connector activity and name it <code>Generate Claim Status Email</code>. Set <b>Action</b> to <b>Execute connector activity</b>, <b>Select activity</b> to <b>Generate Email</b>, and <b>UiPath GenAI Activities connection</b> to your <i>UiPath GenAI Activities</i> connection, with a <b>Model name</b> such as <code>gpt-5.1-2025-11-13</code>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Service task — Generate Claim Status Email</span>
+            </div>
+            <img src="assets/genai_generate_email_action.png" alt="Generate Claim Status Email GenAI activity, Action Execute connector activity, Select activity Generate Email, UiPath GenAI Activities connection, Model name gpt-5.1-2025-11-13" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>One GenAI activity, generating the right email for either outcome.</figcaption>
+        </figure>
+
+        <p>This single activity replaces what would otherwise be two separate GenAI activities — one for approval emails, one for rejection emails. Instead, both the <b>Email content</b> and the <b>Example</b> fields use an expression that branches on <code>vars.action == "Approve"</code>, so the same activity produces the right email either way.</p>
+
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyText(this, 'genai-content-text')">📋 Copy</button>
+          <div class="highlight prompt-block">
+            <div class="filename">email-content.js</div>
+            <pre id="genai-content-text"><code>[
+  "&lt;p&gt;Dear ", vars.outClaimDetails.customer_name, ",&lt;/p&gt;", "\n", "\n",
+  "Customer name: ", vars.outClaimDetails.customer_name, "\n",
+  "Claim ID: ", vars.outClaimDetails.claim_id, "\n",
+  "Policy number: ", vars.outClaimDetails.policy_number, "\n",
+  "Decision: ", vars.action, "\n",
+  vars.action == "Approve"
+    ? [
+        "Original claim amount: ", vars.outClaimDetails.claim_amount, "\n",
+        "Settlement percentage: ", vars.settlementPercentage, "\n",
+        "Settlement amount: ", vars.settlementAmount, "\n",
+        "Requirements:", "\n",
+        "- Address the customer using the supplied customer name.", "\n",
+        "- State that the claim was approved following supervisor review.", "\n",
+        "- Include the exact claim ID and policy number.", "\n",
+        "- Show the original claim amount, settlement percentage, and settlement amount.", "\n",
+        "- Format monetary values with two decimal places.", "\n",
+        "- Use an HTML bullet list for the settlement details.", "\n",
+        "- Do not calculate or change any supplied value.", "\n",
+        "- Do not promise a payment date.", "\n",
+        "- Do not mention AI, agents, fraud analysis, or internal processing.", "\n",
+        "- End with Insurance Claims Department and Helpline: 1800-CLAIMS."
+      ].join('')
+    : [
+        "Supervisor comments: ", vars.outReviewerComments, "\n",
+        "Internal review indicators: ", vars.outFraudAnalysis.fraud_indicators, "\n",
+        "Recommended action: ", vars.outFraudAnalysis.recommended_action, "\n",
+        "Requirements:", "\n",
+        "- Draft a professional, empathetic decline notice.", "\n",
+        "- Include the exact claim ID and policy number.", "\n",
+        "- Explain what documents or information the customer should resubmit.", "\n",
+        "- Present required documents as an HTML bullet list.", "\n",
+        "- State that the customer must include the claim ID with the resubmission.", "\n",
+        "- State that resubmission allows further review but does not guarantee approval.", "\n",
+        "- Do not include settlement values.", "\n",
+        "- Do not mention AI, agents, fraud analysis, or internal processing.", "\n",
+        "- End with Insurance Claims Department and Helpline: 1800-CLAIMS."
+      ].join('')
+].join('')</code></pre>
+          </div>
+        </div>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Generate Email — Email content</span>
+            </div>
+            <img src="assets/genai_email_content_field.png" alt="Email content field showing the dynamic expression referencing vars.outClaimDetails.customer_name and other claim variables" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Email content field, built from claim and decision variables.</figcaption>
+        </figure>
+
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyText(this, 'genai-example-text')">📋 Copy</button>
+          <div class="highlight prompt-block">
+            <div class="filename">email-example.js</div>
+            <pre id="genai-example-text"><code>vars.action == "Approve"
+? [
+    "&lt;p&gt;Dear Customer,&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Your insurance claim has been approved following review.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;&lt;strong&gt;Settlement details:&lt;/strong&gt;&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; CLM-EXAMPLE&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; POL-EXAMPLE&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Original claim amount:&lt;/strong&gt; $1,000.00&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement percentage:&lt;/strong&gt; 90%&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement amount:&lt;/strong&gt; $900.00&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;Regards,&lt;br&gt;", "\n",
+    "Claims Processing Team&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')
+: [
+    "&lt;p&gt;Dear Customer,&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;We have completed the review of your insurance claim. At this time, we are unable to approve the claim as currently submitted because the available information does not establish coverage for the complete amount claimed.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;&lt;strong&gt;Claim details:&lt;/strong&gt;&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; CLM-EXAMPLE&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; POL-EXAMPLE&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;For further review, please resubmit the following:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;Repair receipts, estimates, or other supporting cost documentation&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Any additional incident documentation requested by the claims team&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;Please include the claim ID with your resubmission. Additional information may be submitted for further review; however, resubmission does not guarantee approval.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Regards,&lt;br&gt;", "\n",
+    "Claims Processing Team&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')</code></pre>
+          </div>
+        </div>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Generate Email — Example</span>
+            </div>
+            <img src="assets/genai_example_field.png" alt="Example field showing the dynamic expression that branches on vars.action == Approve to select the approval or rejection example email" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Example field, switching format to match whichever branch ran.</figcaption>
+        </figure>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added one "Generate Claim Status Email" GenAI connector activity where both branches converge.</div></div>
+          <div class="row"><span class="box"></span><div>Set Email content and Example to expressions that branch on vars.action, instead of building two separate activities.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Email Process -->
+    <div class="group-header" id="group-email-process">
+      <h2 style="margin-top:0;">Email Process</h2>
+    </div>
+
+    <p>With the status email generated, the last piece of the process sends it to the claimant and brings both the Approve and Reject paths to a close at one shared end event.</p>
+
+    <div class="step" id="step-12">
+      <div class="num">12</div>
+      <div class="body">
+        <h3>Send the status email and end the process</h3>
+        <p>Add a <b>Microsoft Outlook 365</b> connector activity right after the GenAI step, named <code>Send Status Email</code>. Set <b>Action</b> to <b>Execute connector activity</b> and <b>Select activity</b> to <b>Send Email</b>, with <b>Microsoft Outlook 365 connection</b> set to your shared connection (for example, <i>UiPathSharedEmail</i>). Leave <b>Save as draft</b> set to <b>False</b> so the email actually sends.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Service task — Send Status Email</span>
+            </div>
+            <img src="assets/send_status_email_service_task.png" alt="Send Status Email connector activity, Action Execute connector activity, Select activity Send Email, Microsoft Outlook 365 connection UiPathSharedEmail, Save as draft False, connected to the End Event" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Send Status Email, connected straight through to the shared End Event.</figcaption>
+        </figure>
+
+        <p>Bind the email body to the GenAI activity's output from the previous step. For <b>Subject</b>, use the same branching pattern so one activity covers both outcomes:</p>
+
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyText(this, 'genai-subject-text')">📋 Copy</button>
+          <div class="highlight prompt-block">
+            <div class="filename">email-subject.js</div>
+            <pre id="genai-subject-text"><code>vars.action == "Approve"
+? "Claim " + vars.outClaimDetails.claim_id + " — Settlement Approved"
+: "Claim " + vars.outClaimDetails.claim_id + " — Review Decision and Next Steps"</code></pre>
+          </div>
+        </div>
+
+        <p>Connect <b>Send Status Email</b> straight to a single shared <b>End Event</b>. With that, both the Approve and Reject paths — fraud check, human review, optional settlement calculation, generated email, and notification — run through the same two activities and finish at one defined end of the process.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added one Send Status Email connector activity for both branches, with Action set to Send Email via Microsoft Outlook 365.</div></div>
+          <div class="row"><span class="box"></span><div>Set Subject to the branching expression above and bound the body to the GenAI activity's output.</div></div>
+          <div class="row"><span class="box"></span><div>Connected Send Status Email to a single shared End Event.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 2 Overview</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 2 Complete</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script>
+function copyText(btn, id){
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+(function(){
+  var sections = Array.prototype.map.call(
+    document.querySelectorAll('.group-header[id]'),
+    function(el){ return { id: el.id, el: el }; }
+  );
+  if (!sections.length) return;
+
+  var sidebarLinks = document.querySelectorAll('.md-sidebar--primary .group-items a[href*="steps.html#group-"]');
+  if (!sidebarLinks.length) return;
+
+  function setActive(id){
+    sidebarLinks.forEach(function(link){
+      var linkHash = link.getAttribute('href').split('#')[1];
+      if (linkHash === id) { link.classList.add('active'); }
+      else { link.classList.remove('active'); }
+    });
+  }
+
+  function onScroll(){
+    var scrollPos = window.scrollY + 90;
+    var current = sections[0].id;
+    for (var i = 0; i < sections.length; i++){
+      if (sections[i].el.offsetTop <= scrollPos) { current = sections[i].id; }
+    }
+    setActive(current);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
