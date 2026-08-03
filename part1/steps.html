@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steps · Module 1 · Conversational Agent</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+    <div class="nav">
+      <p class="nav-title">Insurance Claim Approval Workshop</p>
+      <a href="../index.html">Home</a>
+      <details open>
+        <summary>Module 1 · Conversational Agent</summary>
+        <div class="group-items">
+          <a href="index.html">Overview</a>
+          <a href="steps.html#group-concepts">Concepts</a>
+          <a class="active" href="steps.html#group-create-agent">Create Agent</a>
+          <a href="steps.html#group-system-prompt">System Prompt</a>
+          <a href="steps.html#group-context-grounding">Context Grounding</a>
+          <a href="steps.html#group-tools">Tools</a>
+          <a href="steps.html#group-deploy">Deploy and Publish</a>
+          <a href="steps.html#group-apps">Apps</a>
+          <a href="steps.html#group-observe">Observing Your Agent</a>
+          <a href="complete.html">Module 1 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 2 · Maestro (BPMN)</summary>
+        <div class="group-items">
+          <a href="../part2/index.html">Overview</a>
+          <a href="../part2/steps.html#group-concepts">Concepts</a>
+          <a href="../part2/steps.html#group-build">Set Up the Process</a>
+          <a href="../part2/steps.html#group-start-event">Start Event</a>
+          <a href="../part2/steps.html#group-fraud-agent">Fraud Detection Agent</a>
+          <a href="../part2/steps.html#group-download">Retrieve the Document</a>
+          <a href="../part2/steps.html#group-hitl">Human-in-the-Loop Review</a>
+          <a href="../part2/steps.html#group-coded-agent">Settlement Coded Agent</a>
+          <a href="../part2/steps.html#group-notify">GenAI Activities</a>
+          <a href="../part2/steps.html#group-email-process">Email Process</a>
+          <a href="../part2/complete.html">Module 2 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 3 · Agent Builder</summary>
+        <div class="group-items">
+          <a href="../part3/index.html">Overview</a>
+          <a href="../part3/steps.html#group-concepts">Concepts</a>
+          <a href="../part3/steps.html#group-build">Build the Agent</a>
+          <a href="../part3/complete.html">Module 3 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 4 · Coded Agent</summary>
+        <div class="group-items">
+          <a href="../part4/index.html">Overview</a>
+          <a href="../part4/steps.html#group-concepts">Concepts</a>
+          <a href="../part4/steps.html#group-build">Build the Agent</a>
+          <a href="../part4/steps.html#group-publish">Publish &amp; Run</a>
+          <a href="../part4/complete.html">Module 4 Complete</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 1 · Conversational Agent</span>
+    <h1>Build the Claim Request Agent</h1>
+    <p class="lead">Understand what a conversational agent is, then create the project, name your work, configure the system prompt, ground the agent in real policy data, wire up its tools, embed it in an app, deploy it, and monitor it in production.</p>
+
+    <!-- GROUP: Concepts -->
+    <div class="group-header" id="group-concepts">
+      <h2 style="margin-top:0;">Concepts</h2>
+    </div>
+
+    <h3>What's a Conversational Agent?</h3>
+    <p>A <b>Conversational Agent</b> is a UiPath agent designed to interact with people in real time through natural, back-and-forth chat — rather than running a task end to end on its own. It asks questions, collects information, calls tools mid-conversation, and adapts its next question based on what it's already learned. For the Insurance Claim Approval Process, the Claim Request Agent <i>is</i> the conversational agent: it's the front door claimants talk to when they need to file a claim.</p>
+
+    <h3>Why Conversational Agents?</h3>
+    <p>Many business processes don't start with a clean, structured form — they start with a person who has a question, a document, and an incomplete understanding of what's required. A conversational agent meets people where they are: it asks one question at a time, explains what it needs and why, and handles messy, partial, or out-of-order input gracefully. That's a different job than an autonomous agent, which is built to complete a well-defined task with minimal supervision once it's kicked off.</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🗣️</div><h4>Natural intake</h4><p>Replace rigid multi-page forms with a guided conversation that adapts to the user.</p></div>
+      <div class="card"><div class="ico">🔀</div><h4>Real-time branching</h4><p>Route to the right question, tool, or explanation based on what the user just said.</p></div>
+      <div class="card"><div class="ico">🤝</div><h4>Trust through transparency</h4><p>Explain what's needed and why, and hand off to a human when a case needs judgment.</p></div>
+    </div>
+
+    <h3>Pillars of a Conversational Agent</h3>
+    <p>Every conversational agent you design in UiPath is built from the same seven building blocks. You'll configure each of these for the Claim Request Agent over the course of this module.</p>
+
+    <div class="grid g2">
+      <div class="card"><h4>System Prompt</h4><p style="font-size:13.5px;margin:0;">Define agent persona, goals, and behavioral guidelines.</p></div>
+      <div class="card"><h4>Tools Integration</h4><p style="font-size:13.5px;margin:0;">Connect RPA, API, MCP, autonomous agents, and built-in tools.</p></div>
+      <div class="card"><h4>Context Grounding</h4><p style="font-size:13.5px;margin:0;">Ground responses with semantic, DeepRAG, or batch knowledge retrieval.</p></div>
+      <div class="card"><h4>Human Escalations</h4><p style="font-size:13.5px;margin:0;">Hand off to humans via Action Center tasks and document validation.</p></div>
+      <div class="card"><h4>Model Selection</h4><p style="font-size:13.5px;margin:0;">Choose from Claude Sonnet 4.5, GPT-5, or Gemini with configurable token limits.</p></div>
+      <div class="card"><h4>Custom Appearance</h4><p style="font-size:13.5px;margin:0;">Tailor title, description, and starting prompts to match your brand.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px;"><h4>Autopilot and Agent Health Score</h4><p style="font-size:13.5px;margin:0;">Develop your agent in natural language &amp; automatically assess production readiness.</p></div>
+
+    <!-- GROUP: Create Agent -->
+    <div class="group-header" id="group-create-agent">
+      <h2 style="margin-top:0;">Create Agent</h2>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step" id="step-1">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Create a new project</h3>
+        <p>From the UiPath Studio Web home screen, start building a new project. You'll be prompted to choose how you'd like to begin — this is where you decide the type of automation you're creating.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/start-building</span>
+            </div>
+            <img src="assets/step1.png" alt="Start building dialog with Maestro Flow, Maestro BPMN, Agent, and RPA Workflow options" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The "Start building" dialog — select Agent to build an autonomous, conversational, or coded AI agent.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Maestro Flow</b> — build a workflow that coordinates work across agents, people, and automations.</li>
+          <li><b>Maestro BPMN</b> — design and build a business process on a BPMN canvas.</li>
+          <li><b>Agent</b> — build an autonomous, conversational, or coded AI agent. <b>Select this option.</b></li>
+          <li><b>RPA Workflow</b> — automate a repetitive task across web and desktop apps.</li>
+        </ul>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">For this workshop, choose <b>Agent</b>. You'll build the conversational claim-intake agent here, and revisit Maestro Flow and Maestro BPMN in Module 2 to orchestrate the broader claim process.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>I selected <b>Agent</b> from the "Start building" dialog.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="step-2">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Select the conversational agent type</h3>
+        <p>On the "Select agent type" screen, UiPath offers two build modes — <b>Low-code</b> (built visually in Studio) and <b>Code</b> (built in your IDE). Within Low-code, choose between an <b>Autonomous</b> agent, which runs a task end to end on its own, and a <b>Conversational</b> agent, which chats with users in real time.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/select-type</span>
+            </div>
+            <img src="assets/step2.png" alt="Select agent type screen showing Low-code (Autonomous, Conversational) and Code (Coded) options, with Conversational selected" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The "Select agent type" screen — Conversational is selected under Low-code.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Autonomous</b> — runs a task end to end on its own, without needing real-time user input.</li>
+          <li><b>Conversational</b> — chats with users in real time. <b>Select this option</b> for the claim-intake agent.</li>
+          <li><b>Coded</b> — build in your IDE; supports both autonomous and conversational coded agents. Used in Module 4.</li>
+        </ul>
+
+        <p>Below the agent type selector, UiPath's <b>Autopilot</b> can generate a starting point if you describe what the agent should do. For this workshop, click <b>Start fresh</b> instead so you build the claim-intake agent from a blank canvas and understand every configuration step.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>I selected <b>Conversational</b> under Low-code.</div></div>
+          <div class="row"><span class="box"></span><div>I clicked <b>Start fresh</b> to begin with a blank agent.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="step-3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Rename your solution folder and agent</h3>
+        <p>In the Explorer panel, rename the solution folder and the conversational agent so they clearly identify your work. Since this is a shared training tenant, include your name so your project doesn't get confused with other participants'.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/explorer</span>
+            </div>
+            <img src="assets/step3.png" alt="Explorer panel showing the solution folder and conversational agent with a right-click context menu open on Rename" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Right-click the solution folder or agent in the Explorer panel and choose Rename.</figcaption>
+        </figure>
+
+        <div class="highlight">
+          <div class="filename">Naming convention</div>
+          <pre><code><span class="pr">Solution Folder</span>  <span class="hl">Insurance Claim Approval Process (YourName)</span>
+<span class="pr">Conversational Agent</span>  <span class="hl">Claim Request Agent</span></code></pre>
+        </div>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Replace <code>(YourName)</code> with your own name or initials. Consistent naming makes it easy for your instructor to identify your project when reviewing progress across the class.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Solution folder renamed to <b>Insurance Claim Approval Process (YourName)</b></div></div>
+          <div class="row"><span class="box"></span><div>Conversational agent renamed to <b>Claim Request Agent</b></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step" id="step-4">
+      <div class="num">4</div>
+      <div class="body">
+        <h3>Set up your agent</h3>
+        <p>Open the <b>Claim Request Agent</b> definition. Here you configure the model, the system prompt, model settings, and the agent's appearance in the chat interface.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/definition</span>
+            </div>
+            <img src="assets/step4a.png" alt="Agent definition panel showing Model selector (gpt-5.4), System prompt editor, Model settings, and Appearance section" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The agent Definition panel — Model, System prompt, Model settings, and Appearance.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Model</b> — the LLM the agent reasons with. <code>gpt-5.4</code> is shown as the suggested default.</li>
+          <li><b>System prompt</b> — the instructions that define the agent's role, rules, and behavior for every conversation.</li>
+          <li><b>Model settings</b> — Temperature (precision vs. creativity) and max tokens per response.</li>
+          <li><b>Appearance</b> — the welcome title, welcome description, and starting prompts shown to end users.</li>
+        </ul>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>I opened the Claim Request Agent definition and reviewed Model, Model settings, and Appearance.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: System Prompt -->
+    <div class="group-header" id="group-system-prompt">
+      <h2 style="margin-top:0;">System Prompt</h2>
+    </div>
+
+    <div class="step" id="step-5">
+      <div class="num">5</div>
+      <div class="body">
+        <h3>Configure the system prompt</h3>
+
+        <div class="adm note">
+          <div class="adm-title">📝 What is a system prompt?</div>
+          <div class="adm-body">The system prompt is the standing instruction set the agent reads before every message in the conversation. It defines who the agent is, what it's allowed and not allowed to do, what information to collect, which tools it can call and when, and exactly how it should respond. Unlike a single user message, the system prompt applies for the entire conversation — it's the closest thing an agent has to a job description and a rulebook combined.</div>
+        </div>
+
+        <p>Click into the <b>System prompt</b> field to open the full editor, where you can write or paste the complete instruction set for the Claim Request Agent.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/system-prompt</span>
+            </div>
+            <img src="assets/step4b.png" alt="Expanded system prompt editor modal showing the full claim intake assistant instructions" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The expanded System Prompt editor, with Edit/Preview modes and rich-text formatting controls.</figcaption>
+        </figure>
+
+        <p>Paste the following system prompt for the <b>Claim Request Agent</b>. It defines the agent's role as an insurance claim intake assistant, the conversation rules, the internal state it tracks, how it routes the first user message, which tools it can call and when, and the full step-by-step claim flow through policy lookup, coverage check, document validation, claim ID generation, review, and submission.</p>
+
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copySystemPrompt(this)">📋 Copy</button>
+          <div class="highlight prompt-block">
+            <div class="filename">system-prompt.txt</div>
+            <pre id="system-prompt-text"><code>You are an insurance claim intake assistant embedded in a public iframe app. Conduct a friendly, concise conversation to collect and submit exactly one insurance claim.
+
+CORE RULES
+- Ask only one question at a time.
+- Keep user-facing responses concise.
+- Never expose raw JSON, tool arguments, internal IDs, internal calculations, stack traces, or tool errors.
+- Never invent policy, coverage, claim, or tool-result values.
+- Reuse previously collected information and tool results.
+- Do not call a tool again unless an input relevant to that tool has changed.
+- A file upload must never restart policy lookup or coverage validation.
+- Generate the Claim ID once, store it, and never change or recompute it.
+- Call SaveClaimData at most once, and only after the user explicitly replies Submit.
+- After a successful submission, stop the claim workflow.
+
+CONVERSATION STATE
+Maintain these internal values throughout the conversation:
+- customer_name
+- policy_number
+- policy_record
+- policy_confirmed
+- incident_type
+- coverage_result
+- claim_amount
+- incident_description
+- claim_file
+- claim_id
+- submission_confirmed
+- claim_submitted
+- extracted_policy_number
+- extracted_customer_name
+- extracted_document_date
+- extracted_incident_type
+- extracted_total_payable
+- document_match_score
+- document_match_details
+
+Do not show these internal variable names to the user.
+
+FIRST-MESSAGE INTENT ROUTING
+Apply this routing only to the first user message or when the user clearly changes the topic back to one of these intents.
+
+1. If the user selects or asks "Check required documents":
+- Do not call tools.
+- Briefly list: full name, policy number, incident type, claim amount, incident description, and an optional supporting file.
+- End by asking: "Would you like to start a new claim?"
+
+2. If the user selects or asks "Verify my policy":
+- Ask for the policy number directly.
+- Perform POLICY LOOKUP.
+- If the policy is confirmed and the user wants to continue, ask for the full name if it has not already been collected, then continue the normal claim flow.
+
+3. If the user selects or asks "How does the claim process work?":
+- Do not call tools.
+- Explain in two or three sentences: verify the policy, check incident coverage, collect claim details, review the claim, and submit it.
+- End by asking: "Would you like to start a new claim?"
+
+4. If the user selects "Start a new claim" or sends any other message that does not match the intents above:
+- Begin the normal claim flow.
+
+Once claim intake has started, do not reroute ordinary answers through this section.
+
+TOOLS
+
+1. Query Entity Records
+- Call only when a new or corrected policy number is provided.
+- Entity: PolicyRecords
+- Query: PolicyNumber = '&lt;policy number&gt;'
+- Limit: 1
+- Expansion level: 1
+- Store and reuse the result while the policy number remains unchanged.
+
+2. InsurancePolicyData
+- Call only after the policy is confirmed and an incident type is available.
+- Determine only whether that incident is Covered, Excluded, or requires Manual review, and capture any relevant exclusion.
+- Reuse the result while both the policy number and incident type remain unchanged.
+
+3. SaveClaimData
+- Call exactly once after the user explicitly replies Submit.
+- Before calling, verify that all required inputs listed under SUBMISSION are non-empty.
+- If anything is missing, ask for the missing information instead of calling the tool.
+- If the call succeeds, display the success confirmation and stop.
+- If the call fails, say that the claim was not submitted. Do not retry automatically.
+
+4. ClaimsProcessing_DocumentProcessing_IXP
+- Call only when the user uploads a supporting document.
+- Input: the uploaded file.
+- Extracts: PolicyNumber, CustomerName, DateOfDocument, IncidentType, TotalPayable (numeric, USD), GarageName.
+- Call at most once per uploaded file. If the user uploads a new file, call again; otherwise reuse the stored result.
+- Never invent or guess any extracted field. If a field is not returned, treat it as missing.
+
+NORMAL CLAIM FLOW
+Begin with:
+"Hello! I'm your AI claims assistant. I'll help you submit an insurance claim. What is your full name?"
+
+Collect and validate one item at a time in this order unless first-message routing has already collected an item:
+1. Full name
+2. Policy number
+3. Policy confirmation
+4. Incident type
+5. Coverage check
+6. Claim amount
+7. Incident description
+8. Optional supporting file
+9. Claim review
+10. Submission confirmation
+
+POLICY LOOKUP
+When a policy number is provided, call Query Entity Records once.
+
+If no matching record is returned:
+- Ask the user to verify or correct the policy number.
+- Do not invent policy information.
+
+If a record is returned, display:
+### Policy Summary
+**Customer name:** &lt;CustomerName&gt;
+**Policy number:** &lt;PolicyNumber&gt;
+**Policy status:** &lt;PolicyStatus&gt;
+**Coverage type:** &lt;CoverageType&gt;
+**Coverage limit:** &lt;formatted currency&gt;
+**Valid from:** &lt;MMM dd, yyyy&gt;
+**Valid until:** &lt;MMM dd, yyyy&gt;
+
+Then ask:
+"Is this information correct? Reply Yes or No."
+Stop and wait.
+
+- If No, ask for the corrected policy number.
+- If Yes, set policy_confirmed to true and use the returned policy values throughout the rest of the claim.
+- If the returned customer name conflicts materially with the supplied full name, ask the user to confirm the policy holder name before continuing.
+- If PolicyStatus is not Active, explain that the policy is not currently eligible and stop intake.
+
+COVERAGE CHECK
+After the policy is confirmed, ask for the incident type if it has not been collected.
+
+Call InsurancePolicyData once and display:
+### Coverage Check
+**Incident type:** &lt;incident type&gt;
+**Result:** &lt;Covered, Excluded, or Manual review required&gt;
+**Relevant exclusion:** &lt;exclusion or None&gt;
+
+- If Excluded, explain that the incident is excluded and stop intake.
+- If Covered or Manual review required, continue by asking for the claim amount.
+- Accept only a positive numeric claim amount. Then ask for a concise incident description.
+
+SUPPORTING FILE
+Ask:
+"Please upload a supporting document, or reply Skip."
+
+- If the user replies Skip, set claim_file to null, set document_match_score to null, and continue directly to Claim ID generation and review.
+- If a file is uploaded, store it as claim_file, then proceed to DOCUMENT VALIDATION below. Do not repeat the earlier policy lookup or coverage check using the same policy number.
+
+DOCUMENT VALIDATION
+1. Call ClaimsProcessing_DocumentProcessing_IXP with the uploaded file. Store the extracted fields.
+2. If extracted_policy_number is present and differs from the confirmed policy_number, call Query Entity Records once with the extracted_policy_number and show the user both policy numbers, asking which one is correct. Do not proceed until this is resolved.
+3. Compare the extracted fields against the confirmed policy_record and the claim details already collected, using these five checks. Each check is worth 20 points. Do not estimate or soften a check — award full points only on an exact or clearly equivalent match, otherwise award 0.
+- Policy Number Match: extracted_policy_number equals the confirmed policy_number.
+- Customer Name Match: extracted_customer_name matches customer_name (case-insensitive, ignoring extra whitespace and punctuation).
+- Policy Active: policy status from the policy record is Active.
+- Amount Within Limit: extracted_total_payable is less than or equal to the coverage limit from the policy record.
+- Document Date Within Policy Period: extracted_document_date falls on or between the policy's Valid from and Valid until dates.
+4. Sum the points earned into document_match_score (0-100). Store which checks passed or failed in document_match_details.
+5. Display:
+### Document Validation
+**Policy Number Match:** &lt;Pass/Fail&gt;
+**Customer Name Match:** &lt;Pass/Fail&gt;
+**Policy Active:** &lt;Pass/Fail&gt;
+**Amount Within Limit:** &lt;Pass/Fail&gt;
+**Document Date Within Policy Period:** &lt;Pass/Fail&gt;
+**Document Match Score:** &lt;document_match_score&gt;/100
+6. Based on the score, show exactly one of the following lines, then continue to Claim ID generation and review regardless of score (do not stop intake here — flag it, don't block it):
+- 100: "This document fully matches your policy details."
+- 80-99: "This document mostly matches your policy details, with a minor discrepancy noted above."
+- 60-79: "This document has some discrepancies with your policy details. It will be flagged for manual review."
+- Below 60: "This document has significant discrepancies with your policy details. It will be flagged for manual review before approval."
+
+CLAIM ID GENERATION
+Generate the Claim ID silently after the policy number, customer name, incident type, and claim amount are available. Never show the calculation.
+1. Extract all digits from the confirmed policy number and take the last five digits. If fewer than five digits exist, ask the user to correct the policy number.
+2. Let A be the number of alphabetic letters in the confirmed customer name, excluding spaces and punctuation.
+3. Let B be the number of alphabetic letters in the incident type, excluding spaces and punctuation.
+4. Let C be the whole-number portion of the positive claim amount after removing currency symbols and thousands separators. Ignore decimal cents.
+5. Compute: suffix = ((A * 3000) + (B * 700) + C) modulo 90000 + 10000.
+6. Format suffix as exactly five digits.
+7. Set claim_id to: &lt;last five policy digits&gt;-CLM-&lt;five-digit suffix&gt;.
+
+The angle-bracket notation above describes the format only. In every user-visible response and every tool argument, use the actual computed Claim ID, for example 23462-CLM-42145. Never output placeholders such as &lt;random5digits&gt;, &lt;computedSuffix&gt;, or &lt;claim ID&gt;.
+
+CLAIM REVIEW
+Before showing the review, verify that these values are available:
+- claim_id
+- policy_number
+- customer_name
+- claim_amount
+- incident_type
+- incident_description
+- policy status from the policy lookup
+- coverage type from the policy lookup
+- coverage limit from the policy lookup
+
+If any value is missing, ask for it before continuing.
+
+Display:
+### Claim Review
+**Policy number:** &lt;actual policy number&gt;
+**Claim ID:** &lt;actual generated Claim ID&gt;
+**Incident type:** &lt;actual incident type&gt;
+**Claim amount:** &lt;formatted currency&gt;
+**Document:** &lt;actual filename or Not provided&gt;
+**Document Match Score:** &lt;document_match_score, or "Not applicable — no document uploaded"&gt;
+
+Then ask:
+"Reply Submit to submit the claim, or Cancel."
+Stop and wait.
+
+- On Cancel, confirm cancellation and do not call SaveClaimData.
+- On any response other than Submit or Cancel, ask the user to reply Submit or Cancel.
+
+SUBMISSION
+On Submit, first verify that claim_submitted is false and that all of these inputs are non-empty:
+- in_ClaimID
+- in_PolicyNumber
+- in_CustomerName
+- in_ClaimAmount
+- in_IncidentType
+- in_IncidentDescription
+- in_PolicyStatus
+- in_CoverageType
+- in_CoverageLimit
+
+Then call SaveClaimData exactly once with:
+- in_PolicyNumber = confirmed policy number
+- in_CustomerName = confirmed customer name
+- in_ClaimAmount = numeric claim amount as a string
+- in_IncidentType = incident type
+- in_IncidentDescription = incident description
+- in_ClaimID = actual generated Claim ID
+- in_ClaimFile = uploaded attachment, or null when skipped
+- in_PolicyStatus = fetched policy status
+- in_CoverageType = fetched coverage type
+- in_CoverageLimit = fetched coverage limit as a string
+
+Do not pass in_Documents.
+
+After a successful tool response, set claim_submitted to true and display:
+### Claim Submitted Successfully
+**Claim ID:** &lt;actual generated Claim ID&gt;
+**Status:** Pending Review
+"Your claim has been received and will be reviewed by our claims team."
+
+Stop. Do not call another tool.</code></pre>
+          </div>
+        </div>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">Use the <b>Copy</b> button above to copy the full system prompt to your clipboard, then paste it directly into the System prompt field shown in the editor above.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>I opened the System prompt editor for the Claim Request Agent.</div></div>
+          <div class="row"><span class="box"></span><div>I pasted the full claim-intake system prompt.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Context Grounding -->
+    <div class="group-header" id="group-context-grounding">
+      <h2 style="margin-top:0;">Context Grounding</h2>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step" id="step-6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Add context grounding</h3>
+        <p>Context grounding lets your agent reason over your organization's own documents and structured data instead of relying purely on the model's general knowledge. For the Claim Request Agent, you'll ground the agent in the <b>InsurancePolicyData</b> index so it can accurately validate incident coverage against real policy documentation rather than guessing.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/context-grounding</span>
+            </div>
+            <img src="assets/step6a.png" alt="Indexes panel showing available resources with InsurancePolicyData highlighted" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Indexes panel — select InsurancePolicyData from the list of available resources.</figcaption>
+        </figure>
+
+        <p>In the agent's <b>Context Grounding</b> section, click <b>Create new</b> to open the Indexes panel, then search or browse the available resources under <b>Shared</b>. Select <b>InsurancePolicyData</b> — this is the pre-built index containing your organization's policy coverage documentation, which the agent will query whenever it needs to validate an incident type against policy terms.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>I opened the Indexes panel from Context Grounding.</div></div>
+          <div class="row"><span class="box"></span><div>I selected the <b>InsurancePolicyData</b> index from Shared resources.</div></div>
+        </div>
+
+        <p>Once selected, configure how the agent retrieves and uses this index:</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/context-grounding/insurancepolicydata</span>
+            </div>
+            <img src="assets/step6b.png" alt="InsurancePolicyData configuration panel showing Name, Description, Semantic strategy, folder path prefix, file extension, query, relevance score threshold, and max results retrieved" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The InsurancePolicyData context configuration — strategy, retrieval settings, and query.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Name</b> — <code>InsurancePolicyData</code>, matching the index you selected.</li>
+          <li><b>Description</b> — a short note on how the agent should use this context, e.g. <i>"Use the context grounding to analyze and validate the insurance details."</i> This description helps the agent decide when to consult the index during a conversation.</li>
+          <li><b>Strategy</b> — <code>Semantic</code>. Semantic retrieval matches on meaning rather than exact keywords, so the agent can find relevant policy clauses even when the user's wording differs from the source document.</li>
+          <li><b>Folder path prefix</b> — optionally scope retrieval to a specific subfolder within the index (e.g. <code>/documents/project</code>). Leave blank to search the entire index.</li>
+          <li><b>File extension</b> — restrict retrieval to a specific file type, or leave as <b>All</b> to search every supported document type in the index.</li>
+          <li><b>Query</b> — the natural-language query the agent uses to retrieve relevant chunks from the index for the Semantic strategy. This is typically driven dynamically by the incident type or claim details being evaluated.</li>
+          <li><b>Relevance score threshold</b> — the minimum similarity score a retrieved chunk must meet to be considered relevant. A higher threshold returns fewer, more precise results.</li>
+          <li><b>Max results retrieved</b> — the maximum number of matching chunks returned per query, from 1 to 40.</li>
+        </ul>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">Keep the relevance score threshold conservative at first (closer to the middle of the range) and adjust based on testing — too low returns noisy, irrelevant policy text; too high may miss valid coverage clauses phrased differently than expected.</div>
+        </div>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">Context grounding is what separates a generic chatbot from a reliable claims assistant. By grounding the Coverage Check step in the InsurancePolicyData index, the agent's "Covered / Excluded / Manual review" determination is backed by actual policy documentation — not just the model's own assumptions — which is essential for an insurance workflow where incorrect coverage decisions carry real financial and compliance risk.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Strategy set to <b>Semantic</b></div></div>
+          <div class="row"><span class="box"></span><div>Description added explaining how the agent should use this context</div></div>
+          <div class="row"><span class="box"></span><div>Relevance score threshold and max results reviewed and adjusted as needed</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Tools -->
+    <div class="group-header" id="group-tools">
+      <h2 style="margin-top:0;">Tools</h2>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step" id="step-7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Add tools</h3>
+        <p>Tools are what let the Claim Request Agent take action instead of just talking — querying real records, extracting data from uploaded documents, and updating downstream systems. In this step you'll add three tools: an <b>Entity</b> tool backed by Data Fabric, an <b>IXP</b> tool for document extraction, and an <b>RPA workflow</b> tool for updating claim records.</p>
+
+        <h4>7a · Add an Entity tool using Data Fabric</h4>
+        <p>Click <b>Tools</b> in the agent builder, then search the tool catalog for <b>Query entity record</b>. This surfaces the <b>Query Entity Records</b> activity — a built-in activity that retrieves records from a Data Fabric entity according to filters you specify.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/choose</span>
+            </div>
+            <img src="assets/step7_img1.png" alt="Choose tool search showing Query entity record search term and Query Entity Records activity result under Activities" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search "Query entity record" under Activities and select Query Entity Records.</figcaption>
+        </figure>
+
+        <p>Once added, configure the activity:</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/query-entity-records</span>
+            </div>
+            <img src="assets/step7_img2.png" alt="Query Entity Records configuration panel showing Name, Description, UiPath Data Fabric connection, Entity set to IntakeClaimEntity, and Query field" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Query Entity Records configuration — Data Fabric connection, entity, and query.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Name</b> — <code>Query Entity Records</code>.</li>
+          <li><b>Description</b> — <i>"Retrieves a list of records for the selected Entity from Data Fabric, according to specified filters."</i> This is what the agent reads to decide when to call this tool.</li>
+          <li><b>UiPath Data Fabric connection</b> — the shared Data Fabric connection for your tenant.</li>
+          <li><b>Entity</b> — <code>IntakeClaimEntity</code>, the Data Fabric entity holding claim intake records.</li>
+          <li><b>Query</b> — a CEQL (Common Entity Query Language) expression used to filter which records are returned, e.g. filtering by policy number.</li>
+        </ul>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">This is the same <b>Query Entity Records</b> tool referenced in the system prompt's POLICY LOOKUP section. Wiring it to <code>IntakeClaimEntity</code> in Data Fabric is what allows the agent to confirm a real policy number instead of trusting whatever the user types.</div>
+        </div>
+
+        <h4>7b · Add IXP as a tool</h4>
+        <p>Next, add a tool for extracting structured data from uploaded documents. In the toolbox, tools are grouped by type — RPA workflow, API workflow, Agent, Activity, MCP server, IXP, and Built-in Tools. Select <b>IXP</b>, which runs schema-driven, structured data extraction from documents.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/toolbox</span>
+            </div>
+            <img src="assets/step7_img3.png" alt="Toolbox panel listing RPA workflow, API workflow, Agent, Activity, MCP server, IXP, and Built-in Tools, with IXP highlighted" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Toolbox — select IXP for structured, schema-driven document data extraction.</figcaption>
+        </figure>
+
+        <p>Search for the specific IXP extractor your project uses — <code>ClaimsProcessing_DocumentProcessing_IXP</code> — and select it from the results.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/choose/ixp</span>
+            </div>
+            <img src="assets/step7_img4.png" alt="IXP tool search showing ClaimsProcessing_DocumentProcessing_IXP result: Initial invoice extractor for Policy #, Customer, IncidentType, Total Payable in USD" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search and select ClaimsProcessing_DocumentProcessing_IXP.</figcaption>
+        </figure>
+
+        <p>Review its configuration before saving:</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/ixp/claimsprocessing</span>
+            </div>
+            <img src="assets/step7_img5.png" alt="ClaimsProcessing_DocumentProcessing_IXP configuration showing Project Name, Model set to live, Description, and attachment file input" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>ClaimsProcessing_DocumentProcessing_IXP configuration — model, description, and file input.</figcaption>
+        </figure>
+
+        <ul class="clean">
+          <li><b>Project Name</b> — <code>ClaimsProcessing_DocumentProcessing_IXP</code>, read-only, matching the IXP project you selected.</li>
+          <li><b>Model</b> — <code>live</code>, the published extraction model version the agent will call.</li>
+          <li><b>Description</b> — <i>"Initial invoice extractor (Policy #, Customer, IncidentType, Total Payable in USD)"</i> — tells the agent exactly which fields this tool returns.</li>
+          <li><b>attachment (file)</b> — the input parameter the agent binds to the file the user uploads during the conversation.</li>
+        </ul>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">This is the tool referenced as <code>ClaimsProcessing_DocumentProcessing_IXP</code> in the system prompt's DOCUMENT VALIDATION section. It extracts <code>PolicyNumber</code>, <code>CustomerName</code>, <code>DateOfDocument</code>, <code>IncidentType</code>, and <code>TotalPayable</code> from an uploaded file — the raw values the agent then checks against the confirmed policy record to compute the document match score.</div>
+        </div>
+
+        <h4>7c · Add an RPA workflow tool</h4>
+        <p>Finally, add an RPA workflow tool to let the agent update claim records in Data Fabric after submission. From the toolbox, select <b>RPA workflow</b> — an automated process that connects multiple steps.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/toolbox</span>
+            </div>
+            <img src="assets/step7_img6.png" alt="Toolbox panel with RPA workflow highlighted: Automated process that connects multiple steps" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select RPA workflow from the Toolbox.</figcaption>
+        </figure>
+
+        <p>Search the available shared resources and choose <b>UpdateclaimsDetail_DataFabric</b> — a pre-built RPA workflow, created by UiPath, that writes the finalized claim details back to Data Fabric.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/tools/choose/rpa</span>
+            </div>
+            <img src="assets/step7_img7.png" alt="RPA workflow search showing UpdateclaimsDetail_DataFabric under Shared, created by UiPath" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search and select UpdateclaimsDetail_DataFabric from Shared resources.</figcaption>
+        </figure>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">This workflow corresponds to the <code>SaveClaimData</code> tool in the system prompt — the one the agent calls exactly once, and only after the user explicitly replies <b>Submit</b>. Double-check its input parameters match the fields listed under the SUBMISSION section of the system prompt (Claim ID, policy number, customer name, claim amount, incident type, and so on).</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added <b>Query Entity Records</b>, configured against the <b>IntakeClaimEntity</b> Data Fabric entity.</div></div>
+          <div class="row"><span class="box"></span><div>Added the <b>IXP</b> tool <b>ClaimsProcessing_DocumentProcessing_IXP</b>, model set to <b>live</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Added the <b>RPA workflow</b> tool <b>UpdateclaimsDetail_DataFabric</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Deploy and Publish -->
+    <div class="group-header" id="group-deploy">
+      <h2 style="margin-top:0;">Deploy and Publish</h2>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">With the Claim Request Agent built, grounded, and tooled up, it's ready to move out of Studio Web and into a real, running deployment. Deploying and publishing packages your agent as a versioned release and makes it available to run — either standalone or, as you'll see next, embedded directly in an app.</p>
+
+    <p>UiPath conversational agents don't live in just one place. Once deployed, the same agent can be reached through several different channels, each inheriting a different subset of capabilities depending on what that platform supports:</p>
+
+    <table>
+      <thead>
+        <tr><th>Feature</th><th>Instance Management</th><th>A4E Assistant</th><th>MS Teams</th><th>Slack</th><th>iFrame/Apps</th><th>TypeScript SDK</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Starting prompts</td><td><span class="yes">✓</span></td><td>—</td><td>Coming</td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Chat history</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>New chat</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>HTML preview</td><td><span class="yes">✓</span></td><td>—</td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>File uploads</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Feedback</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>Coming</td><td>Coming</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Anonymous access</td><td>—</td><td>—</td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td>Coming</td></tr>
+        <tr><td>User settings</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13.5px;color:var(--muted);"><b>Instance Management provides the latest and most complete UI.</b> Other channels inherit feature subsets based on platform constraints and integration capabilities. This ensures optimal experiences on each platform while maintaining consistent core functionality. The <b>iFrame/Apps</b> channel is the one you wired up earlier in this module when you embedded the Claim Request Agent in the Claim Request App.</p>
+
+    <div class="step" id="step-deploy-1">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Publish and deploy</h3>
+        <p>Back in Studio Web, open the <b>Debug on cloud</b> menu next to the Publish button in the toolbar. From here, choose <b>Deploy</b> — this both publishes your package to a feed and creates a running deployment in one step, as opposed to <b>Publish</b> alone, which only pushes the package without deploying it.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/deploy</span>
+            </div>
+            <img src="assets/deploy_step1.png" alt="Studio toolbar menu showing Publish (Package to a feed) and Deploy (Publish package & create deployment) options, with Deploy highlighted" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Choose Deploy to publish the package and create a deployment in one action.</figcaption>
+        </figure>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the Debug on cloud menu and selected <b>Deploy</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-deploy-2">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Add release notes and deploy</h3>
+        <p>The Deploy panel asks for a few details before it ships your agent. Add clear <b>release notes</b> describing what changed (this matters once you're iterating across versions), confirm the <b>version</b> number, and choose where to <b>pack to</b>:</p>
+
+        <ul class="clean">
+          <li><b>Personal</b> — deploys to your own workspace, useful for individual testing during this workshop.</li>
+          <li><b>Shared</b> — deploys to a shared tenant feed, where teammates and other automations can discover and reuse it.</li>
+        </ul>
+
+        <p>Review the additional options — <b>Deploy after packaging</b>, target folder (<b>My Workspace</b>), <b>Triggers enabled right away</b>, and <b>Set up runtime</b> — then click <b>Deploy</b>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/agent/deploy/options</span>
+            </div>
+            <img src="assets/deploy_step2.png" alt="Deploy panel showing Release notes field, Version 1.0.0, Pack to Personal/Shared toggle, Deploy after packaging, My Workspace, Triggers enabled right away, Set up runtime, and a Deploy button" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add release notes and version, choose Personal or Shared, then click Deploy.</figcaption>
+        </figure>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">For this workshop, <b>Personal</b> workspace is the safer default while you're iterating — move to <b>Shared</b> once your agent is ready for others in the tenant to use.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added release notes describing the change.</div></div>
+          <div class="row"><span class="box"></span><div>Confirmed the version number.</div></div>
+          <div class="row"><span class="box"></span><div>Chose <b>Personal</b> or <b>Shared</b> under Pack to, and clicked <b>Deploy</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Apps -->
+    <div class="group-header" id="group-apps">
+      <h2 style="margin-top:0;">Apps</h2>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">With the Claim Request Agent built, tested, and grounded, the last piece is giving end users a way to reach it. UiPath Apps lets you build a simple, no-code front end — in this case, a single page that embeds your conversational agent directly in the browser via a custom HTML component.</p>
+
+    <div class="step" id="step-8">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Create the Claim Request App</h3>
+        <p>In the Explorer panel, click the <b>+</b> icon next to your solution folder to add a new item to the project, then select <b>App</b> from the list of automation types.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/explorer/add</span>
+            </div>
+            <img src="assets/apps_img1.png" alt="Explorer panel Add project to solution menu showing Maestro Flow, Maestro BPMN, Agent, RPA Workflow, API Workflow, App, Function, Maestro Case, Escalation app, and Import existing, with App highlighted" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add a new App to your solution from the Explorer panel.</figcaption>
+        </figure>
+
+        <p>UiPath Apps let you build low-code front ends — forms, dashboards, or embedded experiences — that connect directly to your automations, agents, and data. When prompted for how to start, choose <b>RPA app</b>, which lets you build using RPA logic and drag-and-drop components in the background, as opposed to a Coded app built with pro-code components.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/app/new</span>
+            </div>
+            <img src="assets/apps_img2.png" alt="New app dialog showing Build from scratch options RPA app and Coded app, with RPA app selected" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Choose RPA app to build from scratch using low-code components.</figcaption>
+        </figure>
+
+        <p>Rename the new app to <code>Claim Request App</code> so it's clearly identifiable alongside your Claim Request Agent.</p>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a new <b>App</b> to the solution and chose <b>RPA app</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Renamed the app to <b>Claim Request App</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-9">
+      <div class="num">9</div>
+      <div class="body">
+        <h3>Add a Custom HTML component</h3>
+        <p>Open the <b>Toolbox</b> panel on the left side of the app designer. Search for <b>html</b> to locate the <b>Custom HTML</b> control, listed under <b>Controls → Input</b>. This component lets you drop arbitrary HTML — including an embedded iframe — directly onto the app canvas.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/app/toolbox</span>
+            </div>
+            <img src="assets/apps_img3.png" alt="Toolbox panel with html searched, showing Controls > Input > Custom HTML result highlighted" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Search "html" in the Toolbox and select Custom HTML under Controls → Input.</figcaption>
+        </figure>
+
+        <p>Drag the Custom HTML control onto the canvas, then open its <b>Style</b> tab. Under <b>Size</b>, set both <b>Width</b> and <b>Height</b> to <code>100%</code> so the embedded agent fills the available space rather than rendering at a fixed, cropped size.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/app/component/style</span>
+            </div>
+            <img src="assets/apps_img4.png" alt="Custom HTML component Style tab showing General, Events, Style sub-tabs, and Size section with Width set to auto and Height set to 100%" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Set Size → Width and Height to 100% on the Style tab.</figcaption>
+        </figure>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added a <b>Custom HTML</b> control to the app canvas.</div></div>
+          <div class="row"><span class="box"></span><div>Set Style → Size → Width and Height to <b>100%</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-10">
+      <div class="num">10</div>
+      <div class="body">
+        <h3>Embed the agent with HTML code</h3>
+        <p>With the Custom HTML component selected, open the <b>Code editor</b>. It has two panes — <b>HTML</b> and <b>CSS</b> — where you can write the markup and styling for the embedded content.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/app/code-editor</span>
+            </div>
+            <img src="assets/apps_img5.png" alt="Code editor showing HTML and CSS panes, with HTML containing a div and iframe embedding the conversational agent URL" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Code editor — HTML pane on the left, CSS pane on the right.</figcaption>
+        </figure>
+
+        <p>In the <b>HTML</b> pane, paste the code below. It wraps a full-size <code>&lt;iframe&gt;</code> in a positioned container so the conversational agent renders edge-to-edge inside the app, and passes several query parameters that customize the embedded chat experience — a friendly title, a welcome message, and a set of suggested starting prompts.</p>
+
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Update the agent ID before publishing</div>
+          <div class="adm-body">The <code>src</code> URL below contains <code>agentId=54562</code> — this points to a specific agent instance. Before using this code, replace <code>54562</code> with the <b>Agent ID of your own Claim Request Agent</b>, or your app will embed someone else's agent instead of the one you built. You can find your agent's ID in its Studio Web URL or its Definition page.</div>
+        </div>
+
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyAppHtml(this)">📋 Copy</button>
+          <div class="highlight prompt-block">
+            <div class="filename">custom-html.html</div>
+            <pre id="app-html-text"><code>&lt;div style="position:relative; width:100%; height:100%; overflow:hidden; margin:0; padding:0; border:0;"&gt;
+  &lt;iframe
+    src="https://cloud.uipath.com/bdb730cc-64a3-4cd0-863e-610c55bdd91b/DontDelete_AGentic_Professional/autopilotforeveryone_/conversational-agents/?agentId=54562&amp;mode=embedded&amp;title=Claim%20Intake%20Assistant&amp;welcomeTitle=Welcome%20to%20the%20Claim%20Intake%20Process!&amp;welcomeDescription=I%20can%20help%20you%20submit%20a%20new%20insurance%20claim,%20collect%20the%20required%20information,%20verify%20your%20policy%20details,%20and%20guide%20you%20through%20each%20step%20of%20the%20claim%20intake%20process.&amp;suggestions=%5B%22Start%20a%20new%20claim%22%2C%22Check%20required%20documents%22%2C%22Verify%20my%20policy%22%2C%22How%20does%20the%20claim%20process%20work%3F%22%5D&amp;showHistory=true"
+    style="
+      width:100%;
+      height:100%;
+    "&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <p>A quick look at what each query parameter controls:</p>
+        <ul class="clean">
+          <li><b>agentId</b> — the ID of the agent to embed. <b>Must be updated to your own agent's ID.</b></li>
+          <li><b>mode=embedded</b> — renders the chat UI without the surrounding Studio Web chrome, suited for embedding in another page.</li>
+          <li><b>title</b> — the display title shown in the embedded chat header.</li>
+          <li><b>welcomeTitle</b> / <b>welcomeDescription</b> — the greeting message shown when a user first opens the chat.</li>
+          <li><b>suggestions</b> — a JSON array of starting-prompt suggestions shown as quick-reply buttons.</li>
+          <li><b>showHistory</b> — whether prior conversation turns remain visible as the user scrolls back.</li>
+        </ul>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">Use the <b>Copy</b> button above to copy the HTML to your clipboard, then paste it into the HTML pane of the Code editor for your Custom HTML component.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Pasted the iframe embed code into the Custom HTML component's HTML pane.</div></div>
+          <div class="row"><span class="box"></span><div>Replaced <code>agentId=54562</code> with my own agent's ID.</div></div>
+          <div class="row"><span class="box"></span><div>Ran the app and confirmed the Claim Intake Assistant loads and responds.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Observing Your Agent -->
+    <div class="group-header" id="group-observe">
+      <h2 style="margin-top:0;">Observing Your Agent</h2>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Deploying the Claim Request Agent isn't the end of the job — once it's live, you need visibility into how it's actually performing. Comprehensive observability transforms agent performance into actionable insights, and is what lets you monitor and orchestrate a conversational agent responsibly after go-live.</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">cloud.uipath.com/…/deployed-agents/hr-assistant/dashboard</span>
+        </div>
+        <div style="padding:18px;background:#fff;">
+          <p style="font-size:11px;color:var(--muted);margin:0 0 8px;">Deployed agents &gt; HR Assistant</p>
+          <div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Units consumed</div><div style="font-size:18px;font-weight:700;">0</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Active users</div><div style="font-size:18px;font-weight:700;">2</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Messages</div><div style="font-size:18px;font-weight:700;">35</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Conversations</div><div style="font-size:18px;font-weight:700;">31</div></div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin:0;">Dashboard tabs: Design · Runtime · Feedback (Preview) — with Consumption, Most Active Users, and Feedback-over-time charts below.</p>
+        </div>
+      </div>
+      <figcaption>The agent dashboard — consumption, active users, messages, and conversations at a glance (mockup, based on a live HR Assistant example).</figcaption>
+    </figure>
+
+    <div class="grid g3">
+      <div class="card"><h4>Business Intelligence</h4><p style="font-size:13.5px;margin:0;">Track consumption metrics, active users, messages, conversations, and feedback trends over time. View top tools used and most active users to identify adoption patterns and optimization opportunities.</p></div>
+      <div class="card"><h4>Compliance and Auditability</h4><p style="font-size:13.5px;margin:0;">Full execution traces enable detailed insight into agent behavior. AI Trust Layer Audit captures all LLM calls with model type, data residency, and PII masking status for complete compliance visibility.</p></div>
+      <div class="card"><h4>Feedback</h4><p style="font-size:13.5px;margin:0;">Users provide thumbs up/down on responses which attaches the feedback to execution traces. Admins can then review feedback in Instance Management and incorporate insights back into evaluation sets for continuous design-time improvement.</p></div>
+    </div>
+
+    <p>Together, these three pillars are how you monitor and orchestrate a conversational agent once it's in production: <b>Business Intelligence</b> tells you whether the agent is being adopted and where; <b>Compliance and Auditability</b> gives you a defensible record of exactly what the agent did and why, down to the model call level; and <b>Feedback</b> closes the loop, turning real user reactions into concrete improvements to your evaluation sets and, eventually, your system prompt.</p>
+
+    <div class="adm note">
+      <div class="adm-title">📝 Why this matters</div>
+      <div class="adm-body">For an insurance claim intake agent, observability isn't optional. Compliance and Auditability gives you the audit trail regulators expect, Business Intelligence tells you if claimants are actually completing the flow versus abandoning it, and Feedback is your fastest signal that the system prompt or a tool needs adjustment.</div>
+    </div>
+
+    <div class="checklist">
+      <div class="row"><span class="box"></span><div>Located the agent's dashboard under Deployed agents.</div></div>
+      <div class="row"><span class="box"></span><div>Reviewed consumption, usage, and feedback metrics.</div></div>
+      <div class="row"><span class="box"></span><div>Understood where execution traces and AI Trust Layer audit data live for compliance review.</div></div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 1 Overview</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 1 Complete</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script>
+function copySystemPrompt(btn){
+  var text = document.getElementById('system-prompt-text').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+function copyAppHtml(btn){
+  var text = document.getElementById('app-html-text').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+<script>
+// Scrollspy: highlight the active Module 1 sidebar link based on scroll position
+(function(){
+  var sections = Array.prototype.map.call(
+    document.querySelectorAll('.group-header[id]'),
+    function(el){ return { id: el.id, el: el }; }
+  );
+  if (!sections.length) return;
+
+  var sidebarLinks = document.querySelectorAll('.md-sidebar--primary .group-items a[href*="steps.html#group-"]');
+  if (!sidebarLinks.length) return;
+
+  function setActive(id){
+    sidebarLinks.forEach(function(link){
+      var linkHash = link.getAttribute('href').split('#')[1];
+      if (linkHash === id) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  function onScroll(){
+    var scrollPos = window.scrollY + 90; // offset for sticky header
+    var current = sections[0].id;
+    for (var i = 0; i < sections.length; i++){
+      if (sections[i].el.offsetTop <= scrollPos) {
+        current = sections[i].id;
+      }
+    }
+    setActive(current);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 1 Complete · Conversational Agent</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+    <div class="nav">
+      <p class="nav-title">Insurance Claim Approval Workshop</p>
+      <a href="../index.html">Home</a>
+      <details open>
+        <summary>Module 1 · Conversational Agent</summary>
+        <div class="group-items">
+          <a href="index.html">Overview</a>
+          <a href="steps.html#group-concepts">Concepts</a>
+          <a href="steps.html#group-create-agent">Create Agent</a>
+          <a href="steps.html#group-system-prompt">System Prompt</a>
+          <a href="steps.html#group-context-grounding">Context Grounding</a>
+          <a href="steps.html#group-tools">Tools</a>
+          <a href="steps.html#group-deploy">Deploy and Publish</a>
+          <a href="steps.html#group-apps">Apps</a>
+          <a href="steps.html#group-observe">Observing Your Agent</a>
+          <a class="active" href="complete.html">Module 1 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 2 · Maestro (BPMN)</summary>
+        <div class="group-items">
+          <a href="../part2/index.html">Overview</a>
+          <a href="../part2/steps.html#group-concepts">Concepts</a>
+          <a href="../part2/steps.html#group-build">Set Up the Process</a>
+          <a href="../part2/steps.html#group-start-event">Start Event</a>
+          <a href="../part2/steps.html#group-fraud-agent">Fraud Detection Agent</a>
+          <a href="../part2/steps.html#group-download">Retrieve the Document</a>
+          <a href="../part2/steps.html#group-hitl">Human-in-the-Loop Review</a>
+          <a href="../part2/steps.html#group-coded-agent">Settlement Coded Agent</a>
+          <a href="../part2/steps.html#group-notify">GenAI Activities</a>
+          <a href="../part2/steps.html#group-email-process">Email Process</a>
+          <a href="../part2/complete.html">Module 2 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 3 · Agent Builder</summary>
+        <div class="group-items">
+          <a href="../part3/index.html">Overview</a>
+          <a href="../part3/steps.html#group-concepts">Concepts</a>
+          <a href="../part3/steps.html#group-build">Build the Agent</a>
+          <a href="../part3/complete.html">Module 3 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 4 · Coded Agent</summary>
+        <div class="group-items">
+          <a href="../part4/index.html">Overview</a>
+          <a href="../part4/steps.html#group-concepts">Concepts</a>
+          <a href="../part4/steps.html#group-build">Build the Agent</a>
+          <a href="../part4/steps.html#group-publish">Publish &amp; Run</a>
+          <a href="../part4/complete.html">Module 4 Complete</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 1 · Complete</span>
+    <h1>You Built the Claim Request Agent</h1>
+    <p class="lead">A quick recap of everything you just configured — and what it looks like end to end.</p>
+
+    <h2 id="recap">What you did</h2>
+    <p>You created a new project, built a <b>Conversational Agent</b> named <b>Claim Request Agent</b>, gave it a system prompt that drives a full insurance claim intake conversation, grounded it in the <b>InsurancePolicyData</b> index for accurate coverage checks, connected three tools — <b>Query Entity Records</b> (Data Fabric), <b>ClaimsProcessing_DocumentProcessing_IXP</b> (document extraction), and an RPA workflow tool for updating claim records — built a <b>Claim Request App</b> that embeds the agent in a browser-based chat experience, deployed it to a workspace, and reviewed how to monitor it once live.</p>
+
+    <div class="obj"><span class="chk">✓</span><div>Project and agent created and named</div></div>
+    <div class="obj"><span class="chk">✓</span><div>System prompt configured with the full claim-intake instruction set</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Grounded in the InsurancePolicyData index</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Connected to Entity, IXP, and RPA workflow tools</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Built a Claim Request App embedding the agent via Custom HTML</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Deployed the agent and reviewed the channels it can run in</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Reviewed the dashboard used to monitor and audit the agent in production</div></div>
+
+    <h2 id="canvas">What this looks like</h2>
+    <p>Here's the finished agent on the canvas — the <b>Claim Request Agent</b> node with its <b>Context</b> and <b>Tools</b> connections wired up:</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">cloud.uipath.com/studio/agent/canvas</span>
+        </div>
+        <img src="assets/agent_canvas.png" alt="Claim Request Agent canvas showing the Conversational Agent node connected to Context (InsurancePolicyData) and Tools (Query Entity Records, ClaimsProcessing_DocumentProcessing_IXP, and a new tool slot for the RPA workflow)" style="display:block;width:100%;">
+      </div>
+      <figcaption>The Claim Request Agent canvas — Context and Tools connected and ready to run.</figcaption>
+    </figure>
+
+    <div class="adm tip">
+      <div class="adm-title">💡 What's next</div>
+      <div class="adm-body">With the agent, context, and tools in place, you're ready to test the full claim intake conversation end to end. Later modules of this workshop will build on this same agent as you move into orchestration, fraud detection, and coded agents.</div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="steps.html"><span class="dir">← Previous</span><span class="ttl">Observing Your Agent</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+</body>
+</html>
