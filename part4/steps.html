@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concepts, Build &amp; Publish · Module 4 · Coded Agent</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+    <div class="nav">
+      <p class="nav-title">Insurance Claim Approval Workshop</p>
+      <a href="../index.html">Home</a>
+      <details>
+        <summary>Module 1 · Conversational Agent</summary>
+        <div class="group-items">
+          <a href="../part1/index.html">Overview</a>
+          <a href="../part1/steps.html#group-concepts">Concepts</a>
+          <a href="../part1/steps.html#group-create-agent">Create Agent</a>
+          <a href="../part1/steps.html#group-system-prompt">System Prompt</a>
+          <a href="../part1/steps.html#group-context-grounding">Context Grounding</a>
+          <a href="../part1/steps.html#group-tools">Tools</a>
+          <a href="../part1/steps.html#group-deploy">Deploy and Publish</a>
+          <a href="../part1/steps.html#group-apps">Apps</a>
+          <a href="../part1/steps.html#group-observe">Observing Your Agent</a>
+          <a href="../part1/complete.html">Module 1 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 2 · Maestro (BPMN)</summary>
+        <div class="group-items">
+          <a href="../part2/index.html">Overview</a>
+          <a href="../part2/steps.html#group-concepts">Concepts</a>
+          <a href="../part2/steps.html#group-build">Set Up the Process</a>
+          <a href="../part2/steps.html#group-start-event">Start Event</a>
+          <a href="../part2/steps.html#group-fraud-agent">Fraud Detection Agent</a>
+          <a href="../part2/steps.html#group-download">Retrieve the Document</a>
+          <a href="../part2/steps.html#group-hitl">Human-in-the-Loop Review</a>
+          <a href="../part2/steps.html#group-coded-agent">Settlement Coded Agent</a>
+          <a href="../part2/steps.html#group-notify">GenAI Activities</a>
+          <a href="../part2/steps.html#group-email-process">Email Process</a>
+          <a href="../part2/complete.html">Module 2 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 3 · Agent Builder</summary>
+        <div class="group-items">
+          <a href="../part3/index.html">Overview</a>
+          <a href="../part3/steps.html#group-concepts">Concepts</a>
+          <a href="../part3/steps.html#group-build">Build the Agent</a>
+          <a href="../part3/complete.html">Module 3 Complete</a>
+        </div>
+      </details>
+      <details open>
+        <summary>Module 4 · Coded Agent</summary>
+        <div class="group-items">
+          <a href="index.html">Overview</a>
+          <a class="active" href="steps.html#group-concepts">Concepts</a>
+          <a href="steps.html#group-build">Build the Agent</a>
+          <a href="steps.html#group-publish">Publish &amp; Run</a>
+          <a href="complete.html">Module 4 Complete</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 4 · Coded Agent</span>
+    <h1>Build the Claims Settlement Agent</h1>
+    <p class="lead">Learn what a Coded Agent is, then scaffold, write, test, package, publish, and run the Claims Settlement Agent — a pure-Python agent with no LLM.</p>
+
+    <!-- GROUP: Concepts -->
+    <div class="group-header" id="group-concepts">
+      <h2 style="margin-top:0;">Concepts</h2>
+    </div>
+
+    <h3>What's a Coded Agent?</h3>
+    <p>A <b>Coded Agent</b> is agent logic written entirely in Python. You author its states and tool calls directly in code; the UiPath SDK provides the platform layer underneath — packaging, publishing, governance, and observability. You can optionally bring in a framework extension like LangChain or LlamaIndex for LLM-driven reasoning, or skip an LLM entirely and write fully deterministic business logic, as you will in this module.</p>
+
+    <h4>Why Coded Agents?</h4>
+    <p>A surge in domain-specific AI agents is driving demand for custom, code-based solutions. Professional developers want to be the architects of these systems, and enterprises want more than raw automation speed — they want auditability and control.</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🧑‍💻</div><h4>Professional developers</h4><p>Design, test, and scale complex multi-agent workflows with full control.</p></div>
+      <div class="card"><div class="ico">📈</div><h4>Agentic growth</h4><p>Rapid adoption of AI agents fuels demand for customized, domain-specific solutions.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h4>Enterprise requirements</h4><p>Auditability, traceability, and guardrails — not just automation speed.</p></div>
+    </div>
+
+    <h4>The four value pillars</h4>
+    <p>Coded Agents let developers package, publish, and deploy Python-authored agents under the same governance as every other UiPath automation.</p>
+    <div class="grid g2">
+      <div class="card"><div class="ico">⌨️</div><h4>Code-first control</h4><p>Write agent logic &amp; tool calls in pure Python. Full observability, debugging &amp; unit-testing.</p></div>
+      <div class="card"><div class="ico">🔗</div><h4>Open-source foundation</h4><p>Built on LangChain or LlamaIndex for flexible graph-based orchestration.</p></div>
+      <div class="card"><div class="ico">🌐</div><h4>Full-stack reach</h4><p>Combine LLM brains with Robot bodies — REST APIs, databases, and legacy UIs via RPA.</p></div>
+      <div class="card"><div class="ico">🏛️</div><h4>Enterprise guardrails</h4><p>Pack, publish &amp; deploy with RBAC, audit logs, stateful memory &amp; HITL interrupt nodes.</p></div>
+    </div>
+
+    <h4>The mental model</h4>
+    <p>Think of a coded agent as a graph: nodes are actions, edges are transitions between them. UiPath discovers your agent from a small, well-defined contract in your code — you don't need to describe the graph by hand.</p>
+
+    <table>
+      <thead><tr><th>Concept</th><th>In LangChain / LlamaIndex terms</th><th>In your code</th></tr></thead>
+      <tbody>
+        <tr><td>Node</td><td>A state — an action or tool call</td><td>A Python function (optionally <code>@traced</code>)</td></tr>
+        <tr><td>Edge</td><td>A transition based on a result or condition</td><td>Control flow (<code>if</code>, calls) inside <code>main()</code></td></tr>
+        <tr><td>Contract</td><td>Graph entry points</td><td><code>Input</code> / <code>Output</code> models + <code>main()</code></td></tr>
+        <tr><td>Memory / HITL</td><td>Checkpoints &amp; interrupt nodes</td><td>SDK memory stores &amp; Action Center</td></tr>
+      </tbody>
+    </table>
+
+    <div class="adm note">
+      <div class="adm-title">ℹ️ An LLM is optional</div>
+      <div class="adm-body">The Settlement Agent you build later in this module is <b>pure deterministic logic</b> — no model calls. Coded agents are just as useful for auditable business rules as they are for LLM reasoning.</div>
+    </div>
+
+    <h3>How it works</h3>
+    <p>A coded agent moves through five stages, from definition to observation:</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">Coded Agent · end-to-end architecture</span>
+        </div>
+        <div style="padding:22px;display:flex;gap:10px;align-items:stretch;flex-wrap:wrap;justify-content:center;background:#fff;">
+          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Agent Framework</b><br><span style="color:var(--muted);">Python graph of states + edges, memory &amp; HITL</span></div>
+          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Packaging</b><br><span style="color:var(--muted);">CLI bundles code + graph into a versioned package</span></div>
+          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Controlled Runtime</b><br><span style="color:var(--muted);">RBAC, LLM gating, audit logs, Action Center approvals</span></div>
+          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Maestro Orchestration</b><br><span style="color:var(--muted);">Real-time logs, cost analytics, one-click rollback</span></div>
+          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Observability</b><br><span style="color:var(--muted);">LLM traces, context usage, flow visualization</span></div>
+        </div>
+      </div>
+      <figcaption>Figure 1 — A coded agent flows from a Python graph, through packaging, into a governed and observable runtime. Define → Package → Govern → Orchestrate → Observe.</figcaption>
+    </figure>
+
+    <h4>Key features</h4>
+    <div class="grid g2">
+      <div class="card"><h4>SDK components</h4>
+        <ul class="clean">
+          <li>Graph-based orchestration (states, edges, transitions)</li>
+          <li>Memory stores &amp; checkpoints for statefulness</li>
+          <li>Interrupt nodes for human-in-the-loop flows</li>
+          <li>Native use of the UiPath LLM Gateway &amp; Studio evals</li>
+        </ul>
+      </div>
+      <div class="card"><h4>Orchestrator &amp; integration</h4>
+        <ul class="clean">
+          <li>Invoke UiPath processes; be invoked by any trigger</li>
+          <li>Feeds, versioning, solutions, Action Center checkpoints</li>
+          <li>Established <b>package → process → job</b> lifecycle</li>
+          <li>CLI pack &amp; publish straight from your local IDE</li>
+        </ul>
+      </div>
+      <div class="card"><h4>Monitoring</h4>
+        <ul class="clean">
+          <li>Real-time logs, traces, drift detection, cost alerts</li>
+          <li>Orchestrator job monitoring &amp; instance management</li>
+          <li>AI Trust Layer governs every LLM call</li>
+        </ul>
+      </div>
+      <div class="card"><h4>Controlled agency</h4>
+        <p style="font-size:14px;margin:0;">Guardrails are layered across every level — the AI Trust Layer (model policies, PII filters, audit logs), automation-ops policies for all agents, and per-agent tool guardrails &amp; memory/traces. The result: autonomy <b>within clear, compliant boundaries</b>.</p>
+      </div>
+    </div>
+
+    <h4>The build &amp; publish lifecycle</h4>
+    <p>Six CLI commands take you from an empty folder to a governed cloud job. This is exactly what the hands-on section below walks through.</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">uipath CLI lifecycle</span>
+        </div>
+        <div style="padding:22px;background:#fff;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">auth<br><span style="color:var(--muted);font-size:10.5px;">sign in</span></div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">init<br><span style="color:var(--muted);font-size:10.5px;">gen schema</span></div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">run<br><span style="color:var(--muted);font-size:10.5px;">test local</span></div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">pack<br><span style="color:var(--muted);font-size:10.5px;">.nupkg</span></div>
+            <div style="border:2px solid var(--up-orange);background:var(--up-orange-soft);border-radius:20px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--up-orange-dark);">publish<br><span style="font-size:10.5px;font-weight:400;">to Orchestrator</span></div>
+            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">invoke<br><span style="color:var(--muted);font-size:10.5px;">run in cloud</span></div>
+          </div>
+          <p style="text-align:center;font-size:11px;color:var(--muted);margin:14px 0 0;">Local development ───────────────────▶ Cloud</p>
+        </div>
+      </div>
+      <figcaption>Figure 2 — The UiPath CLI lifecycle. The orange step is where your agent leaves your machine.</figcaption>
+    </figure>
+
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>uipath auth</code></td><td>Sign in to your tenant (browser OAuth); saves credentials to <code>.env</code>.</td></tr>
+        <tr><td><code>uipath init</code></td><td>Generates the I/O schema, bindings, and agent graph from your code.</td></tr>
+        <tr><td><code>uipath run</code></td><td>Executes the agent locally with JSON input for testing.</td></tr>
+        <tr><td><code>uipath pack</code></td><td>Bundles code + graph + lock file into a versioned <code>.nupkg</code>.</td></tr>
+        <tr><td><code>uipath publish</code></td><td>Uploads the package to Orchestrator (tenant feed or workspace).</td></tr>
+        <tr><td><code>uipath invoke</code></td><td>Starts a governed cloud job from the published agent.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- GROUP: Build the Agent -->
+    <div class="group-header" id="group-build">
+      <h2 style="margin-top:0;">Build the Agent</h2>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">You'll build a <b>no-LLM</b> coded agent that settles an insurance claim: given an insurance type, coverage type, and claim amount, it returns the settled amount using simple business rules.</p>
+
+    <h4>The business rules</h4>
+    <div class="grid g2">
+      <div class="card"><h4>Eligible insurance types</h4><p style="font-size:13.5px;margin-bottom:6px;">Matched if the name <b>contains</b> (case-insensitive):</p>
+        <ul class="clean"><li>Medical</li><li>Stole</li><li>Theft</li><li>Water Damage</li><li>Vehicle</li><li>Fire</li></ul>
+      </div>
+      <div class="card"><h4>Settlement percentage</h4>
+        <ul class="clean">
+          <li><b>Full</b> coverage → settle <b>95%</b> of claim</li>
+          <li><b>Partial</b> coverage → settle <b>90%</b> of claim</li>
+          <li>Any other type or coverage → <b>not eligible</b>, settle 0</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Decision at a glance</h4>
+    <table>
+      <thead><tr><th>Insurance type contains…</th><th>Coverage</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Medical / Stole / Theft / Water Damage / Vehicle / Fire</td><td>Full</td><td><span class="yes">95% settled</span></td></tr>
+        <tr><td>Medical / Stole / Theft / Water Damage / Vehicle / Fire</td><td>Partial</td><td><span class="yes">90% settled</span></td></tr>
+        <tr><td>Anything else</td><td>—</td><td><span class="no">Not eligible (0)</span></td></tr>
+        <tr><td>Eligible type</td><td>Neither Full nor Partial</td><td><span class="no">Not eligible (0)</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="step" id="step-b1">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Scaffold the project</h3>
+        <p><code>uipath new</code> drops a starter <code>main.py</code>, <code>pyproject.toml</code>, and <code>uipath.json</code> into a new project folder.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-1')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-1"><code><span class="pr"># create &amp; enter the project folder</span>
+PS&gt; mkdir Claims_SettlementAgent; cd Claims_SettlementAgent
+
+<span class="pr"># scaffold a starter coded agent</span>
+PS&gt; uipath new settlement
+<span class="ok">⯈</span> Created 'main.py' file.
+<span class="ok">⯈</span> Created 'pyproject.toml' file.
+<span class="ok">⯈</span> Created 'uipath.json' file.</code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b2">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Write main.py</h3>
+        <p>Every coded agent needs an <code>Input</code> model, an <code>Output</code> model, and a main function. This one uses Pydantic and <code>@traced</code> — no LLM is imported.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-2')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">main.py</div>
+          <pre id="code-block-2"><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
+<span class="k">from</span> uipath.tracing <span class="k">import</span> traced
+
+ELIGIBLE = (<span class="s">"medical"</span>, <span class="s">"stole"</span>, <span class="s">"theft"</span>,
+            <span class="s">"water damage"</span>, <span class="s">"vehicle"</span>, <span class="s">"fire"</span>)
+RATES = {<span class="s">"full"</span>: <span class="n">0.95</span>, <span class="s">"partial"</span>: <span class="n">0.90</span>}
+
+<span class="k">class</span> <span class="fn">SettlementInput</span>(BaseModel):
+    insurance_type: <span class="b">str</span> = Field(..., description=<span class="s">"e.g. 'Vehicle'"</span>)
+    coverage_type:  <span class="b">str</span> = Field(..., description=<span class="s">"'Full' or 'Partial'"</span>)
+    claim_amount:   <span class="b">float</span> = Field(..., ge=<span class="n">0</span>)
+
+<span class="k">class</span> <span class="fn">SettlementOutput</span>(BaseModel):
+    eligible: <span class="b">bool</span>
+    settlement_percentage: <span class="b">float</span>
+    settlement_amount: <span class="b">float</span>
+    message: <span class="b">str</span>
+
+<span class="c">@traced(name="match_insurance_type", run_type="uipath")</span>
+<span class="k">def</span> <span class="fn">_match</span>(t: <span class="b">str</span>):
+    t = (t <span class="k">or</span> <span class="s">""</span>).strip().lower()
+    <span class="k">return</span> next((c <span class="k">for</span> c <span class="k">in</span> ELIGIBLE <span class="k">if</span> c <span class="k">in</span> t), <span class="k">None</span>)
+
+<span class="k">def</span> <span class="fn">main</span>(input: SettlementInput) -&gt; SettlementOutput:
+    category = _match(input.insurance_type)
+    rate = RATES.get(input.coverage_type.strip().lower())
+    <span class="k">if</span> category <span class="k">is</span> <span class="k">None</span> <span class="k">or</span> rate <span class="k">is</span> <span class="k">None</span>:
+        <span class="k">return</span> SettlementOutput(eligible=<span class="k">False</span>, settlement_percentage=<span class="n">0</span>,
+            settlement_amount=<span class="n">0</span>, message=<span class="s">"Not eligible"</span>)
+    amount = round(input.claim_amount * rate, <span class="n">2</span>)
+    <span class="k">return</span> SettlementOutput(eligible=<span class="k">True</span>, settlement_percentage=rate*<span class="n">100</span>,
+        settlement_amount=amount, message=f<span class="s">"Settled at {rate*100:.0f}%"</span>)</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">ℹ️ Required structure</div>
+          <div class="adm-body">Two Pydantic models (<code>Input</code>, <code>Output</code>) and one entry function named <code>main</code>, <code>run</code>, or <code>execute</code>. That is all UiPath needs to discover your agent.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Wire up the config</h3>
+        <p>The <code>functions</code> map in <code>uipath.json</code> names the entrypoint; <code>pyproject.toml</code> declares your dependencies — only <code>uipath</code>, no LLM framework needed.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">uipath.json</div>
+          <pre id="code-block-3"><code>{
+  <span class="s">"functions"</span>: {
+    <span class="s">"Claims_SettlementAgent"</span>: <span class="s">"main.py:main"</span>
+  }
+}</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-4')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">pyproject.toml</div>
+          <pre id="code-block-4"><code>[project]
+name = <span class="s">"Claims_SettlementAgent"</span>
+version = <span class="s">"0.0.1"</span>
+dependencies = [<span class="s">"uipath>=2.10.0, &lt;2.11.0"</span>]
+requires-python = <span class="s">"&gt;=3.11"</span></code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b4">
+      <div class="num">4</div>
+      <div class="body">
+        <h3>Generate the schema — uipath init</h3>
+        <p><code>uipath init</code> inspects your models and produces <code>entry-points.json</code>, <code>bindings.json</code>, a project file, and a graph diagram.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-5')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath init</div>
+          <pre id="code-block-5"><code>PS&gt; uipath init
+<span class="ok">⯈</span> Created 'bindings.json' file.
+<span class="ok">⯈</span> Created 'entry-points.json' file with 1 entrypoint(s).
+<span class="ok">⯈</span> Created 1 mermaid diagram file(s).
+
+  Entrypoint: Claims_SettlementAgent
+                    ┌──────────────┐
+                    │  function    │
+                    │    main      │
+                    └──────┬───────┘
+                 ┌─────────┴─────────┐
+       ┌─────────▼────────┐  ┌───────▼──────────┐
+       │ _matched_insurance │  │ _coverage_rate   │
+       └──────────────────┘  └──────────────────┘</code></pre>
+        </div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 What to notice</div>
+          <div class="adm-body">The two <code>@traced</code> helper functions appear as child nodes of <code>main</code>. That graph is what Orchestrator visualizes and traces at run time.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b5">
+      <div class="num">5</div>
+      <div class="body">
+        <h3>Run &amp; test locally — uipath run</h3>
+        <p>Execute the agent locally with JSON input before shipping anything to the cloud.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-6')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath run</div>
+          <pre id="code-block-6"><code>PS&gt; uipath run Claims_SettlementAgent '{"insurance_type":"Vehicle Insurance",
+                                 "coverage_type":"Full",
+                                 "claim_amount":10000}'
+
+settlement_amount: 9500.0
+settlement_percentage: 95.0
+eligible: True
+message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
+<span class="ok">✓ Successful execution.</span></code></pre>
+        </div>
+        </div>
+        <h4>Verify the rules across scenarios</h4>
+        <table>
+          <thead><tr><th>Insurance type</th><th>Coverage</th><th>Claim</th><th>Eligible</th><th>%</th><th>Settled</th></tr></thead>
+          <tbody>
+            <tr><td>Vehicle Insurance</td><td>Full</td><td>10,000</td><td><span class="yes">Yes</span></td><td>95</td><td>9,500.00</td></tr>
+            <tr><td>Water Damage</td><td>Partial</td><td>20,000</td><td><span class="yes">Yes</span></td><td>90</td><td>18,000.00</td></tr>
+            <tr><td>fire policy</td><td>full</td><td>5,000</td><td><span class="yes">Yes</span></td><td>95</td><td>4,750.00</td></tr>
+            <tr><td>Medical</td><td>Partial</td><td>12,345.67</td><td><span class="yes">Yes</span></td><td>90</td><td>11,111.10</td></tr>
+            <tr><td>Travel</td><td>Full</td><td>1,000</td><td><span class="no">No</span></td><td>0</td><td>0.00</td></tr>
+            <tr><td>Theft</td><td>Comprehensive</td><td>3,000</td><td><span class="no">No</span></td><td>0</td><td>0.00</td></tr>
+          </tbody>
+        </table>
+        <div class="adm tip">
+          <div class="adm-title">💡 Case-insensitive &amp; substring</div>
+          <div class="adm-body">"Vehicle Insurance" matches <code>vehicle</code>; "Stolen goods" matches <code>stole</code>. Unknown coverage (e.g. "Comprehensive") is safely rejected.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Scaffolded the project (<code>uipath new</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Wrote Input/Output models + <code>main()</code></div></div>
+          <div class="row"><span class="box"></span><div>Mapped the entrypoint in <code>uipath.json</code></div></div>
+          <div class="row"><span class="box"></span><div>Generated the schema &amp; graph (<code>uipath init</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Tested locally across scenarios (<code>uipath run</code>)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Publish & Run -->
+    <div class="group-header" id="group-publish">
+      <h2 style="margin-top:0;">Publish &amp; Run</h2>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Authenticate, package, publish to Orchestrator, and start a governed cloud job — the four steps that take your tested agent to production.</p>
+
+    <div class="step" id="step-p1">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Authenticate — uipath auth</h3>
+        <p>Connects the CLI to your tenant; opens a browser sign-in and stores credentials in <code>.env</code>.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-7')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath auth</div>
+          <pre id="code-block-7"><code>PS&gt; uipath auth
+<span class="ok">⯈</span> Opening browser for authentication...
+<span class="ok">⯈</span> Select tenant: DefaultTenant
+<span class="ok">✓ Authentication successful. Credentials saved to .env</span></code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/…/authorize</span>
+            </div>
+            <div style="padding:26px;background:#fff;text-align:center;">
+              <p style="font-weight:700;margin:0 0 6px;">UiPath</p>
+              <p style="font-size:14px;margin:0 0 16px;">Authorize the UiPath CLI</p>
+              <button style="background:var(--up-orange);color:#fff;border:0;border-radius:6px;padding:8px 20px;font-size:13px;font-weight:700;">Allow access</button>
+              <p style="font-size:11px;color:var(--muted);margin:14px 0 0;">Scopes: Orchestrator · Studio · Data Service</p>
+            </div>
+          </div>
+          <figcaption>Figure 3 — Browser consent screen shown by <code>uipath auth</code> (mockup).</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="step" id="step-p2">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Package — uipath pack</h3>
+        <p>Bundles your code, graph, and dependency lock file into a versioned <code>.nupkg</code> — the same format Orchestrator uses for every automation.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-8')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath pack</div>
+          <pre id="code-block-8"><code>PS&gt; uipath pack
+<span class="ok">⯈</span> Resolving dependencies → uv.lock
+<span class="ok">⯈</span> Packaging main.py, *.json, *.md
+<span class="ok">✓ Created Claims_SettlementAgent.0.0.1.nupkg</span></code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-p3">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Publish — uipath publish</h3>
+        <p>Upload the package to Orchestrator — choose the tenant feed (shared) or your personal workspace. Pass <code>--folder</code> to skip the interactive prompt.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-9')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath publish</div>
+          <pre id="code-block-9"><code>PS&gt; uipath publish
+? Select feed:  &gt; Personal Workspace
+                  Tenant (Orchestrator)
+<span class="ok">⯈</span> Uploading Claims_SettlementAgent.0.0.1.nupkg ...
+<span class="ok">✓ Package published successfully.</span>
+  View it in Orchestrator → Packages</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/…/orchestrator_/packages</span>
+            </div>
+            <div style="padding:0;background:#fff;">
+              <table style="margin:0;border:0;border-radius:0;">
+                <thead><tr><th>Package</th><th>Version</th><th>Type</th></tr></thead>
+                <tbody>
+                  <tr style="background:var(--up-orange-soft);"><td><b>Claims_SettlementAgent</b></td><td>0.0.1</td><td>Agent</td></tr>
+                  <tr><td>InvoiceProcessing</td><td>2.4.0</td><td>Process</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <figcaption>Figure 4 — Your agent listed on the Orchestrator Packages page after publishing (mockup).</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="step" id="step-p4">
+      <div class="num">9</div>
+      <div class="body">
+        <h3>Run it in the cloud — uipath invoke</h3>
+        <p>Starts a governed cloud job; the CLI returns a monitoring link.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-10')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell · uipath invoke</div>
+          <pre id="code-block-10"><code>PS&gt; uipath invoke Claims_SettlementAgent '{"insurance_type":"Fire",
+                                    "coverage_type":"Partial",
+                                    "claim_amount":8000}'
+<span class="ok">⯈</span> Job started in Orchestrator.
+<span class="ok">⯈</span> Monitor: https://cloud.uipath.com/.../jobs/a1b2c3
+<span class="ok">✓ Output → settlement_amount: 7200.0 (90%)</span></code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">ℹ️ Governance for free</div>
+          <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Authenticated to the tenant (<code>uipath auth</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Packaged to a <code>.nupkg</code> (<code>uipath pack</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Invoked a cloud job (<code>uipath invoke</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Confirmed the job &amp; output in Orchestrator</div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 4 Overview</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 4 Complete</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var sections = Array.prototype.map.call(
+    document.querySelectorAll('.group-header[id]'),
+    function(el){ return { id: el.id, el: el }; }
+  );
+  if (!sections.length) return;
+
+  var sidebarLinks = document.querySelectorAll('.md-sidebar--primary .group-items a[href*="steps.html#group-"]');
+  if (!sidebarLinks.length) return;
+
+  function setActive(id){
+    sidebarLinks.forEach(function(link){
+      var linkHash = link.getAttribute('href').split('#')[1];
+      if (linkHash === id) { link.classList.add('active'); }
+      else { link.classList.remove('active'); }
+    });
+  }
+
+  function onScroll(){
+    var scrollPos = window.scrollY + 90;
+    var current = sections[0].id;
+    for (var i = 0; i < sections.length; i++){
+      if (sections[i].el.offsetTop <= scrollPos) { current = sections[i].id; }
+    }
+    setActive(current);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+function copyCodeBlock(btn, blockId){
+  var text = document.getElementById(blockId).innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
