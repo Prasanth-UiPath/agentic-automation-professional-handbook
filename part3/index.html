@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 3 · Agent Builder</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+    <div class="nav">
+      <p class="nav-title">Insurance Claim Approval Workshop</p>
+      <a href="../index.html">Home</a>
+      <details>
+        <summary>Module 1 · Conversational Agent</summary>
+        <div class="group-items">
+          <a href="../part1/index.html">Overview</a>
+          <a href="../part1/steps.html#group-concepts">Concepts</a>
+          <a href="../part1/steps.html#group-create-agent">Create Agent</a>
+          <a href="../part1/steps.html#group-system-prompt">System Prompt</a>
+          <a href="../part1/steps.html#group-context-grounding">Context Grounding</a>
+          <a href="../part1/steps.html#group-tools">Tools</a>
+          <a href="../part1/steps.html#group-deploy">Deploy and Publish</a>
+          <a href="../part1/steps.html#group-apps">Apps</a>
+          <a href="../part1/steps.html#group-observe">Observing Your Agent</a>
+          <a href="../part1/complete.html">Module 1 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 2 · Maestro (BPMN)</summary>
+        <div class="group-items">
+          <a href="../part2/index.html">Overview</a>
+          <a href="../part2/steps.html#group-concepts">Concepts</a>
+          <a href="../part2/steps.html#group-build">Set Up the Process</a>
+          <a href="../part2/steps.html#group-start-event">Start Event</a>
+          <a href="../part2/steps.html#group-fraud-agent">Fraud Detection Agent</a>
+          <a href="../part2/steps.html#group-download">Retrieve the Document</a>
+          <a href="../part2/steps.html#group-hitl">Human-in-the-Loop Review</a>
+          <a href="../part2/steps.html#group-coded-agent">Settlement Coded Agent</a>
+          <a href="../part2/steps.html#group-notify">GenAI Activities</a>
+          <a href="../part2/steps.html#group-email-process">Email Process</a>
+          <a href="../part2/complete.html">Module 2 Complete</a>
+        </div>
+      </details>
+      <details open>
+        <summary>Module 3 · Agent Builder</summary>
+        <div class="group-items">
+          <a class="active" href="index.html">Overview</a>
+          <a href="steps.html#group-concepts">Concepts</a>
+          <a href="steps.html#group-build">Build the Agent</a>
+          <a href="complete.html">Module 3 Complete</a>
+        </div>
+      </details>
+      <details>
+        <summary>Module 4 · Coded Agent</summary>
+        <div class="group-items">
+          <a href="../part4/index.html">Overview</a>
+          <a href="../part4/steps.html#group-concepts">Concepts</a>
+          <a href="../part4/steps.html#group-build">Build the Agent</a>
+          <a href="../part4/steps.html#group-publish">Publish &amp; Run</a>
+          <a href="../part4/complete.html">Module 4 Complete</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 3</span>
+    <h1>Agent Builder</h1>
+    <p class="lead">Build the Fraud Detection Agent — a low-code autonomous agent that scores an insurance claim for fraud risk and hands back a structured verdict, with no chat interface involved.</p>
+
+    <h2 id="overview">Overview</h2>
+    <p>So far, you've built the two ends of the process. In Module 1, the <b>Claim Request Agent</b> collected a claim from the claimant and saved it to Data Fabric. In Module 2, you designed the <b>Insurance Claim Approval Process</b> in Maestro — a BPMN flow that starts the moment that claim record is created, downloads its supporting document, and routes it to a supervisor for review. What that flow doesn't have yet is the piece that decides <i>how risky</i> a claim looks before a human ever sees it.</p>
+    <p>That's the job of the <b>Fraud Detection Agent</b> you'll build in this module. Unlike the Claim Request Agent, this one never talks to a person — it's an <b>autonomous agent</b>: given a claim record ID, it looks up the record, applies a fixed set of fraud-scoring rules, and returns a structured result (a risk score, a verdict, a routing instruction, and a neutral status email) for Maestro to act on.</p>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="../index.html"><span class="dir">← Previous</span><span class="ttl">Home</span></a>
+      <a class="next" href="steps.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+</body>
+</html>
