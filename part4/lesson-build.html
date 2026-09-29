@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build the Agent · Module 4 · Coded Agent</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Approval Workshop</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <details>
+    <summary>Module 1 · Conversational Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part1/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Publish</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Apps</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 1 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 2 · Maestro (BPMN)</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part2/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Retrieve the Document</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-hitl.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Human-in-the-Loop Review</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-coded-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-notify.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">GenAI Activities</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-email-process.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Email Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 3 · Agent Builder</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part3/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details open>
+    <summary>Module 4 · Coded Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish &amp; Run</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Lesson 28 of 30</span>
+    <h1>Build the Agent</h1>
+    <div class="rise-divider"></div>
+
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">You'll build a <b>no-LLM</b> coded agent that settles an insurance claim: given an insurance type, coverage type, and claim amount, it returns the settled amount using simple business rules. All commands below are run from <b>Windows PowerShell</b> — you'll edit files with Notepad, never by typing code directly at the <code>PS&gt;</code> prompt.</p>
+
+    <h4>The business rules</h4>
+    <div class="grid g2">
+      <div class="card"><h4>Eligible insurance types</h4><p style="font-size:13.5px;margin-bottom:6px;">Matched if the name <b>contains</b> (case-insensitive):</p>
+        <ul class="clean"><li>Medical</li><li>Stole</li><li>Theft</li><li>Water Damage</li><li>Vehicle</li><li>Fire</li></ul>
+      </div>
+      <div class="card"><h4>Settlement percentage</h4>
+        <ul class="clean">
+          <li><b>Full</b> coverage → settle <b>95%</b> of claim</li>
+          <li><b>Partial</b> coverage → settle <b>90%</b> of claim</li>
+          <li>Any other type or coverage → <b>not eligible</b>, settle 0</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Decision at a glance</h4>
+    <table>
+      <thead><tr><th>Insurance type contains…</th><th>Coverage</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Medical / Stole / Theft / Water Damage / Vehicle / Fire</td><td>Full</td><td><span class="yes">95% settled</span></td></tr>
+        <tr><td>Medical / Stole / Theft / Water Damage / Vehicle / Fire</td><td>Partial</td><td><span class="yes">90% settled</span></td></tr>
+        <tr><td>Anything else</td><td>—</td><td><span class="no">Not eligible (0)</span></td></tr>
+        <tr><td>Eligible type</td><td>Neither Full nor Partial</td><td><span class="no">Not eligible (0)</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="adm note">
+      <div class="adm-title">🏷️ Inputs &amp; outputs at a glance</div>
+      <div class="adm-body"><b>Inputs</b> — <code>insurance_type</code> (string), <code>coverage_type</code> (string), <code>claim_amount</code> (float)<br><b>Outputs</b> — <code>eligible</code> (boolean), <code>settlement_percentage</code> (float), <code>settlement_amount</code> (float), <code>message</code> (string)</div>
+    </div>
+
+    <div class="step" id="step-b1">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Create the project folder</h3>
+        <p>Open Windows PowerShell, then create and enter a new folder for the project. Name it after yourself so it doesn't collide with other participants on a shared tenant.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-1')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-1"><code><span class="pr"># create &amp; enter the project folder</span>
+PS&gt; mkdir Your_Name_Claims_SettlementAgent
+PS&gt; cd Your_Name_Claims_SettlementAgent</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Replace <code>Your_Name_Claims_SettlementAgent</code> with your own project name — for example <code>Priya_Claims_SettlementAgent</code>. Whatever you name it here is the actual folder you'll <code>cd</code> into for every remaining step; don't reuse this literal name if you chose something else.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened Windows PowerShell.</div></div>
+          <div class="row"><span class="box"></span><div>Created and entered a project folder named after myself.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b2">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Create the UiPath coded agent</h3>
+        <p>Scaffold a starter coded agent with the <code>codedagent new</code> command. This creates the initial project files — including <code>main.py</code>, <code>langgraph.json</code>, and <code>pyproject.toml</code>.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-2')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-2"><code>PS&gt; uip codedagent new settlement
+<span class="ok">⯈</span> Created 'main.py' file.
+<span class="ok">⯈</span> Created 'langgraph.json' file.
+<span class="ok">⯈</span> Created 'pyproject.toml' file.</code></pre>
+        </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Don't type "Create main.py" at the prompt</div>
+          <div class="adm-body"><code>main.py</code> is generated for you by this command. You'll edit its contents with Notepad in the next step — never paste Python statements directly into PowerShell.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Write main.py</h3>
+        <p>Open <code>main.py</code> in Notepad, select all and delete the generated starter content, then paste the code below. Every coded agent needs an <code>Input</code> model, an <code>Output</code> model, and a main function — this one uses Pydantic and <code>@traced</code>, with no LLM imported.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-3"><code>PS&gt; notepad main.py</code></pre>
+        </div>
+        </div>
+        <p>In Notepad: press <code>Ctrl+A</code>, delete the existing content, paste the code below, press <code>Ctrl+S</code> to save, and close Notepad.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-4')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">main.py</div>
+          <pre id="code-block-4"><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
+<span class="k">from</span> uipath.tracing <span class="k">import</span> traced
+
+ELIGIBLE = (<span class="s">"medical"</span>, <span class="s">"stole"</span>, <span class="s">"theft"</span>,
+            <span class="s">"water damage"</span>, <span class="s">"vehicle"</span>, <span class="s">"fire"</span>)
+RATES = {<span class="s">"full"</span>: <span class="n">0.95</span>, <span class="s">"partial"</span>: <span class="n">0.90</span>}
+
+<span class="k">class</span> <span class="fn">SettlementInput</span>(BaseModel):
+    insurance_type: <span class="b">str</span> = Field(..., description=<span class="s">"e.g. 'Vehicle'"</span>)
+    coverage_type: <span class="b">str</span> = Field(..., description=<span class="s">"'Full' or 'Partial'"</span>)
+    claim_amount: <span class="b">float</span> = Field(..., ge=<span class="n">0</span>)
+
+<span class="k">class</span> <span class="fn">SettlementOutput</span>(BaseModel):
+    eligible: <span class="b">bool</span>
+    settlement_percentage: <span class="b">float</span>
+    settlement_amount: <span class="b">float</span>
+    message: <span class="b">str</span>
+
+<span class="c">@traced(name="match_insurance_type", run_type="uipath")</span>
+<span class="k">def</span> <span class="fn">_match</span>(t: <span class="b">str</span>):
+    t = (t <span class="k">or</span> <span class="s">""</span>).strip().lower()
+    <span class="k">return</span> next((c <span class="k">for</span> c <span class="k">in</span> ELIGIBLE <span class="k">if</span> c <span class="k">in</span> t), <span class="k">None</span>)
+
+<span class="k">def</span> <span class="fn">main</span>(input: SettlementInput) -&gt; SettlementOutput:
+    category = _match(input.insurance_type)
+    rate = RATES.get(input.coverage_type.strip().lower())
+
+    <span class="k">if</span> category <span class="k">is</span> <span class="k">None</span> <span class="k">or</span> rate <span class="k">is</span> <span class="k">None</span>:
+        <span class="k">return</span> SettlementOutput(
+            eligible=<span class="k">False</span>,
+            settlement_percentage=<span class="n">0</span>,
+            settlement_amount=<span class="n">0</span>,
+            message=<span class="s">"Not eligible"</span>
+        )
+
+    amount = round(input.claim_amount * rate, <span class="n">2</span>)
+
+    <span class="k">return</span> SettlementOutput(
+        eligible=<span class="k">True</span>,
+        settlement_percentage=rate * <span class="n">100</span>,
+        settlement_amount=amount,
+        message=f<span class="s">"Settled at {rate * 100:.0f}%"</span>
+    )</code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">ℹ️ Required structure</div>
+          <div class="adm-body">Two Pydantic models (<code>Input</code>, <code>Output</code>) and one entry function named <code>main</code>, <code>run</code>, or <code>execute</code>. That is all UiPath needs to discover your agent.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b4">
+      <div class="num">4</div>
+      <div class="body">
+        <h3>Configure uipath.json and pyproject.toml</h3>
+        <p>Open <code>uipath.json</code> in Notepad and replace its content — the <code>functions</code> map names the coded-agent entrypoint as <code>Claims_SettlementAgent</code>.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-5')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-5"><code>PS&gt; notepad uipath.json</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-6')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">uipath.json</div>
+          <pre id="code-block-6"><code>{
+  <span class="s">"functions"</span>: {
+    <span class="s">"Claims_SettlementAgent"</span>: <span class="s">"main.py:main"</span>
+  }
+}</code></pre>
+        </div>
+        </div>
+        <p>Then open <code>pyproject.toml</code> in Notepad and replace its content — this declares your project metadata and dependencies. Only <code>uipath</code> is required; no LLM framework is needed.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-7')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-7"><code>PS&gt; notepad pyproject.toml</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-8')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">pyproject.toml</div>
+          <pre id="code-block-8"><code>[project]
+name = <span class="s">"Your_Name_Claims_SettlementAgent"</span>
+version = <span class="s">"0.0.1"</span>
+description = <span class="s">"Insurance claims settlement agent"</span>
+authors = [{ name = <span class="s">"Your Name"</span> }]
+dependencies = [<span class="s">"uipath>=2.10.0, &lt;2.11.0"</span>]
+requires-python = <span class="s">"&gt;=3.11"</span></code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Replace <code>Your_Name_Claims_SettlementAgent</code> and <code>Your Name</code> with your actual project name and your name — matching the folder you created in step 1.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b5">
+      <div class="num">5</div>
+      <div class="body">
+        <h3>Remove langgraph.json</h3>
+        <p>The <code>codedagent new</code> template generates a <code>langgraph.json</code> file, but this project uses the UiPath coded-agent entrypoint defined in <code>uipath.json</code> instead. Delete it before initializing the project.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-9')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-9"><code>PS&gt; Remove-Item langgraph.json</code></pre>
+        </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Don't skip this step</div>
+          <div class="adm-body">Keeping <code>langgraph.json</code> causes initialization to look for a graph object in <code>main.py</code> and produces a "graph not found" error. Always remove it before running <code>codedagent init</code> for this style of no-LLM coded agent.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Initialize the UiPath project</h3>
+        <p>Run <code>codedagent init</code> to generate the project's metadata files from your code.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-10')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-10"><code>PS&gt; uip codedagent init
+<span class="ok">⯈</span> Created 'entry-points.json' file.
+<span class="ok">⯈</span> Created 'project.uiproj' file.
+<span class="ok">⯈</span> Created '.uipath\studio_metadata.json' file.
+<span class="ok">⯈</span> Created AGENTS.md file(s) and Claude Code skills.
+
+  Entrypoint: Claims_SettlementAgent
+<span class="ok">✓ Project initialized successfully.</span></code></pre>
+        </div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 What to notice</div>
+          <div class="adm-body">Successful initialization creates <code>entry-points.json</code>, <code>project.uiproj</code>, <code>.uipath\studio_metadata.json</code>, AGENTS.md files, and Claude Code skills. Confirm the output shows <code>Entrypoint: Claims_SettlementAgent</code> before moving on.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Create the local test input</h3>
+        <p>Create an <code>input.json</code> file with the sample claim you'll use to test the agent locally.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-11')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-11"><code>PS&gt; notepad input.json</code></pre>
+        </div>
+        </div>
+        <p>Paste the following JSON, save, and close Notepad.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-12')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">input.json</div>
+          <pre id="code-block-12"><code>{
+  <span class="s">"insurance_type"</span>: <span class="s">"Vehicle Insurance"</span>,
+  <span class="s">"coverage_type"</span>: <span class="s">"Full"</span>,
+  <span class="s">"claim_amount"</span>: <span class="n">10000</span>
+}</code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b8">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Run the agent locally</h3>
+        <p>Execute the agent locally against <code>input.json</code> before packaging anything for the cloud.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-13')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-13"><code>PS&gt; uip codedagent run Claims_SettlementAgent -f input.json
+
+output
+├── eligible: True
+├── settlement_percentage: 95.0
+├── settlement_amount: 9500.0
+└── message: Settled at 95%
+
+<span class="ok">✓ Successful execution.</span></code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">A message like <code>Resource overwrites config file not found: __uipath\uipath.json</code> may appear during this run — in testing, it did not prevent successful execution.</div>
+        </div>
+        <h4>Verify the rules across scenarios</h4>
+        <table>
+          <thead><tr><th>Insurance type</th><th>Coverage</th><th>Claim</th><th>Eligible</th><th>%</th><th>Settled</th></tr></thead>
+          <tbody>
+            <tr><td>Vehicle Insurance</td><td>Full</td><td>10,000</td><td><span class="yes">Yes</span></td><td>95</td><td>9,500.00</td></tr>
+            <tr><td>Water Damage</td><td>Partial</td><td>20,000</td><td><span class="yes">Yes</span></td><td>90</td><td>18,000.00</td></tr>
+            <tr><td>fire policy</td><td>full</td><td>5,000</td><td><span class="yes">Yes</span></td><td>95</td><td>4,750.00</td></tr>
+            <tr><td>Medical</td><td>Partial</td><td>12,345.67</td><td><span class="yes">Yes</span></td><td>90</td><td>11,111.10</td></tr>
+            <tr><td>Travel</td><td>Full</td><td>1,000</td><td><span class="no">No</span></td><td>0</td><td>0.00</td></tr>
+            <tr><td>Theft</td><td>Comprehensive</td><td>3,000</td><td><span class="no">No</span></td><td>0</td><td>0.00</td></tr>
+          </tbody>
+        </table>
+        <div class="adm tip">
+          <div class="adm-title">💡 Case-insensitive &amp; substring</div>
+          <div class="adm-body">"Vehicle Insurance" matches <code>vehicle</code>; "Stolen goods" matches <code>stole</code>. Unknown coverage (e.g. "Comprehensive") is safely rejected.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Created the project folder and scaffolded the agent (<code>uip codedagent new settlement</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Wrote Input/Output models + <code>main()</code> in <code>main.py</code></div></div>
+          <div class="row"><span class="box"></span><div>Configured <code>uipath.json</code> and <code>pyproject.toml</code></div></div>
+          <div class="row"><span class="box"></span><div>Removed <code>langgraph.json</code></div></div>
+          <div class="row"><span class="box"></span><div>Initialized the project (<code>uip codedagent init</code>) and confirmed the entrypoint</div></div>
+          <div class="row"><span class="box"></span><div>Created <code>input.json</code> and ran the agent locally (<code>uip codedagent run … -f input.json</code>)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="lesson-concepts.html"><span class="dir">← Previous</span><span class="ttl">Concepts</span></a>
+      <a class="next" href="lesson-publish.html"><span class="dir">Next →</span><span class="ttl">Publish &amp; Run</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+</body>
+</html>

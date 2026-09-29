@@ -213,7 +213,7 @@
     <div class="group-header" id="group-build">
       <h2 style="margin-top:0;">Build the Agent</h2>
     </div>
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">You'll build a <b>no-LLM</b> coded agent that settles an insurance claim: given an insurance type, coverage type, and claim amount, it returns the settled amount using simple business rules.</p>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">You'll build a <b>no-LLM</b> coded agent that settles an insurance claim: given an insurance type, coverage type, and claim amount, it returns the settled amount using simple business rules. All commands below are run from <b>Windows PowerShell</b> — you'll edit files with Notepad, never by typing code directly at the <code>PS&gt;</code> prompt.</p>
 
     <h4>The business rules</h4>
     <div class="grid g2">
@@ -240,24 +240,32 @@
       </tbody>
     </table>
 
+    <div class="adm note">
+      <div class="adm-title">🏷️ Inputs &amp; outputs at a glance</div>
+      <div class="adm-body"><b>Inputs</b> — <code>insurance_type</code> (string), <code>coverage_type</code> (string), <code>claim_amount</code> (float)<br><b>Outputs</b> — <code>eligible</code> (boolean), <code>settlement_percentage</code> (float), <code>settlement_amount</code> (float), <code>message</code> (string)</div>
+    </div>
+
     <div class="step" id="step-b1">
       <div class="num">1</div>
       <div class="body">
-        <h3>Scaffold the project</h3>
-        <p><code>uipath new</code> drops a starter <code>main.py</code>, <code>pyproject.toml</code>, and <code>uipath.json</code> into a new project folder.</p>
+        <h3>Create the project folder</h3>
+        <p>Open Windows PowerShell, then create and enter a new folder for the project. Name it after yourself so it doesn't collide with other participants on a shared tenant.</p>
         <div class="copy-wrap">
           <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-1')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-1"><code><span class="pr"># create &amp; enter the project folder</span>
-PS&gt; mkdir Claims_SettlementAgent; cd Claims_SettlementAgent
-
-<span class="pr"># scaffold a starter coded agent</span>
-PS&gt; uipath new settlement
-<span class="ok">⯈</span> Created 'main.py' file.
-<span class="ok">⯈</span> Created 'pyproject.toml' file.
-<span class="ok">⯈</span> Created 'uipath.json' file.</code></pre>
+PS&gt; mkdir Your_Name_Claims_SettlementAgent
+PS&gt; cd Your_Name_Claims_SettlementAgent</code></pre>
         </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Replace <code>Your_Name_Claims_SettlementAgent</code> with your own project name — for example <code>Priya_Claims_SettlementAgent</code>. Whatever you name it here is the actual folder you'll <code>cd</code> into for every remaining step; don't reuse this literal name if you chose something else.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened Windows PowerShell.</div></div>
+          <div class="row"><span class="box"></span><div>Created and entered a project folder named after myself.</div></div>
         </div>
       </div>
     </div>
@@ -265,13 +273,43 @@ PS&gt; uipath new settlement
     <div class="step" id="step-b2">
       <div class="num">2</div>
       <div class="body">
-        <h3>Write main.py</h3>
-        <p>Every coded agent needs an <code>Input</code> model, an <code>Output</code> model, and a main function. This one uses Pydantic and <code>@traced</code> — no LLM is imported.</p>
+        <h3>Create the UiPath coded agent</h3>
+        <p>Scaffold a starter coded agent with the <code>codedagent new</code> command. This creates the initial project files — including <code>main.py</code>, <code>langgraph.json</code>, and <code>pyproject.toml</code>.</p>
         <div class="copy-wrap">
           <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-2')">📋 Copy</button>
 <div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-2"><code>PS&gt; uip codedagent new settlement
+<span class="ok">⯈</span> Created 'main.py' file.
+<span class="ok">⯈</span> Created 'langgraph.json' file.
+<span class="ok">⯈</span> Created 'pyproject.toml' file.</code></pre>
+        </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Don't type "Create main.py" at the prompt</div>
+          <div class="adm-body"><code>main.py</code> is generated for you by this command. You'll edit its contents with Notepad in the next step — never paste Python statements directly into PowerShell.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Write main.py</h3>
+        <p>Open <code>main.py</code> in Notepad, select all and delete the generated starter content, then paste the code below. Every coded agent needs an <code>Input</code> model, an <code>Output</code> model, and a main function — this one uses Pydantic and <code>@traced</code>, with no LLM imported.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-3"><code>PS&gt; notepad main.py</code></pre>
+        </div>
+        </div>
+        <p>In Notepad: press <code>Ctrl+A</code>, delete the existing content, paste the code below, press <code>Ctrl+S</code> to save, and close Notepad.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-4')">📋 Copy</button>
+<div class="highlight">
           <div class="filename">main.py</div>
-          <pre id="code-block-2"><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
+          <pre id="code-block-4"><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
 <span class="k">from</span> uipath.tracing <span class="k">import</span> traced
 
 ELIGIBLE = (<span class="s">"medical"</span>, <span class="s">"stole"</span>, <span class="s">"theft"</span>,
@@ -280,8 +318,8 @@ RATES = {<span class="s">"full"</span>: <span class="n">0.95</span>, <span class
 
 <span class="k">class</span> <span class="fn">SettlementInput</span>(BaseModel):
     insurance_type: <span class="b">str</span> = Field(..., description=<span class="s">"e.g. 'Vehicle'"</span>)
-    coverage_type:  <span class="b">str</span> = Field(..., description=<span class="s">"'Full' or 'Partial'"</span>)
-    claim_amount:   <span class="b">float</span> = Field(..., ge=<span class="n">0</span>)
+    coverage_type: <span class="b">str</span> = Field(..., description=<span class="s">"'Full' or 'Partial'"</span>)
+    claim_amount: <span class="b">float</span> = Field(..., ge=<span class="n">0</span>)
 
 <span class="k">class</span> <span class="fn">SettlementOutput</span>(BaseModel):
     eligible: <span class="b">bool</span>
@@ -297,12 +335,23 @@ RATES = {<span class="s">"full"</span>: <span class="n">0.95</span>, <span class
 <span class="k">def</span> <span class="fn">main</span>(input: SettlementInput) -&gt; SettlementOutput:
     category = _match(input.insurance_type)
     rate = RATES.get(input.coverage_type.strip().lower())
+
     <span class="k">if</span> category <span class="k">is</span> <span class="k">None</span> <span class="k">or</span> rate <span class="k">is</span> <span class="k">None</span>:
-        <span class="k">return</span> SettlementOutput(eligible=<span class="k">False</span>, settlement_percentage=<span class="n">0</span>,
-            settlement_amount=<span class="n">0</span>, message=<span class="s">"Not eligible"</span>)
+        <span class="k">return</span> SettlementOutput(
+            eligible=<span class="k">False</span>,
+            settlement_percentage=<span class="n">0</span>,
+            settlement_amount=<span class="n">0</span>,
+            message=<span class="s">"Not eligible"</span>
+        )
+
     amount = round(input.claim_amount * rate, <span class="n">2</span>)
-    <span class="k">return</span> SettlementOutput(eligible=<span class="k">True</span>, settlement_percentage=rate*<span class="n">100</span>,
-        settlement_amount=amount, message=f<span class="s">"Settled at {rate*100:.0f}%"</span>)</code></pre>
+
+    <span class="k">return</span> SettlementOutput(
+        eligible=<span class="k">True</span>,
+        settlement_percentage=rate * <span class="n">100</span>,
+        settlement_amount=amount,
+        message=f<span class="s">"Settled at {rate * 100:.0f}%"</span>
+    )</code></pre>
         </div>
         </div>
         <div class="adm note">
@@ -312,64 +361,53 @@ RATES = {<span class="s">"full"</span>: <span class="n">0.95</span>, <span class
       </div>
     </div>
 
-    <div class="step" id="step-b3">
-      <div class="num">3</div>
+    <div class="step" id="step-b4">
+      <div class="num">4</div>
       <div class="body">
-        <h3>Wire up the config</h3>
-        <p>The <code>functions</code> map in <code>uipath.json</code> names the entrypoint; <code>pyproject.toml</code> declares your dependencies — only <code>uipath</code>, no LLM framework needed.</p>
+        <h3>Configure uipath.json and pyproject.toml</h3>
+        <p>Open <code>uipath.json</code> in Notepad and replace its content — the <code>functions</code> map names the coded-agent entrypoint as <code>Claims_SettlementAgent</code>.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-5')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-5"><code>PS&gt; notepad uipath.json</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-6')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">uipath.json</div>
-          <pre id="code-block-3"><code>{
+          <pre id="code-block-6"><code>{
   <span class="s">"functions"</span>: {
     <span class="s">"Claims_SettlementAgent"</span>: <span class="s">"main.py:main"</span>
   }
 }</code></pre>
         </div>
         </div>
+        <p>Then open <code>pyproject.toml</code> in Notepad and replace its content — this declares your project metadata and dependencies. Only <code>uipath</code> is required; no LLM framework is needed.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-4')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-7')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-7"><code>PS&gt; notepad pyproject.toml</code></pre>
+        </div>
+        </div>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-8')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">pyproject.toml</div>
-          <pre id="code-block-4"><code>[project]
-name = <span class="s">"Claims_SettlementAgent"</span>
+          <pre id="code-block-8"><code>[project]
+name = <span class="s">"Your_Name_Claims_SettlementAgent"</span>
 version = <span class="s">"0.0.1"</span>
+description = <span class="s">"Insurance claims settlement agent"</span>
+authors = [{ name = <span class="s">"Your Name"</span> }]
 dependencies = [<span class="s">"uipath>=2.10.0, &lt;2.11.0"</span>]
 requires-python = <span class="s">"&gt;=3.11"</span></code></pre>
         </div>
         </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-b4">
-      <div class="num">4</div>
-      <div class="body">
-        <h3>Generate the schema — uipath init</h3>
-        <p><code>uipath init</code> inspects your models and produces <code>entry-points.json</code>, <code>bindings.json</code>, a project file, and a graph diagram.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-5')">📋 Copy</button>
-<div class="highlight">
-          <div class="filename">PowerShell · uipath init</div>
-          <pre id="code-block-5"><code>PS&gt; uipath init
-<span class="ok">⯈</span> Created 'bindings.json' file.
-<span class="ok">⯈</span> Created 'entry-points.json' file with 1 entrypoint(s).
-<span class="ok">⯈</span> Created 1 mermaid diagram file(s).
-
-  Entrypoint: Claims_SettlementAgent
-                    ┌──────────────┐
-                    │  function    │
-                    │    main      │
-                    └──────┬───────┘
-                 ┌─────────┴─────────┐
-       ┌─────────▼────────┐  ┌───────▼──────────┐
-       │ _matched_insurance │  │ _coverage_rate   │
-       └──────────────────┘  └──────────────────┘</code></pre>
-        </div>
-        </div>
-        <div class="adm tip">
-          <div class="adm-title">💡 What to notice</div>
-          <div class="adm-body">The two <code>@traced</code> helper functions appear as child nodes of <code>main</code>. That graph is what Orchestrator visualizes and traces at run time.</div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Replace <code>Your_Name_Claims_SettlementAgent</code> and <code>Your Name</code> with your actual project name and your name — matching the folder you created in step 1.</div>
         </div>
       </div>
     </div>
@@ -377,22 +415,98 @@ requires-python = <span class="s">"&gt;=3.11"</span></code></pre>
     <div class="step" id="step-b5">
       <div class="num">5</div>
       <div class="body">
-        <h3>Run &amp; test locally — uipath run</h3>
-        <p>Execute the agent locally with JSON input before shipping anything to the cloud.</p>
+        <h3>Remove langgraph.json</h3>
+        <p>The <code>codedagent new</code> template generates a <code>langgraph.json</code> file, but this project uses the UiPath coded-agent entrypoint defined in <code>uipath.json</code> instead. Delete it before initializing the project.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-6')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-9')">📋 Copy</button>
 <div class="highlight">
-          <div class="filename">PowerShell · uipath run</div>
-          <pre id="code-block-6"><code>PS&gt; uipath run Claims_SettlementAgent '{"insurance_type":"Vehicle Insurance",
-                                 "coverage_type":"Full",
-                                 "claim_amount":10000}'
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-9"><code>PS&gt; Remove-Item langgraph.json</code></pre>
+        </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Don't skip this step</div>
+          <div class="adm-body">Keeping <code>langgraph.json</code> causes initialization to look for a graph object in <code>main.py</code> and produces a "graph not found" error. Always remove it before running <code>codedagent init</code> for this style of no-LLM coded agent.</div>
+        </div>
+      </div>
+    </div>
 
-settlement_amount: 9500.0
-settlement_percentage: 95.0
-eligible: True
-message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
+    <div class="step" id="step-b6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Initialize the UiPath project</h3>
+        <p>Run <code>codedagent init</code> to generate the project's metadata files from your code.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-10')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-10"><code>PS&gt; uip codedagent init
+<span class="ok">⯈</span> Created 'entry-points.json' file.
+<span class="ok">⯈</span> Created 'project.uiproj' file.
+<span class="ok">⯈</span> Created '.uipath\studio_metadata.json' file.
+<span class="ok">⯈</span> Created AGENTS.md file(s) and Claude Code skills.
+
+  Entrypoint: Claims_SettlementAgent
+<span class="ok">✓ Project initialized successfully.</span></code></pre>
+        </div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 What to notice</div>
+          <div class="adm-body">Successful initialization creates <code>entry-points.json</code>, <code>project.uiproj</code>, <code>.uipath\studio_metadata.json</code>, AGENTS.md files, and Claude Code skills. Confirm the output shows <code>Entrypoint: Claims_SettlementAgent</code> before moving on.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Create the local test input</h3>
+        <p>Create an <code>input.json</code> file with the sample claim you'll use to test the agent locally.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-11')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-11"><code>PS&gt; notepad input.json</code></pre>
+        </div>
+        </div>
+        <p>Paste the following JSON, save, and close Notepad.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-12')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">input.json</div>
+          <pre id="code-block-12"><code>{
+  <span class="s">"insurance_type"</span>: <span class="s">"Vehicle Insurance"</span>,
+  <span class="s">"coverage_type"</span>: <span class="s">"Full"</span>,
+  <span class="s">"claim_amount"</span>: <span class="n">10000</span>
+}</code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-b8">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Run the agent locally</h3>
+        <p>Execute the agent locally against <code>input.json</code> before packaging anything for the cloud.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-13')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-13"><code>PS&gt; uip codedagent run Claims_SettlementAgent -f input.json
+
+output
+├── eligible: True
+├── settlement_percentage: 95.0
+├── settlement_amount: 9500.0
+└── message: Settled at 95%
+
 <span class="ok">✓ Successful execution.</span></code></pre>
         </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">A message like <code>Resource overwrites config file not found: __uipath\uipath.json</code> may appear during this run — in testing, it did not prevent successful execution.</div>
         </div>
         <h4>Verify the rules across scenarios</h4>
         <table>
@@ -411,11 +525,12 @@ message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
           <div class="adm-body">"Vehicle Insurance" matches <code>vehicle</code>; "Stolen goods" matches <code>stole</code>. Unknown coverage (e.g. "Comprehensive") is safely rejected.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Scaffolded the project (<code>uipath new</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Wrote Input/Output models + <code>main()</code></div></div>
-          <div class="row"><span class="box"></span><div>Mapped the entrypoint in <code>uipath.json</code></div></div>
-          <div class="row"><span class="box"></span><div>Generated the schema &amp; graph (<code>uipath init</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Tested locally across scenarios (<code>uipath run</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Created the project folder and scaffolded the agent (<code>uip codedagent new settlement</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Wrote Input/Output models + <code>main()</code> in <code>main.py</code></div></div>
+          <div class="row"><span class="box"></span><div>Configured <code>uipath.json</code> and <code>pyproject.toml</code></div></div>
+          <div class="row"><span class="box"></span><div>Removed <code>langgraph.json</code></div></div>
+          <div class="row"><span class="box"></span><div>Initialized the project (<code>uip codedagent init</code>) and confirmed the entrypoint</div></div>
+          <div class="row"><span class="box"></span><div>Created <code>input.json</code> and ran the agent locally (<code>uip codedagent run … -f input.json</code>)</div></div>
         </div>
       </div>
     </div>
@@ -424,21 +539,40 @@ message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
     <div class="group-header" id="group-publish">
       <h2 style="margin-top:0;">Publish &amp; Run</h2>
     </div>
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Authenticate, package, publish to Orchestrator, and start a governed cloud job — the four steps that take your tested agent to production.</p>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Package, log in, publish to Orchestrator, and invoke a governed cloud job — the four steps that take your tested agent to production.</p>
 
     <div class="step" id="step-p1">
-      <div class="num">6</div>
+      <div class="num">9</div>
       <div class="body">
-        <h3>Authenticate — uipath auth</h3>
-        <p>Connects the CLI to your tenant; opens a browser sign-in and stores credentials in <code>.env</code>.</p>
+        <h3>Package the agent</h3>
+        <p>Bundle the project into a versioned package with <code>codedagent pack</code>.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-7')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-14')">📋 Copy</button>
 <div class="highlight">
-          <div class="filename">PowerShell · uipath auth</div>
-          <pre id="code-block-7"><code>PS&gt; uipath auth
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-14"><code>PS&gt; uip codedagent pack
+<span class="ok">✓ Package created successfully.</span></code></pre>
+        </div>
+        </div>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">Confirm the package is created successfully before continuing to the next step.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-p2">
+      <div class="num">10</div>
+      <div class="body">
+        <h3>Log in to UiPath</h3>
+        <p>Authenticate the CLI against your tenant before publishing. Use the organization and tenant appropriate for your environment — the example below is the one used in testing.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-15')">📋 Copy</button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-15"><code>PS&gt; uip login --authority https://cloud.uipath.com --organization tpenlabs -t AgenticPractice
 <span class="ok">⯈</span> Opening browser for authentication...
-<span class="ok">⯈</span> Select tenant: DefaultTenant
-<span class="ok">✓ Authentication successful. Credentials saved to .env</span></code></pre>
+<span class="ok">✓ Login successful.</span></code></pre>
         </div>
         </div>
         <figure>
@@ -456,42 +590,24 @@ message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
               <p style="font-size:11px;color:var(--muted);margin:14px 0 0;">Scopes: Orchestrator · Studio · Data Service</p>
             </div>
           </div>
-          <figcaption>Figure 3 — Browser consent screen shown by <code>uipath auth</code> (mockup).</figcaption>
+          <figcaption>Figure 3 — Browser consent screen shown by <code>uip login</code> (mockup).</figcaption>
         </figure>
       </div>
     </div>
 
-    <div class="step" id="step-p2">
-      <div class="num">7</div>
-      <div class="body">
-        <h3>Package — uipath pack</h3>
-        <p>Bundles your code, graph, and dependency lock file into a versioned <code>.nupkg</code> — the same format Orchestrator uses for every automation.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-8')">📋 Copy</button>
-<div class="highlight">
-          <div class="filename">PowerShell · uipath pack</div>
-          <pre id="code-block-8"><code>PS&gt; uipath pack
-<span class="ok">⯈</span> Resolving dependencies → uv.lock
-<span class="ok">⯈</span> Packaging main.py, *.json, *.md
-<span class="ok">✓ Created Claims_SettlementAgent.0.0.1.nupkg</span></code></pre>
-        </div>
-        </div>
-      </div>
-    </div>
-
     <div class="step" id="step-p3">
-      <div class="num">8</div>
+      <div class="num">11</div>
       <div class="body">
-        <h3>Publish — uipath publish</h3>
-        <p>Upload the package to Orchestrator — choose the tenant feed (shared) or your personal workspace. Pass <code>--folder</code> to skip the interactive prompt.</p>
+        <h3>Publish the coded agent</h3>
+        <p>Upload the package to Orchestrator with <code>codedagent publish</code>. When prompted to select a package feed, choose the feed required by your environment — in the tested setup, <b>Personal Workspace Feed</b> was selected.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-9')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-16')">📋 Copy</button>
 <div class="highlight">
-          <div class="filename">PowerShell · uipath publish</div>
-          <pre id="code-block-9"><code>PS&gt; uipath publish
-? Select feed:  &gt; Personal Workspace
-                  Tenant (Orchestrator)
-<span class="ok">⯈</span> Uploading Claims_SettlementAgent.0.0.1.nupkg ...
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-16"><code>PS&gt; uip codedagent publish
+? Select feed:  &gt; Personal Workspace Feed
+                  Tenant Feed
+<span class="ok">⯈</span> Uploading package...
 <span class="ok">✓ Package published successfully.</span>
   View it in Orchestrator → Packages</code></pre>
         </div>
@@ -520,31 +636,39 @@ message: Claim for 'Vehicle' insurance with Full coverage settled at 95%.
     </div>
 
     <div class="step" id="step-p4">
-      <div class="num">9</div>
+      <div class="num">12</div>
       <div class="body">
-        <h3>Run it in the cloud — uipath invoke</h3>
-        <p>Starts a governed cloud job; the CLI returns a monitoring link.</p>
+        <h3>Invoke the published agent</h3>
+        <p>Run the published agent in the cloud with <code>codedagent invoke</code>, passing the same <code>input.json</code> file with <code>-f</code>.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-10')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-17')">📋 Copy</button>
 <div class="highlight">
-          <div class="filename">PowerShell · uipath invoke</div>
-          <pre id="code-block-10"><code>PS&gt; uipath invoke Claims_SettlementAgent '{"insurance_type":"Fire",
-                                    "coverage_type":"Partial",
-                                    "claim_amount":8000}'
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-17"><code>PS&gt; uip codedagent invoke Claims_SettlementAgent -f input.json
 <span class="ok">⯈</span> Job started in Orchestrator.
-<span class="ok">⯈</span> Monitor: https://cloud.uipath.com/.../jobs/a1b2c3
-<span class="ok">✓ Output → settlement_amount: 7200.0 (90%)</span></code></pre>
+
+output
+├── eligible: True
+├── settlement_percentage: 95.0
+├── settlement_amount: 9500.0
+└── message: Settled at 95%
+
+<span class="ok">✓ Successful execution.</span></code></pre>
         </div>
+        </div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Use the JSON file, not inline JSON</div>
+          <div class="adm-body">Always invoke with <code>-f input.json</code>. The inline JSON form (passing the object directly on the command line) was tested and failed validation in this environment.</div>
         </div>
         <div class="adm note">
           <div class="adm-title">ℹ️ Governance for free</div>
           <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Authenticated to the tenant (<code>uipath auth</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Packaged to a <code>.nupkg</code> (<code>uipath pack</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Invoked a cloud job (<code>uipath invoke</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uip codedagent pack</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Logged in to the correct organization and tenant (<code>uip login</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uip codedagent publish</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Invoked the published agent with <code>-f input.json</code> (<code>uip codedagent invoke</code>)</div></div>
           <div class="row"><span class="box"></span><div>Confirmed the job &amp; output in Orchestrator</div></div>
         </div>
       </div>
