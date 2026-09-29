@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fraud Detection Agent · Module 2 · Maestro (BPMN)</title>
+<title>Concepts · Module 2 · Maestro (BPMN)</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
@@ -41,10 +41,10 @@
     <summary>Module 2 · Maestro (BPMN)</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Retrieve the Document</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-hitl.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Human-in-the-Loop Review</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-coded-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,49 +76,32 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 15 of 30</span>
-    <h1>Fraud Detection Agent</h1>
+    <span class="eyebrow">Lesson 12 of 30</span>
+    <h1>Concepts</h1>
     <div class="rise-divider"></div>
 
-    <p>Right after the Start Event, the process needs to actually call the Fraud Detection Agent — the autonomous agent you built in <a href="../part3/index.html">Module 3</a> — before anything else happens to the claim.</p>
+    <h3>What's Maestro BPMN?</h3>
+    <p><b>Maestro</b> is UiPath's orchestration platform for coordinating humans, robots, and AI agents across long-running business processes. <b>BPMN</b> (Business Process Model and Notation) is one of two ways to design a Maestro process — a visual canvas using the same standard notation process analysts have used for years: start/end events, tasks, gateways, and sequence flows. Where a conversational agent handles one interaction and a coded agent handles one calculation, a BPMN process ties many steps — agents, humans, and system actions — together into a single process with a clear beginning, a clear end, and a visual record of every path in between.</p>
 
-    <div class="step" id="step-5">
-      <div class="num">5</div>
-      <div class="body">
-        <h3>Add the Fraud Detection Agent step</h3>
-        <p>Add a <b>Service task</b> to the canvas right after the Trigger Start Event, and connect the two. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b> — this pauses the process until the agent finishes running and returns its full output.</p>
+    <h3>Why Maestro?</h3>
+    <p>Real business processes rarely live inside a single agent. An insurance claim needs a fraud check, a human sign-off, a settlement calculation, and a notification back to the customer — each potentially owned by a different system or person, running at a different pace. Maestro exists to coordinate exactly that: long-running, multi-actor processes that need to be visible, auditable, and resilient to the fact that a human reviewer might not respond for hours.</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🧭</div><h4>Visual, auditable flow</h4><p>Every step, decision, and handoff is drawn on the canvas — easy to review, easy to explain to auditors.</p></div>
+      <div class="card"><div class="ico">🤝</div><h4>Humans and agents together</h4><p>Mix agent tasks, RPA connectors, GenAI activities, and human review steps in one process.</p></div>
+      <div class="card"><div class="ico">⏳</div><h4>Built for long-running work</h4><p>A process can pause for hours or days waiting on a human, then resume exactly where it left off.</p></div>
+    </div>
 
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Service task — Start and wait for agent</span>
-            </div>
-            <img src="assets/fraud_detection_agent_service_task.png" alt="Service task on the BPMN canvas named Fraud Detection Agent, Implementation panel with Action Start and wait for agent, Agent FraudDetectionAgent, Inputs in_ClaimData, Outputs out_ClaimDetails" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>The Fraud Detection Agent step, calling the agent you built and published in Module 3.</figcaption>
-        </figure>
-
-        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the <code>claim_data</code> process variable (the full claim record you read into it back in the <a href="lesson-start-event.html">Start Event</a> step) — the agent expects the complete object, not just the claim ID, since it no longer looks the record up itself. Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
-
-        <div class="adm tip">
-          <div class="adm-title">💡 Before integrating the agent</div>
-          <div class="adm-body">This step only works once the Fraud Detection Agent from Module 3 is built and published — the "Agent" field above is where that agent gets connected into the Maestro process. If you haven't built it yet, complete <a href="../part3/index.html">Module 3</a> first, then come back and wire it in here.</div>
-        </div>
-
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added a Service task right after the Trigger Start Event and connected them.</div></div>
-          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to FraudDetectionAgent.</div></div>
-          <div class="row"><span class="box"></span><div>Mapped in_ClaimData to the claim_data process variable, and mapped all four output objects to process variables.</div></div>
-        </div>
-      </div>
+    <h3>Pillars of a Maestro BPMN Process</h3>
+    <div class="grid g2">
+      <div class="card"><h4>Start &amp; End Events</h4><p style="font-size:13.5px;margin:0;">Every process begins with a trigger — here, a Data Fabric entity creation — and ends at a single defined end event.</p></div>
+      <div class="card"><h4>Tasks</h4><p style="font-size:13.5px;margin:0;">Individual units of work: an agent call, a connector action, a GenAI activity, or a human task.</p></div>
+      <div class="card"><h4>Gateways</h4><p style="font-size:13.5px;margin:0;">Decision points that branch the flow — like the Reviewer Action Gateway routing to Approve or Reject.</p></div>
+      <div class="card"><h4>Human-in-the-loop (HITL)</h4><p style="font-size:13.5px;margin:0;">Explicit steps where a person reviews and acts before the process continues.</p></div>
     </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-start-event.html"><span class="dir">← Previous</span><span class="ttl">Start Event</span></a>
-      <a class="next" href="lesson-download.html"><span class="dir">Next →</span><span class="ttl">Retrieve the Document</span></a>
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Overview</span></a>
+      <a class="next" href="lesson-build.html"><span class="dir">Next →</span><span class="ttl">Set Up the Process</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

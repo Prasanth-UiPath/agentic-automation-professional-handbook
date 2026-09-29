@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fraud Detection Agent · Module 2 · Maestro (BPMN)</title>
+<title>Settlement Coded Agent · Module 2 · Maestro (BPMN)</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
@@ -44,10 +44,10 @@
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Retrieve the Document</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-hitl.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Human-in-the-Loop Review</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-coded-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-coded-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-notify.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">GenAI Activities</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-email-process.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Email Process</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,17 +76,17 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 15 of 30</span>
-    <h1>Fraud Detection Agent</h1>
+    <span class="eyebrow">Lesson 18 of 30</span>
+    <h1>Settlement Coded Agent</h1>
     <div class="rise-divider"></div>
 
-    <p>Right after the Start Event, the process needs to actually call the Fraud Detection Agent — the autonomous agent you built in <a href="../part3/index.html">Module 3</a> — before anything else happens to the claim.</p>
+    <p>Once the supervisor approves the claim, the process needs to calculate what to actually pay out. That's the job of the <b>Settlement Coded Agent</b> you'll build in <a href="../part4/index.html">Module 4</a> — a pure-Python, deterministic agent with no LLM involved, matching the "SettlementCodedAgent" step on the Approve branch of the BPMN diagram.</p>
 
-    <div class="step" id="step-5">
-      <div class="num">5</div>
+    <div class="step" id="step-9">
+      <div class="num">9</div>
       <div class="body">
-        <h3>Add the Fraud Detection Agent step</h3>
-        <p>Add a <b>Service task</b> to the canvas right after the Trigger Start Event, and connect the two. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b> — this pauses the process until the agent finishes running and returns its full output.</p>
+        <h3>Add the Settlement Coded Agent step</h3>
+        <p>On the Approve branch coming out of the Reviewer Action Gateway, add another <b>Service task</b> and name it <code>Settlement CodedAgent</code>. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b>, the same pattern used for the Fraud Detection Agent earlier in this flow.</p>
 
         <figure>
           <div class="shot">
@@ -94,31 +94,31 @@
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Service task — Start and wait for agent</span>
+              <span class="url">Service task — Settlement CodedAgent</span>
             </div>
-            <img src="assets/fraud_detection_agent_service_task.png" alt="Service task on the BPMN canvas named Fraud Detection Agent, Implementation panel with Action Start and wait for agent, Agent FraudDetectionAgent, Inputs in_ClaimData, Outputs out_ClaimDetails" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/settlement_coded_agent_service_task.png" alt="Service task named Settlement CodedAgent, Implementation Action Start and wait for agent, Agent SettlementCodedAgent, Inputs insurance_type, coverage_type, claim_amount, Outputs insurance_type, coverage_type, claim_amount, eligible, settlement_percentage, settlement_amount, message, Error" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>The Fraud Detection Agent step, calling the agent you built and published in Module 3.</figcaption>
+          <figcaption>The Settlement Coded Agent step, calling the coded agent you'll build in Module 4.</figcaption>
         </figure>
 
-        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the <code>claim_data</code> process variable (the full claim record you read into it back in the <a href="lesson-start-event.html">Start Event</a> step) — the agent expects the complete object, not just the claim ID, since it no longer looks the record up itself. Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
+        <p>For <b>Agent</b>, select <code>SettlementCodedAgent</code>. Under <b>Inputs</b>, map <code>insurance_type</code>, <code>coverage_type</code>, and <code>claim_amount</code> to the corresponding claim fields carried through the process. Under <b>Outputs</b>, map <code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code>, <code>message</code>, and <code>Error</code> to process variables — the eligibility and settlement figures the agent calculates, which the approval email and Outlook send step further down the flow will use.</p>
 
         <div class="adm tip">
           <div class="adm-title">💡 Before integrating the agent</div>
-          <div class="adm-body">This step only works once the Fraud Detection Agent from Module 3 is built and published — the "Agent" field above is where that agent gets connected into the Maestro process. If you haven't built it yet, complete <a href="../part3/index.html">Module 3</a> first, then come back and wire it in here.</div>
+          <div class="adm-body">Just like the Fraud Detection Agent, this step depends on the Settlement Coded Agent being built and published first. Complete <a href="../part4/index.html">Module 4</a> to build it, then come back and select it here.</div>
         </div>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added a Service task right after the Trigger Start Event and connected them.</div></div>
-          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to FraudDetectionAgent.</div></div>
-          <div class="row"><span class="box"></span><div>Mapped in_ClaimData to the claim_data process variable, and mapped all four output objects to process variables.</div></div>
+          <div class="row"><span class="box"></span><div>Added a Service task named Settlement CodedAgent on the Approve branch, after the Reviewer Action Gateway.</div></div>
+          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to SettlementCodedAgent.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped insurance_type, coverage_type, and claim_amount as inputs, and mapped all five outputs to process variables.</div></div>
         </div>
       </div>
     </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-start-event.html"><span class="dir">← Previous</span><span class="ttl">Start Event</span></a>
-      <a class="next" href="lesson-download.html"><span class="dir">Next →</span><span class="ttl">Retrieve the Document</span></a>
+      <a class="prev" href="lesson-hitl.html"><span class="dir">← Previous</span><span class="ttl">Human-in-the-Loop Review</span></a>
+      <a class="next" href="lesson-notify.html"><span class="dir">Next →</span><span class="ttl">GenAI Activities</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

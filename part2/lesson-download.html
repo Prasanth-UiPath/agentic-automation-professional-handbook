@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fraud Detection Agent · Module 2 · Maestro (BPMN)</title>
+<title>Retrieve the Document · Module 2 · Maestro (BPMN)</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
@@ -44,8 +44,8 @@
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Retrieve the Document</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Retrieve the Document</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-hitl.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Human-in-the-Loop Review</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-coded-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-notify.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">GenAI Activities</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,17 +76,17 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 15 of 30</span>
-    <h1>Fraud Detection Agent</h1>
+    <span class="eyebrow">Lesson 16 of 30</span>
+    <h1>Retrieve the Document</h1>
     <div class="rise-divider"></div>
 
-    <p>Right after the Start Event, the process needs to actually call the Fraud Detection Agent — the autonomous agent you built in <a href="../part3/index.html">Module 3</a> — before anything else happens to the claim.</p>
+    <p>Once the Fraud Detection Agent has run, the process needs the claim's supporting document before anyone can act on it. Add a connector activity right after the agent step that pulls the file straight out of the Data Fabric record.</p>
 
-    <div class="step" id="step-5">
-      <div class="num">5</div>
+    <div class="step" id="step-6">
+      <div class="num">6</div>
       <div class="body">
-        <h3>Add the Fraud Detection Agent step</h3>
-        <p>Add a <b>Service task</b> to the canvas right after the Trigger Start Event, and connect the two. Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Start and wait for agent</b> — this pauses the process until the agent finishes running and returns its full output.</p>
+        <h3>Download the supporting document from Data Fabric</h3>
+        <p>Add a <b>UiPath Data Fabric</b> connector activity to the canvas and set its <b>Action</b> to <b>Execute connector activity</b>, with <b>Select activity</b> set to <b>Download File from Record Field</b> — this pulls a file straight out of a specified field on a Data Fabric entity record.</p>
 
         <figure>
           <div class="shot">
@@ -94,31 +94,26 @@
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Service task — Start and wait for agent</span>
+              <span class="url">Connector: Download Supporting Document from DataFabric</span>
             </div>
-            <img src="assets/fraud_detection_agent_service_task.png" alt="Service task on the BPMN canvas named Fraud Detection Agent, Implementation panel with Action Start and wait for agent, Agent FraudDetectionAgent, Inputs in_ClaimData, Outputs out_ClaimDetails" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/download_supporting_document.png" alt="Connector activity Download File from Record Field, with UiPath Data Fabric connection Shared Data Fabric Connection, Entity IntakeClaimEntity, Field ClaimPDF, and Record ID set to vars.calimId.toUpperCase()" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>The Fraud Detection Agent step, calling the agent you built and published in Module 3.</figcaption>
+          <figcaption>Download File from Record Field — configured to pull the claim's PDF from Data Fabric.</figcaption>
         </figure>
 
-        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the <code>claim_data</code> process variable (the full claim record you read into it back in the <a href="lesson-start-event.html">Start Event</a> step) — the agent expects the complete object, not just the claim ID, since it no longer looks the record up itself. Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
-
-        <div class="adm tip">
-          <div class="adm-title">💡 Before integrating the agent</div>
-          <div class="adm-body">This step only works once the Fraud Detection Agent from Module 3 is built and published — the "Agent" field above is where that agent gets connected into the Maestro process. If you haven't built it yet, complete <a href="../part3/index.html">Module 3</a> first, then come back and wire it in here.</div>
-        </div>
+        <p>Configure the activity: set the <b>UiPath Data Fabric connection</b> to your shared connection (for example, <i>Shared Data Fabric Connection</i>), the <b>Entity</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and the <b>Field</b> to the entity field that stores the file (for example, <i>ClaimPDF</i>). For <b>Record ID</b>, reference the claim ID carried through the process — for example, an expression like <code>vars.calimId.toUpperCase()</code> — so the activity downloads the file for the correct record.</p>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added a Service task right after the Trigger Start Event and connected them.</div></div>
-          <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to FraudDetectionAgent.</div></div>
-          <div class="row"><span class="box"></span><div>Mapped in_ClaimData to the claim_data process variable, and mapped all four output objects to process variables.</div></div>
+          <div class="row"><span class="box"></span><div>Added a Data Fabric connector activity set to Download File from Record Field.</div></div>
+          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, Entity, and Field to match your claim entity and document field.</div></div>
+          <div class="row"><span class="box"></span><div>Set Record ID to an expression that resolves to the current claim's ID.</div></div>
         </div>
       </div>
     </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-start-event.html"><span class="dir">← Previous</span><span class="ttl">Start Event</span></a>
-      <a class="next" href="lesson-download.html"><span class="dir">Next →</span><span class="ttl">Retrieve the Document</span></a>
+      <a class="prev" href="lesson-fraud-agent.html"><span class="dir">← Previous</span><span class="ttl">Fraud Detection Agent</span></a>
+      <a class="next" href="lesson-hitl.html"><span class="dir">Next →</span><span class="ttl">Human-in-the-Loop Review</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
