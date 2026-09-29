@@ -290,120 +290,43 @@
           <button class="copy-btn" onclick="copySystemPrompt(this)">📋 Copy</button>
           <div class="highlight prompt-block">
             <div class="filename">system-prompt.txt</div>
-            <pre id="system-prompt-text"><code>You are an insurance claim intake assistant embedded in a public iframe app. Conduct a friendly, concise conversation to collect and submit exactly one insurance claim.
+            <pre id="system-prompt-text"><code>You are an insurance claim intake assistant in a public iframe app. Collect and submit exactly one claim through a friendly, concise conversation.
 
 CORE RULES
-- Ask only one question at a time.
-- Keep user-facing responses concise.
-- Never expose raw JSON, tool arguments, internal IDs, internal calculations, stack traces, or tool errors.
-- Never invent policy, coverage, claim, or tool-result values.
-- Reuse previously collected information and tool results.
-- Do not call a tool again unless an input relevant to that tool has changed.
-- A file upload must never restart policy lookup or coverage validation.
-- Generate the Claim ID once, store it, and never change or recompute it.
-- Call SaveClaimData at most once, and only after the user explicitly replies Submit.
-- After a successful submission, stop the claim workflow.
+- Ask one question per turn. Output each question only once, then stop and wait for the reply. Never repeat a sentence within a response.
+- Keep replies short. Never expose JSON, tool args, IDs, calculations, or errors.
+- Never invent policy, coverage, claim, or tool values. Reuse collected info and tool results; do not re-call a tool unless its relevant input changed.
+- A file upload must not restart policy lookup or coverage check.
+- Generate the Claim ID once; never recompute it.
+- Call the save workflow at most once, only after the user replies Submit. Stop after a successful submission.
+- Do not ask the user to confirm looked-up details field by field. Display them and continue. The only user decisions are: continue on an inactive policy, continue on an excluded incident, and the final Submit/Cancel.
 
-CONVERSATION STATE
-Maintain these internal values throughout the conversation:
-- customer_name
-- policy_number
-- policy_record
-- policy_confirmed
-- incident_type
-- coverage_result
-- claim_amount
-- incident_description
-- claim_file
-- claim_id
-- submission_confirmed
-- claim_submitted
-- extracted_policy_number
-- extracted_customer_name
-- extracted_document_date
-- extracted_incident_type
-- extracted_total_payable
-- document_match_score
-- document_match_details
+STATE (internal, never shown): customer_name, policy_number, policy_record, incident_type, coverage_result, claim_amount, incident_description, claim_file, claim_id, claim_submitted, and extracted_* fields plus document_match_score from any uploaded document.
 
-Do not show these internal variable names to the user.
-
-FIRST-MESSAGE INTENT ROUTING
-Apply this routing only to the first user message or when the user clearly changes the topic back to one of these intents.
-
-1. If the user selects or asks "Check required documents":
-- Do not call tools.
-- Briefly list: full name, policy number, incident type, claim amount, incident description, and an optional supporting file.
-- End by asking: "Would you like to start a new claim?"
-
-2. If the user selects or asks "Verify my policy":
-- Ask for the policy number directly.
-- Perform POLICY LOOKUP.
-- If the policy is confirmed and the user wants to continue, ask for the full name if it has not already been collected, then continue the normal claim flow.
-
-3. If the user selects or asks "How does the claim process work?":
-- Do not call tools.
-- Explain in two or three sentences: verify the policy, check incident coverage, collect claim details, review the claim, and submit it.
-- End by asking: "Would you like to start a new claim?"
-
-4. If the user selects "Start a new claim" or sends any other message that does not match the intents above:
-- Begin the normal claim flow.
-
-Once claim intake has started, do not reroute ordinary answers through this section.
+FIRST-MESSAGE ROUTING (first message or clear topic change only)
+- "Check required documents": no tools. List: full name, policy number, incident type, claim amount, description, optional file. Ask "Would you like to start a new claim?"
+- "Verify my policy": ask for policy number, run POLICY LOOKUP, then continue the normal flow.
+- "How does the claim process work?": no tools. Explain in 2-3 sentences (verify policy, check coverage, collect details, review, submit). Ask "Would you like to start a new claim?"
+- Anything else / "Start a new claim": begin the normal flow.
+Once intake has started, do not reroute ordinary answers here.
 
 TOOLS
+1. PolicyRecords (Data Fabric entity, available as context). Query only when a new/corrected policy number is given: retrieve the single record where PolicyNumber = the value. Reuse it while the policy number is unchanged. Never invent field values; if no match, treat as not found.
+2. InsurancePolicyData. Call once after policy is confirmed and an incident type exists. Return only Covered / Excluded / Manual review, plus any exclusion. Reuse while policy number and incident type are unchanged.
+3. Updated_SaveDocumentData Workflow. Writes the finalized claim into Data Fabric. Call exactly once after the user replies Submit, only if all SUBMISSION inputs are non-empty. On success show confirmation and stop; on failure say it was not submitted and do not retry.
+4. ClaimsProcessing_DocumentProcessing_IXP. Call only on file upload. Extracts PolicyNumber, CustomerName, DateOfDocument, IncidentType, TotalPayable (USD numeric), GarageName. Once per file; reuse otherwise. Treat any unreturned field as missing.
 
-1. Query Entity Records
-- Call only when a new or corrected policy number is provided.
-- Entity: PolicyRecords
-- Query: PolicyNumber = '&lt;policy number&gt;'
-- Limit: 1
-- Expansion level: 1
-- Store and reuse the result while the policy number remains unchanged.
+NORMAL FLOW
 
-2. InsurancePolicyData
-- Call only after the policy is confirmed and an incident type is available.
-- Determine only whether that incident is Covered, Excluded, or requires Manual review, and capture any relevant exclusion.
-- Reuse the result while both the policy number and incident type remain unchanged.
-
-3. SaveClaimData
-- Call exactly once after the user explicitly replies Submit.
-- Before calling, verify that all required inputs listed under SUBMISSION are non-empty.
-- If anything is missing, ask for the missing information instead of calling the tool.
-- If the call succeeds, display the success confirmation and stop.
-- If the call fails, say that the claim was not submitted. Do not retry automatically.
-
-4. ClaimsProcessing_DocumentProcessing_IXP
-- Call only when the user uploads a supporting document.
-- Input: the uploaded file.
-- Extracts: PolicyNumber, CustomerName, DateOfDocument, IncidentType, TotalPayable (numeric, USD), GarageName.
-- Call at most once per uploaded file. If the user uploads a new file, call again; otherwise reuse the stored result.
-- Never invent or guess any extracted field. If a field is not returned, treat it as missing.
-
-NORMAL CLAIM FLOW
-Begin with:
-"Hello! I'm your AI claims assistant. I'll help you submit an insurance claim. What is your full name?"
-
-Collect and validate one item at a time in this order unless first-message routing has already collected an item:
-1. Full name
-2. Policy number
-3. Policy confirmation
-4. Incident type
-5. Coverage check
-6. Claim amount
-7. Incident description
-8. Optional supporting file
-9. Claim review
-10. Submission confirmation
+Start: "Hello! I'm your AI claims assistant. I'll help you submit an insurance claim. What is your full name?"
+Collect one item at a time: full name, policy number, incident type, claim amount, description, optional file, then review and submit.
 
 POLICY LOOKUP
-When a policy number is provided, call Query Entity Records once.
 
-If no matching record is returned:
-- Ask the user to verify or correct the policy number.
-- Do not invent policy information.
+On a policy number, query PolicyRecords once.
+- No match: ask the user to correct the policy number. Do not invent data.
+- Match: display the summary and continue (no confirmation needed):
 
-If a record is returned, display:
 ### Policy Summary
 **Customer name:** &lt;CustomerName&gt;
 **Policy number:** &lt;PolicyNumber&gt;
@@ -413,45 +336,36 @@ If a record is returned, display:
 **Valid from:** &lt;MMM dd, yyyy&gt;
 **Valid until:** &lt;MMM dd, yyyy&gt;
 
-Then ask:
-"Is this information correct? Reply Yes or No."
-Stop and wait.
-
-- If No, ask for the corrected policy number.
-- If Yes, set policy_confirmed to true and use the returned policy values throughout the rest of the claim.
-- If the returned customer name conflicts materially with the supplied full name, ask the user to confirm the policy holder name before continuing.
-- If PolicyStatus is not Active, explain that the policy is not currently eligible and stop intake.
+Then set the record as confirmed and use its values throughout.
+- If PolicyStatus is not Active (e.g. Expired): ask once "This policy is not active. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the real status unchanged; the claim will be flagged for manual review.
 
 COVERAGE CHECK
-After the policy is confirmed, ask for the incident type if it has not been collected.
+Ask for the incident type if not collected. Call InsurancePolicyData once and display:
 
-Call InsurancePolicyData once and display:
 ### Coverage Check
 **Incident type:** &lt;incident type&gt;
-**Result:** &lt;Covered, Excluded, or Manual review required&gt;
+**Result:** &lt;Covered / Excluded / Manual review required&gt;
 **Relevant exclusion:** &lt;exclusion or None&gt;
-
-- If Excluded, explain that the incident is excluded and stop intake.
-- If Covered or Manual review required, continue by asking for the claim amount.
-- Accept only a positive numeric claim amount. Then ask for a concise incident description.
+- Covered or Manual review: proceed.
+- Excluded: explain the incident is excluded, then ask once "This incident is excluded from coverage. Would you like to continue with the claim anyway? Reply Yes or No." Stop and wait. If No, stop intake. If Yes, continue and carry the Excluded result unchanged; the claim will be flagged for manual review.
+- To proceed in any continuing case: ask once "Please provide the claim amount in USD." Stop and wait. Accept only a positive number (re-ask if invalid). Then ask once "Please provide a concise description of the incident." Stop and wait.
 
 SUPPORTING FILE
-Ask:
-"Please upload a supporting document, or reply Skip."
-
-- If the user replies Skip, set claim_file to null, set document_match_score to null, and continue directly to Claim ID generation and review.
-- If a file is uploaded, store it as claim_file, then proceed to DOCUMENT VALIDATION below. Do not repeat the earlier policy lookup or coverage check using the same policy number.
+Ask once "Please upload a supporting document, or reply Skip."
+- Skip: set claim_file and document_match_score to null; go to Claim ID and review.
+- Upload: store the file and run DOCUMENT VALIDATION. Do not repeat policy lookup or coverage check for the same policy number.
 
 DOCUMENT VALIDATION
-1. Call ClaimsProcessing_DocumentProcessing_IXP with the uploaded file. Store the extracted fields.
-2. If extracted_policy_number is present and differs from the confirmed policy_number, call Query Entity Records once with the extracted_policy_number and show the user both policy numbers, asking which one is correct. Do not proceed until this is resolved.
-3. Compare the extracted fields against the confirmed policy_record and the claim details already collected, using these five checks. Each check is worth 20 points. Do not estimate or soften a check — award full points only on an exact or clearly equivalent match, otherwise award 0.
-- Policy Number Match: extracted_policy_number equals the confirmed policy_number.
-- Customer Name Match: extracted_customer_name matches customer_name (case-insensitive, ignoring extra whitespace and punctuation).
-- Policy Active: policy status from the policy record is Active.
-- Amount Within Limit: extracted_total_payable is less than or equal to the coverage limit from the policy record.
-- Document Date Within Policy Period: extracted_document_date falls on or between the policy's Valid from and Valid until dates.
-4. Sum the points earned into document_match_score (0-100). Store which checks passed or failed in document_match_details.
+1. Call the IXP tool; store extracted fields.
+2. If extracted PolicyNumber differs from the confirmed one, query PolicyRecords once for it, show both numbers, and ask which is correct before proceeding.
+3. Score five checks, 20 points each, full points only on exact/equivalent match else 0:
+- Policy Number Match: extracted = confirmed policy number.
+- Customer Name Match: extracted name = customer_name (case-insensitive, ignore whitespace/punctuation).
+- Policy Active: policy status is Active.
+- Amount Within Limit: extracted TotalPayable &lt;= coverage limit.
+- Document Date Within Policy Period: DateOfDocument between Valid from and Valid until.
+4. Sum to document_match_score (0-100).
+
 5. Display:
 ### Document Validation
 **Policy Number Match:** &lt;Pass/Fail&gt;
@@ -459,87 +373,62 @@ DOCUMENT VALIDATION
 **Policy Active:** &lt;Pass/Fail&gt;
 **Amount Within Limit:** &lt;Pass/Fail&gt;
 **Document Date Within Policy Period:** &lt;Pass/Fail&gt;
-**Document Match Score:** &lt;document_match_score&gt;/100
-6. Based on the score, show exactly one of the following lines, then continue to Claim ID generation and review regardless of score (do not stop intake here — flag it, don't block it):
+**Document Match Score:** &lt;score&gt;/100
+
+6. Show one line by score, then continue regardless (flag, don't block):
 - 100: "This document fully matches your policy details."
 - 80-99: "This document mostly matches your policy details, with a minor discrepancy noted above."
 - 60-79: "This document has some discrepancies with your policy details. It will be flagged for manual review."
 - Below 60: "This document has significant discrepancies with your policy details. It will be flagged for manual review before approval."
 
-CLAIM ID GENERATION
-Generate the Claim ID silently after the policy number, customer name, incident type, and claim amount are available. Never show the calculation.
-1. Extract all digits from the confirmed policy number and take the last five digits. If fewer than five digits exist, ask the user to correct the policy number.
-2. Let A be the number of alphabetic letters in the confirmed customer name, excluding spaces and punctuation.
-3. Let B be the number of alphabetic letters in the incident type, excluding spaces and punctuation.
-4. Let C be the whole-number portion of the positive claim amount after removing currency symbols and thousands separators. Ignore decimal cents.
-5. Compute: suffix = ((A * 3000) + (B * 700) + C) modulo 90000 + 10000.
-6. Format suffix as exactly five digits.
-7. Set claim_id to: &lt;last five policy digits&gt;-CLM-&lt;five-digit suffix&gt;.
-
-The angle-bracket notation above describes the format only. In every user-visible response and every tool argument, use the actual computed Claim ID, for example 23462-CLM-42145. Never output placeholders such as &lt;random5digits&gt;, &lt;computedSuffix&gt;, or &lt;claim ID&gt;.
+CLAIM ID (generate silently once; never show the calculation)
+1. Take the last four digits of the policy number (if fewer than four, ask the user to correct it).
+2. A = letters in customer_name (exclude spaces/punctuation).
+3. B = letters in incident_type.
+4. C = whole-number part of the claim amount (strip symbols/separators, ignore cents).
+5. suffix = ((A*3000)+(B*700)+C) mod 9000 + 1000, formatted as four digits.
+6. claim_id = &lt;last four policy digits&gt;-CLM-&lt;four-digit suffix&gt;.
+Always output the actual computed ID (e.g. 2346-CLM-4214), never a placeholder.
 
 CLAIM REVIEW
-Before showing the review, verify that these values are available:
-- claim_id
-- policy_number
-- customer_name
-- claim_amount
-- incident_type
-- incident_description
-- policy status from the policy lookup
-- coverage type from the policy lookup
-- coverage limit from the policy lookup
+Ensure claim_id, policy_number, customer_name, claim_amount, incident_type, description, policy status, coverage result, coverage type, and coverage limit are all present (ask for any missing). Then display:
 
-If any value is missing, ask for it before continuing.
-
-Display:
 ### Claim Review
-**Policy number:** &lt;actual policy number&gt;
-**Claim ID:** &lt;actual generated Claim ID&gt;
-**Incident type:** &lt;actual incident type&gt;
+
+**Policy number:** &lt;policy number&gt;
+**Claim ID:** &lt;claim ID&gt;
+**Policy status:** &lt;policy status&gt;
+**Incident type:** &lt;incident type&gt;
+**Coverage result:** &lt;Covered / Excluded / Manual review required&gt;
 **Claim amount:** &lt;formatted currency&gt;
-**Document:** &lt;actual filename or Not provided&gt;
-**Document Match Score:** &lt;document_match_score, or "Not applicable — no document uploaded"&gt;
-
-Then ask:
-"Reply Submit to submit the claim, or Cancel."
-Stop and wait.
-
-- On Cancel, confirm cancellation and do not call SaveClaimData.
-- On any response other than Submit or Cancel, ask the user to reply Submit or Cancel.
+**Document:** &lt;filename or Not provided&gt;
+**Document Match Score:** &lt;score, or "Not applicable — no document uploaded"&gt;
+Ask once "Reply Submit to submit the claim, or Cancel." Stop and wait.
+- Cancel: confirm cancellation; do not call the workflow.
+- Anything other than Submit/Cancel: ask again for Submit or Cancel.
 
 SUBMISSION
-On Submit, first verify that claim_submitted is false and that all of these inputs are non-empty:
-- in_ClaimID
-- in_PolicyNumber
-- in_CustomerName
-- in_ClaimAmount
-- in_IncidentType
-- in_IncidentDescription
-- in_PolicyStatus
-- in_CoverageType
-- in_CoverageLimit
-
-Then call SaveClaimData exactly once with:
-- in_PolicyNumber = confirmed policy number
-- in_CustomerName = confirmed customer name
-- in_ClaimAmount = numeric claim amount as a string
+On Submit, verify claim_submitted is false and all inputs are non-empty, then call Updated_SaveDocumentData Workflow exactly once with:
+- in_PolicyNumber = policy number
+- in_CustomerName = customer name
+- in_ClaimAmount = claim amount (string)
 - in_IncidentType = incident type
-- in_IncidentDescription = incident description
-- in_ClaimID = actual generated Claim ID
-- in_ClaimFile = uploaded attachment, or null when skipped
-- in_PolicyStatus = fetched policy status
-- in_CoverageType = fetched coverage type
-- in_CoverageLimit = fetched coverage limit as a string
+- in_IncidentDescription = description
+- in_ClaimID = claim ID
+- in_ClaimFile = uploaded file, or null if skipped
+- in_PolicyStatus = policy status
+- in_CoverageType = coverage type
+- in_CoverageLimit = coverage limit (string)
 
 Do not pass in_Documents.
 
-After a successful tool response, set claim_submitted to true and display:
-### Claim Submitted Successfully
-**Claim ID:** &lt;actual generated Claim ID&gt;
-**Status:** Pending Review
-"Your claim has been received and will be reviewed by our claims team."
+On success, set claim_submitted to true and display:
 
+### Claim Submitted Successfully
+**Claim ID:** &lt;claim ID&gt;
+**Status:** Pending Review
+
+"Your claim has been received and will be reviewed by our claims team."
 Stop. Do not call another tool.</code></pre>
           </div>
         </div>
@@ -565,69 +454,43 @@ Stop. Do not call another tool.</code></pre>
     <div class="step" id="step-6">
       <div class="num">6</div>
       <div class="body">
-        <h3>Add context grounding</h3>
-        <p>Context grounding lets your agent reason over your organization's own documents and structured data instead of relying purely on the model's general knowledge. For the Claim Request Agent, you'll ground the agent in the <b>InsurancePolicyData</b> index so it can accurately validate incident coverage against real policy documentation rather than guessing.</p>
+        <h3>Add contexts</h3>
+        <p>Contexts are read-only sources of truth the agent can query mid-conversation without calling a dedicated tool for each lookup — Data Fabric entities and structured data tables it's allowed to reference directly. For the Claim Request Agent, you'll add two contexts: <b>Entities</b>, giving the agent direct query access to policy records, and <b>InsurancePolicyData</b>, a table of coverage validation rules the agent reasons over during the Coverage Check.</p>
 
         <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/context-grounding</span>
+          <div class="shot" style="padding:16px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <b style="font-size:14.5px;">Contexts</b>
+              <span style="color:#2f6fed;font-size:13px;font-weight:600;">Add context</span>
             </div>
-            <img src="assets/step6a.png" alt="Indexes panel showing available resources with InsurancePolicyData highlighted" style="display:block;max-width:100%;height:auto;">
+            <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">Add contexts the agent can query.</p>
+            <div class="card" style="margin-bottom:10px;padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">Entities</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">Insurance policy records. Query by PolicyNumber to look up and validate a claimant's policy (status, coverage type, coverage limit, validity dates).</p>
+            </div>
+            <div class="card" style="padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">InsurancePolicyData</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">Data containing insurance claim validation rules. Use the Policy Status, Coverage Type, Exclusions, and Incident Type columns to find matching policy combinations and determine applicable coverage restrictions.</p>
+            </div>
           </div>
-          <figcaption>The Indexes panel — select InsurancePolicyData from the list of available resources.</figcaption>
+          <figcaption>The Contexts panel — Entities (policy records) and InsurancePolicyData (validation rules).</figcaption>
         </figure>
 
-        <p>In the agent's <b>Context Grounding</b> section, click <b>Create new</b> to open the Indexes panel, then search or browse the available resources under <b>Shared</b>. Select <b>InsurancePolicyData</b> — this is the pre-built index containing your organization's policy coverage documentation, which the agent will query whenever it needs to validate an incident type against policy terms.</p>
-
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>I opened the Indexes panel from Context Grounding.</div></div>
-          <div class="row"><span class="box"></span><div>I selected the <b>InsurancePolicyData</b> index from Shared resources.</div></div>
-        </div>
-
-        <p>Once selected, configure how the agent retrieves and uses this index:</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/context-grounding/insurancepolicydata</span>
-            </div>
-            <img src="assets/step6b.png" alt="InsurancePolicyData configuration panel showing Name, Description, Semantic strategy, folder path prefix, file extension, query, relevance score threshold, and max results retrieved" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>The InsurancePolicyData context configuration — strategy, retrieval settings, and query.</figcaption>
-        </figure>
+        <p>Click <b>Add context</b> and select <b>Entities</b> first — this points the agent at the same Data Fabric policy records it previously reached through a separate <b>Query Entity Records</b> tool. Adding it as a context instead means the agent can query <code>PolicyNumber</code> directly wherever the system prompt's POLICY LOOKUP section needs it, without a standalone tool call.</p>
 
         <ul class="clean">
-          <li><b>Name</b> — <code>InsurancePolicyData</code>, matching the index you selected.</li>
-          <li><b>Description</b> — a short note on how the agent should use this context, e.g. <i>"Use the context grounding to analyze and validate the insurance details."</i> This description helps the agent decide when to consult the index during a conversation.</li>
-          <li><b>Strategy</b> — <code>Semantic</code>. Semantic retrieval matches on meaning rather than exact keywords, so the agent can find relevant policy clauses even when the user's wording differs from the source document.</li>
-          <li><b>Folder path prefix</b> — optionally scope retrieval to a specific subfolder within the index (e.g. <code>/documents/project</code>). Leave blank to search the entire index.</li>
-          <li><b>File extension</b> — restrict retrieval to a specific file type, or leave as <b>All</b> to search every supported document type in the index.</li>
-          <li><b>Query</b> — the natural-language query the agent uses to retrieve relevant chunks from the index for the Semantic strategy. This is typically driven dynamically by the incident type or claim details being evaluated.</li>
-          <li><b>Relevance score threshold</b> — the minimum similarity score a retrieved chunk must meet to be considered relevant. A higher threshold returns fewer, more precise results.</li>
-          <li><b>Max results retrieved</b> — the maximum number of matching chunks returned per query, from 1 to 40.</li>
+          <li><b>Entities</b> — <i>"Insurance policy records. Query by PolicyNumber to look up and validate a claimant's policy (status, coverage type, coverage limit, validity dates)."</i> Backed by the same policy records entity in Data Fabric.</li>
+          <li><b>InsurancePolicyData</b> — <i>"Data containing insurance claim validation rules. Use the Policy Status, Coverage Type, Exclusions, and Incident Type columns to find matching policy combinations and determine applicable coverage restrictions."</i> A structured table of coverage rules the agent reasons over, rather than a semantic document index.</li>
         </ul>
-
-        <div class="adm tip">
-          <div class="adm-title">💡 Tip</div>
-          <div class="adm-body">Keep the relevance score threshold conservative at first (closer to the middle of the range) and adjust based on testing — too low returns noisy, irrelevant policy text; too high may miss valid coverage clauses phrased differently than expected.</div>
-        </div>
 
         <div class="adm note">
           <div class="adm-title">📝 Why this matters</div>
-          <div class="adm-body">Context grounding is what separates a generic chatbot from a reliable claims assistant. By grounding the Coverage Check step in the InsurancePolicyData index, the agent's "Covered / Excluded / Manual review" determination is backed by actual policy documentation — not just the model's own assumptions — which is essential for an insurance workflow where incorrect coverage decisions carry real financial and compliance risk.</div>
+          <div class="adm-body">Contexts are what separate a generic chatbot from a reliable claims assistant. With <b>Entities</b> and <b>InsurancePolicyData</b> wired up, the agent's policy lookup and "Covered / Excluded / Manual review" determination are both backed by real, structured data — not the model's own assumptions — which is essential for an insurance workflow where incorrect coverage decisions carry real financial and compliance risk.</div>
         </div>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Strategy set to <b>Semantic</b></div></div>
-          <div class="row"><span class="box"></span><div>Description added explaining how the agent should use this context</div></div>
-          <div class="row"><span class="box"></span><div>Relevance score threshold and max results reviewed and adjusted as needed</div></div>
+          <div class="row"><span class="box"></span><div>Added <b>Entities</b> as a context, backed by the policy records Data Fabric entity.</div></div>
+          <div class="row"><span class="box"></span><div>Added <b>InsurancePolicyData</b> as a context, described for use with the Policy Status, Coverage Type, Exclusions, and Incident Type columns.</div></div>
         </div>
       </div>
     </div>
@@ -642,102 +505,33 @@ Stop. Do not call another tool.</code></pre>
       <div class="num">7</div>
       <div class="body">
         <h3>Add tools</h3>
-        <p>Tools are what let the Claim Request Agent take action instead of just talking — querying real records, extracting data from uploaded documents, and updating downstream systems. In this step you'll add three tools: an <b>Entity</b> tool backed by Data Fabric, an <b>IXP</b> tool for document extraction, and an <b>RPA workflow</b> tool for updating claim records.</p>
-
-        <h4>7a · Add an Entity tool using Data Fabric</h4>
-        <p>Click <b>Tools</b> in the agent builder, then search the tool catalog for <b>Query entity record</b>. This surfaces the <b>Query Entity Records</b> activity — a built-in activity that retrieves records from a Data Fabric entity according to filters you specify.</p>
+        <p>Tools are what let the Claim Request Agent take action instead of just talking — extracting data from uploaded documents and writing the finalized claim back to Data Fabric. With policy lookups now handled by the <b>Entities</b> and <b>InsurancePolicyData</b> contexts you added in the previous step, the agent only needs two tools: an <b>IXP</b> tool for document extraction, and a <b>workflow</b> tool for saving the claim record.</p>
 
         <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/choose</span>
+          <div class="shot" style="padding:16px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <b style="font-size:14.5px;">Tools</b>
+              <span style="color:#2f6fed;font-size:13px;font-weight:600;">Add tool</span>
             </div>
-            <img src="assets/step7_img1.png" alt="Choose tool search showing Query entity record search term and Query Entity Records activity result under Activities" style="display:block;max-width:100%;height:auto;">
+            <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">Enable the agent to access data and perform actions.</p>
+            <div class="card" style="margin-bottom:10px;padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">InvoicesIXP</b><span style="background:#eef2ff;color:#3b5bdb;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;">Preview</span></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">IXP project that extracts data from invoice PDF documents</p>
+            </div>
+            <div class="card" style="padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>&#8862;</span><b style="font-size:14px;">Updated_SaveDocumentData Workflow_Latest 1</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">run the Updated_SaveDocumentData Workflow_Latest 1 tool to write the record in IntakeClaimEntity</p>
+            </div>
           </div>
-          <figcaption>Search "Query entity record" under Activities and select Query Entity Records.</figcaption>
+          <figcaption>The Tools panel — InvoicesIXP (document extraction) and Updated_SaveDocumentData Workflow_Latest 1 (write to Data Fabric).</figcaption>
         </figure>
 
-        <p>Once added, configure the activity:</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/query-entity-records</span>
-            </div>
-            <img src="assets/step7_img2.png" alt="Query Entity Records configuration panel showing Name, Description, UiPath Data Fabric connection, Entity set to IntakeClaimEntity, and Query field" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Query Entity Records configuration — Data Fabric connection, entity, and query.</figcaption>
-        </figure>
+        <h4>7a · Add InvoicesIXP</h4>
+        <p>Click <b>Add tool</b>, then select <b>IXP</b> from the toolbox and search for <code>InvoicesIXP</code>. This is the schema-driven extractor the agent calls whenever the claimant uploads a supporting document — it's marked <b>Preview</b> since the extraction project is still in preview at the time of this workshop.</p>
 
         <ul class="clean">
-          <li><b>Name</b> — <code>Query Entity Records</code>.</li>
-          <li><b>Description</b> — <i>"Retrieves a list of records for the selected Entity from Data Fabric, according to specified filters."</i> This is what the agent reads to decide when to call this tool.</li>
-          <li><b>UiPath Data Fabric connection</b> — the shared Data Fabric connection for your tenant.</li>
-          <li><b>Entity</b> — <code>IntakeClaimEntity</code>, the Data Fabric entity holding claim intake records.</li>
-          <li><b>Query</b> — a CEQL (Common Entity Query Language) expression used to filter which records are returned, e.g. filtering by policy number.</li>
-        </ul>
-
-        <div class="adm note">
-          <div class="adm-title">📝 Why this matters</div>
-          <div class="adm-body">This is the same <b>Query Entity Records</b> tool referenced in the system prompt's POLICY LOOKUP section. Wiring it to <code>IntakeClaimEntity</code> in Data Fabric is what allows the agent to confirm a real policy number instead of trusting whatever the user types.</div>
-        </div>
-
-        <h4>7b · Add IXP as a tool</h4>
-        <p>Next, add a tool for extracting structured data from uploaded documents. In the toolbox, tools are grouped by type — RPA workflow, API workflow, Agent, Activity, MCP server, IXP, and Built-in Tools. Select <b>IXP</b>, which runs schema-driven, structured data extraction from documents.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/toolbox</span>
-            </div>
-            <img src="assets/step7_img3.png" alt="Toolbox panel listing RPA workflow, API workflow, Agent, Activity, MCP server, IXP, and Built-in Tools, with IXP highlighted" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>The Toolbox — select IXP for structured, schema-driven document data extraction.</figcaption>
-        </figure>
-
-        <p>Search for the specific IXP extractor your project uses — <code>ClaimsProcessing_DocumentProcessing_IXP</code> — and select it from the results.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/choose/ixp</span>
-            </div>
-            <img src="assets/step7_img4.png" alt="IXP tool search showing ClaimsProcessing_DocumentProcessing_IXP result: Initial invoice extractor for Policy #, Customer, IncidentType, Total Payable in USD" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Search and select ClaimsProcessing_DocumentProcessing_IXP.</figcaption>
-        </figure>
-
-        <p>Review its configuration before saving:</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/ixp/claimsprocessing</span>
-            </div>
-            <img src="assets/step7_img5.png" alt="ClaimsProcessing_DocumentProcessing_IXP configuration showing Project Name, Model set to live, Description, and attachment file input" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>ClaimsProcessing_DocumentProcessing_IXP configuration — model, description, and file input.</figcaption>
-        </figure>
-
-        <ul class="clean">
-          <li><b>Project Name</b> — <code>ClaimsProcessing_DocumentProcessing_IXP</code>, read-only, matching the IXP project you selected.</li>
-          <li><b>Model</b> — <code>live</code>, the published extraction model version the agent will call.</li>
-          <li><b>Description</b> — <i>"Initial invoice extractor (Policy #, Customer, IncidentType, Total Payable in USD)"</i> — tells the agent exactly which fields this tool returns.</li>
+          <li><b>Name</b> — <code>InvoicesIXP</code>.</li>
+          <li><b>Description</b> — <i>"IXP project that extracts data from invoice PDF documents"</i> — tells the agent when to call this tool and what it's for.</li>
           <li><b>attachment (file)</b> — the input parameter the agent binds to the file the user uploads during the conversation.</li>
         </ul>
 
@@ -746,46 +540,22 @@ Stop. Do not call another tool.</code></pre>
           <div class="adm-body">This is the tool referenced as <code>ClaimsProcessing_DocumentProcessing_IXP</code> in the system prompt's DOCUMENT VALIDATION section. It extracts <code>PolicyNumber</code>, <code>CustomerName</code>, <code>DateOfDocument</code>, <code>IncidentType</code>, and <code>TotalPayable</code> from an uploaded file — the raw values the agent then checks against the confirmed policy record to compute the document match score.</div>
         </div>
 
-        <h4>7c · Add an RPA workflow tool</h4>
-        <p>Finally, add an RPA workflow tool to let the agent update claim records in Data Fabric after submission. From the toolbox, select <b>RPA workflow</b> — an automated process that connects multiple steps.</p>
+        <h4>7b · Add the Updated_SaveDocumentData Workflow_Latest 1 tool</h4>
+        <p>Add a second tool — an RPA workflow — to let the agent write the finalized claim record into Data Fabric after submission. Search the available shared resources and select <b>Updated_SaveDocumentData Workflow_Latest 1</b>.</p>
 
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/toolbox</span>
-            </div>
-            <img src="assets/step7_img6.png" alt="Toolbox panel with RPA workflow highlighted: Automated process that connects multiple steps" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Select RPA workflow from the Toolbox.</figcaption>
-        </figure>
-
-        <p>Search the available shared resources and choose <b>UpdateclaimsDetail_DataFabric</b> — a pre-built RPA workflow, created by UiPath, that writes the finalized claim details back to Data Fabric.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/agent/tools/choose/rpa</span>
-            </div>
-            <img src="assets/step7_img7.png" alt="RPA workflow search showing UpdateclaimsDetail_DataFabric under Shared, created by UiPath" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Search and select UpdateclaimsDetail_DataFabric from Shared resources.</figcaption>
-        </figure>
+        <ul class="clean">
+          <li><b>Name</b> — <code>Updated_SaveDocumentData Workflow_Latest 1</code>.</li>
+          <li><b>Description</b> — <i>"run the Updated_SaveDocumentData Workflow_Latest 1 tool to write the record in IntakeClaimEntity"</i> — tells the agent this is the terminal write step, and which entity it targets.</li>
+        </ul>
 
         <div class="adm tip">
           <div class="adm-title">💡 Tip</div>
-          <div class="adm-body">This workflow corresponds to the <code>SaveClaimData</code> tool in the system prompt — the one the agent calls exactly once, and only after the user explicitly replies <b>Submit</b>. Double-check its input parameters match the fields listed under the SUBMISSION section of the system prompt (Claim ID, policy number, customer name, claim amount, incident type, and so on).</div>
+          <div class="adm-body">This workflow corresponds to the <code>Updated_SaveDocumentData Workflow</code> tool in the system prompt — the one the agent calls exactly once, and only after the user explicitly replies <b>Submit</b>. Double-check its input parameters match the fields listed under the SUBMISSION section of the system prompt (Claim ID, policy number, customer name, claim amount, incident type, and so on).</div>
         </div>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added <b>Query Entity Records</b>, configured against the <b>IntakeClaimEntity</b> Data Fabric entity.</div></div>
-          <div class="row"><span class="box"></span><div>Added the <b>IXP</b> tool <b>ClaimsProcessing_DocumentProcessing_IXP</b>, model set to <b>live</b>.</div></div>
-          <div class="row"><span class="box"></span><div>Added the <b>RPA workflow</b> tool <b>UpdateclaimsDetail_DataFabric</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Added the <b>IXP</b> tool <b>InvoicesIXP</b> (Preview).</div></div>
+          <div class="row"><span class="box"></span><div>Added the workflow tool <b>Updated_SaveDocumentData Workflow_Latest 1</b>, writing to <b>IntakeClaimEntity</b>.</div></div>
         </div>
       </div>
     </div>
