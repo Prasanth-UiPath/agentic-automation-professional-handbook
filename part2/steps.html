@@ -320,7 +320,7 @@
           <figcaption>The Fraud Detection Agent step, calling the agent you built and published in Module 3.</figcaption>
         </figure>
 
-        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the claim record ID carried by the process (the same ID the Start Event trigger picked up). Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
+        <p>For <b>Agent</b>, select <code>FraudDetectionAgent</code> — the exact agent you built in Module 3. Under <b>Inputs</b>, map <code>in_ClaimData</code> to the <code>claim_data</code> process variable (the full claim record you read into it back in the <a href="#group-start-event">Start Event</a> step) — the agent expects the complete object, not just the claim ID, since it no longer looks the record up itself. Under <b>Outputs</b>, map each of the agent's output objects — <code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, and <code>out_Status</code> — to process variables so the rest of the flow (routing, notifications, and the supervisor review) can read the agent's verdict.</p>
 
         <div class="adm tip">
           <div class="adm-title">💡 Before integrating the agent</div>
@@ -330,7 +330,7 @@
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Added a Service task right after the Trigger Start Event and connected them.</div></div>
           <div class="row"><span class="box"></span><div>Set Action to Start and wait for agent, with Agent set to FraudDetectionAgent.</div></div>
-          <div class="row"><span class="box"></span><div>Mapped in_ClaimData as input, and mapped all four output objects to process variables.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped in_ClaimData to the claim_data process variable, and mapped all four output objects to process variables.</div></div>
         </div>
       </div>
     </div>
