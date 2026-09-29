@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 1 · Conversational Agent</title>
+<title>Context Grounding · Module 1 · Conversational Agent</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 
 <header class="md-header">
   <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
-  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
 </header>
 
 <div class="md-main">
@@ -25,11 +25,11 @@
   <details open>
     <summary>Module 1 · Conversational Agent</summary>
     <div class="group-items">
-      <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Publish</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Apps</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,19 +76,58 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 1 of 30</span>
-    <h1>Conversational Agent</h1>
+    <span class="eyebrow">Lesson 5 of 30</span>
+    <h1>Context Grounding</h1>
     <div class="rise-divider"></div>
-    <p class="lead">Build a conversational agent that helps a user submit an insurance claim intake using UiPath Apps and Agents.</p>
 
-    <h2 id="overview">Overview</h2>
-    <p>In this module, you will create a new UiPath project and build a <b>conversational agent</b> — an agent designed to interact with users in real time. Your agent will form the front door of the Insurance Claim Approval Process: it collects claim details directly from the claimant through a chat-style interface, laying the foundation for the automation you'll extend in later modules of this workshop.</p>
+    <!-- STEP 6 -->
+    <div class="step" id="step-6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Add contexts</h3>
+        <p>Contexts are read-only sources of truth the agent can query mid-conversation without calling a dedicated tool for each lookup — Data Fabric entities and structured data tables it's allowed to reference directly. For the Claim Request Agent, you'll add two contexts: <b>Entities</b>, giving the agent direct query access to policy records, and <b>InsurancePolicyData</b>, a table of coverage validation rules the agent reasons over during the Coverage Check.</p>
 
-    <p style="color:var(--muted);font-size:14px;">This module is broken into short lessons — continue to <a href="lesson-concepts.html">the first lesson</a> below.</p>
+        <figure>
+          <div class="shot" style="padding:16px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <b style="font-size:14.5px;">Contexts</b>
+              <span style="color:#2f6fed;font-size:13px;font-weight:600;">Add context</span>
+            </div>
+            <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">Add contexts the agent can query.</p>
+            <div class="card" style="margin-bottom:10px;padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">Entities</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">Insurance policy records. Query by PolicyNumber to look up and validate a claimant's policy (status, coverage type, coverage limit, validity dates).</p>
+            </div>
+            <div class="card" style="padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">InsurancePolicyData</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">Data containing insurance claim validation rules. Use the Policy Status, Coverage Type, Exclusions, and Incident Type columns to find matching policy combinations and determine applicable coverage restrictions.</p>
+            </div>
+          </div>
+          <figcaption>The Contexts panel — Entities (policy records) and InsurancePolicyData (validation rules).</figcaption>
+        </figure>
+
+        <p>Click <b>Add context</b> and select <b>Entities</b> first — this points the agent at the same Data Fabric policy records it previously reached through a separate <b>Query Entity Records</b> tool. Adding it as a context instead means the agent can query <code>PolicyNumber</code> directly wherever the system prompt's POLICY LOOKUP section needs it, without a standalone tool call.</p>
+
+        <ul class="clean">
+          <li><b>Entities</b> — <i>"Insurance policy records. Query by PolicyNumber to look up and validate a claimant's policy (status, coverage type, coverage limit, validity dates)."</i> Backed by the same policy records entity in Data Fabric.</li>
+          <li><b>InsurancePolicyData</b> — <i>"Data containing insurance claim validation rules. Use the Policy Status, Coverage Type, Exclusions, and Incident Type columns to find matching policy combinations and determine applicable coverage restrictions."</i> A structured table of coverage rules the agent reasons over, rather than a semantic document index.</li>
+        </ul>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">Contexts are what separate a generic chatbot from a reliable claims assistant. With <b>Entities</b> and <b>InsurancePolicyData</b> wired up, the agent's policy lookup and "Covered / Excluded / Manual review" determination are both backed by real, structured data — not the model's own assumptions — which is essential for an insurance workflow where incorrect coverage decisions carry real financial and compliance risk.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added <b>Entities</b> as a context, backed by the policy records Data Fabric entity.</div></div>
+          <div class="row"><span class="box"></span><div>Added <b>InsurancePolicyData</b> as a context, described for use with the Policy Status, Coverage Type, Exclusions, and Incident Type columns.</div></div>
+        </div>
+      </div>
+    </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="../index.html"><span class="dir">← Previous</span><span class="ttl">Home</span></a>
-      <a class="next" href="lesson-concepts.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+      <a class="prev" href="lesson-system-prompt.html"><span class="dir">← Previous</span><span class="ttl">System Prompt</span></a>
+      <a class="next" href="lesson-tools.html"><span class="dir">Next →</span><span class="ttl">Tools</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

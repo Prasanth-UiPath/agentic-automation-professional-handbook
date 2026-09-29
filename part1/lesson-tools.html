@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 1 · Conversational Agent</title>
+<title>Tools · Module 1 · Conversational Agent</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 
 <header class="md-header">
   <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
-  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
 </header>
 
 <div class="md-main">
@@ -25,12 +25,12 @@
   <details open>
     <summary>Module 1 · Conversational Agent</summary>
     <div class="group-items">
-      <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Publish</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Apps</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,19 +76,73 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 1 of 30</span>
-    <h1>Conversational Agent</h1>
+    <span class="eyebrow">Lesson 6 of 30</span>
+    <h1>Tools</h1>
     <div class="rise-divider"></div>
-    <p class="lead">Build a conversational agent that helps a user submit an insurance claim intake using UiPath Apps and Agents.</p>
 
-    <h2 id="overview">Overview</h2>
-    <p>In this module, you will create a new UiPath project and build a <b>conversational agent</b> — an agent designed to interact with users in real time. Your agent will form the front door of the Insurance Claim Approval Process: it collects claim details directly from the claimant through a chat-style interface, laying the foundation for the automation you'll extend in later modules of this workshop.</p>
+    <!-- STEP 7 -->
+    <div class="step" id="step-7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Add tools</h3>
+        <p>Tools are what let the Claim Request Agent take action instead of just talking — extracting data from uploaded documents and writing the finalized claim back to Data Fabric. With policy lookups now handled by the <b>Entities</b> and <b>InsurancePolicyData</b> contexts you added in the previous step, the agent only needs two tools: an <b>IXP</b> tool for document extraction, and a <b>workflow</b> tool for saving the claim record.</p>
 
-    <p style="color:var(--muted);font-size:14px;">This module is broken into short lessons — continue to <a href="lesson-concepts.html">the first lesson</a> below.</p>
+        <figure>
+          <div class="shot" style="padding:16px 18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <b style="font-size:14.5px;">Tools</b>
+              <span style="color:#2f6fed;font-size:13px;font-weight:600;">Add tool</span>
+            </div>
+            <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">Enable the agent to access data and perform actions.</p>
+            <div class="card" style="margin-bottom:10px;padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>📄</span><b style="font-size:14px;">InvoicesIXP</b><span style="background:#eef2ff;color:#3b5bdb;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;">Preview</span></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">IXP project that extracts data from invoice PDF documents</p>
+            </div>
+            <div class="card" style="padding:12px 14px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span>&#8862;</span><b style="font-size:14px;">Updated_SaveDocumentData Workflow_Latest 1</b></div>
+              <p style="font-size:13px;margin:8px 0 0;line-height:1.5;">run the Updated_SaveDocumentData Workflow_Latest 1 tool to write the record in IntakeClaimEntity</p>
+            </div>
+          </div>
+          <figcaption>The Tools panel — InvoicesIXP (document extraction) and Updated_SaveDocumentData Workflow_Latest 1 (write to Data Fabric).</figcaption>
+        </figure>
+
+        <h4>7a · Add InvoicesIXP</h4>
+        <p>Click <b>Add tool</b>, then select <b>IXP</b> from the toolbox and search for <code>InvoicesIXP</code>. This is the schema-driven extractor the agent calls whenever the claimant uploads a supporting document — it's marked <b>Preview</b> since the extraction project is still in preview at the time of this workshop.</p>
+
+        <ul class="clean">
+          <li><b>Name</b> — <code>InvoicesIXP</code>.</li>
+          <li><b>Description</b> — <i>"IXP project that extracts data from invoice PDF documents"</i> — tells the agent when to call this tool and what it's for.</li>
+          <li><b>attachment (file)</b> — the input parameter the agent binds to the file the user uploads during the conversation.</li>
+        </ul>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">This is the tool referenced as <code>ClaimsProcessing_DocumentProcessing_IXP</code> in the system prompt's DOCUMENT VALIDATION section. It extracts <code>PolicyNumber</code>, <code>CustomerName</code>, <code>DateOfDocument</code>, <code>IncidentType</code>, and <code>TotalPayable</code> from an uploaded file — the raw values the agent then checks against the confirmed policy record to compute the document match score.</div>
+        </div>
+
+        <h4>7b · Add the Updated_SaveDocumentData Workflow_Latest 1 tool</h4>
+        <p>Add a second tool — an RPA workflow — to let the agent write the finalized claim record into Data Fabric after submission. Search the available shared resources and select <b>Updated_SaveDocumentData Workflow_Latest 1</b>.</p>
+
+        <ul class="clean">
+          <li><b>Name</b> — <code>Updated_SaveDocumentData Workflow_Latest 1</code>.</li>
+          <li><b>Description</b> — <i>"run the Updated_SaveDocumentData Workflow_Latest 1 tool to write the record in IntakeClaimEntity"</i> — tells the agent this is the terminal write step, and which entity it targets.</li>
+        </ul>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">This workflow corresponds to the <code>Updated_SaveDocumentData Workflow</code> tool in the system prompt — the one the agent calls exactly once, and only after the user explicitly replies <b>Submit</b>. Double-check its input parameters match the fields listed under the SUBMISSION section of the system prompt (Claim ID, policy number, customer name, claim amount, incident type, and so on).</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added the <b>IXP</b> tool <b>InvoicesIXP</b> (Preview).</div></div>
+          <div class="row"><span class="box"></span><div>Added the workflow tool <b>Updated_SaveDocumentData Workflow_Latest 1</b>, writing to <b>IntakeClaimEntity</b>.</div></div>
+        </div>
+      </div>
+    </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="../index.html"><span class="dir">← Previous</span><span class="ttl">Home</span></a>
-      <a class="next" href="lesson-concepts.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+      <a class="prev" href="lesson-context-grounding.html"><span class="dir">← Previous</span><span class="ttl">Context Grounding</span></a>
+      <a class="next" href="lesson-deploy.html"><span class="dir">Next →</span><span class="ttl">Deploy and Publish</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

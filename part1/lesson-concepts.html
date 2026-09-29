@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 1 · Conversational Agent</title>
+<title>Concepts · Module 1 · Conversational Agent</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 
 <header class="md-header">
   <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
-  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
 </header>
 
 <div class="md-main">
@@ -25,8 +25,8 @@
   <details open>
     <summary>Module 1 · Conversational Agent</summary>
     <div class="group-items">
-      <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -76,19 +76,37 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 1 of 30</span>
-    <h1>Conversational Agent</h1>
+    <span class="eyebrow">Lesson 2 of 30</span>
+    <h1>Concepts</h1>
     <div class="rise-divider"></div>
-    <p class="lead">Build a conversational agent that helps a user submit an insurance claim intake using UiPath Apps and Agents.</p>
 
-    <h2 id="overview">Overview</h2>
-    <p>In this module, you will create a new UiPath project and build a <b>conversational agent</b> — an agent designed to interact with users in real time. Your agent will form the front door of the Insurance Claim Approval Process: it collects claim details directly from the claimant through a chat-style interface, laying the foundation for the automation you'll extend in later modules of this workshop.</p>
+    <h3>What's a Conversational Agent?</h3>
+    <p>A <b>Conversational Agent</b> is a UiPath agent designed to interact with people in real time through natural, back-and-forth chat — rather than running a task end to end on its own. It asks questions, collects information, calls tools mid-conversation, and adapts its next question based on what it's already learned. For the Insurance Claim Approval Process, the Claim Request Agent <i>is</i> the conversational agent: it's the front door claimants talk to when they need to file a claim.</p>
 
-    <p style="color:var(--muted);font-size:14px;">This module is broken into short lessons — continue to <a href="lesson-concepts.html">the first lesson</a> below.</p>
+    <h3>Why Conversational Agents?</h3>
+    <p>Many business processes don't start with a clean, structured form — they start with a person who has a question, a document, and an incomplete understanding of what's required. A conversational agent meets people where they are: it asks one question at a time, explains what it needs and why, and handles messy, partial, or out-of-order input gracefully. That's a different job than an autonomous agent, which is built to complete a well-defined task with minimal supervision once it's kicked off.</p>
+    <div class="grid g3">
+      <div class="card"><div class="ico">🗣️</div><h4>Natural intake</h4><p>Replace rigid multi-page forms with a guided conversation that adapts to the user.</p></div>
+      <div class="card"><div class="ico">🔀</div><h4>Real-time branching</h4><p>Route to the right question, tool, or explanation based on what the user just said.</p></div>
+      <div class="card"><div class="ico">🤝</div><h4>Trust through transparency</h4><p>Explain what's needed and why, and hand off to a human when a case needs judgment.</p></div>
+    </div>
+
+    <h3>Pillars of a Conversational Agent</h3>
+    <p>Every conversational agent you design in UiPath is built from the same seven building blocks. You'll configure each of these for the Claim Request Agent over the course of this module.</p>
+
+    <div class="grid g2">
+      <div class="card"><h4>System Prompt</h4><p style="font-size:13.5px;margin:0;">Define agent persona, goals, and behavioral guidelines.</p></div>
+      <div class="card"><h4>Tools Integration</h4><p style="font-size:13.5px;margin:0;">Connect RPA, API, MCP, autonomous agents, and built-in tools.</p></div>
+      <div class="card"><h4>Context Grounding</h4><p style="font-size:13.5px;margin:0;">Ground responses with semantic, DeepRAG, or batch knowledge retrieval.</p></div>
+      <div class="card"><h4>Human Escalations</h4><p style="font-size:13.5px;margin:0;">Hand off to humans via Action Center tasks and document validation.</p></div>
+      <div class="card"><h4>Model Selection</h4><p style="font-size:13.5px;margin:0;">Choose from Claude Sonnet 4.5, GPT-5, or Gemini with configurable token limits.</p></div>
+      <div class="card"><h4>Custom Appearance</h4><p style="font-size:13.5px;margin:0;">Tailor title, description, and starting prompts to match your brand.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px;"><h4>Autopilot and Agent Health Score</h4><p style="font-size:13.5px;margin:0;">Develop your agent in natural language &amp; automatically assess production readiness.</p></div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="../index.html"><span class="dir">← Previous</span><span class="ttl">Home</span></a>
-      <a class="next" href="lesson-concepts.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Overview</span></a>
+      <a class="next" href="lesson-create-agent.html"><span class="dir">Next →</span><span class="ttl">Create Agent</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

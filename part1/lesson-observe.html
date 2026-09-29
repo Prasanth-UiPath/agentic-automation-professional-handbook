@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 1 · Conversational Agent</title>
+<title>Observing Your Agent · Module 1 · Conversational Agent</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 
 <header class="md-header">
   <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
-  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
 </header>
 
 <div class="md-main">
@@ -25,7 +25,7 @@
   <details open>
     <summary>Module 1 · Conversational Agent</summary>
     <div class="group-items">
-      <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -33,7 +33,7 @@
       <a class="lesson-row" href="lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Publish</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Apps</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 1 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -76,19 +76,56 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 1 of 30</span>
-    <h1>Conversational Agent</h1>
+    <span class="eyebrow">Lesson 9 of 30</span>
+    <h1>Observing Your Agent</h1>
     <div class="rise-divider"></div>
-    <p class="lead">Build a conversational agent that helps a user submit an insurance claim intake using UiPath Apps and Agents.</p>
 
-    <h2 id="overview">Overview</h2>
-    <p>In this module, you will create a new UiPath project and build a <b>conversational agent</b> — an agent designed to interact with users in real time. Your agent will form the front door of the Insurance Claim Approval Process: it collects claim details directly from the claimant through a chat-style interface, laying the foundation for the automation you'll extend in later modules of this workshop.</p>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Deploying the Claim Request Agent isn't the end of the job — once it's live, you need visibility into how it's actually performing. Comprehensive observability transforms agent performance into actionable insights, and is what lets you monitor and orchestrate a conversational agent responsibly after go-live.</p>
 
-    <p style="color:var(--muted);font-size:14px;">This module is broken into short lessons — continue to <a href="lesson-concepts.html">the first lesson</a> below.</p>
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">cloud.uipath.com/…/deployed-agents/hr-assistant/dashboard</span>
+        </div>
+        <div style="padding:18px;background:#fff;">
+          <p style="font-size:11px;color:var(--muted);margin:0 0 8px;">Deployed agents &gt; HR Assistant</p>
+          <div style="display:flex;gap:16px;margin-bottom:12px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Units consumed</div><div style="font-size:18px;font-weight:700;">0</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Active users</div><div style="font-size:18px;font-weight:700;">2</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Messages</div><div style="font-size:18px;font-weight:700;">35</div></div>
+            <div style="flex:1;min-width:100px;border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:11px;color:var(--muted);">Conversations</div><div style="font-size:18px;font-weight:700;">31</div></div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin:0;">Dashboard tabs: Design · Runtime · Feedback (Preview) — with Consumption, Most Active Users, and Feedback-over-time charts below.</p>
+        </div>
+      </div>
+      <figcaption>The agent dashboard — consumption, active users, messages, and conversations at a glance (mockup, based on a live HR Assistant example).</figcaption>
+    </figure>
+
+    <div class="grid g3">
+      <div class="card"><h4>Business Intelligence</h4><p style="font-size:13.5px;margin:0;">Track consumption metrics, active users, messages, conversations, and feedback trends over time. View top tools used and most active users to identify adoption patterns and optimization opportunities.</p></div>
+      <div class="card"><h4>Compliance and Auditability</h4><p style="font-size:13.5px;margin:0;">Full execution traces enable detailed insight into agent behavior. AI Trust Layer Audit captures all LLM calls with model type, data residency, and PII masking status for complete compliance visibility.</p></div>
+      <div class="card"><h4>Feedback</h4><p style="font-size:13.5px;margin:0;">Users provide thumbs up/down on responses which attaches the feedback to execution traces. Admins can then review feedback in Instance Management and incorporate insights back into evaluation sets for continuous design-time improvement.</p></div>
+    </div>
+
+    <p>Together, these three pillars are how you monitor and orchestrate a conversational agent once it's in production: <b>Business Intelligence</b> tells you whether the agent is being adopted and where; <b>Compliance and Auditability</b> gives you a defensible record of exactly what the agent did and why, down to the model call level; and <b>Feedback</b> closes the loop, turning real user reactions into concrete improvements to your evaluation sets and, eventually, your system prompt.</p>
+
+    <div class="adm note">
+      <div class="adm-title">📝 Why this matters</div>
+      <div class="adm-body">For an insurance claim intake agent, observability isn't optional. Compliance and Auditability gives you the audit trail regulators expect, Business Intelligence tells you if claimants are actually completing the flow versus abandoning it, and Feedback is your fastest signal that the system prompt or a tool needs adjustment.</div>
+    </div>
+
+    <div class="checklist">
+      <div class="row"><span class="box"></span><div>Located the agent's dashboard under Deployed agents.</div></div>
+      <div class="row"><span class="box"></span><div>Reviewed consumption, usage, and feedback metrics.</div></div>
+      <div class="row"><span class="box"></span><div>Understood where execution traces and AI Trust Layer audit data live for compliance review.</div></div>
+    </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="../index.html"><span class="dir">← Previous</span><span class="ttl">Home</span></a>
-      <a class="next" href="lesson-concepts.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+      <a class="prev" href="lesson-apps.html"><span class="dir">← Previous</span><span class="ttl">Apps</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 1 Complete</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
