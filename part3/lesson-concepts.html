@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 3 Complete · Agent Builder</title>
+<title>Concepts · Module 3 · Agent Builder</title>
 <link rel="stylesheet" href="../assets/course.css">
 </head>
 <body>
 
 <header class="md-header">
   <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
-  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+  <div class="search">&#128269; <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
 </header>
 
 <div class="md-main">
@@ -57,9 +57,9 @@
     <summary>Module 3 · Agent Builder</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
   <details>
@@ -76,27 +76,19 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Lesson 25 of 30</span>
-    <h1>You Built the Fraud Detection Agent</h1>
+    <span class="eyebrow">Lesson 23 of 30</span>
+    <h1>Concepts</h1>
     <div class="rise-divider"></div>
-    <p class="lead">A quick recap of the autonomous agent you just created.</p>
 
-    <h2 id="recap">What you did</h2>
-    <p>You created a low-code autonomous agent, gave it a single object input (<code>in_ClaimData</code> — the complete claim record Maestro already retrieved) and a structured output covering claim details, fraud analysis, a suggested customer email, and a routing status. You wrote a system prompt that encodes a deterministic, nine-rule fraud-scoring model and a matching classification/routing scheme, and wired up a short user prompt — with no Data Fabric lookup or tool required.</p>
+    <h3>What's Agent Builder?</h3>
+    <p><b>Agent Builder</b> is the low-code, visual experience in UiPath Studio Web for designing agents — as opposed to writing one in code with the SDK. From the same "Select agent type" dialog, you can also generate an agent from a plain-language description with Autopilot, or switch to the Code option if you'd rather build a coded agent.</p>
 
-    <div class="obj"><span class="chk">✓</span><div>Created an Autonomous agent named "Fraud Detection Agent"</div></div>
-    <div class="obj"><span class="chk">✓</span><div>Defined the in_ClaimData object input and the full output schema</div></div>
-    <div class="obj"><span class="chk">✓</span><div>Wrote the system prompt encoding the fraud-scoring rules and routing logic</div></div>
-    <div class="obj"><span class="chk">✓</span><div>Wrote the user prompt referencing the complete claim record — no tools required</div></div>
-
-    <div class="adm tip">
-      <div class="adm-title">💡 What's next</div>
-      <div class="adm-body">With the Fraud Detection Agent built, it's ready to be published and wired into the Fraud Detection Agent step of the Module 2 Maestro process. Later modules complete the remaining pieces of the Insurance Claim Approval Process, including the Settlement Coded Agent.</div>
-    </div>
+    <h3>Autonomous vs. Conversational</h3>
+    <p>Agent Builder offers two low-code agent types. A <b>Conversational Agent</b> — like the Claim Request Agent from Module 1 — chats with a user in real time. An <b>Autonomous Agent</b> runs a task end to end on its own, with no back-and-forth: it receives inputs, does its reasoning and tool calls, and returns a fixed output shape. The Fraud Detection Agent is autonomous — nobody chats with it, Maestro just calls it and reads the result.</p>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-build.html"><span class="dir">← Previous</span><span class="ttl">Build the Agent</span></a>
-      <a class="next" href="../part4/index.html"><span class="dir">Next →</span><span class="ttl">Overview</span></a>
+      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Overview</span></a>
+      <a class="next" href="lesson-build.html"><span class="dir">Next →</span><span class="ttl">Build the Agent</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
