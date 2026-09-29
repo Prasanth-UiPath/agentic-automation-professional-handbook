@@ -121,36 +121,26 @@
       <figcaption>The full Insurance Claim Approval Process, as modeled on the BPMN canvas.</figcaption>
     </figure>
 
+    <h3>Create the Maestro BPMN process</h3>
+    <p>From the "Start building" dialog in UiPath Studio Web, choose <b>Maestro BPMN</b> to design and build a business process on a BPMN canvas — as opposed to Maestro Flow, Agent, or RPA Workflow.</p>
+
+    <figure>
+      <div class="shot">
+        <div class="chrome">
+          <span class="c" style="background:#FF5F57"></span>
+          <span class="c" style="background:#FEBC2E"></span>
+          <span class="c" style="background:#28C840"></span>
+          <span class="url">cloud.uipath.com/studio/start-building</span>
+        </div>
+        <img src="assets/bpmn_step1.png" alt="Start building dialog showing Maestro Flow, Maestro BPMN, Agent, and RPA Workflow options" style="display:block;max-width:100%;height:auto;">
+      </div>
+      <figcaption>Choose Maestro BPMN from the Start building dialog.</figcaption>
+    </figure>
+
+    <p>Name the solution and the Maestro process following the same naming convention you used in Module 1 — for example, reuse your existing <code>Insurance Claim Approval Process (YourName)</code> solution folder, and name the BPMN process something identifiable, such as <code>Insurance Claim Approval Process</code>.</p>
+
     <div class="step" id="step-1">
       <div class="num">1</div>
-      <div class="body">
-        <h3>Create the Maestro BPMN process</h3>
-        <p>From the "Start building" dialog in UiPath Studio Web, choose <b>Maestro BPMN</b> to design and build a business process on a BPMN canvas — as opposed to Maestro Flow, Agent, or RPA Workflow.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/studio/start-building</span>
-            </div>
-            <img src="assets/bpmn_step1.png" alt="Start building dialog showing Maestro Flow, Maestro BPMN, Agent, and RPA Workflow options" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Choose Maestro BPMN from the Start building dialog.</figcaption>
-        </figure>
-
-        <p>Name the solution and the Maestro process following the same naming convention you used in Module 1 — for example, reuse your existing <code>Insurance Claim Approval Process (YourName)</code> solution folder, and name the BPMN process something identifiable, such as <code>Insurance Claim Approval Process</code>.</p>
-
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Selected <b>Maestro BPMN</b> from the Start building dialog.</div></div>
-          <div class="row"><span class="box"></span><div>Named the solution and process following the workshop's naming convention.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-2">
-      <div class="num">2</div>
       <div class="body">
         <h3>Import the BPMN file</h3>
         <p>If you already have a <code>.bpmn</code> file for the Insurance Claim Approval Process — for example, one exported from another tool or provided by your instructor — you can import it directly instead of building the diagram from scratch. In the Explorer panel, right-click your Maestro BPMN item and choose <b>Add to project</b>, then select <b>Import BPMN</b>.</p>
@@ -168,6 +158,21 @@
           <figcaption>Add to project → Import BPMN, to bring in an existing .bpmn file.</figcaption>
         </figure>
 
+        <p>This opens the <b>Import BPMN</b> dialog, where you can drop in — or choose — a <code>.bpmn</code> file exported from any BPMN 2.0-compatible tool.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Import BPMN</span>
+            </div>
+            <img src="assets/bpmn_import_modal.png" alt="Import BPMN dialog: Import a .bpmn file from any BPMN 2.0-compatible tool, with a Choose or drop .bpmn file here dropzone" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Import BPMN dialog — choose or drop your .bpmn file to bring it onto the canvas.</figcaption>
+        </figure>
+
         <div class="adm tip">
           <div class="adm-title">💡 Tip</div>
           <div class="adm-body">Importing is the fastest way to get the exact flow shown above onto your canvas. If you don't have a <code>.bpmn</code> file to import, you can build the same diagram manually on the canvas using the image above as your reference — start with the Trigger Start Event and work left to right.</div>
@@ -180,18 +185,11 @@
       </div>
     </div>
 
-    <!-- GROUP: Start Event -->
-    <div class="group-header" id="group-start-event">
-      <h2 style="margin-top:0;">Start Event</h2>
-    </div>
-
-    <p>With the process created (and the diagram imported or drawn), the next job is to make it actually start on its own — the moment a new claim shows up. That takes two pieces: an event trigger registered in Orchestrator, and the Trigger Start Event node on the canvas configured to listen for the same signal.</p>
-
-    <div class="step" id="step-3">
-      <div class="num">3</div>
+    <div class="step" id="step-2">
+      <div class="num">2</div>
       <div class="body">
-        <h3>Create the event trigger in Orchestrator</h3>
-        <p>The process needs a trigger that kicks it off whenever a new claim record appears. In Orchestrator, go to <b>My Workspace → Automations → Triggers → Time Triggers</b> and choose <b>Create Time Trigger</b>. Name it something identifiable — for example <code>Insurance_Claim_EventTrigger</code> — and set the <b>Process</b> to your Maestro BPMN process (for example, <code>InsuranceClaim_Create_Entity_Trigger</code>).</p>
+        <h3>Test and publish the process</h3>
+        <p>Before wiring up triggers and variables, confirm the imported diagram actually runs. On the process canvas, use the <b>Debug</b> or <b>Debug step-by-step</b> controls in the toolbar to run the process end to end, and switch between the <b>Build</b>, <b>Evaluate</b>, and <b>Preview</b> tabs at the bottom of the canvas to inspect the diagram, run evaluation sets against it, and preview how it will look once live.</p>
 
         <figure>
           <div class="shot">
@@ -199,19 +197,60 @@
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/orchestrator/triggers/create-time-trigger</span>
+              <span class="url">cloud.uipath.com/studio/designer</span>
             </div>
-            <img src="assets/start_event_orchestrator_trigger.png" alt="Create Time Trigger dialog in Orchestrator: Name Insurance_Claim_EventTrigger, Process InsuranceClaim_Create_Entity_Trigger (Maestro BPMN), Entry point Record Created, Input ClaimID, Enable trigger toggled on" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/bpmn_test_publish.png" alt="Maestro BPMN canvas with Debug and Deploy controls in the toolbar, and Build, Evaluate, Preview tabs at the bottom of the canvas" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Create Time Trigger — name the trigger, point it at your Maestro BPMN process, and set the entry point.</figcaption>
+          <figcaption>Debug the process from the toolbar, then use Build / Evaluate / Preview to check the diagram before publishing.</figcaption>
         </figure>
 
-        <p>Under <b>Runtime Arguments</b>, set the <b>Entry point</b> to <code>Record Created</code> and add an input argument named <code>ClaimID</code>. Leave <b>Enable trigger</b> switched on so the trigger is active as soon as it's created.</p>
+        <p>Once the process debugs cleanly, use the <b>Deploy</b> menu in the toolbar to publish it — the same Publish-vs-Deploy distinction from Module 1 applies here: <b>Publish</b> pushes the package to a feed, while <b>Deploy</b> also creates a running deployment in one step. You'll need a published, deployed process before you can attach a trigger to it in the next step.</p>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Created a Time Trigger in Orchestrator (My Workspace → Automations → Triggers → Time Triggers).</div></div>
-          <div class="row"><span class="box"></span><div>Pointed the trigger at the Maestro BPMN process for the Insurance Claim Approval Process.</div></div>
-          <div class="row"><span class="box"></span><div>Set the entry point to <code>Record Created</code> and added the <code>ClaimID</code> input argument.</div></div>
+          <div class="row"><span class="box"></span><div>Debugged the imported process and confirmed it runs without errors.</div></div>
+          <div class="row"><span class="box"></span><div>Reviewed the diagram using the Build, Evaluate, and Preview tabs.</div></div>
+          <div class="row"><span class="box"></span><div>Published and deployed the process from the Deploy menu.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP: Start Event -->
+    <div class="group-header" id="group-start-event">
+      <h2 style="margin-top:0;">Start Event</h2>
+    </div>
+
+    <p>With the process imported, tested, and published, the next job is to make it actually start on its own — the moment a new claim shows up — and to give it the variables it needs to carry claim data through the flow. That's an event trigger registered against the process, plus a couple of process-level variables and an input argument set up in the Data manager.</p>
+
+    <div class="step" id="step-3">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Create the trigger</h3>
+        <p>From your automation's <b>Triggers → Event Triggers</b> page, click <b>Add Event Trigger</b>. Under <b>General details</b>, set <b>Select connector</b> to <b>UiPath Data Fabric</b>, choose your <b>Connection</b> (for example, the <i>Shared Data Fabric Connection [default]</i>), and set <b>Event</b> to <b>Record Created</b> — the same "new claim record" signal used throughout this workshop.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/…/orchestrator_/triggers/event/add</span>
+            </div>
+            <img src="assets/start_event_trigger_wizard.png" alt="Add Event Trigger wizard: Select connector UiPath Data Fabric, Connection Shared Data Fabric Connection [default], Event Record Created, Entity Scope dropdown showing Folder and Tenant options" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add Event Trigger — Data Fabric connector, Record Created event, and Entity Scope.</figcaption>
+        </figure>
+
+        <p>Under <b>Entity Scope</b>, choose how broadly the trigger can see entities: <b>Folder</b> scopes it to entities available in this workspace folder, while <b>Tenant</b> makes entities configured at the tenant level selectable too. For this workshop, select <b>Tenant</b> so the trigger can see the shared Data Fabric entity the workshop uses. Click <b>Next</b> to move to <b>Event details</b>, where you'll pick the specific entity (for example, <i>IntakeClaimEntity</i>) and any filter conditions, then click <b>Add</b> to save the trigger.</p>
+
+        <div class="adm note">
+          <div class="adm-title">📝 Why this matters</div>
+          <div class="adm-body">This event trigger is what starts the entire Insurance Claim Approval Process automatically — the moment a claim record is created in Data Fabric (by the Claim Request Agent from Module 1), this trigger fires and kicks off the BPMN process from its start event, with no manual intervention.</div>
+        </div>
+
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened Triggers → Event Triggers → Add Event Trigger.</div></div>
+          <div class="row"><span class="box"></span><div>Set connector to <b>UiPath Data Fabric</b>, connection to the shared Data Fabric connection, and event to <b>Record Created</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Set Entity Scope to <b>Tenant</b> and completed Event details to point at the claim entity.</div></div>
         </div>
       </div>
     </div>
@@ -219,8 +258,8 @@
     <div class="step" id="step-4">
       <div class="num">4</div>
       <div class="body">
-        <h3>Configure the Trigger Start Event on the canvas</h3>
-        <p>Back on the BPMN canvas, select the <b>Trigger Start Event</b> node — the one labeled <i>"Trigger Start Event – Data Fabric entity creation"</i> at the beginning of the flow.</p>
+        <h3>Create the variables and input argument</h3>
+        <p>Open the <b>Data manager</b> panel from the left-hand rail. This is where the process's own working data lives — variables that persist across the whole flow, plus the inputs and outputs each start/end event exposes.</p>
 
         <figure>
           <div class="shot">
@@ -228,62 +267,29 @@
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Insurance Claim Approval Process — BPMN diagram</span>
+              <span class="url">Data manager</span>
             </div>
-            <img src="assets/start_event_diagram_node.png" alt="Trigger Start Event node on the BPMN canvas, labeled Trigger Start Event – Data Fabric entity creation" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/data_manager_variables.png" alt="Data manager panel: Variables in_ClaimFilePDF (File) and claim_data (Object); Inputs under Claim Ready for Review including ClaimID (String); Outputs under End" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>The Trigger Start Event node — this is what you'll wire up to Data Fabric.</figcaption>
+          <figcaption>The Data manager panel — process Variables, and Inputs/Outputs per event.</figcaption>
         </figure>
 
-        <p>Open its <b>Implementation</b> panel and set <b>Action</b> to <b>Wait for connector</b>, then choose <b>Connector</b> from the options that appear (as opposed to None or Queues).</p>
+        <p>Under <b>Variables</b>, add two: <code>in_ClaimFilePDF</code> as a <b>File</b> variable to hold the downloaded supporting document, and <code>claim_data</code> as an <b>Object</b> variable to hold the claim record once it's read from Data Fabric. Under <b>Inputs</b> for the <b>Claim Ready for Review</b> start event, add one input argument — <code>ClaimID</code>, of type <b>String</b> — so the trigger can pass in which claim record just changed.</p>
 
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Implementation panel — Action</span>
-            </div>
-            <img src="assets/start_event_action_connector.png" alt="Implementation panel Action dropdown set to Wait for connector, with Connector highlighted among None, Connector, and Queues" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Set Action to "Wait for connector," then select Connector.</figcaption>
-        </figure>
+        <ul class="clean">
+          <li><b>in_ClaimFilePDF</b> (File) — the claim's supporting document, downloaded from the Data Fabric record.</li>
+          <li><b>claim_data</b> (Object) — the full claim record, read once and reused by later steps instead of re-querying Data Fabric.</li>
+          <li><b>ClaimID</b> (String, input argument) — passed in by the event trigger, identifying which claim record fired the start event.</li>
+        </ul>
 
-        <p>In the "Change the trigger for your automation" search, look for <b>Data Fabric Record Create</b> and select <b>UiPath Data Fabric: Record Created</b> — the trigger that fires when a new record is added in UiPath Data Fabric.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Change the trigger for your automation</span>
-            </div>
-            <img src="assets/start_event_search_trigger.png" alt="Change the trigger for your automation search dialog, searching Data Fabric Record Create and showing the UiPath Data Fabric: Record Created result" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Search for and select the "UiPath Data Fabric: Record Created" trigger.</figcaption>
-        </figure>
-
-        <p>Finish configuring the connector's implementation: set <b>Select activity</b> to <b>Record Updated</b>, choose your <b>UiPath Data Fabric connection</b> (for example, <i>Shared Data Fabric Connection</i>), set <b>Select object</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and edit the <b>Filter</b> to scope which record changes should fire the trigger.</p>
-
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Implementation panel — connector details</span>
-            </div>
-            <img src="assets/start_event_implementation.png" alt="Implementation panel with Action Wait for connector, Select activity Record Updated, UiPath Data Fabric connection Shared Data Fabric Connection, Select object IntakeClaimEntity, and Filter Edit filter (1 condition)" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>The fully configured Trigger Start Event, listening for Data Fabric changes on the claim entity.</figcaption>
-        </figure>
+        <div class="adm tip">
+          <div class="adm-title">💡 Tip</div>
+          <div class="adm-body">Naming these to match what later steps expect — <code>in_ClaimFilePDF</code>, <code>claim_data</code>, <code>ClaimID</code> — saves you from having to rename references throughout the rest of the flow as you wire up the Fraud Detection Agent, document download, and email steps.</div>
+        </div>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Selected the Trigger Start Event node and set Action to Wait for connector → Connector.</div></div>
-          <div class="row"><span class="box"></span><div>Selected the "UiPath Data Fabric: Record Created" trigger.</div></div>
-          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, object, and filter so the trigger fires on the right claim records.</div></div>
+          <div class="row"><span class="box"></span><div>Added the <b>in_ClaimFilePDF</b> (File) and <b>claim_data</b> (Object) process variables.</div></div>
+          <div class="row"><span class="box"></span><div>Added the <b>ClaimID</b> (String) input argument to the Claim Ready for Review start event.</div></div>
         </div>
       </div>
     </div>
