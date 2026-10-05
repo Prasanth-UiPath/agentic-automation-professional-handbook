@@ -80,7 +80,7 @@
     <h1>Start Event</h1>
     <div class="rise-divider"></div>
 
-    <p>With the process imported, tested, and published, the next job is to make it actually start on its own — the moment a new claim shows up — and to give it the variables it needs to carry claim data through the flow. That's an event trigger registered against the process, plus a couple of process-level variables and an input argument set up in the Data manager.</p>
+    <p>With the process imported, tested, and published, the next job is to make it actually start on its own — the moment a new claim is ready for review. That's an event trigger registered against the process, plus a start event configured to listen for the right Data Fabric record changes.</p>
 
     <div class="step" id="step-3">
       <div class="num">3</div>
@@ -101,7 +101,7 @@
           <figcaption>Add Event Trigger — Data Fabric connector, Record Created event, and Entity Scope.</figcaption>
         </figure>
 
-        <p>Under <b>Entity Scope</b>, choose how broadly the trigger can see entities: <b>Folder</b> scopes it to entities available in this workspace folder, while <b>Tenant</b> makes entities configured at the tenant level selectable too. For this workshop, select <b>Tenant</b> so the trigger can see the shared Data Fabric entity the workshop uses. Click <b>Next</b> to move to <b>Event details</b>, where you'll pick the specific entity (for example, <i>IntakeClaimEntity</i>) and any filter conditions, then click <b>Add</b> to save the trigger.</p>
+        <p>Under <b>Entity Scope</b>, choose how broadly the trigger can see entities: <b>Folder</b> scopes it to entities available in this workspace folder, while <b>Tenant</b> makes entities configured at the tenant level selectable too. For this workshop you must select <b>Tenant</b> — the shared Data Fabric entity the workshop uses lives at the tenant level, so the trigger can't see it under Folder. Click <b>Next</b> to move to <b>Event details</b>, where you'll pick the specific entity (for example, <i>IntakeClaimEntity</i>) and any filter conditions, then click <b>Add</b> to save the trigger.</p>
 
         <div class="adm note">
           <div class="adm-title">📝 Why this matters</div>
@@ -119,8 +119,8 @@
     <div class="step" id="step-4">
       <div class="num">4</div>
       <div class="body">
-        <h3>Create the variables and input argument</h3>
-        <p>Open the <b>Data manager</b> panel from the left-hand rail. This is where the process's own working data lives — variables that persist across the whole flow, plus the inputs and outputs each start/end event exposes.</p>
+        <h3>Configure the Start Event</h3>
+        <p>Back in the process, select the <b>Claim Ready for Review</b> start event on the canvas and open its <b>Properties → Implementation</b> panel. Set <b>Action</b> to <b>Wait for connector</b> and <b>Select activity</b> to <b>Record Updated</b>, choose the shared <b>UiPath Data Fabric</b> connection, set <b>Entity Scope</b> to <b>Tenant</b>, and pick <i>IntakeClaimEntity</i> as the <b>Entity</b>.</p>
 
         <figure>
           <div class="shot">
@@ -128,29 +128,37 @@
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Data manager</span>
+              <span class="url">Message start event — Implementation</span>
             </div>
-            <img src="assets/data_manager_variables.png" alt="Data manager panel: Variables in_ClaimFilePDF (File) and claim_data (Object); Inputs under Claim Ready for Review including ClaimID (String); Outputs under End" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/start_event_tenant_scope.png" alt="Message start event Implementation panel: Action Wait for connector, Select activity Record Updated, UiPath Data Fabric connection Shared UiPath Data Fabric, Entity Scope Tenant, Entity IntakeClaimEntity, Filter Edit filter (1 condition)" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>The Data manager panel — process Variables, and Inputs/Outputs per event.</figcaption>
+          <figcaption>Start event Implementation — Wait for connector, Record Updated, with Entity Scope set to Tenant.</figcaption>
         </figure>
 
-        <p>Under <b>Variables</b>, add two: <code>in_ClaimFilePDF</code> as a <b>File</b> variable to hold the downloaded supporting document, and <code>claim_data</code> as an <b>Object</b> variable to hold the claim record once it's read from Data Fabric. Under <b>Inputs</b> for the <b>Claim Ready for Review</b> start event, add one input argument — <code>ClaimID</code>, of type <b>String</b> — so the trigger can pass in which claim record just changed.</p>
-
-        <ul class="clean">
-          <li><b>in_ClaimFilePDF</b> (File) — the claim's supporting document, downloaded from the Data Fabric record.</li>
-          <li><b>claim_data</b> (Object) — the full claim record, read once and reused by later steps instead of re-querying Data Fabric.</li>
-          <li><b>ClaimID</b> (String, input argument) — passed in by the event trigger, identifying which claim record fired the start event.</li>
-        </ul>
-
-        <div class="adm tip">
-          <div class="adm-title">💡 Tip</div>
-          <div class="adm-body">Naming these to match what later steps expect — <code>in_ClaimFilePDF</code>, <code>claim_data</code>, <code>ClaimID</code> — saves you from having to rename references throughout the rest of the flow as you wire up the Fraud Detection Agent, document download, and email steps.</div>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Choose the Tenant scope</div>
+          <div class="adm-body">Whenever you are asked for an <b>Entity Scope</b> — here and in the Orchestrator trigger from the previous step — choose <b>Tenant</b>, not Folder. The shared claim entity is configured at the tenant level, so it won't appear under the Folder scope.</div>
         </div>
 
+        <p>Next, click <b>Edit filter</b> under <b>Filter</b> and add a condition so the process only starts for claims that are actually ready for a decision: set the field to <code>DecisionInput</code>, the operator to <b>Equals</b>, and the value to <code>READY_FOR_REVIEW</code>, keeping the match type on <b>All (AND)</b>. Click <b>Save</b>.</p>
+
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Filter builder</span>
+            </div>
+            <img src="assets/start_event_filter.png" alt="Filter builder dialog: All (AND) of the conditions are met — DecisionInput Equals READY_FOR_REVIEW" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Filter builder — DecisionInput Equals READY_FOR_REVIEW.</figcaption>
+        </figure>
+
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added the <b>in_ClaimFilePDF</b> (File) and <b>claim_data</b> (Object) process variables.</div></div>
-          <div class="row"><span class="box"></span><div>Added the <b>ClaimID</b> (String) input argument to the Claim Ready for Review start event.</div></div>
+          <div class="row"><span class="box"></span><div>Set the start event's Action to <b>Wait for connector</b> and Select activity to <b>Record Updated</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Set <b>Entity Scope</b> to <b>Tenant</b> and Entity to <b>IntakeClaimEntity</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Added the filter <b>DecisionInput Equals READY_FOR_REVIEW</b> and saved it.</div></div>
         </div>
       </div>
     </div>

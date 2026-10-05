@@ -96,17 +96,17 @@
               <span class="c" style="background:#28C840"></span>
               <span class="url">Connector: Download Supporting Document from DataFabric</span>
             </div>
-            <img src="assets/download_supporting_document.png" alt="Connector activity Download File from Record Field, with UiPath Data Fabric connection Shared Data Fabric Connection, Entity IntakeClaimEntity, Field ClaimPDF, and Record ID set to vars.calimId.toUpperCase()" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/download_record_id_variable.png" alt="Download File from Record Field properties: Action Execute connector activity, UiPath Data Fabric connection Shared UiPath Data Fabric, Entity Scope Tenant, Entity IntakeClaimEntity, Field ClaimPDF, and Record ID set to vars.outClaimDetails?.record_id" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Download File from Record Field — configured to pull the claim's PDF from Data Fabric.</figcaption>
+          <figcaption>Download File from Record Field — Entity Scope Tenant, and Record ID taken from the Fraud Detection Agent's output variable.</figcaption>
         </figure>
 
-        <p>Configure the activity: set the <b>UiPath Data Fabric connection</b> to your shared connection (for example, <i>Shared Data Fabric Connection</i>), the <b>Entity</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and the <b>Field</b> to the entity field that stores the file (for example, <i>ClaimPDF</i>). For <b>Record ID</b>, reference the claim ID carried through the process — for example, an expression like <code>vars.calimId.toUpperCase()</code> — so the activity downloads the file for the correct record.</p>
+        <p>Configure the activity: set the <b>UiPath Data Fabric connection</b> to your shared connection (for example, <i>Shared UiPath Data Fabric</i>), <b>Entity Scope</b> to <b>Tenant</b>, the <b>Entity</b> to your claim entity (for example, <i>IntakeClaimEntity</i>), and the <b>Field</b> to the entity field that stores the file (for example, <i>ClaimPDF</i>). For <b>Record ID</b>, use the record ID returned by the Fraud Detection Agent — the expression <code>vars.outClaimDetails?.record_id</code> — so the activity downloads the file for the correct record.</p>
 
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Added a Data Fabric connector activity set to Download File from Record Field.</div></div>
-          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, Entity, and Field to match your claim entity and document field.</div></div>
-          <div class="row"><span class="box"></span><div>Set Record ID to an expression that resolves to the current claim's ID.</div></div>
+          <div class="row"><span class="box"></span><div>Set the Data Fabric connection, Entity Scope (Tenant), Entity, and Field to match your claim entity and document field.</div></div>
+          <div class="row"><span class="box"></span><div>Set Record ID to <code>vars.outClaimDetails?.record_id</code>.</div></div>
         </div>
       </div>
     </div>
