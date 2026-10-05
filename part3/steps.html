@@ -127,7 +127,7 @@
       <div class="num">2</div>
       <div class="body">
         <h3>Define the input and output arguments</h3>
-        <p>Open the <b>Data manager</b> panel. Under <b>Inputs</b>, add a single argument named <code>in_ClaimData</code>, typed as <b>Object</b>. This is the only thing the agent needs from the outside — the complete claim record, which Maestro reads once from Data Fabric (into the <code>claim_data</code> process variable from <a href="../part2/steps.html#group-start-event">Module 2's Start Event</a>) and passes straight in, so the agent never has to query Data Fabric itself.</p>
+        <p>Open the <b>Data manager</b> panel. Under <b>Inputs</b>, add a single argument named <code>in_ClaimData</code>, typed as <b>Object</b>. This is the only thing the agent needs from the outside — the complete claim record, which Maestro reads once from Data Fabric (provided by <a href="../part2/steps.html#group-start-event">Module 2's Start Event</a>) and passes straight in, so the agent never has to query Data Fabric itself.</p>
 
         <figure>
           <div class="shot">
@@ -484,7 +484,7 @@ Claim data: {{input.in_ClaimData}}</code></pre>
 
     <div class="adm note">
       <div class="adm-title">🛠️ No tools needed</div>
-      <div class="adm-body">Earlier versions of this agent called a "Get Entity Record by ID" Data Fabric tool to look up the claim itself. That's no longer necessary: Maestro's Start Event now reads the record once into the <code>claim_data</code> process variable and passes the complete object straight into <code>in_ClaimData</code>, so the Fraud Detection Agent can go straight to analysis with an empty tool list.</div>
+      <div class="adm-body">Earlier versions of this agent called a "Get Entity Record by ID" Data Fabric tool to look up the claim itself. That's no longer necessary: Maestro's Start Event now reads the record once and passes the complete object straight into <code>in_ClaimData</code>, so the Fraud Detection Agent can go straight to analysis with an empty tool list.</div>
     </div>
 
     <nav class="md-footer-nav">
