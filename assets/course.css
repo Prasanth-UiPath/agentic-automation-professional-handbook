@@ -1,38 +1,44 @@
 /* ===========================================================
-   UiPath Coding Agents Course — MkDocs Material–style theme
-   Pure CSS, no JavaScript. UiPath brand palette.
+   UiPath Learning Workbook — UiPath brand styling
+   Colors: Robotic Orange / Deep Blue / Agentic Teal.
+   Fonts: Poppins (headlines), Inter (body), Arial fallback.
    =========================================================== */
+@font-face{font-family:"Inter";src:url("fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Poppins";src:url("fonts/Poppins-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Poppins";src:url("fonts/Poppins-Bold.ttf") format("truetype");font-weight:700 900;font-style:normal;font-display:swap}
 :root{
   --up-orange:#FA4616;
-  --up-orange-dark:#D8380D;
+  --up-orange-dark:#CE340B;
   --up-orange-soft:#FFEDE7;
-  --up-ink:#161923;
-  --up-ink-2:#20242F;
-  --link:#2F6FDB;
-  --text:#21252E;
-  --muted:#5C6373;
-  --faint:#8A90A0;
-  --line:#E7E9EF;
-  --line-2:#EEF0F5;
+  --up-ink:#182126;
+  --up-ink-2:#2D373C;
+  --teal:#0BA2B3;
+  --teal-dark:#15839A;
+  --teal-soft:#E7F6F8;
+  --blue-dark:#1E6482;
+  --blue-soft:#EAF8FC;
+  --link:#1E6482;
+  --text:#182126;
+  --muted:#4F5A63;
+  --faint:#646E78;
+  --line:#D9D9D9;
+  --line-2:#EEEEEE;
   --bg:#FFFFFF;
-  --bg-soft:#F7F8FA;
-  --code-bg:#F6F8FA;
-  --code-border:#E4E7EC;
+  --bg-soft:#F6F6F6;
+  --code-bg:#F6F6F6;
+  --code-border:#D9D9D9;
   --sidebar-w:260px;
   --toc-w:210px;
   --header-h:52px;
-  --rise-sidebar-bg:#8d8e93;
-  --rise-sidebar-bg-2:#7d7e83;
-  --rise-sidebar-line:rgba(255,255,255,.18);
-  --rise-sidebar-text:#f3f3f4;
-  --rise-sidebar-muted:#d9d9db;
-  --rise-accent:#FA6B3D;
+  --rise-accent:#FA4616;
+  --font-head:"Poppins",Arial,Helvetica,sans-serif;
+  --font-body:"Inter",Arial,Helvetica,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;color:var(--text);background:var(--bg);
-  font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  font-family:var(--font-body);
   font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
 }
 a{color:var(--link);text-decoration:none}
@@ -42,9 +48,9 @@ a:hover{text-decoration:underline}
 .md-header{
   position:sticky;top:0;z-index:50;height:var(--header-h);
   background:var(--up-ink);color:#fff;display:flex;align-items:center;
-  padding:0 16px;gap:14px;box-shadow:0 2px 6px rgba(0,0,0,.18);
+  padding:0 16px;gap:14px;border-bottom:3px solid var(--up-orange);
 }
-.md-header .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:#fff;white-space:nowrap}
+.md-header .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:600;font-size:16px;color:#fff;white-space:nowrap}
 .md-header .brand:hover{text-decoration:none}
 .md-header .mark{width:26px;height:26px;border-radius:6px;background:var(--up-orange);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff}
 .md-header .brand-logo{height:30px;width:auto;display:block;border-radius:4px}
@@ -65,8 +71,7 @@ a:hover{text-decoration:underline}
   height:calc(100vh - var(--header-h));overflow-y:auto;padding:0;
 }
 .md-sidebar--primary{
-  background:var(--rise-sidebar-bg);
-  background-image:linear-gradient(180deg,var(--rise-sidebar-bg) 0%,var(--rise-sidebar-bg-2) 100%);
+  background:var(--bg-soft);border-right:1px solid var(--line);
   padding:0 0 30px;
 }
 .md-sidebar--toc{padding:22px 18px 40px 6px}
@@ -81,57 +86,41 @@ a:hover{text-decoration:underline}
   .md-content{border:0;padding:24px 20px}
 }
 
-/* ---------- Sidebar nav (Rise-style) ---------- */
+/* ---------- Sidebar nav (light, UiPath style) ---------- */
 .nav{padding:20px 14px 10px}
-.rise-course-block{padding:4px 6px 18px}
-.rise-course-title{
-  font-size:20px;font-weight:800;line-height:1.25;color:#fff;margin:0 0 14px;
-  letter-spacing:-.2px;
+.rise-course-block{padding:0 8px 14px}
+.rise-course-title,.nav-title{
+  font-family:var(--font-head);font-size:12px;font-weight:600;line-height:1.35;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:0 0 6px;padding:0 8px;
 }
-.rise-progress{display:flex;flex-direction:column;gap:6px}
-.rise-progress-bar{width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden}
-.rise-progress-fill{height:100%;background:var(--rise-accent);border-radius:3px}
-.rise-progress-label{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--rise-sidebar-muted);text-transform:uppercase}
+.rise-course-block .rise-course-title{padding:0}
+.rise-progress{display:none}
 
-.rise-home{
-  display:block;margin:0 6px 10px;padding:8px 10px;border-radius:7px;
-  color:#fff;font-weight:700;font-size:14.5px;border:1px solid var(--rise-sidebar-line);
-}
-.rise-home:hover{background:rgba(255,255,255,.12);text-decoration:none}
-.rise-home.active{background:rgba(255,255,255,.16)}
-
-.nav-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 8px;padding-left:10px}
-.nav a{display:block;padding:6px 10px;border-radius:7px;color:var(--muted);font-size:14.5px;line-height:1.4}
-.nav a:hover{background:var(--bg-soft);color:var(--text);text-decoration:none}
+.nav a{display:block;padding:7px 10px;border-radius:7px;color:var(--muted);font-size:14px;font-weight:500;line-height:1.4}
+.nav a:hover{background:#fff;color:var(--text);text-decoration:none}
 .nav a.active{background:var(--up-orange-soft);color:var(--up-orange-dark);font-weight:700;box-shadow:inset 3px 0 0 var(--up-orange)}
 
-.nav details{margin:2px 6px 4px;border-top:1px solid var(--rise-sidebar-line)}
-.nav details:first-of-type{border-top:1px solid var(--rise-sidebar-line)}
+.rise-home{display:block;margin:0 0 2px;padding:8px 10px;border-radius:7px;color:var(--text);font-weight:600;font-size:14.5px;border:0}
+.rise-home:hover{background:#fff;text-decoration:none}
+.rise-home.active{background:var(--up-orange-soft);color:var(--up-orange-dark);box-shadow:inset 3px 0 0 var(--up-orange)}
+
+.nav details{margin:8px 0 0;border-top:1px solid var(--line)}
 .nav summary{
   list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
-  padding:12px 6px;border-radius:0;font-size:11.5px;font-weight:700;color:var(--rise-sidebar-text);
-  text-transform:uppercase;letter-spacing:.06em;
+  padding:12px 8px;border-radius:7px;font-family:var(--font-head);font-size:12px;font-weight:600;color:var(--text);
+  text-transform:uppercase;letter-spacing:.05em;line-height:1.35;
 }
 .nav summary::-webkit-details-marker{display:none}
-.nav summary:hover{background:rgba(255,255,255,.08)}
-.nav summary::before{content:"▸";color:var(--rise-sidebar-muted);font-size:10px;transition:none;order:2;margin-left:auto}
-.nav details[open]>summary::before{content:"▾"}
+.nav summary:hover{background:#fff}
+.nav summary::before{content:"\25B8";color:var(--up-orange);font-size:11px;order:2;margin-left:auto}
+.nav details[open]>summary::before{content:"\25BE"}
 .nav .group-items{padding:2px 0 8px}
 
-.lesson-row{
-  display:flex;align-items:center;gap:10px;padding:8px 8px 8px 6px;border-radius:6px;
-  color:var(--rise-sidebar-text);font-size:13.5px;font-weight:500;
-}
-.lesson-row:hover{background:rgba(255,255,255,.1);text-decoration:none;color:#fff}
-.lesson-row .lesson-ico{display:none}
-.lesson-row .lesson-label{flex:1;min-width:0}
-.lesson-row .lesson-status{
-  flex:0 0 auto;width:14px;height:14px;border-radius:50%;border:2px solid var(--rise-sidebar-muted);
-  background:transparent;
-}
-.lesson-row.active{background:rgba(255,255,255,.18);font-weight:700;color:#fff}
-.lesson-row.active .lesson-status{border-color:var(--rise-accent)}
-.lesson-row.active .lesson-ico{color:#fff}
+.lesson-row{display:block;padding:7px 10px;border-radius:7px;color:var(--muted);font-size:14px;font-weight:500}
+.lesson-row:hover{background:#fff;color:var(--text);text-decoration:none}
+.lesson-row .lesson-ico,.lesson-row .lesson-status{display:none}
+.lesson-row .lesson-label{display:block}
+.lesson-row.active{background:var(--up-orange-soft);color:var(--up-orange-dark);font-weight:700;box-shadow:inset 3px 0 0 var(--up-orange)}
 
 /* ---------- TOC ---------- */
 .toc-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
@@ -140,12 +129,12 @@ a:hover{text-decoration:underline}
 .toc a.lvl3{padding-left:24px;font-size:13px}
 
 /* ---------- Content typography ---------- */
-.md-content h1{font-size:33px;font-weight:800;letter-spacing:-.5px;margin:0 0 6px;line-height:1.15}
-.md-content .eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);background:none;padding:0;margin-bottom:10px}
+.md-content h1{font-family:var(--font-head);font-size:33px;font-weight:700;letter-spacing:-.03em;margin:0 0 6px;line-height:1.2}
+.md-content .eyebrow{display:block;font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--up-orange-dark);background:none;padding:0;margin-bottom:10px}
 .rise-divider{width:64px;height:5px;border-radius:3px;background:var(--rise-accent);margin:14px 0 26px}
-.md-content h2{font-size:23px;font-weight:700;margin:38px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);scroll-margin-top:64px}
-.md-content h3{font-size:18px;font-weight:700;margin:26px 0 8px;scroll-margin-top:64px}
-.md-content h4{font-size:15.5px;font-weight:700;margin:18px 0 6px}
+.md-content h2{font-family:var(--font-head);letter-spacing:-.02em;font-size:23px;font-weight:700;margin:38px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line);scroll-margin-top:64px}
+.md-content h3{font-family:var(--font-head);letter-spacing:-.01em;font-size:18px;font-weight:600;margin:26px 0 8px;scroll-margin-top:64px}
+.md-content h4{font-family:var(--font-head);font-size:15.5px;font-weight:600;margin:18px 0 6px}
 .md-content p{margin:12px 0}
 .md-content .lead{font-size:18px;color:var(--muted)}
 .md-content img{max-width:100%}
@@ -159,7 +148,7 @@ ul.clean li{position:relative;padding:5px 0 5px 24px;font-size:15.5px}
 ul.clean li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--up-orange)}
 
 /* inline code */
-code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;padding:.5px 6px;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;color:#B23A12}
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;padding:.5px 6px;font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13.5px;color:#A32200}
 
 /* ---------- Code blocks (MkDocs style, light) ---------- */
 .highlight{margin:16px 0;border:1px solid var(--code-border);border-radius:9px;overflow:hidden;background:var(--code-bg)}
@@ -182,10 +171,10 @@ code{background:var(--code-bg);border:1px solid var(--code-border);border-radius
 .adm{border:1px solid var(--line);border-left:4px solid var(--faint);border-radius:0 8px 8px 0;margin:16px 0;background:var(--bg-soft);font-size:14.5px}
 .adm .adm-title{font-weight:700;padding:9px 14px 6px;display:flex;align-items:center;gap:8px}
 .adm .adm-body{padding:0 14px 11px}
-.adm.note{border-left-color:var(--link);background:#EEF4FD}
-.adm.note .adm-title{color:var(--link)}
-.adm.tip{border-left-color:#12805C;background:#E6F5EE}
-.adm.tip .adm-title{color:#12805C}
+.adm.note{border-left-color:var(--blue-dark);background:var(--blue-soft)}
+.adm.note .adm-title{color:var(--blue-dark)}
+.adm.tip{border-left-color:var(--teal);background:var(--teal-soft)}
+.adm.tip .adm-title{color:var(--teal-dark)}
 .adm.warn{border-left-color:var(--up-orange);background:var(--up-orange-soft)}
 .adm.warn .adm-title{color:var(--up-orange-dark)}
 
@@ -194,7 +183,7 @@ table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;border:
 th{background:var(--up-ink);color:#fff;text-align:left;padding:9px 13px;font-size:13.5px}
 td{padding:8px 13px;border-top:1px solid var(--line)}
 tr:nth-child(even) td{background:var(--bg-soft)}
-td .yes{color:#12805C;font-weight:700}
+td .yes{color:var(--teal-dark);font-weight:700}
 td .no{color:var(--up-orange-dark);font-weight:700}
 
 /* ---------- Cards / grids ---------- */
@@ -219,7 +208,7 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
 
 /* ---------- Step numbers ---------- */
 .step{display:flex;gap:16px;margin:22px 0;align-items:flex-start}
-.step .num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--up-orange);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 7px rgba(250,70,22,.35)}
+.step .num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--up-orange);color:#fff;font-family:var(--font-head);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 7px rgba(250,70,22,.35)}
 .step .body{flex:1;min-width:0}
 .step .body h3{margin-top:2px}
 
@@ -238,7 +227,7 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
 /* objectives */
 .obj{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
 .obj:last-child{border-bottom:0}
-.obj .chk{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#E6F5EE;color:#12805C;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.obj .chk{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
 
 /* ---------- Prev / Next footer ---------- */
 .md-footer-nav{display:flex;gap:14px;margin:44px 0 10px;border-top:1px solid var(--line);padding-top:22px}
@@ -259,7 +248,7 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
   font-family:inherit;transition:background .12s,color .12s,border-color .12s;
 }
 .copy-btn:hover{background:var(--up-orange-soft);color:var(--up-orange-dark);border-color:var(--up-orange)}
-.copy-btn.copied{background:#E6F5EE;color:#12805C;border-color:#12805C}
+.copy-btn.copied{background:var(--teal-soft);color:var(--teal-dark);border-color:var(--teal)}
 .prompt-block{max-height:340px;overflow-y:auto}
 
 /* ---------- Group header (within combined steps page) ---------- */
