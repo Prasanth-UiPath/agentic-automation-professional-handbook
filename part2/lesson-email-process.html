@@ -86,7 +86,7 @@
       <div class="num">12</div>
       <div class="body">
         <h3>Send the status email and end the process</h3>
-        <p>Add a <b>Microsoft Outlook 365</b> connector activity right after the GenAI step, named <code>Send Status Email</code>. Set <b>Action</b> to <b>Execute connector activity</b> and <b>Select activity</b> to <b>Send Email</b>, with <b>Microsoft Outlook 365 connection</b> set to your shared connection (for example, <i>UiPathSharedEmail</i>). Leave <b>Save as draft</b> set to <b>False</b> so the email actually sends.</p>
+        <p>Add a <b>Gmail</b> connector activity right after the GenAI step, named <code>Send Status Email</code>. Set <b>Action</b> to <b>Execute connector activity</b> and <b>Select activity</b> to <b>Send Email</b>, with <b>Gmail connection</b> set to your shared connection (for example, <i>Shared Gmail Connection</i>). Leave <b>Save as draft</b> set to <b>False</b> so the email actually sends.</p>
 
         <figure>
           <div class="shot">
@@ -96,7 +96,7 @@
               <span class="c" style="background:#28C840"></span>
               <span class="url">Service task — Send Status Email</span>
             </div>
-            <img src="assets/send_status_email_service_task.png" alt="Send Status Email connector activity, Action Execute connector activity, Select activity Send Email, Microsoft Outlook 365 connection UiPathSharedEmail, Save as draft False, connected to the End Event" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/send_status_email_gmail.png" alt="Send task properties: Action Execute connector activity, Select activity Send Email, Gmail connection Shared Gmail Connection, Save as draft False, To, Subject expression vars.action == Approve, and Body vars.emailContent" style="display:block;max-width:100%;height:auto;">
           </div>
           <figcaption>Send Status Email, connected straight through to the shared End Event.</figcaption>
         </figure>
@@ -116,7 +116,7 @@
         <p>Connect <b>Send Status Email</b> straight to a single shared <b>End Event</b>. With that, both the Approve and Reject paths — fraud check, human review, optional settlement calculation, generated email, and notification — run through the same two activities and finish at one defined end of the process.</p>
 
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added one Send Status Email connector activity for both branches, with Action set to Send Email via Microsoft Outlook 365.</div></div>
+          <div class="row"><span class="box"></span><div>Added one Send Status Email connector activity for both branches, with Action set to Send Email via Gmail.</div></div>
           <div class="row"><span class="box"></span><div>Set Subject to the branching expression above and bound the body to the GenAI activity's output.</div></div>
           <div class="row"><span class="box"></span><div>Connected Send Status Email to a single shared End Event.</div></div>
         </div>
