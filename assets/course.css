@@ -221,8 +221,15 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;
 
 /* completion checklist */
 .checklist{border:1px solid var(--line);border-radius:12px;padding:16px 20px;background:var(--bg)}
-.checklist .row{display:flex;gap:11px;align-items:flex-start;padding:7px 0;font-size:14.5px}
-.checklist .box{flex:0 0 auto;width:19px;height:19px;border:2px solid var(--up-orange);border-radius:5px;margin-top:2px}
+.checklist .row{display:flex;gap:11px;align-items:flex-start;padding:7px 8px;margin:0 -8px;font-size:14.5px;border-radius:7px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.checklist .row:hover{background:var(--bg-soft)}
+.checklist .row:focus-visible{outline:2px solid var(--up-orange);outline-offset:1px}
+.checklist .row a,.checklist .row code{cursor:auto}
+.checklist .box{position:relative;flex:0 0 auto;width:19px;height:19px;border:2px solid var(--up-orange);border-radius:5px;margin-top:2px;background:#fff;transition:background .12s}
+.checklist .row.checked .box{background:var(--up-orange)}
+.checklist .row.checked .box::after{content:"\2713";position:absolute;left:0;top:0;width:15px;height:15px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;line-height:1}
+.checklist .row.checked>div{color:var(--muted)}
+
 
 /* objectives */
 .obj{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
