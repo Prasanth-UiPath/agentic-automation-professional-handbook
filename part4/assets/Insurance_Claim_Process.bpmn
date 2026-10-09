@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="7aa46dbc">
-  <bpmn:process id="Process_1" name="Claim_BPMN_Process_Skeleton">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" exporter="UiPath (https://bpmn.uipath.com)" exporterVersion="84f0cd95">
+  <bpmn:process id="Process_1" name="Insurance_Claim_Process (5)">
     <bpmn:extensionElements>
       <uipath:variables version="v1">
         <uipath:input id="vAction" name="action" type="string" elementId="Process_1" default="Approve" />
       </uipath:variables>
-      <uipath:migrationVersion version="20" />
+      <uipath:migrationVersion version="21" />
       <uipath:intsvcActivityConfig version="v2" />
     </bpmn:extensionElements>
     <bpmn:startEvent id="Event_mhV0AR" name="Claim Ready for Review">
@@ -32,16 +32,16 @@
     </bpmn:task>
     <bpmn:exclusiveGateway id="Gateway_KXuPfP" name="Reviewer Action GateWay" default="edge_5KSVUg">
       <bpmn:incoming>edge_WogvLk_Gateway</bpmn:incoming>
-      <bpmn:outgoing>edge_E3G7i7</bpmn:outgoing>
       <bpmn:outgoing>edge_5KSVUg</bpmn:outgoing>
+      <bpmn:outgoing>edge_Y9T9sF</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Activity_ncoQVu" name="SettlementCodedAgent">
-      <bpmn:incoming>edge_E3G7i7</bpmn:incoming>
+      <bpmn:incoming>edge_Y9T9sF</bpmn:incoming>
       <bpmn:outgoing>edge_E1M8B4</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_2dYmFI" name="Generate Approval Email">
-      <bpmn:incoming>edge_5KSVUg</bpmn:incoming>
       <bpmn:incoming>edge_E1M8B4</bpmn:incoming>
+      <bpmn:incoming>edge_5KSVUg</bpmn:incoming>
       <bpmn:outgoing>edge_2dYmFI_mNRQwP</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Activity_mNRQwP" name="Send Approve Email">
@@ -56,13 +56,20 @@
     <bpmn:sequenceFlow id="edge_XqiQ8R_ZcUcDt" sourceRef="Activity_XqiQ8R" targetRef="Activity_ZcUcDt" />
     <bpmn:sequenceFlow id="edge_ZcUcDt_WogvLk" sourceRef="Activity_ZcUcDt" targetRef="Activity_WogvLk" />
     <bpmn:sequenceFlow id="edge_WogvLk_Gateway" sourceRef="Activity_WogvLk" targetRef="Gateway_KXuPfP" />
-    <bpmn:sequenceFlow id="edge_E3G7i7" name="Approve" sourceRef="Gateway_KXuPfP" targetRef="Activity_ncoQVu">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=js:true</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="edge_5KSVUg" sourceRef="Gateway_KXuPfP" targetRef="Activity_2dYmFI" />
     <bpmn:sequenceFlow id="edge_E1M8B4" sourceRef="Activity_ncoQVu" targetRef="Activity_2dYmFI" />
     <bpmn:sequenceFlow id="edge_2dYmFI_mNRQwP" sourceRef="Activity_2dYmFI" targetRef="Activity_mNRQwP" />
+    <bpmn:sequenceFlow id="edge_5KSVUg" name="Reject" sourceRef="Gateway_KXuPfP" targetRef="Activity_2dYmFI" />
     <bpmn:sequenceFlow id="edge_jGlnbz" sourceRef="Activity_mNRQwP" targetRef="Event_3qzhYq" />
+    <bpmn:association id="assoc_fVqkGj" sourceRef="Event_mhV0AR" targetRef="Text_fVqkGj" />
+    <bpmn:association id="assoc_JB6Ixa" sourceRef="Activity_LUTApu" targetRef="Text_JB6Ixa" />
+    <bpmn:association id="assoc_RAiiGv" sourceRef="Activity_XqiQ8R" targetRef="Text_RAiiGv" />
+    <bpmn:association id="assoc_kocoA4" sourceRef="Activity_ZcUcDt" targetRef="Text_kocoA4" />
+    <bpmn:association id="assoc_R8qmFY" sourceRef="Activity_WogvLk" targetRef="Text_R8qmFY" />
+    <bpmn:association id="assoc_tPoiSO" sourceRef="Gateway_KXuPfP" targetRef="Text_tPoiSO" />
+    <bpmn:association id="assoc_2qZGp1" sourceRef="Activity_ncoQVu" targetRef="Text_2qZGp1" />
+    <bpmn:association id="assoc_rmDoUH" sourceRef="Activity_2dYmFI" targetRef="Text_rmDoUH" />
+    <bpmn:association id="assoc_o4hY7a" sourceRef="Activity_mNRQwP" targetRef="Text_o4hY7a" />
+    <bpmn:sequenceFlow id="edge_Y9T9sF" sourceRef="Gateway_KXuPfP" targetRef="Activity_ncoQVu" />
     <bpmn:textAnnotation id="Text_fVqkGj">
       <bpmn:text>Start Event – Claim Ready for Review and available supporting documents are ready for processing.</bpmn:text>
     </bpmn:textAnnotation>
@@ -90,15 +97,6 @@
     <bpmn:textAnnotation id="Text_o4hY7a">
       <bpmn:text>Send Approve Email: Sends the generated settlement approval email to the claimant's email id.</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="assoc_fVqkGj" sourceRef="Event_mhV0AR" targetRef="Text_fVqkGj" />
-    <bpmn:association id="assoc_JB6Ixa" sourceRef="Activity_LUTApu" targetRef="Text_JB6Ixa" />
-    <bpmn:association id="assoc_RAiiGv" sourceRef="Activity_XqiQ8R" targetRef="Text_RAiiGv" />
-    <bpmn:association id="assoc_kocoA4" sourceRef="Activity_ZcUcDt" targetRef="Text_kocoA4" />
-    <bpmn:association id="assoc_R8qmFY" sourceRef="Activity_WogvLk" targetRef="Text_R8qmFY" />
-    <bpmn:association id="assoc_tPoiSO" sourceRef="Gateway_KXuPfP" targetRef="Text_tPoiSO" />
-    <bpmn:association id="assoc_2qZGp1" sourceRef="Activity_ncoQVu" targetRef="Text_2qZGp1" />
-    <bpmn:association id="assoc_rmDoUH" sourceRef="Activity_2dYmFI" targetRef="Text_rmDoUH" />
-    <bpmn:association id="assoc_o4hY7a" sourceRef="Activity_mNRQwP" targetRef="Text_o4hY7a" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
@@ -132,62 +130,93 @@
           <dc:Bounds x="686" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="S_Gateway_KXuPfP" bpmnElement="Gateway_KXuPfP" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="S_Gateway_KXuPfP" bpmnElement="Gateway_KXuPfP">
         <dc:Bounds x="871" y="183" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="861" y="238" width="70" height="27" />
+          <dc:Bounds x="871" y="238" width="50" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_Y9T9sF" bpmnElement="edge_Y9T9sF">
+        <di:waypoint x="896" y="183" />
+        <di:waypoint x="896" y="136" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_Activity_ncoQVu" bpmnElement="Activity_ncoQVu">
-        <dc:Bounds x="1022" y="40" width="100" height="80" />
+        <dc:Bounds x="846" y="56" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1022" y="125" width="100" height="14" />
+          <dc:Bounds x="846" y="141" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Activity_2dYmFI" bpmnElement="Activity_2dYmFI">
-        <dc:Bounds x="1278" y="168" width="100" height="80" />
+        <dc:Bounds x="1022" y="168" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1278" y="253" width="100" height="14" />
+          <dc:Bounds x="1022" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Activity_mNRQwP" bpmnElement="Activity_mNRQwP">
-        <dc:Bounds x="1582" y="168" width="100" height="80" />
+        <dc:Bounds x="1182" y="168" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1582" y="253" width="100" height="14" />
+          <dc:Bounds x="1182" y="253" width="100" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Event_3qzhYq" bpmnElement="Event_3qzhYq">
-        <dc:Bounds x="1774" y="190" width="36" height="36" />
+        <dc:Bounds x="1342" y="190" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1774" y="231" width="36" height="14" />
+          <dc:Bounds x="1342" y="231" width="36" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_fVqkGj" bpmnElement="Text_fVqkGj">
-        <dc:Bounds x="-146" y="0" width="244" height="96" />
+        <dc:Bounds x="54" y="40" width="148" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="54" y="125" width="148" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_JB6Ixa" bpmnElement="Text_JB6Ixa">
-        <dc:Bounds x="46" y="344" width="260" height="112" />
+        <dc:Bounds x="158" y="296" width="196" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="381" width="196" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_RAiiGv" bpmnElement="Text_RAiiGv">
-        <dc:Bounds x="198" y="-48" width="260" height="128" />
+        <dc:Bounds x="326" y="40" width="180" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="326" y="125" width="180" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_kocoA4" bpmnElement="Text_kocoA4">
-        <dc:Bounds x="462" y="336" width="196" height="96" />
+        <dc:Bounds x="478" y="288" width="164" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="478" y="373" width="164" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_R8qmFY" bpmnElement="Text_R8qmFY">
-        <dc:Bounds x="590" y="56" width="196" height="80" />
+        <dc:Bounds x="662" y="48" width="148" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="662" y="117" width="148" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_tPoiSO" bpmnElement="Text_tPoiSO">
-        <dc:Bounds x="702" y="-16" width="260" height="64" />
+        <dc:Bounds x="814" y="320" width="164" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="814" y="389" width="164" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_2qZGp1" bpmnElement="Text_2qZGp1">
-        <dc:Bounds x="830" y="-248" width="324" height="128" />
+        <dc:Bounds x="838" y="-56" width="116" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="838" y="29" width="116" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_rmDoUH" bpmnElement="Text_rmDoUH">
-        <dc:Bounds x="1218" y="336" width="260" height="96" />
+        <dc:Bounds x="982" y="-16" width="180" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="982" y="53" width="180" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Text_o4hY7a" bpmnElement="Text_o4hY7a">
-        <dc:Bounds x="1556" y="40" width="260" height="96" />
+        <dc:Bounds x="1150" y="304" width="164" height="64" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1150" y="373" width="164" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_j2lFMX" bpmnElement="edge_j2lFMX">
         <di:waypoint x="146" y="208" />
@@ -209,66 +238,58 @@
         <di:waypoint x="786" y="208" />
         <di:waypoint x="871" y="208" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_edge_5KSVUg" bpmnElement="edge_5KSVUg">
-        <di:waypoint x="921" y="208" />
-        <di:waypoint x="1278" y="208" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_E1M8B4" bpmnElement="edge_E1M8B4">
-        <di:waypoint x="1122" y="80" />
-        <di:waypoint x="1328" y="80" />
-        <di:waypoint x="1328" y="168" />
+        <di:waypoint x="946" y="96" />
+        <di:waypoint x="1072" y="96" />
+        <di:waypoint x="1072" y="168" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_2dYmFI_mNRQwP" bpmnElement="edge_2dYmFI_mNRQwP">
-        <di:waypoint x="1378" y="208" />
-        <di:waypoint x="1582" y="208" />
+        <di:waypoint x="1122" y="208" />
+        <di:waypoint x="1182" y="208" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_edge_E3G7i7" bpmnElement="edge_E3G7i7">
-        <di:waypoint x="896" y="183" />
-        <di:waypoint x="896" y="80" />
-        <di:waypoint x="1022" y="80" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="905" y="62" width="46" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_5KSVUg" bpmnElement="edge_5KSVUg">
+        <di:waypoint x="921" y="208" />
+        <di:waypoint x="1022" y="208" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_edge_jGlnbz" bpmnElement="edge_jGlnbz">
-        <di:waypoint x="1682" y="208" />
-        <di:waypoint x="1774" y="208" />
+        <di:waypoint x="1282" y="208" />
+        <di:waypoint x="1342" y="208" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_fVqkGj" bpmnElement="assoc_fVqkGj">
-        <di:waypoint x="122" y="192" />
-        <di:waypoint x="70" y="96" />
+        <di:waypoint x="128" y="190" />
+        <di:waypoint x="128" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_JB6Ixa" bpmnElement="assoc_JB6Ixa">
         <di:waypoint x="256" y="248" />
-        <di:waypoint x="200" y="344" />
+        <di:waypoint x="256" y="296" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_RAiiGv" bpmnElement="assoc_RAiiGv">
         <di:waypoint x="416" y="168" />
-        <di:waypoint x="340" y="80" />
+        <di:waypoint x="416" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_kocoA4" bpmnElement="assoc_kocoA4">
         <di:waypoint x="560" y="248" />
-        <di:waypoint x="560" y="336" />
+        <di:waypoint x="560" y="288" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_R8qmFY" bpmnElement="assoc_R8qmFY">
         <di:waypoint x="736" y="168" />
-        <di:waypoint x="700" y="136" />
+        <di:waypoint x="736" y="112" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_tPoiSO" bpmnElement="assoc_tPoiSO">
-        <di:waypoint x="896" y="183" />
-        <di:waypoint x="850" y="48" />
+        <di:waypoint x="896" y="233" />
+        <di:waypoint x="896" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_2qZGp1" bpmnElement="assoc_2qZGp1">
-        <di:waypoint x="1072" y="40" />
-        <di:waypoint x="1030" y="-120" />
+        <di:waypoint x="896" y="56" />
+        <di:waypoint x="896" y="24" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_rmDoUH" bpmnElement="assoc_rmDoUH">
-        <di:waypoint x="1328" y="248" />
-        <di:waypoint x="1330" y="336" />
+        <di:waypoint x="1072" y="168" />
+        <di:waypoint x="1072" y="48" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_assoc_o4hY7a" bpmnElement="assoc_o4hY7a">
-        <di:waypoint x="1632" y="168" />
-        <di:waypoint x="1660" y="136" />
+        <di:waypoint x="1232" y="248" />
+        <di:waypoint x="1232" y="304" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
