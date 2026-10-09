@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Build the Agent · Module 3 · Agent Builder</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -138,7 +138,7 @@
 
         <p>Input schema:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'input-schema-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'input-schema-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">input-schema.json</div>
             <pre id="input-schema-text"><code>{
@@ -156,7 +156,7 @@
 
         <p>Output schema:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'output-schema-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'output-schema-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">output-schema.json</div>
             <pre id="output-schema-text"><code>{
@@ -279,7 +279,7 @@
         </figure>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'system-prompt-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'system-prompt-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">system-prompt.txt</div>
             <pre id="system-prompt-text"><code>You are a Fraud Detection Specialist.
@@ -455,7 +455,7 @@ Before returning, verify:
         </figure>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'user-prompt-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'user-prompt-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">user-prompt.txt</div>
             <pre id="user-prompt-text"><code>Analyze the claim record according to the system instructions.
@@ -496,6 +496,6 @@ function copyText(btn, id){
   });
 }
 </script>
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>
