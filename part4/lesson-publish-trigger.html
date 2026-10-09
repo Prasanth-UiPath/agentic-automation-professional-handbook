@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Publish and Trigger · Module 4 · Maestro</title>
+<title>Publish and Trigger · Module 4 · Maestro BPMN</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -59,11 +59,11 @@
     </div>
   </details>
   <details open>
-    <summary>Module 4 · Maestro</summary>
+    <summary>Module 4 · Maestro BPMN</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Maestro BPMN</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -108,6 +108,108 @@
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-25">
+      <div class="num">25</div>
+      <div class="body">
+        <h3>Deploy the process</h3>
+        <p>When the debug run succeeds, click <b>Deploy</b> in the top toolbar of Studio Web to package and publish the Maestro process.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy</span>
+            </div>
+            <img src="assets/maestro_deploy_1.png" alt="Click Deploy in the toolbar." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Click Deploy in the toolbar.</figcaption>
+        </figure>
+        <p>In the panel on the right, keep <b>Pack to → Personal</b> and leave <b>Deploy after pack</b> switched on. Enter a unique <b>Deployment name</b> — for example <code>Insurance_Claim_Maestro_Process_YourInitials</code> — then click <b>Deploy</b>. Keep <b>Activate immediately</b> and <b>Set up runtime</b> switched on so the trigger is enabled right away.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy panel</span>
+            </div>
+            <img src="assets/maestro_deploy_2.png" alt="1 · Give the deployment a unique name. 2 · Click Deploy." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>1 · Give the deployment a unique name. 2 · Click Deploy.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Use a unique name</div>
+          <div class="adm-body">Deployment names must be unique in the tenant. Add your name or initials so you do not clash with other learners.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Clicked <b>Deploy</b> and entered a unique deployment name.</div></div>
+          <div class="row"><span class="box"></span><div>Left <b>Deploy after pack</b>, <b>Activate immediately</b> and <b>Set up runtime</b> on.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-26">
+      <div class="num">26</div>
+      <div class="body">
+        <h3>Confirm the deployment</h3>
+        <p>Wait for the Deploy wizard to finish its stages — Setup, Publish package, Configure, Deploy and Activate. When every stage shows a green check you will see <b>Deployment successful</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy</span>
+            </div>
+            <img src="assets/maestro_deploy_3.png" alt="Deployment successful." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Deployment successful.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Saw <b>Deployment successful</b> with all stages checked.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-27">
+      <div class="num">27</div>
+      <div class="body">
+        <h3>Check the deployed process in Orchestrator</h3>
+        <p>Open Orchestrator, go to <b>Automations → Processes</b> and confirm the Maestro BPMN process is listed with a green status and the entry point <b>Claim Ready for Review</b>. Your Fraud Detect Agent, Settlement Coded Agent and the supervisor Action App should be listed there as well.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Orchestrator · Automations · Processes</span>
+            </div>
+            <img src="assets/maestro_deploy_4.png" alt="Automations → Processes shows the deployed Maestro BPMN process." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Automations → Processes shows the deployed Maestro BPMN process.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Found the Maestro BPMN process in <b>Automations → Processes</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-28">
+      <div class="num">28</div>
+      <div class="body">
+        <h3>Trigger the live process</h3>
+        <p>The deployed process now starts by itself. In Data Fabric, update an <code>IntakeClaimEntity</code> record and set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>. The start event fires, the Fraud Detect Agent runs, and the claim reaches the supervisor as a task.</p>
+        <div class="adm note">
+          <div class="adm-title">📝 Tip</div>
+          <div class="adm-body">Follow the run in Maestro under <b>Monitoring</b> (or the process <b>Jobs</b> tab) to watch each task complete.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Updated a record to <code>READY_FOR_REVIEW</code> and saw the process start.</div></div>
         </div>
       </div>
     </div>
