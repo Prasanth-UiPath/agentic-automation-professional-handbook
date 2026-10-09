@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concepts · Module 1 · Conversational Agent</title>
+<title>Test the Agent · Module 1 · Conversational Agent</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -26,12 +26,12 @@
     <summary>Module 1 · Conversational Agent</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-test.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Test the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-test.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Test the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Import the App</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -81,38 +81,93 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 1 · Lesson 1 of 9</span>
-    <h1>Concepts</h1>
+    <span class="eyebrow">Module 1 · Lesson 6 of 9</span>
+    <h1>Test the Agent</h1>
     <div class="rise-divider"></div>
-    <h3>What's a Conversational Agent?</h3>
-    <p>A <b>Conversational Agent</b> is a UiPath agent designed to interact with people in real time through natural, back-and-forth chat — rather than running a task end to end on its own. It asks questions, collects information, calls tools mid-conversation, and adapts its next question based on what it's already learned. For the Insurance Claim Approval Process, the conversational agent <i>is</i> the conversational agent: it's the front door claimants talk to when they need to file a claim.</p>
-
-    <h3>Why Conversational Agents?</h3>
-    <p>Many business processes don't start with a clean, structured form — they start with a person who has a question, a document, and an incomplete understanding of what's required. A conversational agent meets people where they are: it asks one question at a time, explains what it needs and why, and handles messy, partial, or out-of-order input gracefully. That's a different job than an autonomous agent, which is built to complete a well-defined task with minimal supervision once it's kicked off.</p>
-    <div class="grid g3">
-      <div class="card"><div class="ico">🗣️</div><h4>Natural intake</h4><p>Replace rigid multi-page forms with a guided conversation that adapts to the user.</p></div>
-      <div class="card"><div class="ico">🔀</div><h4>Real-time branching</h4><p>Route to the right question, tool, or explanation based on what the user just said.</p></div>
-      <div class="card"><div class="ico">🤝</div><h4>Trust through transparency</h4><p>Explain what's needed and why, and hand off to a human when a case needs judgment.</p></div>
+        <p>Before deploying, run the agent in the debugger and walk through a full claim.</p>
+    <div class="step" id="step-10">
+      <div class="num">10</div>
+      <div class="body">
+        <h3>Debug and chat with the agent</h3>
+        <p>Click <b>Debug</b> in the top toolbar.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug</span>
+            </div>
+            <img src="assets/conversational_agent_step15_debug.png" alt="Click Debug to start a test session." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Click Debug to start a test session.</figcaption>
+        </figure>
+        <p>When the <b>Chat</b> panel opens, type in <b>Talk with your agent…</b> or click the suggestion <b>Hi, what can you do?</b>. The warning "provisioning step was skipped" in the logs is expected.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step16_start_chatting.png" alt="Chat panel with the debug logs and tools listed." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Chat panel with the debug logs and tools listed.</figcaption>
+        </figure>
+        <p>Answer the agent's questions one at a time. Use this sample claimant:</p>
+        <table>
+          <thead><tr><th>Question</th><th>Sample answer</th></tr></thead>
+          <tbody>
+            <tr><td>Name</td><td>Priya Singh</td></tr>
+            <tr><td>Policy number</td><td>POL-2024-23489</td></tr>
+            <tr><td>Incident type</td><td>Vehicle Damage</td></tr>
+            <tr><td>Claim amount</td><td>16650</td></tr>
+            <tr><td>Supporting document</td><td>POL-2024-23489_Fraudulent_Active.pdf (sample file from your instructor)</td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step17_chat_by_adding_details.png" alt="Policy summary and coverage check produced from the contexts." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Policy summary and coverage check produced from the contexts.</figcaption>
+        </figure>
+        <p>Upload the supporting PDF when asked, review the claim summary, then type <code>submit</code>. The agent runs the IXP tool and the workflow tool and returns a claim ID with status <b>Pending Review</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Debug chat</span>
+            </div>
+            <img src="assets/conversational_agent_step18_claimsubmitted.png" alt="Claim Submitted Successfully, with copy and thumbs up / down icons under the reply." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Claim Submitted Successfully, with copy and thumbs up / down icons under the reply.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Feedback icons</div>
+          <div class="adm-body">Under each agent reply you can copy the message or give it a <b>thumbs up / thumbs down</b>. Feedback attaches to the execution trace and is reviewed on the agent's <b>Feedback</b> tab after deployment.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Started a debug session and chatted with the agent.</div></div>
+          <div class="row"><span class="box"></span><div>Gave the sample policy number and incident type; the agent returned a policy summary and coverage check.</div></div>
+          <div class="row"><span class="box"></span><div>Uploaded the PDF, typed <code>submit</code>, and received a claim ID with status <b>Pending Review</b>.</div></div>
+        </div>
+      </div>
     </div>
 
-    <h3>Pillars of a Conversational Agent</h3>
-    <p>Every conversational agent you design in UiPath is built from the same seven building blocks. You'll configure each of these for the conversational agent over the course of this module.</p>
 
-    <div class="grid g2">
-      <div class="card"><h4>System Prompt</h4><p style="font-size:13.5px;margin:0;">Define agent persona, goals, and behavioral guidelines.</p></div>
-      <div class="card"><h4>Tools Integration</h4><p style="font-size:13.5px;margin:0;">Connect RPA, API, MCP, autonomous agents, and built-in tools.</p></div>
-      <div class="card"><h4>Context Grounding</h4><p style="font-size:13.5px;margin:0;">Ground responses with semantic, DeepRAG, or batch knowledge retrieval.</p></div>
-      <div class="card"><h4>Human Escalations</h4><p style="font-size:13.5px;margin:0;">Hand off to humans via Action Center tasks and document validation.</p></div>
-      <div class="card"><h4>Model Selection</h4><p style="font-size:13.5px;margin:0;">Choose from Claude Sonnet 4.5, GPT-5, or Gemini with configurable token limits.</p></div>
-      <div class="card"><h4>Custom Appearance</h4><p style="font-size:13.5px;margin:0;">Tailor title, description, and starting prompts to match your brand.</p></div>
-    </div>
-    <div class="card" style="margin-top:16px;"><h4>Autopilot and Agent Health Score</h4><p style="font-size:13.5px;margin:0;">Develop your agent in natural language &amp; automatically assess production readiness.</p></div>
-
-    
 
     <nav class="md-footer-nav">
-      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 1 Overview</span></a>
-      <a class="next" href="lesson-create-agent.html"><span class="dir">Next →</span><span class="ttl">Create Agent</span></a>
+      <a class="prev" href="lesson-tools.html"><span class="dir">← Previous</span><span class="ttl">Tools</span></a>
+      <a class="next" href="lesson-deploy.html"><span class="dir">Next →</span><span class="ttl">Deploy and Get Agent ID</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
