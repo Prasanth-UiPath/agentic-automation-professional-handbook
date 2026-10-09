@@ -65,7 +65,6 @@
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -74,6 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -190,144 +190,10 @@
         </figure>
         <div class="adm tip">
           <div class="adm-title">💡 What you get</div>
-          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, and <b>Send Approve Email</b>.</div>
+          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally the start event <b>Claim Ready for Review</b>.</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Imported <code>Insurance_Claim_Process.bpmn</code> onto the canvas.</div></div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="group-header" id="group-start-event">
-      <h2 style="margin-top:0;">Start Event</h2>
-    </div>
-        <p>The process must start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
-    <div class="step" id="step-3">
-      <div class="num">3</div>
-      <div class="body">
-        <h3>Open the start event trigger</h3>
-        <p>Select the start event <b>Claim Ready for Review</b> on the canvas. In <b>Properties → Implementation</b>, open the <b>Action</b> dropdown (currently <b>None</b>).</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Start event</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_set_connector.png" alt="Start event → Implementation → Action." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Start event → Implementation → Action.</figcaption>
-        </figure>
-        <p>In the <b>Change the trigger for your automation</b> dialog, search for <code>UiPath Data</code> and select <b>UiPath Data Fabric: Record Updated</b> ("Triggers when an existing entity record was updated"). Do not pick Record Created.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Change trigger</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step2_record_updated.png" alt="Select UiPath Data Fabric: Record Updated." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Select UiPath Data Fabric: Record Updated.</figcaption>
-        </figure>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Opened the start event's <b>Action</b> list.</div></div>
-          <div class="row"><span class="box"></span><div>Selected <b>UiPath Data Fabric: Record Updated</b>.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-4">
-      <div class="num">4</div>
-      <div class="body">
-        <h3>Set the connection and Tenant scope</h3>
-        <p>Set <b>Select activity</b> to <b>Record Updated</b> and the <b>UiPath Data Fabric connection</b> to <b>Shared UiPath Data Fabric</b>. Then open <b>Entity Scope</b> and choose <b>Tenant</b>.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Start event</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step3_scope_tenant.png" alt="Connection = Shared UiPath Data Fabric, Entity Scope = Tenant." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Connection = Shared UiPath Data Fabric, Entity Scope = Tenant.</figcaption>
-        </figure>
-        <div class="adm warn">
-          <div class="adm-title">⚠️ Choose Tenant, not Folder</div>
-          <div class="adm-body">The shared claim entity lives at tenant level, so it does not appear under the Folder scope.</div>
-        </div>
-        <p>Open the <b>Entity</b> dropdown and select <code>IntakeClaimEntity</code>.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Start event</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step4_select_entity.png" alt="Entity = IntakeClaimEntity." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Entity = IntakeClaimEntity.</figcaption>
-        </figure>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Connection = <b>Shared UiPath Data Fabric</b>, Entity Scope = <b>Tenant</b>.</div></div>
-          <div class="row"><span class="box"></span><div>Entity = <code>IntakeClaimEntity</code>.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-5">
-      <div class="num">5</div>
-      <div class="body">
-        <h3>Add the filter</h3>
-        <p>Click the <b>Filter</b> field to open the filter builder. Keep <b>All (AND)</b>, add a condition — field <code>DecisionInput</code>, operator <b>Equals</b>, value <code>READY_FOR_REVIEW</code> — and click <b>Save</b>. Only claims marked ready for review will start the process.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Filter builder</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step5_filter.png" alt="Filter builder: DecisionInput Equals READY_FOR_REVIEW." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Filter builder: DecisionInput Equals READY_FOR_REVIEW.</figcaption>
-        </figure>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Added <code>DecisionInput</code> Equals <code>READY_FOR_REVIEW</code> and saved.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-6">
-      <div class="num">6</div>
-      <div class="body">
-        <h3>Debug and check the results</h3>
-        <p>Click <b>Debug</b>. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Debug</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step6_debug_and_check_results.png" alt="Execution trail and Global variables after the start event runs." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Execution trail and Global variables after the start event runs.</figcaption>
-        </figure>
-        <div class="adm note">
-          <div class="adm-title">📝 Tip</div>
-          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
-        </div>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
         </div>
       </div>
     </div>
@@ -338,11 +204,11 @@
       <h2 style="margin-top:0;">Fraud Detection Agent</h2>
     </div>
         <p>Right after the start event, the process calls the <b>Fraud Detect Agent</b> you built and published in Module 2 and waits for its verdict.</p>
-    <div class="step" id="step-7">
-      <div class="num">7</div>
+    <div class="step" id="step-3">
+      <div class="num">3</div>
       <div class="body">
         <h3>Configure the Fraud Detection Agent task</h3>
-        <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = your published <code>Fraud Detect Agent_YourName</code>, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b>. The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
+        <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = your published <code>Fraud Detect Agent_YourName</code>, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b> (if <code>response</code> is not listed yet, finish the <a href="lesson-start-event.html">Start Event</a> lesson at the end of this module and come back). The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -362,8 +228,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-8">
-      <div class="num">8</div>
+    <div class="step" id="step-4">
+      <div class="num">4</div>
       <div class="body">
         <h3>Run and check the results</h3>
         <p>Click <b>Debug</b>. The <b>Fraud Detection Agent</b> task should succeed. In <b>Global variables</b> check <code>out_ClaimDetails</code> (including <code>record_id</code>), <code>out_FraudAnalysis</code> (score, level, indicators), <code>out_Status</code> (routing action) and <code>out_SuggestedResponse</code> (email subject and body).</p>
@@ -391,8 +257,8 @@
       <h2 style="margin-top:0;">Download the Claim File</h2>
     </div>
         <p>Next, the process downloads the claim's supporting PDF from the Data Fabric record so the supervisor can review it.</p>
-    <div class="step" id="step-9">
-      <div class="num">9</div>
+    <div class="step" id="step-5">
+      <div class="num">5</div>
       <div class="body">
         <h3>Choose the connector action</h3>
         <p>Select the task <b>Download File from Record Field</b>. In <b>Implementation → Action</b> choose <b>Connector</b>.</p>
@@ -427,8 +293,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-10">
-      <div class="num">10</div>
+    <div class="step" id="step-6">
+      <div class="num">6</div>
       <div class="body">
         <h3>Map the record</h3>
         <p>Set <b>Entity Scope</b> = <b>Tenant</b>, <b>Entity</b> = <code>IntakeClaimEntity</code>, <b>Field</b> = <code>ClaimPDF</code>, and <b>Record ID</b> = the record ID the Fraud agent returned:</p>
@@ -468,8 +334,8 @@
       <h2 style="margin-top:0;">Supervisor Validation (Human in the Loop)</h2>
     </div>
         <p>A human now reviews the claim. The review screen is an <b>Action App</b> that is <b>already built and deployed</b> on the tenant — you only <b>import</b> it into your solution and connect it to your process. Do not use <i>Action app</i> in the Explorer (that builds a new one).</p>
-    <div class="step" id="step-11">
-      <div class="num">11</div>
+    <div class="step" id="step-7">
+      <div class="num">7</div>
       <div class="body">
         <h3>Import the existing Action App</h3>
         <p>Select the task <b>Supervisior_ClaimValidation</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
@@ -508,8 +374,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-12">
-      <div class="num">12</div>
+    <div class="step" id="step-8">
+      <div class="num">8</div>
       <div class="body">
         <h3>Make it a Human Task</h3>
         <p>With the task selected, open <b>Implementation → Action</b> and choose <b>Human Task</b>.</p>
@@ -545,8 +411,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-13">
-      <div class="num">13</div>
+    <div class="step" id="step-9">
+      <div class="num">9</div>
       <div class="body">
         <h3>Map the app inputs</h3>
         <p>Scroll to the task's input arguments and map each one with <b>Insert variable</b> (JS Expression editor). Most come from the Fraud agent's output objects:</p>
@@ -609,8 +475,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-14">
-      <div class="num">14</div>
+    <div class="step" id="step-10">
+      <div class="num">10</div>
       <div class="body">
         <h3>Debug, then Approve or Reject</h3>
         <p>Run <b>Debug</b>. When the action app form opens in Action Center, review the claim and its document, add <b>Reviewer comments</b>, and click <b>Approve</b> or <b>Reject</b>. The button you press becomes <code>vars.action</code>, which the gateway uses next.</p>
@@ -638,8 +504,8 @@
       <h2 style="margin-top:0;">Notify the Claimant</h2>
     </div>
         <p>After the supervisor task, the process sends an interim notification to the claimant using the <b>Gmail</b> connector.</p>
-    <div class="step" id="step-15">
-      <div class="num">15</div>
+    <div class="step" id="step-11">
+      <div class="num">11</div>
       <div class="body">
         <h3>Select the connector</h3>
         <p>Select the task <b>Send Notify Email to Claimant</b> and set <b>Implementation → Action</b> to <b>Connector</b>.</p>
@@ -674,8 +540,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-16">
-      <div class="num">16</div>
+    <div class="step" id="step-12">
+      <div class="num">12</div>
       <div class="body">
         <h3>Map the email fields</h3>
         <p>Choose the <b>Gmail connection</b> <b>Shared Gmail Connection</b>, set <b>Save as draft</b> = <b>False</b>, and fill the fields. Use <b>your own email address</b> in <b>To</b> so you receive the test email.</p>
@@ -716,8 +582,8 @@
       <h2 style="margin-top:0;">Reviewer Gateway</h2>
     </div>
         <p>The <b>Reviewer Action GateWay</b> routes the claim by the supervisor's decision: <b>Approve</b> goes through the settlement calculation, <b>Reject</b> goes straight to the email.</p>
-    <div class="step" id="step-17">
-      <div class="num">17</div>
+    <div class="step" id="step-13">
+      <div class="num">13</div>
       <div class="body">
         <h3>Set the Approve condition</h3>
         <p>Select the exclusive gateway <b>Reviewer Action GateWay</b>. Expand <b>Conditions → Approve</b> and click the <b>Condition</b> field.</p>
@@ -770,8 +636,8 @@
       <h2 style="margin-top:0;">Settlement Coded Agent</h2>
     </div>
         <p>On the Approve branch the process calls your <b>Settlement Coded Agent</b> (Module 3) to calculate the settlement amount.</p>
-    <div class="step" id="step-18">
-      <div class="num">18</div>
+    <div class="step" id="step-14">
+      <div class="num">14</div>
       <div class="body">
         <h3>Select your coded agent</h3>
         <p>Select the service task <b>SettlementCodedAgent</b>. In <b>Implementation</b> open the <b>Action</b> dropdown.</p>
@@ -787,7 +653,7 @@
           </div>
           <figcaption>Service task → Action.</figcaption>
         </figure>
-        <p>Choose <b>Start and wait for agent</b>, click the <b>Agent</b> field and select <b>your</b> published coded agent <code>Settlement_CodedAgent_YourName</code> from <b>Defined resources</b>.</p>
+        <p>Choose <b>Start and wait for agent</b>, click the <b>Agent</b> field and select <b>your</b> published coded agent <code>Settlement_CodedAgent_your_name</code> from <b>Defined resources</b>.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -810,8 +676,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-19">
-      <div class="num">19</div>
+    <div class="step" id="step-15">
+      <div class="num">15</div>
       <div class="body">
         <h3>Map the inputs</h3>
         <p>The coded agent takes three inputs. Click the expression icon next to each and use <b>Insert variable</b>:</p>
@@ -868,8 +734,8 @@
       <h2 style="margin-top:0;">Generate the Email (GenAI)</h2>
     </div>
         <p>Both branches meet at <b>Generate Approval Email</b>. A single <b>GenAI</b> activity writes either the approval email or the "more documents needed" email, depending on <code>vars.action</code>.</p>
-    <div class="step" id="step-20">
-      <div class="num">20</div>
+    <div class="step" id="step-16">
+      <div class="num">16</div>
       <div class="body">
         <h3>Choose the Generate Email activity</h3>
         <p>Select the task <b>Generate Approval Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, then click <b>Select activity</b>.</p>
@@ -904,8 +770,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-21">
-      <div class="num">21</div>
+    <div class="step" id="step-17">
+      <div class="num">17</div>
       <div class="body">
         <h3>Configure the activity</h3>
         <p>Set the properties below, then click the <b>Email content</b> field to open the text builder.</p>
@@ -1034,8 +900,8 @@
       <h2 style="margin-top:0;">Send the Decision Email</h2>
     </div>
         <p>The last task sends the generated email through Gmail and the process ends.</p>
-    <div class="step" id="step-22">
-      <div class="num">22</div>
+    <div class="step" id="step-18">
+      <div class="num">18</div>
       <div class="body">
         <h3>Set the Gmail connection</h3>
         <p>Select the task <b>Send Approve Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, <b>Select activity</b> to <b>Send Email</b> (Gmail), and <b>Gmail connection</b> to <b>Shared Gmail Connection</b>.</p>
@@ -1057,8 +923,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-23">
-      <div class="num">23</div>
+    <div class="step" id="step-19">
+      <div class="num">19</div>
       <div class="body">
         <h3>Add the recipient and subject</h3>
         <p>Set <b>Save as draft</b> = <b>False</b>. In <b>To</b> use <b>your own email address</b> (in production this would be the claimant's email). For <b>Subject</b> use one expression that covers both outcomes:</p>
@@ -1089,8 +955,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-24">
-      <div class="num">24</div>
+    <div class="step" id="step-20">
+      <div class="num">20</div>
       <div class="body">
         <h3>Bind the body</h3>
         <p>Click the expression icon next to <b>Body</b>, then under <b>Variables → Generate Approval Email</b> choose <code>emailContent (string)</code> and click <b>Save</b>. The body becomes:</p>
@@ -1115,6 +981,140 @@
         </figure>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Bound <b>Body</b> to <code>vars.emailContent</code>.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="group-header" id="group-start-event">
+      <h2 style="margin-top:0;">Start Event</h2>
+    </div>
+        <p>The last piece makes the whole process start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
+    <div class="step" id="step-21">
+      <div class="num">21</div>
+      <div class="body">
+        <h3>Open the start event trigger</h3>
+        <p>Select the start event <b>Claim Ready for Review</b> on the canvas. In <b>Properties → Implementation</b>, open the <b>Action</b> dropdown (currently <b>None</b>).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_set_connector.png" alt="Start event → Implementation → Action." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Start event → Implementation → Action.</figcaption>
+        </figure>
+        <p>In the <b>Change the trigger for your automation</b> dialog, search for <code>UiPath Data</code> and select <b>UiPath Data Fabric: Record Updated</b> ("Triggers when an existing entity record was updated"). Do not pick Record Created.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Change trigger</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step2_record_updated.png" alt="Select UiPath Data Fabric: Record Updated." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select UiPath Data Fabric: Record Updated.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the start event's <b>Action</b> list.</div></div>
+          <div class="row"><span class="box"></span><div>Selected <b>UiPath Data Fabric: Record Updated</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-22">
+      <div class="num">22</div>
+      <div class="body">
+        <h3>Set the connection and Tenant scope</h3>
+        <p>Set <b>Select activity</b> to <b>Record Updated</b> and the <b>UiPath Data Fabric connection</b> to <b>Shared UiPath Data Fabric</b>. Then open <b>Entity Scope</b> and choose <b>Tenant</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step3_scope_tenant.png" alt="Connection = Shared UiPath Data Fabric, Entity Scope = Tenant." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Connection = Shared UiPath Data Fabric, Entity Scope = Tenant.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Choose Tenant, not Folder</div>
+          <div class="adm-body">The shared claim entity lives at tenant level, so it does not appear under the Folder scope.</div>
+        </div>
+        <p>Open the <b>Entity</b> dropdown and select <code>IntakeClaimEntity</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step4_select_entity.png" alt="Entity = IntakeClaimEntity." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Entity = IntakeClaimEntity.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Connection = <b>Shared UiPath Data Fabric</b>, Entity Scope = <b>Tenant</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Entity = <code>IntakeClaimEntity</code>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-23">
+      <div class="num">23</div>
+      <div class="body">
+        <h3>Add the filter</h3>
+        <p>Click the <b>Filter</b> field to open the filter builder. Keep <b>All (AND)</b>, add a condition — field <code>DecisionInput</code>, operator <b>Equals</b>, value <code>READY_FOR_REVIEW</code> — and click <b>Save</b>. Only claims marked ready for review will start the process.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Filter builder</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step5_filter.png" alt="Filter builder: DecisionInput Equals READY_FOR_REVIEW." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Filter builder: DecisionInput Equals READY_FOR_REVIEW.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added <code>DecisionInput</code> Equals <code>READY_FOR_REVIEW</code> and saved.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-24">
+      <div class="num">24</div>
+      <div class="body">
+        <h3>Debug and check the results</h3>
+        <p>Now that every task is configured, click <b>Debug</b> and run the whole process. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Debug</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step6_debug_and_check_results.png" alt="Execution trail and Global variables after the start event runs." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Execution trail and Global variables after the start event runs.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Tip</div>
+          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
         </div>
       </div>
     </div>

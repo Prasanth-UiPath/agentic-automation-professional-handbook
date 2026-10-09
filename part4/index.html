@@ -65,7 +65,6 @@
       <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -74,6 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -88,17 +88,17 @@
     <p class="lead">Orchestrate the complete claim journey — agents, a human review, GenAI, and email — in one Maestro BPMN process.</p>
 
     <h2 id="overview">Overview</h2>
-    <p>You will import the <b>Insurance Claim</b> BPMN process and configure each step: a Data Fabric trigger, your <b>Fraud Detect Agent</b>, a file download, a supervisor review, claimant notification, an Approve / Reject gateway, your <b>Settlement Coded Agent</b>, a GenAI-written email, and the final Gmail send.</p>
+    <p>You will import the <b>Insurance Claim</b> BPMN process and configure each step: your <b>Fraud Detect Agent</b>, a file download, a supervisor review, claimant notification, an Approve / Reject gateway, your <b>Settlement Coded Agent</b>, a GenAI-written email, the final Gmail send, and finally the Data Fabric trigger that starts it all.</p>
     <div class="adm note">
       <div class="adm-title">📝 Naming</div>
       <div class="adm-body">Name your solution and process <code>Insurance Claim_MAESTRO_YourName</code>. The agents you select must be the ones with <b>your</b> name from Modules 2 and 3.</div>
     </div>
     <h2 id="learn">What you will do</h2>
-    <div class="obj"><span class="chk">✓</span><div>Start the process from an updated Data Fabric record.</div></div>
     <div class="obj"><span class="chk">✓</span><div>Call a published low-code agent and a published coded agent from BPMN tasks.</div></div>
     <div class="obj"><span class="chk">✓</span><div>Download a file from Data Fabric and hand it to an existing Action App for human review.</div></div>
     <div class="obj"><span class="chk">✓</span><div>Branch on the reviewer's decision with a gateway.</div></div>
     <div class="obj"><span class="chk">✓</span><div>Generate and send decision emails with GenAI Activities and Gmail.</div></div>
+    <div class="obj"><span class="chk">✓</span><div>Start the process automatically from an updated Data Fabric record.</div></div>
 
 
     <nav class="md-footer-nav">

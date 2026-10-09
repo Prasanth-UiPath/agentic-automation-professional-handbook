@@ -65,7 +65,6 @@
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -74,6 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row active" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -89,7 +89,6 @@
     <h2 id="recap">Completion checklist</h2>
     <div class="checklist">
       <div class="row"><span class="box"></span><div>Created and imported the Maestro BPMN process <code>Insurance Claim_MAESTRO_YourName</code></div></div>
-      <div class="row"><span class="box"></span><div>Start event listens for <b>Record Updated</b> on <code>IntakeClaimEntity</code> (Tenant scope) with <code>DecisionInput = READY_FOR_REVIEW</code></div></div>
       <div class="row"><span class="box"></span><div>Fraud agent task runs my published <b>Fraud Detect Agent</b></div></div>
       <div class="row"><span class="box"></span><div>Downloaded the claim PDF with <b>Download File from Record Field</b></div></div>
       <div class="row"><span class="box"></span><div>Imported and mapped the supervisor Action App (Human Task)</div></div>
@@ -97,6 +96,7 @@
       <div class="row"><span class="box"></span><div>Set the gateway condition <code>vars.action=="Approve"</code></div></div>
       <div class="row"><span class="box"></span><div>Settlement task runs my published <b>Settlement Coded Agent</b></div></div>
       <div class="row"><span class="box"></span><div>Generated the decision email with GenAI (HTML) and sent it with Gmail</div></div>
+      <div class="row"><span class="box"></span><div>Start event listens for <b>Record Updated</b> on <code>IntakeClaimEntity</code> (Tenant scope) with <code>DecisionInput = READY_FOR_REVIEW</code></div></div>
       <div class="row"><span class="box"></span><div>Ran the full process in Debug for both Approve and Reject</div></div>
     </div>
     <h2 id="demo">End-to-end demo</h2>
@@ -109,7 +109,7 @@
     </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-send-email.html"><span class="dir">← Previous</span><span class="ttl">Send the Decision Email</span></a>
+      <a class="prev" href="lesson-start-event.html"><span class="dir">← Previous</span><span class="ttl">Start Event</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
