@@ -73,7 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -208,7 +208,7 @@
       <div class="num">3</div>
       <div class="body">
         <h3>Configure the Fraud Detection Agent task</h3>
-        <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = your published <code>Fraud Detect Agent_YourName</code>, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b> (if <code>response</code> is not listed yet, finish the <a href="lesson-start-event.html">Start Event</a> lesson at the end of this module and come back). The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
+        <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = your published <code>Fraud Detect Agent_YourName</code>, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b> (if <code>response</code> is not listed yet, finish the <a href="lesson-start-event.html">Publish and Trigger</a> lesson at the end of this module and come back). The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -988,7 +988,7 @@
 
 
     <div class="group-header" id="group-start-event">
-      <h2 style="margin-top:0;">Start Event</h2>
+      <h2 style="margin-top:0;">Publish and Trigger</h2>
     </div>
         <p>The last piece makes the whole process start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
     <div class="step" id="step-21">
