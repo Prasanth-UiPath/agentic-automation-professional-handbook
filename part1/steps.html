@@ -90,7 +90,7 @@
       <h2 style="margin-top:0;">Concepts</h2>
     </div>
     <h3>What's a Conversational Agent?</h3>
-    <p>A <b>Conversational Agent</b> is a UiPath agent designed to interact with people in real time through natural, back-and-forth chat — rather than running a task end to end on its own. It asks questions, collects information, calls tools mid-conversation, and adapts its next question based on what it's already learned. For the Insurance Claim Approval Process, the conversational agent <i>is</i> the conversational agent: it's the front door claimants talk to when they need to file a claim.</p>
+    <p>A <b>Conversational Agent</b> is a UiPath agent designed to interact with people in real time through natural, back-and-forth chat — rather than running a task end to end on its own. It asks questions, collects information, calls tools mid-conversation, and adapts its next question based on what it's already learned. For the Insurance Claim Approval Process, the conversational agent <i>is</i> the claim-intake agent: it's the front door claimants talk to when they need to file a claim.</p>
 
     <h3>Why Conversational Agents?</h3>
     <p>Many business processes don't start with a clean, structured form — they start with a person who has a question, a document, and an incomplete understanding of what's required. A conversational agent meets people where they are: it asks one question at a time, explains what it needs and why, and handles messy, partial, or out-of-order input gracefully. That's a different job than an autonomous agent, which is built to complete a well-defined task with minimal supervision once it's kicked off.</p>
@@ -214,17 +214,17 @@
         <div class="highlight">
           <div class="filename">Naming convention</div>
           <pre><code><span class="pr">Solution Folder</span>  <span class="hl">Insurance_Claim_ConversationalAgent_YourName</span>
-<span class="pr">Conversational Agent</span>  <span class="hl">conversational agent</span></code></pre>
+<span class="pr">Conversational Agent</span>  <span class="hl">Insurance_Claim_ConversationalAgent_YourName</span></code></pre>
         </div>
 
         <div class="adm note">
           <div class="adm-title">📝 Note</div>
-          <div class="adm-body">Replace <code>(YourName)</code> with your own name or initials. Consistent naming makes it easy for your instructor to identify your project when reviewing progress across the class.</div>
+          <div class="adm-body">Replace <code>YourName</code> with your own name or initials. Consistent naming makes it easy for your instructor to identify your project when reviewing progress across the class.</div>
         </div>
 
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Solution folder renamed to <b>Insurance_Claim_ConversationalAgent_YourName</b></div></div>
-          <div class="row"><span class="box"></span><div>Conversational agent renamed to <b>conversational agent</b></div></div>
+          <div class="row"><span class="box"></span><div>Conversational agent renamed to <b>Insurance_Claim_ConversationalAgent_YourName</b></div></div>
         </div>
       </div>
     </div>
@@ -833,7 +833,7 @@ Stop. Do not call another tool.</code></pre>
         <tr><td>User settings</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td>—</td><td>—</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:13.5px;color:var(--muted);"><b>Instance Management provides the latest and most complete UI.</b> Other channels inherit feature subsets based on platform constraints and integration capabilities. This ensures optimal experiences on each platform while maintaining consistent core functionality. The <b>iFrame/Apps</b> channel is the one you wired up earlier in this module when you embedded the conversational agent in the Claim Request App.</p>
+    <p style="font-size:13.5px;color:var(--muted);"><b>Instance Management provides the latest and most complete UI.</b> Other channels inherit feature subsets based on platform constraints and integration capabilities. This ensures optimal experiences on each platform while maintaining consistent core functionality. The <b>iFrame/Apps</b> channel is the one you wire up in the next lessons when you embed the conversational agent in the Claim Request App.</p>
 
         <div class="step" id="step-11">
       <div class="num">11</div>
