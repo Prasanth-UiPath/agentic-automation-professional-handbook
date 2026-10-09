@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Module 3 · Coded Agent</title>
+<title>Publish &amp; Run · Module 3 · Coded Agent</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -52,10 +52,10 @@
   <details open>
     <summary>Module 3 · Coded Agent</summary>
     <div class="group-items">
-      <a class="lesson-row active" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish & Run</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish & Run</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -81,28 +81,90 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 3 · Coded Agent</span>
-    <h1>Coded Agent</h1>
+    <span class="eyebrow">Module 3 · Lesson 3 of 3</span>
+    <h1>Publish &amp; Run</h1>
     <div class="rise-divider"></div>
-    <p class="lead">Full Python freedom via an open-source SDK — packaged, published, and run under the same enterprise governance as every other UiPath automation.</p>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Pack, publish to Orchestrator, invoke, and verify that your agent shows up as an <b>Agent</b> — the four steps that take your tested agent to the cloud.</p>
 
-    <h2 id="overview">Overview</h2>
-    <p>In this module, you'll learn what a <b>Coded Agent</b> is — agent logic written entirely in Python, using the open-source UiPath SDK — and why enterprises are adopting them alongside low-code agents. You'll then build a real one: a <b>Settlement Coded Agent</b>, a pure-Python, deterministic agent that settles insurance claims using simple business rules, with no LLM involved at all. By the end, you'll have scaffolded, written, tested, packaged, published, and invoked a coded agent under full UiPath governance.</p>
-
-    <div class="adm tip">
-      <div class="adm-title">💡 An LLM is optional</div>
-      <div class="adm-body">The Settlement Agent you build in this module is <b>pure deterministic logic</b> — no model calls. Coded agents are just as useful for auditable business rules as they are for LLM reasoning.</div>
+    <div class="step" id="step-17">
+      <div class="num">17</div>
+      <div class="body">
+        <h3>Pack</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p1')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-p1"><code>uipath pack</code></pre>
+        </div>
+        </div>
+        <p>Look for <code>Project successfully packaged.</code></p>
+      </div>
     </div>
+
+    <div class="step" id="step-18">
+      <div class="num">18</div>
+      <div class="body">
+        <h3>Publish</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p2')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-p2"><code>uipath publish</code></pre>
+        </div>
+        </div>
+        <p>Pick your feed when prompted.</p>
+      </div>
+    </div>
+
+    <div class="step" id="step-19">
+      <div class="num">19</div>
+      <div class="body">
+        <h3>Invoke</h3>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-p3')"></button>
+<div class="highlight">
+          <div class="filename">PowerShell</div>
+          <pre id="code-block-p3"><code>uipath invoke</code></pre>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-20">
+      <div class="num">20</div>
+      <div class="body">
+        <h3>Verify in Orchestrator</h3>
+        <p>Open <b>Orchestrator → Processes</b> and find <code>Settlement_CodedAgent_&lt;your_name&gt;</code>. Its <b>Type</b> should no longer say <b>Function (python)</b>.</p>
+        <div class="adm note">
+          <div class="adm-title">ℹ️ Governance for free</div>
+          <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uipath pack</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>) and picked my feed</div></div>
+          <div class="row"><span class="box"></span><div>Invoked the agent (<code>uipath invoke</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Confirmed in Orchestrator → Processes that the Type is not "Function (python)"</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h4>Troubleshooting</h4>
+    <table>
+      <thead><tr><th>Symptom</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Still shows as a Function</td><td>Recheck steps 12 and 14, change <code>version</code> in <code>pyproject.toml</code> to <code>0.0.2</code>, then repeat steps 17 and 18.</td></tr>
+        <tr><td>Access denied creating folders or the venv</td><td>You are in a system folder or an Administrator window. Redo step 1.</td></tr>
+        <tr><td>Pasting a multi-line block hangs at the <code>&gt;&gt;</code> prompt</td><td>Press <code>Ctrl+C</code> and use Notepad as in steps 10 to 12.</td></tr>
+        <tr><td><code>FutureWarning</code> about <code>uipath.platform.common.constants</code></td><td>Harmless deprecation notice, not an error.</td></tr>
+        <tr><td>A command differs on your version</td><td>Run <code>uipath --help</code>. Commands follow the UiPath Python SDK docs (<code>uipath …</code>).</td></tr>
+      </tbody>
+    </table>
 
     
-    <div class="adm note">
-      <div class="adm-title">📝 Naming</div>
-      <div class="adm-body">Name your project folder and agent <code>Settlement_CodedAgent_&lt;your_name&gt;</code> (replace <code>&lt;your_name&gt;</code> with your own name, no spaces). In Module 4 you will select this published agent in the Maestro process.</div>
-    </div>
 
     <nav class="md-footer-nav">
-      <a class="prev" href="../part2/complete.html"><span class="dir">← Previous</span><span class="ttl">Module 2 Complete</span></a>
-      <a class="next" href="lesson-concepts.html"><span class="dir">Next →</span><span class="ttl">Concepts</span></a>
+      <a class="prev" href="lesson-build.html"><span class="dir">← Previous</span><span class="ttl">Build the Agent</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 3 Complete</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
