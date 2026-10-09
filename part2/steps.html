@@ -45,7 +45,6 @@
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -65,6 +64,7 @@
       <a class="lesson-row" href="../part4/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part4/lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -73,7 +73,7 @@
       <a class="lesson-row" href="../part4/lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="../part4/lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part4/lesson-publish-trigger.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part4/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -577,47 +577,6 @@ Claim data: {{input.in_ClaimData}}</code></pre>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Ran the evaluation set and reviewed the results for all 10 claims.</div></div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="group-header" id="group-publish">
-      <h2 style="margin-top:0;">Publish the Agent</h2>
-    </div>
-        <p>Maestro can only call agents that are <b>published</b>. Publish yours so you can select it in the Maestro process in Module 4.</p>
-    <div class="step" id="step-8">
-      <div class="num">8</div>
-      <div class="body">
-        <h3>Publish the agent</h3>
-        <p>Open the arrow next to <b>Deploy</b> in the toolbar and choose <b>Publish</b> (or <b>Deploy</b>, which also creates a deployment). Add release notes, confirm the version, and choose a feed (<b>Personal</b> workspace is fine for this workshop).</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Studio Web · Deploy</span>
-            </div>
-            <img src="assets/conversational_agent_2_get_chat_agent_id_step1_deploy.png" alt="Deploy / Publish menu in the toolbar." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Deploy / Publish menu in the toolbar.</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Studio Web · Deployment</span>
-            </div>
-            <img src="assets/conversational_agent_2_get_chat_agent_id_step2_deployemnt_successfull.png" alt="Publish / deployment successful." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Publish / deployment successful.</figcaption>
-        </figure>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Published the <code>Fraud Detect Agent_YourName</code> agent and saw the success message.</div></div>
         </div>
       </div>
     </div>
