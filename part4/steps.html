@@ -190,7 +190,7 @@
         </figure>
         <div class="adm tip">
           <div class="adm-title">💡 What you get</div>
-          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: the start event <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally you run the whole process (Publish and Trigger).</div>
+          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: the start event <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action Gateway</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally you run the whole process (Publish and Trigger).</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Imported <code>Insurance_Claim_Process.bpmn</code> onto the canvas.</div></div>
@@ -688,12 +688,12 @@
     <div class="group-header" id="group-gateway">
       <h2 style="margin-top:0;">Reviewer Gateway</h2>
     </div>
-        <p>The <b>Reviewer Action GateWay</b> routes the claim by the supervisor's decision: <b>Approve</b> goes through the settlement calculation, <b>Reject</b> goes straight to the email.</p>
+        <p>The <b>Reviewer Action Gateway</b> routes the claim by the supervisor's decision: <b>Approve</b> goes through the settlement calculation, <b>Reject</b> goes straight to the email.</p>
     <div class="step" id="step-16">
       <div class="num">16</div>
       <div class="body">
         <h3>Set the Approve condition</h3>
-        <p>Select the exclusive gateway <b>Reviewer Action GateWay</b>. Expand <b>Conditions → Approve</b> and click the <b>Condition</b> field.</p>
+        <p>Select the exclusive gateway <b>Reviewer Action Gateway</b>. Expand <b>Conditions → Approve</b> and click the <b>Condition</b> field.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
@@ -1117,7 +1117,7 @@
         </figure>
         <div class="adm note">
           <div class="adm-title">📝 Tip</div>
-          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
+          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what the Fraud Detection Agent task reads as its input.</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
