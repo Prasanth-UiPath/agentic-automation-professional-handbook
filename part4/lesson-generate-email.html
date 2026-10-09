@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generate the Email (GenAI) · Module 4 · Maestro</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261010">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Approval Workshop</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details>
+    <summary>Module 1 · Conversational Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part1/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-test.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Test the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Import the App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 1 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 2 · Fraud Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part2/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 3 · Coded Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part3/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish & Run</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details open>
+    <summary>Module 4 · Maestro</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 4 · Lesson 10 of 11</span>
+    <h1>Generate the Email (GenAI)</h1>
+    <div class="rise-divider"></div>
+        <p>Both branches meet at <b>Generate Approval Email</b>. A single <b>GenAI</b> activity writes either the approval email or the "more documents needed" email, depending on <code>vars.action</code>.</p>
+    <div class="step" id="step-20">
+      <div class="num">20</div>
+      <div class="body">
+        <h3>Choose the Generate Email activity</h3>
+        <p>Select the task <b>Generate Approval Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, then click <b>Select activity</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step1_execute_connector_action.png" alt="Action → Execute connector activity." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Execute connector activity.</figcaption>
+        </figure>
+        <p>Search for <code>generate email</code> and pick <b>Generate Email</b> from <b>UiPath GenAI Activities</b> — not one of the Gmail, Outlook, Mailjet or SES "Send Email" activities.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Select activity</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step2_generate_email_task.png" alt="Select Generate Email (UiPath GenAI Activities)." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select Generate Email (UiPath GenAI Activities).</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Selected <b>Generate Email</b> from <b>UiPath GenAI Activities</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-21">
+      <div class="num">21</div>
+      <div class="body">
+        <h3>Configure the activity</h3>
+        <p>Set the properties below, then click the <b>Email content</b> field to open the text builder.</p>
+        <table>
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>UiPath GenAI Activities connection</td><td><code>UiPath GenAI Activities</code></td></tr>
+            <tr><td>Model name</td><td><code>gpt-5.1-2025-11-13</code> (or the model available on your tenant)</td></tr>
+            <tr><td>Include salutation</td><td><code>false</code> (the prompt writes "Dear …")</td></tr>
+            <tr><td>Include sign-off</td><td><code>false</code> (the prompt writes the sign-off)</td></tr>
+            <tr><td>Style</td><td><code>Concise</code></td></tr>
+            <tr><td>Output format</td><td><code>HTML</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Generate Email</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step3_email_content.png" alt="GenAI settings and the empty Email content field." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>GenAI settings and the empty Email content field.</figcaption>
+        </figure>
+        <p>Paste the expression below into the <b>Email content</b> text builder. It branches on <code>vars.action</code>: the first half builds the <b>approval</b> email, the second half the <b>rejection / more documents</b> email.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-3')"></button>
+<div class="highlight">
+          <div class="filename">Email content (JS expression)</div>
+          <pre id="maestro-code-3"><code>vars.action == "Approve"
+? [
+    "Write a professional HTML email (use &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;br&gt; only) to the customer informing them that their insurance claim has been APPROVED following supervisor review.", "\n", "\n",
+    "Use exactly this structure and these values:", "\n", "\n",
+    "&lt;p&gt;Dear ", vars.outClaimDetails?.customer_name, ",&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;We are writing regarding your claim with the following details:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Customer name:&lt;/strong&gt; ", vars.outClaimDetails?.customer_name, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; ", vars.outClaimDetails?.claim_id, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; ", vars.outClaimDetails?.policy_number, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;Following supervisor review, your claim has been &lt;strong&gt;approved&lt;/strong&gt;.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;The settlement details are as follows:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Original claim amount:&lt;/strong&gt; ", vars.outClaimDetails?.claim_amount, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement percentage:&lt;/strong&gt; ", vars.settlementPercentage, "%&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement amount:&lt;/strong&gt; ", vars.settlementAmount, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "SUPERVISOR COMMENTS (internal note, rewrite it in polite, clear, customer-friendly language and add it as a short paragraph titled 'Reviewer notes' after the settlement details. Keep the meaning, fix grammar, do not copy it word for word, and do not mention fraud scores, fraud indicators or internal system details): ", "\n",
+    vars.reviewerComments, "\n", "\n",
+    "&lt;p&gt;If you have any questions regarding this outcome or your policy coverage, please contact our helpline using the number below.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Regards,&lt;br&gt;", "\n",
+    "Claims Processing Team&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')
+: [
+    "Write a professional HTML email (use &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;br&gt; only) to the customer informing them that their insurance claim could NOT be approved as submitted and that additional documentation is required.", "\n", "\n",
+    "Use exactly this structure and these values:", "\n", "\n",
+    "&lt;p&gt;Dear ", vars.outClaimDetails?.customer_name, ",&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;We are writing regarding your insurance claim with the following details:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; ", vars.outClaimDetails?.claim_id, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; ", vars.outClaimDetails?.policy_number, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;After a thorough review, we are unable to approve your claim as submitted. At this stage, we require additional documentation and clarification before we can continue our assessment.&lt;/p&gt;", "\n", "\n",
+    "SUPERVISOR COMMENTS (internal note, rewrite it in polite, clear, customer-friendly language and add it as a short paragraph titled 'Reason for decision' right after the paragraph above. Keep the meaning, fix grammar, do not copy it word for word, and do not mention fraud scores, fraud indicators or internal system details): ", "\n",
+    vars.reviewerComments, "\n", "\n",
+    "&lt;p&gt;Please resubmit your claim with the following documents and information:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;Detailed incident description, including date, time, location, and sequence of events&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Supporting evidence (e.g., photos, repair estimates, invoices, or receipts)&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Any relevant police, incident, or official reports&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Proof of ownership or value for the items or property involved&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Any prior correspondence related to this incident or similar claims&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;When resubmitting, you must clearly include your Claim ID: &lt;strong&gt;", vars.outClaimDetails?.claim_id, "&lt;/strong&gt; on all documents and communications.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Please note that resubmitting the requested information will allow us to conduct a further review; however, it does not guarantee that the claim will be approved.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Sincerely,&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Text builder</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step4_map_arguments_in_email_content.png" alt="Text builder with the expression; variables appear as blue chips." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Text builder with the expression; variables appear as blue chips.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Check the variable chips</div>
+          <div class="adm-body">After pasting, every <code>vars.…</code> reference should turn into a blue chip. The claim fields come from <code>vars.outClaimDetails</code>. If <code>vars.settlementPercentage</code>, <code>vars.settlementAmount</code> or <code>vars.reviewerComments</code> does not resolve, delete it and use <b>Insert variable</b> to pick the settlement agent outputs and the supervisor's <b>Reviewer comments</b>.</div>
+        </div>
+        <p>Finally, scroll down and confirm <b>Output format</b> is <b>HTML</b> and <b>Style</b> is <b>Concise</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Generate Email</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step5_setformat.png" alt="Output format = HTML, Style = Concise." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Output format = HTML, Style = Concise.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set connection, model, salutation/sign-off = false, Style = Concise.</div></div>
+          <div class="row"><span class="box"></span><div>Pasted the Email content expression and checked the variable chips.</div></div>
+          <div class="row"><span class="box"></span><div>Set <b>Output format</b> to <b>HTML</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="lesson-settlement.html"><span class="dir">← Previous</span><span class="ttl">Settlement Coded Agent</span></a>
+      <a class="next" href="lesson-send-email.html"><span class="dir">Next →</span><span class="ttl">Send the Decision Email</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script src="../assets/course.js?v=20261010"></script>
+</body>
+</html>

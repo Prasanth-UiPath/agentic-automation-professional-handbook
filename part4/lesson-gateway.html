@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concepts · Module 4 · Maestro</title>
+<title>Reviewer Gateway · Module 4 · Maestro</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -63,14 +63,14 @@
     <summary>Module 4 · Maestro</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -81,33 +81,63 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 4 · Lesson 1 of 11</span>
-    <h1>Concepts</h1>
+    <span class="eyebrow">Module 4 · Lesson 8 of 11</span>
+    <h1>Reviewer Gateway</h1>
     <div class="rise-divider"></div>
-    <h3>What's Maestro BPMN?</h3>
-    <p><b>Maestro</b> is UiPath's orchestration platform for coordinating humans, robots, and AI agents across long-running business processes. <b>BPMN</b> (Business Process Model and Notation) is one of two ways to design a Maestro process — a visual canvas using the same standard notation process analysts have used for years: start/end events, tasks, gateways, and sequence flows. Where a conversational agent handles one interaction and a coded agent handles one calculation, a BPMN process ties many steps — agents, humans, and system actions — together into a single process with a clear beginning, a clear end, and a visual record of every path in between.</p>
-
-    <h3>Why Maestro?</h3>
-    <p>Real business processes rarely live inside a single agent. An insurance claim needs a fraud check, a human sign-off, a settlement calculation, and a notification back to the customer — each potentially owned by a different system or person, running at a different pace. Maestro exists to coordinate exactly that: long-running, multi-actor processes that need to be visible, auditable, and resilient to the fact that a human reviewer might not respond for hours.</p>
-    <div class="grid g3">
-      <div class="card"><div class="ico">🧭</div><h4>Visual, auditable flow</h4><p>Every step, decision, and handoff is drawn on the canvas — easy to review, easy to explain to auditors.</p></div>
-      <div class="card"><div class="ico">🤝</div><h4>Humans and agents together</h4><p>Mix agent tasks, RPA connectors, GenAI activities, and human review steps in one process.</p></div>
-      <div class="card"><div class="ico">⏳</div><h4>Built for long-running work</h4><p>A process can pause for hours or days waiting on a human, then resume exactly where it left off.</p></div>
+        <p>The <b>Reviewer Action GateWay</b> routes the claim by the supervisor's decision: <b>Approve</b> goes through the settlement calculation, <b>Reject</b> goes straight to the email.</p>
+    <div class="step" id="step-17">
+      <div class="num">17</div>
+      <div class="body">
+        <h3>Set the Approve condition</h3>
+        <p>Select the exclusive gateway <b>Reviewer Action GateWay</b>. Expand <b>Conditions → Approve</b> and click the <b>Condition</b> field.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Gateway</span>
+            </div>
+            <img src="assets/maestro_6_gateway_step1_clickcondition.png" alt="Gateway → Conditions → Approve → Condition." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Gateway → Conditions → Approve → Condition.</figcaption>
+        </figure>
+        <p>In the <b>JS Expression editor</b> enter the condition and click <b>Save</b>:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-2')"></button>
+<div class="highlight">
+          <div class="filename">Approve condition</div>
+          <pre id="maestro-code-2"><code>vars.action=="Approve"</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Gateway condition</span>
+            </div>
+            <img src="assets/maestro_6_gateway_step2_writecondition.png" alt="Approve condition in the JS Expression editor." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Approve condition in the JS Expression editor.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Reject path</div>
+          <div class="adm-body">The <b>Reject</b> path is the other outgoing flow. Give it the condition <code>vars.action=="Reject"</code>, or mark it as the default path. Both paths later meet at the <b>Generate Approval Email</b> task.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set the Approve condition to <code>vars.action=="Approve"</code> and saved it.</div></div>
+          <div class="row"><span class="box"></span><div>Checked the Reject flow has its own condition or is the default path.</div></div>
+        </div>
+      </div>
     </div>
 
-    <h3>Pillars of a Maestro BPMN Process</h3>
-    <div class="grid g2">
-      <div class="card"><h4>Start &amp; End Events</h4><p style="font-size:13.5px;margin:0;">Every process begins with a trigger — here, a Data Fabric entity creation — and ends at a single defined end event.</p></div>
-      <div class="card"><h4>Tasks</h4><p style="font-size:13.5px;margin:0;">Individual units of work: an agent call, a connector action, a GenAI activity, or a human task.</p></div>
-      <div class="card"><h4>Gateways</h4><p style="font-size:13.5px;margin:0;">Decision points that branch the flow — like the Reviewer Action Gateway routing to Approve or Reject.</p></div>
-      <div class="card"><h4>Human-in-the-loop (HITL)</h4><p style="font-size:13.5px;margin:0;">Explicit steps where a person reviews and acts before the process continues.</p></div>
-    </div>
 
-    
 
     <nav class="md-footer-nav">
-      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 4 Overview</span></a>
-      <a class="next" href="lesson-setup.html"><span class="dir">Next →</span><span class="ttl">Set Up the Process</span></a>
+      <a class="prev" href="lesson-notify-claimant.html"><span class="dir">← Previous</span><span class="ttl">Notify the Claimant</span></a>
+      <a class="next" href="lesson-settlement.html"><span class="dir">Next →</span><span class="ttl">Settlement Coded Agent</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

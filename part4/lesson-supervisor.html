@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervisor Validation (Human in the Loop) · Module 4 · Maestro</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261010">
+</head>
+<body>
+
+<header class="md-header">
+  <a class="brand" href="../index.html"><img class="brand-logo" src="https://uipath-practice.github.io/CodingAgentsCourse/assets/images/Partner%20Success%20Logo.png" alt="UiPath Partner Success"> <span class="sep"></span> <span class="subtitle">Agentic Automation Professional — ILT Workbook</span></a>
+  <div class="search">🔍 <input type="text" placeholder="Search" aria-label="Search (display only)"></div>
+</header>
+
+<div class="md-main">
+  <nav class="md-sidebar md-sidebar--primary">
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Approval Workshop</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details>
+    <summary>Module 1 · Conversational Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part1/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-test.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Test the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Import the App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 1 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 2 · Fraud Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part2/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 3 · Coded Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part3/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish & Run</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details open>
+    <summary>Module 4 · Maestro</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
+  </nav>
+
+  <main class="md-content">
+    <span class="eyebrow">Module 4 · Lesson 6 of 11</span>
+    <h1>Supervisor Validation (Human in the Loop)</h1>
+    <div class="rise-divider"></div>
+        <p>A human now reviews the claim. The review screen is an <b>Action App</b> that is <b>already built and deployed</b> on the tenant — you only <b>import</b> it into your solution and connect it to your process. Do not use <i>Action app</i> in the Explorer (that builds a new one).</p>
+    <div class="step" id="step-11">
+      <div class="num">11</div>
+      <div class="body">
+        <h3>Import the existing Action App</h3>
+        <p>Select the task <b>Supervisior_ClaimValidation</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Explorer</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step1_import_actionapp.png" alt="Explorer → + → Import existing." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Explorer → + → Import existing.</figcaption>
+        </figure>
+        <p>In the <b>Add project</b> dialog search for <code>Super</code> and tick <b>Supervisior_ClaimValidation-App_Latest</b>, then add it.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Add project</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step2_choose_supervisor_action_app.png" alt="Select Supervisior_ClaimValidation-App_Latest." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select Supervisior_ClaimValidation-App_Latest.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Spelling</div>
+          <div class="adm-body">The app and the canvas task are spelled <b>Supervisior</b> (with an extra "i") in the tenant and in the imported BPMN. Select them exactly as they appear.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Imported <code>Supervisior_ClaimValidation-App_Latest</code> with <b>Import existing</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-12">
+      <div class="num">12</div>
+      <div class="body">
+        <h3>Make it a Human Task</h3>
+        <p>With the task selected, open <b>Implementation → Action</b> and choose <b>Human Task</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step3_select_human_task.png" alt="Action → Human Task." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Human Task.</figcaption>
+        </figure>
+        <p>Set <b>Action</b> to <b>Create action app task</b>, pick the imported app under <b>Action</b>, enter the <b>Task title</b> <code>Supervisor_Validation_Task</code>, and set <b>Assignment Criteria</b> = <b>User</b> with <b>Assignee</b> = yourself (so you can complete the task during testing).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Human task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step4_config_app.png" alt="Action app, task title, and assignee." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action app, task title, and assignee.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Action</b> to <b>Human Task → Create action app task</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Selected the imported app, set the task title, and assigned the task to myself.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-13">
+      <div class="num">13</div>
+      <div class="body">
+        <h3>Map the app inputs</h3>
+        <p>Scroll to the task's input arguments and map each one with <b>Insert variable</b> (JS Expression editor). Most come from the Fraud agent's output objects:</p>
+        <table>
+          <thead><tr><th>Argument</th><th>Map to</th></tr></thead>
+          <tbody>
+            <tr><td><code>incident_type</code></td><td>Fraud Detection Agent → <code>out_ClaimDetails</code> → <code>incident_type</code></td></tr>
+            <tr><td><code>ClaimAmount</code></td><td><code>out_ClaimDetails</code> → <code>claim_amount</code></td></tr>
+            <tr><td><code>FraudRiskScore</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_score</code></td></tr>
+            <tr><td><code>FraudRiskLevel</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_level</code></td></tr>
+            <tr><td><code>FraudVerdict</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_verdict</code></td></tr>
+            <tr><td><code>FraudIndicators</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_indicators</code></td></tr>
+            <tr><td><code>RecommendedAction</code></td><td><code>out_FraudAnalysis</code> → <code>recommended_action</code></td></tr>
+            <tr><td><code>SuggestedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
+            <tr><td><code>in_ClaimRecordFile</code></td><td>Download File from Record Field → <code>response</code> (file)</td></tr>
+            <tr><td><code>io_ApprovedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step5_map_variables.png" alt="Mapping SuggestedEmailBody from out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Mapping SuggestedEmailBody from out_SuggestedResponse → email_body.</figcaption>
+        </figure>
+        <p>Map the claim document: click <code>in_ClaimRecordFile</code>, <b>Insert variable</b>, expand <b>Download File from Record Field</b>, and pick <b>response (file)</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step6_set_claimrecordfile_argument.png" alt="in_ClaimRecordFile = Download File from Record Field → response." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>in_ClaimRecordFile = Download File from Record Field → response.</figcaption>
+        </figure>
+        <p>Finally, map <code>io_ApprovedEmailBody</code> to the same <code>email_body</code> as <code>SuggestedEmailBody</code>. It is the editable email text the supervisor can adjust.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step7_set_approvedemailbody.png" alt="io_ApprovedEmailBody = out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>io_ApprovedEmailBody = out_SuggestedResponse → email_body.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Mapped every input argument (no red error dots left on the task).</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-14">
+      <div class="num">14</div>
+      <div class="body">
+        <h3>Debug, then Approve or Reject</h3>
+        <p>Run <b>Debug</b>. When the action app form opens in Action Center, review the claim and its document, add <b>Reviewer comments</b>, and click <b>Approve</b> or <b>Reject</b>. The button you press becomes <code>vars.action</code>, which the gateway uses next.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Action Center · Supervisor task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step8_debug_and_click_approve_or_reject.png" alt="The action app form with Approve and Reject buttons." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The action app form with Approve and Reject buttons.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the task in Action Center and completed it with <b>Approve</b> or <b>Reject</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <nav class="md-footer-nav">
+      <a class="prev" href="lesson-download.html"><span class="dir">← Previous</span><span class="ttl">Download the Claim File</span></a>
+      <a class="next" href="lesson-notify-claimant.html"><span class="dir">Next →</span><span class="ttl">Notify the Claimant</span></a>
+    </nav>
+    <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
+  </main>
+</div>
+
+<script src="../assets/course.js?v=20261010"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concepts, Build &amp; Publish · Module 4 · Coded Agent</title>
-<link rel="stylesheet" href="../assets/course.css?v=20261009">
+<title>Module 4 · Maestro — Full Guide</title>
+<link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
 
@@ -15,639 +15,1111 @@
 
 <div class="md-main">
   <nav class="md-sidebar md-sidebar--primary">
-    <div class="nav">
-      <p class="nav-title">Insurance Claim Approval Workshop</p>
-      <a href="../index.html">Home</a>
-      <a href="../work-environment.html">Work Environment</a>
-      <details>
-        <summary>Module 1 · Conversational Agent</summary>
-        <div class="group-items">
-          <a href="../part1/index.html">Overview</a>
-          <a href="../part1/steps.html#group-concepts">Concepts</a>
-          <a href="../part1/steps.html#group-create-agent">Create Agent</a>
-          <a href="../part1/steps.html#group-system-prompt">System Prompt</a>
-          <a href="../part1/steps.html#group-context-grounding">Context Grounding</a>
-          <a href="../part1/steps.html#group-tools">Tools</a>
-          <a href="../part1/steps.html#group-deploy">Deploy and Publish</a>
-          <a href="../part1/steps.html#group-apps">Apps</a>
-          <a href="../part1/steps.html#group-observe">Observing Your Agent</a>
-          <a href="../part1/complete.html">Module 1 Complete</a>
-        </div>
-      </details>
-      <details>
-        <summary>Module 2 · Maestro (BPMN)</summary>
-        <div class="group-items">
-          <a href="../part2/index.html">Overview</a>
-          <a href="../part2/steps.html#group-concepts">Concepts</a>
-          <a href="../part2/steps.html#group-build">Set Up the Process</a>
-          <a href="../part2/steps.html#group-start-event">Start Event</a>
-          <a href="../part2/steps.html#group-fraud-agent">Fraud Detection Agent</a>
-          <a href="../part2/steps.html#group-download">Retrieve the Document</a>
-          <a href="../part2/steps.html#group-hitl">Human-in-the-Loop Review</a>
-          <a href="../part2/steps.html#group-coded-agent">Settlement Coded Agent</a>
-          <a href="../part2/steps.html#group-notify">GenAI Activities</a>
-          <a href="../part2/steps.html#group-email-process">Email Process</a>
-          <a href="../part2/complete.html">Module 2 Complete</a>
-        </div>
-      </details>
-      <details>
-        <summary>Module 3 · Agent Builder</summary>
-        <div class="group-items">
-          <a href="../part3/index.html">Overview</a>
-          <a href="../part3/steps.html#group-concepts">Concepts</a>
-          <a href="../part3/steps.html#group-build">Build the Agent</a>
-          <a href="../part3/complete.html">Module 3 Complete</a>
-        </div>
-      </details>
-      <details open>
-        <summary>Module 4 · Coded Agent</summary>
-        <div class="group-items">
-          <a href="index.html">Overview</a>
-          <a class="active" href="steps.html#group-concepts">Concepts</a>
-          <a href="steps.html#group-build">Build the Agent</a>
-          <a href="steps.html#group-publish">Publish &amp; Run</a>
-          <a href="complete.html">Module 4 Complete</a>
-        </div>
-      </details>
+<div class="nav">
+  <div class="rise-course-block">
+    <p class="rise-course-title">Insurance Claim Approval Workshop</p>
+    <div class="rise-progress"><div class="rise-progress-bar"><div class="rise-progress-fill" style="width:0%"></div></div><span class="rise-progress-label">0% COMPLETE</span></div>
+  </div>
+  <a class="rise-home" href="../index.html">Home</a>
+  <a class="rise-home" href="../work-environment.html">Work Environment</a>
+  <details>
+    <summary>Module 1 · Conversational Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part1/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-create-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Create Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-system-prompt.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">System Prompt</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-context-grounding.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Context Grounding</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-tools.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Tools</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-test.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Test the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-deploy.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Deploy and Get Agent ID</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-apps.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Import the App</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/lesson-observe.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Observing Your Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part1/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 1 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
+  </details>
+  <details>
+    <summary>Module 2 · Fraud Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part2/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details>
+    <summary>Module 3 · Coded Agent</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="../part3/index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish & Run</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="../part3/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 3 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+  <details open>
+    <summary>Module 4 · Maestro</summary>
+    <div class="group-items">
+      <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
+    </div>
+  </details>
+</div>
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 4 · Coded Agent</span>
-    <h1>Build the Claims Settlement Agent</h1>
-    <p class="lead">Learn what a Coded Agent is, then scaffold, write, test, package, publish, and run the Claims Settlement Agent — a pure-Python agent with no LLM.</p>
+    <span class="eyebrow">Module 4 · All lessons</span>
+    <h1>Maestro — Full Guide</h1>
+    <div class="rise-divider"></div>
+    <p class="lead">Every lesson of this module on a single page.</p>
 
-    <!-- GROUP: Concepts -->
     <div class="group-header" id="group-concepts">
       <h2 style="margin-top:0;">Concepts</h2>
     </div>
+    <h3>What's Maestro BPMN?</h3>
+    <p><b>Maestro</b> is UiPath's orchestration platform for coordinating humans, robots, and AI agents across long-running business processes. <b>BPMN</b> (Business Process Model and Notation) is one of two ways to design a Maestro process — a visual canvas using the same standard notation process analysts have used for years: start/end events, tasks, gateways, and sequence flows. Where a conversational agent handles one interaction and a coded agent handles one calculation, a BPMN process ties many steps — agents, humans, and system actions — together into a single process with a clear beginning, a clear end, and a visual record of every path in between.</p>
 
-    <h3>What's a Coded Agent?</h3>
-    <p>A <b>Coded Agent</b> is agent logic written entirely in Python. You author its states and tool calls directly in code; the UiPath SDK provides the platform layer underneath — packaging, publishing, governance, and observability. You can optionally bring in a framework extension like LangChain or LlamaIndex for LLM-driven reasoning, or skip an LLM entirely and write fully deterministic business logic, as you will in this module.</p>
-
-    <h4>Why Coded Agents?</h4>
-    <p>A surge in domain-specific AI agents is driving demand for custom, code-based solutions. Professional developers want to be the architects of these systems, and enterprises want more than raw automation speed — they want auditability and control.</p>
+    <h3>Why Maestro?</h3>
+    <p>Real business processes rarely live inside a single agent. An insurance claim needs a fraud check, a human sign-off, a settlement calculation, and a notification back to the customer — each potentially owned by a different system or person, running at a different pace. Maestro exists to coordinate exactly that: long-running, multi-actor processes that need to be visible, auditable, and resilient to the fact that a human reviewer might not respond for hours.</p>
     <div class="grid g3">
-      <div class="card"><div class="ico">🧑‍💻</div><h4>Professional developers</h4><p>Design, test, and scale complex multi-agent workflows with full control.</p></div>
-      <div class="card"><div class="ico">📈</div><h4>Agentic growth</h4><p>Rapid adoption of AI agents fuels demand for customized, domain-specific solutions.</p></div>
-      <div class="card"><div class="ico">🛡️</div><h4>Enterprise requirements</h4><p>Auditability, traceability, and guardrails — not just automation speed.</p></div>
+      <div class="card"><div class="ico">🧭</div><h4>Visual, auditable flow</h4><p>Every step, decision, and handoff is drawn on the canvas — easy to review, easy to explain to auditors.</p></div>
+      <div class="card"><div class="ico">🤝</div><h4>Humans and agents together</h4><p>Mix agent tasks, RPA connectors, GenAI activities, and human review steps in one process.</p></div>
+      <div class="card"><div class="ico">⏳</div><h4>Built for long-running work</h4><p>A process can pause for hours or days waiting on a human, then resume exactly where it left off.</p></div>
     </div>
 
-    <h4>The four value pillars</h4>
-    <p>Coded Agents let developers package, publish, and deploy Python-authored agents under the same governance as every other UiPath automation.</p>
+    <h3>Pillars of a Maestro BPMN Process</h3>
     <div class="grid g2">
-      <div class="card"><div class="ico">⌨️</div><h4>Code-first control</h4><p>Write agent logic &amp; tool calls in pure Python. Full observability, debugging &amp; unit-testing.</p></div>
-      <div class="card"><div class="ico">🔗</div><h4>Open-source foundation</h4><p>Built on LangChain or LlamaIndex for flexible graph-based orchestration.</p></div>
-      <div class="card"><div class="ico">🌐</div><h4>Full-stack reach</h4><p>Combine LLM brains with Robot bodies — REST APIs, databases, and legacy UIs via RPA.</p></div>
-      <div class="card"><div class="ico">🏛️</div><h4>Enterprise guardrails</h4><p>Pack, publish &amp; deploy with RBAC, audit logs, stateful memory &amp; HITL interrupt nodes.</p></div>
+      <div class="card"><h4>Start &amp; End Events</h4><p style="font-size:13.5px;margin:0;">Every process begins with a trigger — here, a Data Fabric entity creation — and ends at a single defined end event.</p></div>
+      <div class="card"><h4>Tasks</h4><p style="font-size:13.5px;margin:0;">Individual units of work: an agent call, a connector action, a GenAI activity, or a human task.</p></div>
+      <div class="card"><h4>Gateways</h4><p style="font-size:13.5px;margin:0;">Decision points that branch the flow — like the Reviewer Action Gateway routing to Approve or Reject.</p></div>
+      <div class="card"><h4>Human-in-the-loop (HITL)</h4><p style="font-size:13.5px;margin:0;">Explicit steps where a person reviews and acts before the process continues.</p></div>
     </div>
 
-    <h4>The mental model</h4>
-    <p>Think of a coded agent as a graph: nodes are actions, edges are transitions between them. UiPath discovers your agent from a small, well-defined contract in your code — you don't need to describe the graph by hand.</p>
+    
 
-    <table>
-      <thead><tr><th>Concept</th><th>In LangChain / LlamaIndex terms</th><th>In your code</th></tr></thead>
-      <tbody>
-        <tr><td>Node</td><td>A state — an action or tool call</td><td>A Python function (optionally <code>@traced</code>)</td></tr>
-        <tr><td>Edge</td><td>A transition based on a result or condition</td><td>Control flow (<code>if</code>, calls) inside <code>main()</code></td></tr>
-        <tr><td>Contract</td><td>Graph entry points</td><td><code>Input</code> / <code>Output</code> models + <code>main()</code></td></tr>
-        <tr><td>Memory / HITL</td><td>Checkpoints &amp; interrupt nodes</td><td>SDK memory stores &amp; Action Center</td></tr>
-      </tbody>
-    </table>
-
-    <div class="adm note">
-      <div class="adm-title">ℹ️ An LLM is optional</div>
-      <div class="adm-body">The Settlement Agent you build later in this module is <b>pure deterministic logic</b> — no model calls. Coded agents are just as useful for auditable business rules as they are for LLM reasoning.</div>
+    <div class="group-header" id="group-setup">
+      <h2 style="margin-top:0;">Set Up the Process</h2>
     </div>
-
-    <h3>How it works</h3>
-    <p>A coded agent moves through five stages, from definition to observation:</p>
-
+    <p>The Maestro BPMN process ties everything together: it starts when a claim is ready for review, calls your <b>Fraud Detect Agent</b>, downloads the claim document, sends the claim to a supervisor, branches on the decision, runs your <b>Settlement Coded Agent</b>, and sends the notification emails.</p>
     <figure>
-      <div class="shot">
-        <div class="chrome">
-          <span class="c" style="background:#FF5F57"></span>
-          <span class="c" style="background:#FEBC2E"></span>
-          <span class="c" style="background:#28C840"></span>
-          <span class="url">Coded Agent · end-to-end architecture</span>
-        </div>
-        <div style="padding:22px;display:flex;gap:10px;align-items:stretch;flex-wrap:wrap;justify-content:center;background:#fff;">
-          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Agent Framework</b><br><span style="color:var(--muted);">Python graph of states + edges, memory &amp; HITL</span></div>
-          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Packaging</b><br><span style="color:var(--muted);">CLI bundles code + graph into a versioned package</span></div>
-          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Controlled Runtime</b><br><span style="color:var(--muted);">RBAC, LLM gating, audit logs, Action Center approvals</span></div>
-          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Maestro Orchestration</b><br><span style="color:var(--muted);">Real-time logs, cost analytics, one-click rollback</span></div>
-          <div style="flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:12px;"><b>Observability</b><br><span style="color:var(--muted);">LLM traces, context usage, flow visualization</span></div>
-        </div>
-      </div>
-      <figcaption>Figure 1 — A coded agent flows from a Python graph, through packaging, into a governed and observable runtime. Define → Package → Govern → Orchestrate → Observe.</figcaption>
-    </figure>
-
-    <h4>Key features</h4>
-    <div class="grid g2">
-      <div class="card"><h4>SDK components</h4>
-        <ul class="clean">
-          <li>Graph-based orchestration (states, edges, transitions)</li>
-          <li>Memory stores &amp; checkpoints for statefulness</li>
-          <li>Interrupt nodes for human-in-the-loop flows</li>
-          <li>Native use of the UiPath LLM Gateway &amp; Studio evals</li>
-        </ul>
-      </div>
-      <div class="card"><h4>Orchestrator &amp; integration</h4>
-        <ul class="clean">
-          <li>Invoke UiPath processes; be invoked by any trigger</li>
-          <li>Feeds, versioning, solutions, Action Center checkpoints</li>
-          <li>Established <b>package → process → job</b> lifecycle</li>
-          <li>CLI pack &amp; publish straight from your local IDE</li>
-        </ul>
-      </div>
-      <div class="card"><h4>Monitoring</h4>
-        <ul class="clean">
-          <li>Real-time logs, traces, drift detection, cost alerts</li>
-          <li>Orchestrator job monitoring &amp; instance management</li>
-          <li>AI Trust Layer governs every LLM call</li>
-        </ul>
-      </div>
-      <div class="card"><h4>Controlled agency</h4>
-        <p style="font-size:14px;margin:0;">Guardrails are layered across every level — the AI Trust Layer (model policies, PII filters, audit logs), automation-ops policies for all agents, and per-agent tool guardrails &amp; memory/traces. The result: autonomy <b>within clear, compliant boundaries</b>.</p>
-      </div>
-    </div>
-
-    <h4>The build &amp; publish lifecycle</h4>
-    <p>Six CLI commands take you from an empty folder to a governed cloud job. This is exactly what the hands-on section below walks through.</p>
-
-    <figure>
-      <div class="shot">
-        <div class="chrome">
-          <span class="c" style="background:#FF5F57"></span>
-          <span class="c" style="background:#FEBC2E"></span>
-          <span class="c" style="background:#28C840"></span>
-          <span class="url">uipath CLI lifecycle</span>
-        </div>
-        <div style="padding:22px;background:#fff;">
-          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">auth<br><span style="color:var(--muted);font-size:10.5px;">sign in</span></div>
-            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">init<br><span style="color:var(--muted);font-size:10.5px;">gen schema</span></div>
-            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">run<br><span style="color:var(--muted);font-size:10.5px;">test local</span></div>
-            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">pack<br><span style="color:var(--muted);font-size:10.5px;">.nupkg</span></div>
-            <div style="border:2px solid var(--up-orange);background:var(--up-orange-soft);border-radius:20px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--up-orange-dark);">publish<br><span style="font-size:10.5px;font-weight:400;">to Orchestrator</span></div>
-            <div style="border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12px;">invoke<br><span style="color:var(--muted);font-size:10.5px;">run in cloud</span></div>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Insurance Claim Approval Process — BPMN diagram</span>
+            </div>
+            <img src="assets/claim_bpmn_flow.png" alt="The full Insurance Claim Approval Process as modelled on the BPMN canvas." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <p style="text-align:center;font-size:11px;color:var(--muted);margin:14px 0 0;">Local development ───────────────────▶ Cloud</p>
-        </div>
-      </div>
-      <figcaption>Figure 2 — The UiPath CLI lifecycle. The orange step is where your agent leaves your machine.</figcaption>
-    </figure>
-
-    <table>
-      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
-      <tbody>
-        <tr><td><code>uipath auth</code></td><td>Sign in to your tenant (browser OAuth); saves credentials to <code>.env</code>.</td></tr>
-        <tr><td><code>uipath init</code></td><td>Generates the I/O schema, bindings, and agent graph from your code.</td></tr>
-        <tr><td><code>uipath run</code></td><td>Executes the agent locally with JSON input for testing.</td></tr>
-        <tr><td><code>uipath pack</code></td><td>Bundles code + graph + lock file into a versioned <code>.nupkg</code>.</td></tr>
-        <tr><td><code>uipath publish</code></td><td>Uploads the package to Orchestrator (tenant feed or workspace).</td></tr>
-        <tr><td><code>uipath invoke</code></td><td>Starts a governed cloud job from the published agent.</td></tr>
-      </tbody>
-    </table>
-
-    <!-- GROUP: Build the Agent -->
-    <div class="group-header" id="group-build">
-      <h2 style="margin-top:0;">Build the Agent</h2>
+          <figcaption>The full Insurance Claim Approval Process as modelled on the BPMN canvas.</figcaption>
+        </figure>
+    <div class="adm warn">
+      <div class="adm-title">⚠️ Before you start</div>
+      <div class="adm-body">Make sure these are ready: your <b>Fraud Detect Agent</b> (Module 2) and your <b>Settlement Coded Agent</b> (Module 3) are <b>published</b>; the <b>Supervisior_ClaimValidation-App_Latest</b> action app is already deployed on the tenant (you will <b>import</b> it, not build it); and the <code>IntakeClaimEntity</code> entity exists in Data Fabric.</div>
     </div>
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">You'll build a <b>no-LLM</b> coded agent that settles an insurance claim: given an insurance type, coverage, and claim amount, it returns the settled amount using simple business rules. The agent is a small LangGraph graph, built in a Python virtual environment with the <code>uipath</code> CLI. All commands run in <b>Windows PowerShell</b> — you'll edit files with Notepad, never by typing code directly at the prompt. The result publishes as an <b>Agent</b>, not a Function.</p>
-
-    <h4>The business rules</h4>
-    <div class="grid g2">
-      <div class="card"><h4>Eligible insurance types</h4><p style="font-size:13.5px;margin-bottom:6px;">Must match <b>exactly</b> (case-sensitive):</p>
-        <ul class="clean"><li>Medical</li><li>Stolen</li><li>Theft</li><li>Water Damage</li><li>Vehicle</li><li>Fire</li></ul>
-      </div>
-      <div class="card"><h4>Settlement percentage</h4>
-        <ul class="clean">
-          <li><b>Full</b> coverage → settle <b>95%</b> of claim</li>
-          <li><b>Partial</b> coverage → settle <b>90%</b> of claim</li>
-          <li>Any other type or coverage → <b>not eligible</b>, settle 0</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Decision at a glance</h4>
-    <table>
-      <thead><tr><th>Insurance type</th><th>Coverage</th><th>Result</th></tr></thead>
-      <tbody>
-        <tr><td>Medical / Stolen / Theft / Water Damage / Vehicle / Fire</td><td>Full</td><td><span class="yes">95% settled</span></td></tr>
-        <tr><td>Medical / Stolen / Theft / Water Damage / Vehicle / Fire</td><td>Partial</td><td><span class="yes">90% settled</span></td></tr>
-        <tr><td>Anything else</td><td>—</td><td><span class="no">Not eligible (0)</span></td></tr>
-        <tr><td>Eligible type</td><td>Neither Full nor Partial</td><td><span class="no">Not eligible (0)</span></td></tr>
-      </tbody>
-    </table>
-
-    <div class="adm note">
-      <div class="adm-title">🏷️ Inputs &amp; outputs at a glance</div>
-      <div class="adm-body"><b>Inputs</b> — <code>insurance_type</code> (string), <code>coverage</code> (string, "Full" or "Partial"), <code>claim_amount</code> (float)<br><b>Outputs</b> — <code>eligible</code> (boolean), <code>settlement_percentage</code> (float), <code>settlement_amount</code> (float), <code>message</code> (string)</div>
-    </div>
-
-    <div class="step" id="step-b1">
+    <div class="step" id="step-1">
       <div class="num">1</div>
       <div class="body">
-        <h3>Go to a folder you own</h3>
-        <p>Do not work in <code>C:\Windows\System32</code> or any other system folder — Windows blocks writing there. Use any folder you can write to (Desktop, Documents, a projects folder), in a <b>normal</b> PowerShell window, not Administrator.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-1')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-1"><code>cd "$HOME\Desktop"</code></pre>
-        </div>
+        <h3>Create the Maestro BPMN process</h3>
+        <p>From the <b>Start building</b> dialog in Studio Web choose <b>Maestro BPMN</b> — it lets you design a business process on a BPMN canvas, as opposed to Maestro Flow, Agent or RPA Workflow.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">cloud.uipath.com/studio/start-building</span>
+            </div>
+            <img src="assets/bpmn_step1.png" alt="Choose Maestro BPMN from the Start building dialog." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Choose Maestro BPMN from the Start building dialog.</figcaption>
+        </figure>
+        <p>Name the solution and the process <code>Insurance Claim_MAESTRO_YourName</code> (replace <i>YourName</i> with your own name).</p>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Created a <b>Maestro BPMN</b> project named <code>Insurance Claim_MAESTRO_YourName</code>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b2">
+    <div class="step" id="step-2">
       <div class="num">2</div>
       <div class="body">
-        <h3>Create the project folder</h3>
-        <p>Replace <code>&lt;your_name&gt;</code> with your own name, <b>including the angle brackets</b> — letters, numbers and underscores only, no spaces (for example <code>Minal</code> or <code>Priya_S</code>). Leaving the angle brackets in causes a PowerShell error.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-2')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-2"><code>mkdir &lt;your_name&gt;_Claims_SettlementAgent</code></pre>
+        <h3>Import the BPMN file</h3>
+        <p>Rather than drawing the diagram, import the ready-made process. Download it, then in the Explorer right-click your Maestro BPMN item, choose <b>Add to project</b>, and select <b>Import BPMN</b>.</p>
+        <div class="adm note" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div class="adm-body" style="margin:0;"><b>Insurance_Claim_Process.bpmn</b> — the complete claim approval process, ready to import.</div>
+          <a href="assets/Insurance_Claim_Process.bpmn" download style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap;background:#fff;border:1px solid var(--code-border);border-radius:6px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--up-orange-dark);">⬇ Download</a>
         </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Explorer</span>
+            </div>
+            <img src="assets/bpmn_step2.png" alt="Add to project → Import BPMN." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Add to project → Import BPMN.</figcaption>
+        </figure>
+        <p>In the <b>Import BPMN</b> dialog choose or drop the downloaded <code>.bpmn</code> file.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Import BPMN</span>
+            </div>
+            <img src="assets/bpmn_import_modal.png" alt="The Import BPMN dialog." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The Import BPMN dialog.</figcaption>
+        </figure>
+        <div class="adm tip">
+          <div class="adm-title">💡 What you get</div>
+          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, and <b>Send Approve Email</b>.</div>
         </div>
-        <div class="adm note">
-          <div class="adm-title">📝 Note</div>
-          <div class="adm-body">The same name is used in step 3 and in <code>pyproject.toml</code> (step 10: project name, your name, your email).</div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Imported <code>Insurance_Claim_Process.bpmn</code> onto the canvas.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b3">
+
+
+    <div class="group-header" id="group-start-event">
+      <h2 style="margin-top:0;">Start Event</h2>
+    </div>
+        <p>The process must start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
+    <div class="step" id="step-3">
       <div class="num">3</div>
       <div class="body">
-        <h3>Go into the project folder</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-3')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-3"><code>cd &lt;your_name&gt;_Claims_SettlementAgent</code></pre>
-        </div>
+        <h3>Open the start event trigger</h3>
+        <p>Select the start event <b>Claim Ready for Review</b> on the canvas. In <b>Properties → Implementation</b>, open the <b>Action</b> dropdown (currently <b>None</b>).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_set_connector.png" alt="Start event → Implementation → Action." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Start event → Implementation → Action.</figcaption>
+        </figure>
+        <p>In the <b>Change the trigger for your automation</b> dialog, search for <code>UiPath Data</code> and select <b>UiPath Data Fabric: Record Updated</b> ("Triggers when an existing entity record was updated"). Do not pick Record Created.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Change trigger</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step2_record_updated.png" alt="Select UiPath Data Fabric: Record Updated." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select UiPath Data Fabric: Record Updated.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the start event's <b>Action</b> list.</div></div>
+          <div class="row"><span class="box"></span><div>Selected <b>UiPath Data Fabric: Record Updated</b>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b4">
+    <div class="step" id="step-4">
       <div class="num">4</div>
       <div class="body">
-        <h3>Create the virtual environment</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-4')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-4"><code>python -m venv .venv</code></pre>
+        <h3>Set the connection and Tenant scope</h3>
+        <p>Set <b>Select activity</b> to <b>Record Updated</b> and the <b>UiPath Data Fabric connection</b> to <b>Shared UiPath Data Fabric</b>. Then open <b>Entity Scope</b> and choose <b>Tenant</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step3_scope_tenant.png" alt="Connection = Shared UiPath Data Fabric, Entity Scope = Tenant." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Connection = Shared UiPath Data Fabric, Entity Scope = Tenant.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Choose Tenant, not Folder</div>
+          <div class="adm-body">The shared claim entity lives at tenant level, so it does not appear under the Folder scope.</div>
         </div>
+        <p>Open the <b>Entity</b> dropdown and select <code>IntakeClaimEntity</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Start event</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step4_select_entity.png" alt="Entity = IntakeClaimEntity." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Entity = IntakeClaimEntity.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Connection = <b>Shared UiPath Data Fabric</b>, Entity Scope = <b>Tenant</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Entity = <code>IntakeClaimEntity</code>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b5">
+    <div class="step" id="step-5">
       <div class="num">5</div>
       <div class="body">
-        <h3>Allow scripts in this window</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-5')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-5"><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></pre>
-        </div>
+        <h3>Add the filter</h3>
+        <p>Click the <b>Filter</b> field to open the filter builder. Keep <b>All (AND)</b>, add a condition — field <code>DecisionInput</code>, operator <b>Equals</b>, value <code>READY_FOR_REVIEW</code> — and click <b>Save</b>. Only claims marked ready for review will start the process.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Filter builder</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step5_filter.png" alt="Filter builder: DecisionInput Equals READY_FOR_REVIEW." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Filter builder: DecisionInput Equals READY_FOR_REVIEW.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Added <code>DecisionInput</code> Equals <code>READY_FOR_REVIEW</code> and saved.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b6">
+    <div class="step" id="step-6">
       <div class="num">6</div>
       <div class="body">
-        <h3>Activate the virtual environment</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-6')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-6"><code>.\.venv\Scripts\Activate.ps1</code></pre>
+        <h3>Debug and check the results</h3>
+        <p>Click <b>Debug</b>. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Debug</span>
+            </div>
+            <img src="assets/maestro_1_start_event_start_event_action_step6_debug_and_check_results.png" alt="Execution trail and Global variables after the start event runs." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Execution trail and Global variables after the start event runs.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Tip</div>
+          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
         </div>
-        </div>
-        <div class="adm warn">
-          <div class="adm-title">⚠️ Check your prompt</div>
-          <div class="adm-body">Your prompt should now start with <code>(.venv)</code>. Do not continue until it does.</div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b7">
+
+
+    <div class="group-header" id="group-fraud-agent">
+      <h2 style="margin-top:0;">Fraud Detection Agent</h2>
+    </div>
+        <p>Right after the start event, the process calls the <b>Fraud Detect Agent</b> you built and published in Module 2 and waits for its verdict.</p>
+    <div class="step" id="step-7">
       <div class="num">7</div>
       <div class="body">
-        <h3>Install the packages</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-7')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-7"><code>pip install uipath "uipath-langchain&gt;=0.18.0,&lt;0.19.0"</code></pre>
-        </div>
+        <h3>Configure the Fraud Detection Agent task</h3>
+        <p>Select the service task <b>Fraud Detection Agent</b>. Set <b>Action</b> to <b>Start and wait for agent</b>, choose <b>Agent</b> = your published <code>Fraud Detect Agent_YourName</code>, and map the input <code>in_ClaimData</code> using <b>Use variable</b> → <b>Claim Ready for Review → response (object)</b>. The agent's outputs (<code>out_ClaimDetails</code>, <code>out_FraudAnalysis</code>, <code>out_SuggestedResponse</code>, <code>out_Status</code>) become variables for the rest of the flow.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Service task</span>
+            </div>
+            <img src="assets/maestro_2_fraud_agent_fraud_detect_agent_maestro_task_step1_config_fraud_agent.png" alt="Start and wait for agent, with in_ClaimData mapped to the start event&#x27;s response." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Start and wait for agent, with in_ClaimData mapped to the start event's response.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Action</b> to <b>Start and wait for agent</b> and selected my published agent.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped <code>in_ClaimData</code> to <b>Claim Ready for Review → response</b>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b8">
+    <div class="step" id="step-8">
       <div class="num">8</div>
       <div class="body">
-        <h3>Authenticate</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-8')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-8"><code>uipath auth</code></pre>
+        <h3>Run and check the results</h3>
+        <p>Click <b>Debug</b>. The <b>Fraud Detection Agent</b> task should succeed. In <b>Global variables</b> check <code>out_ClaimDetails</code> (including <code>record_id</code>), <code>out_FraudAnalysis</code> (score, level, indicators), <code>out_Status</code> (routing action) and <code>out_SuggestedResponse</code> (email subject and body).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Debug</span>
+            </div>
+            <img src="assets/maestro_2_fraud_agent_fraud_detect_agent_maestro_task_step2_run_check_results.png" alt="Fraud agent outputs in the Global variables panel." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Fraud agent outputs in the Global variables panel.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Debugged and verified all four <code>out_</code> variables are populated.</div></div>
         </div>
-        </div>
-        <p>A browser opens. Sign in and choose your organization and tenant.</p>
       </div>
     </div>
 
-    <div class="step" id="step-b9">
+
+
+    <div class="group-header" id="group-download">
+      <h2 style="margin-top:0;">Download the Claim File</h2>
+    </div>
+        <p>Next, the process downloads the claim's supporting PDF from the Data Fabric record so the supervisor can review it.</p>
+    <div class="step" id="step-9">
       <div class="num">9</div>
       <div class="body">
-        <h3>Scaffold the agent</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-9')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-9"><code>uipath new agent</code></pre>
+        <h3>Choose the connector action</h3>
+        <p>Select the task <b>Download File from Record Field</b>. In <b>Implementation → Action</b> choose <b>Connector</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_3_download_file_task_step1_config_connector.png" alt="Action → Connector." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Connector.</figcaption>
+        </figure>
+        <p>Set <b>Action</b> to <b>Execute connector activity</b>, click <b>Select activity</b>, search <code>Download File From Record</code>, and choose <b>Download File from Record Field</b> (UiPath Data Fabric).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Select activity</span>
+            </div>
+            <img src="assets/maestro_3_download_file_task_step2_config_activity.png" alt="Select Download File from Record Field." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select Download File from Record Field.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Action</b> to <b>Execute connector activity</b> → <b>Download File from Record Field</b>.</div></div>
         </div>
-        </div>
-        <p>This creates <code>main.py</code>, <code>langgraph.json</code> and <code>pyproject.toml</code>. <b>Keep all three.</b></p>
       </div>
     </div>
 
-    <div class="step" id="step-b10">
+    <div class="step" id="step-10">
       <div class="num">10</div>
       <div class="body">
-        <h3>Open pyproject.toml</h3>
+        <h3>Map the record</h3>
+        <p>Set <b>Entity Scope</b> = <b>Tenant</b>, <b>Entity</b> = <code>IntakeClaimEntity</code>, <b>Field</b> = <code>ClaimPDF</code>, and <b>Record ID</b> = the record ID the Fraud agent returned:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-10')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-1')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-10"><code>notepad pyproject.toml</code></pre>
+          <div class="filename">Record ID</div>
+          <pre id="maestro-code-1"><code>vars.outClaimDetails?.record_id</code></pre>
         </div>
         </div>
-        <p>Press <code>Ctrl+A</code>, delete everything, paste the block below, then replace the three placeholders (project name, your name, your email). Save with <code>Ctrl+S</code> and close Notepad. The project name must match the folder name from step 2.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-11')"></button>
-<div class="highlight">
-          <div class="filename">pyproject.toml</div>
-          <pre id="code-block-11"><code>[project]
-name = "&lt;your_name&gt;_Claims_SettlementAgent"
-version = "0.0.1"
-description = "Insurance claims settlement agent"
-authors = [{ name = "&lt;your_name&gt;", email = "&lt;your_email&gt;" }]
-dependencies = ["uipath&gt;=2.0", "uipath-langchain&gt;=0.18.0, &lt;0.19.0"]
-requires-python = "&gt;=3.11"</code></pre>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Download File</span>
+            </div>
+            <img src="assets/maestro_3_download_file_task_step3_map_variable.png" alt="Entity scope, entity, field, and Record ID mapped." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Entity scope, entity, field, and Record ID mapped.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Tip</div>
+          <div class="adm-body">If you prefer, click <b>Insert variable</b> and pick <b>Fraud Detection Agent → out_ClaimDetails → record_id</b> so the editor writes the exact name for you.</div>
         </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Scope = Tenant, Entity = <code>IntakeClaimEntity</code>, Field = <code>ClaimPDF</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Record ID set to <code>vars.outClaimDetails?.record_id</code>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b11">
+
+
+    <div class="group-header" id="group-supervisor">
+      <h2 style="margin-top:0;">Supervisor Validation (Human in the Loop)</h2>
+    </div>
+        <p>A human now reviews the claim. The review screen is an <b>Action App</b> that is <b>already built and deployed</b> on the tenant — you only <b>import</b> it into your solution and connect it to your process. Do not use <i>Action app</i> in the Explorer (that builds a new one).</p>
+    <div class="step" id="step-11">
       <div class="num">11</div>
       <div class="body">
-        <h3>Open main.py</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-12')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-12"><code>notepad main.py</code></pre>
-        </div>
-        </div>
-        <p>Press <code>Ctrl+A</code>, delete everything, paste the following, then save and close. Nothing in this file needs your name.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-13')"></button>
-<div class="highlight">
-          <div class="filename">main.py</div>
-          <pre id="code-block-13"><code>from typing import TypedDict
-from langgraph.graph import StateGraph, START, END
-
-ELIGIBLE = {"Medical", "Stolen", "Theft", "Water Damage", "Vehicle", "Fire"}
-
-class Input(TypedDict):
-    insurance_type: str
-    coverage: str              # "Full" or "Partial"
-    claim_amount: float
-
-class Output(TypedDict):
-    eligible: bool
-    settlement_percentage: float
-    settlement_amount: float
-    message: str
-
-def settle(state: Input) -&gt; Output:
-    pct = 0.0
-    if state["insurance_type"] in ELIGIBLE:
-        if state["coverage"] == "Full":
-            pct = 95.0
-        elif state["coverage"] == "Partial":
-            pct = 90.0
-    amount = round(state["claim_amount"] * pct / 100, 2)
-    return {
-        "eligible": pct &gt; 0,
-        "settlement_percentage": pct,
-        "settlement_amount": amount,
-        "message": "Claim settled" if pct &gt; 0 else "Claim not eligible",
-    }
-
-builder = StateGraph(Input, output_schema=Output)
-builder.add_node("settle", settle)
-builder.add_edge(START, "settle")
-builder.add_edge("settle", END)
-graph = builder.compile()</code></pre>
-        </div>
-        </div>
+        <h3>Import the existing Action App</h3>
+        <p>Select the task <b>Supervisior_ClaimValidation</b> on the canvas. In the Explorer click <b>+</b> and choose <b>Import existing</b> under <b>BUILDING BLOCKS</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Explorer</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step1_import_actionapp.png" alt="Explorer → + → Import existing." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Explorer → + → Import existing.</figcaption>
+        </figure>
+        <p>In the <b>Add project</b> dialog search for <code>Super</code> and tick <b>Supervisior_ClaimValidation-App_Latest</b>, then add it.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Add project</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step2_choose_supervisor_action_app.png" alt="Select Supervisior_ClaimValidation-App_Latest." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select Supervisior_ClaimValidation-App_Latest.</figcaption>
+        </figure>
         <div class="adm note">
-          <div class="adm-title">ℹ️ How it works</div>
-          <div class="adm-body">The agent is a small <b>LangGraph</b> graph: a single <code>settle</code> node between <code>START</code> and <code>END</code>. <code>Input</code> and <code>Output</code> define the contract, and <code>graph</code> is what UiPath discovers. There is still no LLM — the logic is fully deterministic.</div>
+          <div class="adm-title">📝 Spelling</div>
+          <div class="adm-body">The app and the canvas task are spelled <b>Supervisior</b> (with an extra "i") in the tenant and in the imported BPMN. Select them exactly as they appear.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Imported <code>Supervisior_ClaimValidation-App_Latest</code> with <b>Import existing</b>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b12">
+    <div class="step" id="step-12">
       <div class="num">12</div>
       <div class="body">
-        <h3>Check langgraph.json</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-14')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-14"><code>Get-Content langgraph.json</code></pre>
-        </div>
-        </div>
-        <p>It should point to <code>./main.py:graph</code>. If it does not, run <code>notepad langgraph.json</code>, replace the contents with the block below, and save.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-15')"></button>
-<div class="highlight">
-          <div class="filename">langgraph.json</div>
-          <pre id="code-block-15"><code>{
-    "graphs": {
-      "agent": "./main.py:graph"
-    }
-}</code></pre>
-        </div>
+        <h3>Make it a Human Task</h3>
+        <p>With the task selected, open <b>Implementation → Action</b> and choose <b>Human Task</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step3_select_human_task.png" alt="Action → Human Task." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Human Task.</figcaption>
+        </figure>
+        <p>Set <b>Action</b> to <b>Create action app task</b>, pick the imported app under <b>Action</b>, enter the <b>Task title</b> <code>Supervisor_Validation_Task</code>, and set <b>Assignment Criteria</b> = <b>User</b> with <b>Assignee</b> = yourself (so you can complete the task during testing).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Human task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step4_config_app.png" alt="Action app, task title, and assignee." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action app, task title, and assignee.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Action</b> to <b>Human Task → Create action app task</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Selected the imported app, set the task title, and assigned the task to myself.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b13">
+    <div class="step" id="step-13">
       <div class="num">13</div>
       <div class="body">
-        <h3>Initialize the project</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-16')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-16"><code>uipath init</code></pre>
-        </div>
+        <h3>Map the app inputs</h3>
+        <p>Scroll to the task's input arguments and map each one with <b>Insert variable</b> (JS Expression editor). Most come from the Fraud agent's output objects:</p>
+        <table>
+          <thead><tr><th>Argument</th><th>Map to</th></tr></thead>
+          <tbody>
+            <tr><td><code>incident_type</code></td><td>Fraud Detection Agent → <code>out_ClaimDetails</code> → <code>incident_type</code></td></tr>
+            <tr><td><code>ClaimAmount</code></td><td><code>out_ClaimDetails</code> → <code>claim_amount</code></td></tr>
+            <tr><td><code>FraudRiskScore</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_score</code></td></tr>
+            <tr><td><code>FraudRiskLevel</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_risk_level</code></td></tr>
+            <tr><td><code>FraudVerdict</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_verdict</code></td></tr>
+            <tr><td><code>FraudIndicators</code></td><td><code>out_FraudAnalysis</code> → <code>fraud_indicators</code></td></tr>
+            <tr><td><code>RecommendedAction</code></td><td><code>out_FraudAnalysis</code> → <code>recommended_action</code></td></tr>
+            <tr><td><code>SuggestedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
+            <tr><td><code>in_ClaimRecordFile</code></td><td>Download File from Record Field → <code>response</code> (file)</td></tr>
+            <tr><td><code>io_ApprovedEmailBody</code></td><td><code>out_SuggestedResponse</code> → <code>email_body</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step5_map_variables.png" alt="Mapping SuggestedEmailBody from out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Mapping SuggestedEmailBody from out_SuggestedResponse → email_body.</figcaption>
+        </figure>
+        <p>Map the claim document: click <code>in_ClaimRecordFile</code>, <b>Insert variable</b>, expand <b>Download File from Record Field</b>, and pick <b>response (file)</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step6_set_claimrecordfile_argument.png" alt="in_ClaimRecordFile = Download File from Record Field → response." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>in_ClaimRecordFile = Download File from Record Field → response.</figcaption>
+        </figure>
+        <p>Finally, map <code>io_ApprovedEmailBody</code> to the same <code>email_body</code> as <code>SuggestedEmailBody</code>. It is the editable email text the supervisor can adjust.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task inputs</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step7_set_approvedemailbody.png" alt="io_ApprovedEmailBody = out_SuggestedResponse → email_body." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>io_ApprovedEmailBody = out_SuggestedResponse → email_body.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Mapped every input argument (no red error dots left on the task).</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b14">
+    <div class="step" id="step-14">
       <div class="num">14</div>
       <div class="body">
-        <h3>Check uipath.json</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-17')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-17"><code>Get-Content uipath.json</code></pre>
-        </div>
-        </div>
-        <div class="adm warn">
-          <div class="adm-title">⚠️ No "functions" key allowed</div>
-          <div class="adm-body"><code>uipath.json</code> must <b>NOT</b> contain a <code>"functions"</code> key — that key makes it a Function instead of an Agent. If it does, run <code>notepad uipath.json</code>, delete that block, save, and run <code>uipath init</code> again.</div>
+        <h3>Debug, then Approve or Reject</h3>
+        <p>Run <b>Debug</b>. When the action app form opens in Action Center, review the claim and its document, add <b>Reviewer comments</b>, and click <b>Approve</b> or <b>Reject</b>. The button you press becomes <code>vars.action</code>, which the gateway uses next.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Action Center · Supervisor task</span>
+            </div>
+            <img src="assets/maestro_4_supervisor_validation_app_step8_debug_and_click_approve_or_reject.png" alt="The action app form with Approve and Reject buttons." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>The action app form with Approve and Reject buttons.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Opened the task in Action Center and completed it with <b>Approve</b> or <b>Reject</b>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b15">
+
+
+    <div class="group-header" id="group-notify-claimant">
+      <h2 style="margin-top:0;">Notify the Claimant</h2>
+    </div>
+        <p>After the supervisor task, the process sends an interim notification to the claimant using the <b>Gmail</b> connector.</p>
+    <div class="step" id="step-15">
       <div class="num">15</div>
       <div class="body">
-        <h3>Create the test input</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-18')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-18"><code>'{"insurance_type": "Theft", "coverage": "Full", "claim_amount": 10000}' | Set-Content input.json</code></pre>
-        </div>
+        <h3>Select the connector</h3>
+        <p>Select the task <b>Send Notify Email to Claimant</b> and set <b>Implementation → Action</b> to <b>Connector</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_5_send_notify_email_claimnt_step1_select_connector.png" alt="Action → Connector." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Connector.</figcaption>
+        </figure>
+        <p>Set <b>Action</b> to <b>Execute connector activity</b>, click <b>Select activity</b>, search <code>Gmail</code>, and choose <b>Send Email</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Select activity</span>
+            </div>
+            <img src="assets/maestro_5_send_notify_email_claimnt_step2_search_sendemail.png" alt="Select the Gmail Send Email activity." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select the Gmail Send Email activity.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Chose <b>Execute connector activity</b> → Gmail <b>Send Email</b>.</div></div>
         </div>
       </div>
     </div>
 
-    <div class="step" id="step-b16">
+    <div class="step" id="step-16">
       <div class="num">16</div>
       <div class="body">
-        <h3>Test locally</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-19')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-19"><code>uipath run agent --file input.json</code></pre>
+        <h3>Map the email fields</h3>
+        <p>Choose the <b>Gmail connection</b> <b>Shared Gmail Connection</b>, set <b>Save as draft</b> = <b>False</b>, and fill the fields. Use <b>your own email address</b> in <b>To</b> so you receive the test email.</p>
+        <table>
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>To</td><td>your own email address</td></tr>
+            <tr><td>Subject</td><td><code>vars.outSuggestedResponse?.email_subject</code></td></tr>
+            <tr><td>Body</td><td><code>vars.outSuggestedResponse?.email_body</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Send Email</span>
+            </div>
+            <img src="assets/maestro_5_send_notify_email_claimnt_step3_map_arguments.png" alt="To, Subject, and Body mapped for the claimant notification." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>To, Subject, and Body mapped for the claimant notification.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Tip</div>
+          <div class="adm-body">Use <b>Insert variable</b> → <b>out_SuggestedResponse</b> → <code>email_subject</code> / <code>email_body</code> if you would rather not type the expressions.</div>
         </div>
-        </div>
-        <p>Expected: <code>eligible</code> true, <code>settlement_percentage</code> 95.0, <code>settlement_amount</code> 9500.0.</p>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Worked in a folder I own and created the project folder with my name</div></div>
-          <div class="row"><span class="box"></span><div>Created and activated the virtual environment (prompt shows <code>(.venv)</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Installed the packages and authenticated (<code>uipath auth</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Scaffolded the agent (<code>uipath new agent</code>) and kept <code>main.py</code>, <code>langgraph.json</code>, <code>pyproject.toml</code></div></div>
-          <div class="row"><span class="box"></span><div>Pasted <code>pyproject.toml</code> and <code>main.py</code>; <code>langgraph.json</code> points to <code>./main.py:graph</code></div></div>
-          <div class="row"><span class="box"></span><div>Initialized (<code>uipath init</code>); <code>uipath.json</code> has no <code>"functions"</code> key</div></div>
-          <div class="row"><span class="box"></span><div>Created <code>input.json</code> and ran locally (<code>uipath run agent --file input.json</code>) — got 95.0 / 9500.0</div></div>
+          <div class="row"><span class="box"></span><div>Set the Gmail connection and <b>Save as draft = False</b>.</div></div>
+          <div class="row"><span class="box"></span><div>Mapped To, Subject, and Body.</div></div>
         </div>
       </div>
     </div>
 
-    <!-- GROUP: Publish & Run -->
-    <div class="group-header" id="group-publish">
-      <h2 style="margin-top:0;">Publish &amp; Run</h2>
-    </div>
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Pack, publish to Orchestrator, invoke, and verify that your agent shows up as an <b>Agent</b> — the four steps that take your tested agent to the cloud.</p>
 
-    <div class="step" id="step-p1">
+
+    <div class="group-header" id="group-gateway">
+      <h2 style="margin-top:0;">Reviewer Gateway</h2>
+    </div>
+        <p>The <b>Reviewer Action GateWay</b> routes the claim by the supervisor's decision: <b>Approve</b> goes through the settlement calculation, <b>Reject</b> goes straight to the email.</p>
+    <div class="step" id="step-17">
       <div class="num">17</div>
       <div class="body">
-        <h3>Pack</h3>
+        <h3>Set the Approve condition</h3>
+        <p>Select the exclusive gateway <b>Reviewer Action GateWay</b>. Expand <b>Conditions → Approve</b> and click the <b>Condition</b> field.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Gateway</span>
+            </div>
+            <img src="assets/maestro_6_gateway_step1_clickcondition.png" alt="Gateway → Conditions → Approve → Condition." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Gateway → Conditions → Approve → Condition.</figcaption>
+        </figure>
+        <p>In the <b>JS Expression editor</b> enter the condition and click <b>Save</b>:</p>
         <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-20')"></button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-2')"></button>
 <div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-20"><code>uipath pack</code></pre>
+          <div class="filename">Approve condition</div>
+          <pre id="maestro-code-2"><code>vars.action=="Approve"</code></pre>
         </div>
         </div>
-        <p>Look for <code>Project successfully packaged.</code></p>
-      </div>
-    </div>
-
-    <div class="step" id="step-p2">
-      <div class="num">18</div>
-      <div class="body">
-        <h3>Publish</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-21')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-21"><code>uipath publish</code></pre>
-        </div>
-        </div>
-        <p>Pick your feed when prompted.</p>
-      </div>
-    </div>
-
-    <div class="step" id="step-p3">
-      <div class="num">19</div>
-      <div class="body">
-        <h3>Invoke</h3>
-        <div class="copy-wrap">
-          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-22')"></button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-22"><code>uipath invoke</code></pre>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-p4">
-      <div class="num">20</div>
-      <div class="body">
-        <h3>Verify in Orchestrator</h3>
-        <p>Open <b>Orchestrator → Processes</b> and find <code>&lt;your_name&gt;_Claims_SettlementAgent</code>. Its <b>Type</b> should no longer say <b>Function (python)</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Gateway condition</span>
+            </div>
+            <img src="assets/maestro_6_gateway_step2_writecondition.png" alt="Approve condition in the JS Expression editor." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Approve condition in the JS Expression editor.</figcaption>
+        </figure>
         <div class="adm note">
-          <div class="adm-title">ℹ️ Governance for free</div>
-          <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
+          <div class="adm-title">📝 Reject path</div>
+          <div class="adm-body">The <b>Reject</b> path is the other outgoing flow. Give it the condition <code>vars.action=="Reject"</code>, or mark it as the default path. Both paths later meet at the <b>Generate Approval Email</b> task.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uipath pack</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>) and picked my feed</div></div>
-          <div class="row"><span class="box"></span><div>Invoked the agent (<code>uipath invoke</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Confirmed in Orchestrator → Processes that the Type is not "Function (python)"</div></div>
+          <div class="row"><span class="box"></span><div>Set the Approve condition to <code>vars.action=="Approve"</code> and saved it.</div></div>
+          <div class="row"><span class="box"></span><div>Checked the Reject flow has its own condition or is the default path.</div></div>
         </div>
       </div>
     </div>
 
-    <h4>Troubleshooting</h4>
-    <table>
-      <thead><tr><th>Symptom</th><th>Fix</th></tr></thead>
-      <tbody>
-        <tr><td>Still shows as a Function</td><td>Recheck steps 12 and 14, change <code>version</code> in <code>pyproject.toml</code> to <code>0.0.2</code>, then repeat steps 17 and 18.</td></tr>
-        <tr><td>Access denied creating folders or the venv</td><td>You are in a system folder or an Administrator window. Redo step 1.</td></tr>
-        <tr><td>Pasting a multi-line block hangs at the <code>&gt;&gt;</code> prompt</td><td>Press <code>Ctrl+C</code> and use Notepad as in steps 10 to 12.</td></tr>
-        <tr><td><code>FutureWarning</code> about <code>uipath.platform.common.constants</code></td><td>Harmless deprecation notice, not an error.</td></tr>
-        <tr><td>A command differs on your version</td><td>Run <code>uipath --help</code>. Commands follow the UiPath Python SDK docs (<code>uipath …</code>).</td></tr>
-      </tbody>
-    </table>
+
+
+    <div class="group-header" id="group-settlement">
+      <h2 style="margin-top:0;">Settlement Coded Agent</h2>
+    </div>
+        <p>On the Approve branch the process calls your <b>Settlement Coded Agent</b> (Module 3) to calculate the settlement amount.</p>
+    <div class="step" id="step-18">
+      <div class="num">18</div>
+      <div class="body">
+        <h3>Select your coded agent</h3>
+        <p>Select the service task <b>SettlementCodedAgent</b>. In <b>Implementation</b> open the <b>Action</b> dropdown.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Service task</span>
+            </div>
+            <img src="assets/maestro_7_settlement_coded_agent_step1_action_agent.png" alt="Service task → Action." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Service task → Action.</figcaption>
+        </figure>
+        <p>Choose <b>Start and wait for agent</b>, click the <b>Agent</b> field and select <b>your</b> published coded agent <code>Settlement_CodedAgent_YourName</code> from <b>Defined resources</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Select agent</span>
+            </div>
+            <img src="assets/maestro_7_settlement_coded_agent_step2_select_your_coded_agent_published.png" alt="Pick your published coded agent." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Pick your published coded agent.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Pick your own agent</div>
+          <div class="adm-body">The list shows agents published by other participants too. Choose the one that carries your name.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Action</b> to <b>Start and wait for agent</b> and selected my own coded agent.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-19">
+      <div class="num">19</div>
+      <div class="body">
+        <h3>Map the inputs</h3>
+        <p>The coded agent takes three inputs. Click the expression icon next to each and use <b>Insert variable</b>:</p>
+        <table>
+          <thead><tr><th>Input</th><th>Map to</th></tr></thead>
+          <tbody>
+            <tr><td><code>insurance_type</code></td><td>Fraud Detection Agent → <code>out_ClaimDetails</code> → <code>incident_type</code></td></tr>
+            <tr><td><code>coverage</code></td><td>the claim's coverage type (shown as <b>Coverage type input</b>)</td></tr>
+            <tr><td><code>claim_amount</code></td><td><code>out_ClaimDetails</code> → <code>claim_amount</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Inputs</span>
+            </div>
+            <img src="assets/maestro_7_settlement_coded_agent_step3_map_arguments.png" alt="Mapping insurance_type from out_ClaimDetails → incident_type." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Mapping insurance_type from out_ClaimDetails → incident_type.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Inputs and outputs</span>
+            </div>
+            <img src="assets/maestro_7_settlement_coded_agent_step4_map_all_arguments.png" alt="All three inputs mapped; outputs eligible, settlement_percentage, settlement_amount." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>All three inputs mapped; outputs eligible, settlement_percentage, settlement_amount.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Outputs</div>
+          <div class="adm-body">The agent returns <code>eligible</code>, <code>settlement_percentage</code> and <code>settlement_amount</code>. Keep them mapped so the email step can use them.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Mapped <code>insurance_type</code>, <code>coverage</code>, and <code>claim_amount</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Outputs <code>eligible</code>, <code>settlement_percentage</code>, <code>settlement_amount</code> are mapped.</div></div>
+        </div>
+      </div>
+    </div>
+
+        <div class="adm tip">
+          <div class="adm-title">💡 Need to build the agent?</div>
+          <div class="adm-body">The Settlement Coded Agent is built and published step by step in <a href="../part3/lesson-build.html">Module 3</a>.</div>
+        </div>
+
+
+    <div class="group-header" id="group-generate-email">
+      <h2 style="margin-top:0;">Generate the Email (GenAI)</h2>
+    </div>
+        <p>Both branches meet at <b>Generate Approval Email</b>. A single <b>GenAI</b> activity writes either the approval email or the "more documents needed" email, depending on <code>vars.action</code>.</p>
+    <div class="step" id="step-20">
+      <div class="num">20</div>
+      <div class="body">
+        <h3>Choose the Generate Email activity</h3>
+        <p>Select the task <b>Generate Approval Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, then click <b>Select activity</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Task</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step1_execute_connector_action.png" alt="Action → Execute connector activity." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Action → Execute connector activity.</figcaption>
+        </figure>
+        <p>Search for <code>generate email</code> and pick <b>Generate Email</b> from <b>UiPath GenAI Activities</b> — not one of the Gmail, Outlook, Mailjet or SES "Send Email" activities.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Select activity</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step2_generate_email_task.png" alt="Select Generate Email (UiPath GenAI Activities)." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Select Generate Email (UiPath GenAI Activities).</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Selected <b>Generate Email</b> from <b>UiPath GenAI Activities</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-21">
+      <div class="num">21</div>
+      <div class="body">
+        <h3>Configure the activity</h3>
+        <p>Set the properties below, then click the <b>Email content</b> field to open the text builder.</p>
+        <table>
+          <thead><tr><th>Property</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>UiPath GenAI Activities connection</td><td><code>UiPath GenAI Activities</code></td></tr>
+            <tr><td>Model name</td><td><code>gpt-5.1-2025-11-13</code> (or the model available on your tenant)</td></tr>
+            <tr><td>Include salutation</td><td><code>false</code> (the prompt writes "Dear …")</td></tr>
+            <tr><td>Include sign-off</td><td><code>false</code> (the prompt writes the sign-off)</td></tr>
+            <tr><td>Style</td><td><code>Concise</code></td></tr>
+            <tr><td>Output format</td><td><code>HTML</code></td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Generate Email</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step3_email_content.png" alt="GenAI settings and the empty Email content field." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>GenAI settings and the empty Email content field.</figcaption>
+        </figure>
+        <p>Paste the expression below into the <b>Email content</b> text builder. It branches on <code>vars.action</code>: the first half builds the <b>approval</b> email, the second half the <b>rejection / more documents</b> email.</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-3')"></button>
+<div class="highlight">
+          <div class="filename">Email content (JS expression)</div>
+          <pre id="maestro-code-3"><code>vars.action == "Approve"
+? [
+    "Write a professional HTML email (use &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;br&gt; only) to the customer informing them that their insurance claim has been APPROVED following supervisor review.", "\n", "\n",
+    "Use exactly this structure and these values:", "\n", "\n",
+    "&lt;p&gt;Dear ", vars.outClaimDetails?.customer_name, ",&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;We are writing regarding your claim with the following details:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Customer name:&lt;/strong&gt; ", vars.outClaimDetails?.customer_name, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; ", vars.outClaimDetails?.claim_id, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; ", vars.outClaimDetails?.policy_number, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;Following supervisor review, your claim has been &lt;strong&gt;approved&lt;/strong&gt;.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;The settlement details are as follows:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Original claim amount:&lt;/strong&gt; ", vars.outClaimDetails?.claim_amount, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement percentage:&lt;/strong&gt; ", vars.settlementPercentage, "%&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Settlement amount:&lt;/strong&gt; ", vars.settlementAmount, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "SUPERVISOR COMMENTS (internal note, rewrite it in polite, clear, customer-friendly language and add it as a short paragraph titled 'Reviewer notes' after the settlement details. Keep the meaning, fix grammar, do not copy it word for word, and do not mention fraud scores, fraud indicators or internal system details): ", "\n",
+    vars.reviewerComments, "\n", "\n",
+    "&lt;p&gt;If you have any questions regarding this outcome or your policy coverage, please contact our helpline using the number below.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Regards,&lt;br&gt;", "\n",
+    "Claims Processing Team&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')
+: [
+    "Write a professional HTML email (use &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;br&gt; only) to the customer informing them that their insurance claim could NOT be approved as submitted and that additional documentation is required.", "\n", "\n",
+    "Use exactly this structure and these values:", "\n", "\n",
+    "&lt;p&gt;Dear ", vars.outClaimDetails?.customer_name, ",&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;We are writing regarding your insurance claim with the following details:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Claim ID:&lt;/strong&gt; ", vars.outClaimDetails?.claim_id, "&lt;/li&gt;", "\n",
+    "  &lt;li&gt;&lt;strong&gt;Policy number:&lt;/strong&gt; ", vars.outClaimDetails?.policy_number, "&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;After a thorough review, we are unable to approve your claim as submitted. At this stage, we require additional documentation and clarification before we can continue our assessment.&lt;/p&gt;", "\n", "\n",
+    "SUPERVISOR COMMENTS (internal note, rewrite it in polite, clear, customer-friendly language and add it as a short paragraph titled 'Reason for decision' right after the paragraph above. Keep the meaning, fix grammar, do not copy it word for word, and do not mention fraud scores, fraud indicators or internal system details): ", "\n",
+    vars.reviewerComments, "\n", "\n",
+    "&lt;p&gt;Please resubmit your claim with the following documents and information:&lt;/p&gt;", "\n", "\n",
+    "&lt;ul&gt;", "\n",
+    "  &lt;li&gt;Detailed incident description, including date, time, location, and sequence of events&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Supporting evidence (e.g., photos, repair estimates, invoices, or receipts)&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Any relevant police, incident, or official reports&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Proof of ownership or value for the items or property involved&lt;/li&gt;", "\n",
+    "  &lt;li&gt;Any prior correspondence related to this incident or similar claims&lt;/li&gt;", "\n",
+    "&lt;/ul&gt;", "\n", "\n",
+    "&lt;p&gt;When resubmitting, you must clearly include your Claim ID: &lt;strong&gt;", vars.outClaimDetails?.claim_id, "&lt;/strong&gt; on all documents and communications.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Please note that resubmitting the requested information will allow us to conduct a further review; however, it does not guarantee that the claim will be approved.&lt;/p&gt;", "\n", "\n",
+    "&lt;p&gt;Sincerely,&lt;br&gt;", "\n",
+    "Insurance Claims Department&lt;br&gt;", "\n",
+    "Helpline: 1800-CLAIMS&lt;/p&gt;"
+  ].join('')</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Text builder</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step4_map_arguments_in_email_content.png" alt="Text builder with the expression; variables appear as blue chips." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Text builder with the expression; variables appear as blue chips.</figcaption>
+        </figure>
+        <div class="adm warn">
+          <div class="adm-title">⚠️ Check the variable chips</div>
+          <div class="adm-body">After pasting, every <code>vars.…</code> reference should turn into a blue chip. The claim fields come from <code>vars.outClaimDetails</code>. If <code>vars.settlementPercentage</code>, <code>vars.settlementAmount</code> or <code>vars.reviewerComments</code> does not resolve, delete it and use <b>Insert variable</b> to pick the settlement agent outputs and the supervisor's <b>Reviewer comments</b>.</div>
+        </div>
+        <p>Finally, scroll down and confirm <b>Output format</b> is <b>HTML</b> and <b>Style</b> is <b>Concise</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Generate Email</span>
+            </div>
+            <img src="assets/maestro_8_generate_email_genai_task_step5_setformat.png" alt="Output format = HTML, Style = Concise." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Output format = HTML, Style = Concise.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set connection, model, salutation/sign-off = false, Style = Concise.</div></div>
+          <div class="row"><span class="box"></span><div>Pasted the Email content expression and checked the variable chips.</div></div>
+          <div class="row"><span class="box"></span><div>Set <b>Output format</b> to <b>HTML</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="group-header" id="group-send-email">
+      <h2 style="margin-top:0;">Send the Decision Email</h2>
+    </div>
+        <p>The last task sends the generated email through Gmail and the process ends.</p>
+    <div class="step" id="step-22">
+      <div class="num">22</div>
+      <div class="body">
+        <h3>Set the Gmail connection</h3>
+        <p>Select the task <b>Send Approve Email</b>. Set <b>Action</b> to <b>Execute connector activity</b>, <b>Select activity</b> to <b>Send Email</b> (Gmail), and <b>Gmail connection</b> to <b>Shared Gmail Connection</b>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Send Email</span>
+            </div>
+            <img src="assets/maestro_9_send_approve_reject_email_step1_setgmail_connection_send_email.png" alt="Gmail Send Email with the shared connection." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Gmail Send Email with the shared connection.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>Send Email</b> and <b>Shared Gmail Connection</b>.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-23">
+      <div class="num">23</div>
+      <div class="body">
+        <h3>Add the recipient and subject</h3>
+        <p>Set <b>Save as draft</b> = <b>False</b>. In <b>To</b> use <b>your own email address</b> (in production this would be the claimant's email). For <b>Subject</b> use one expression that covers both outcomes:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-4')"></button>
+<div class="highlight">
+          <div class="filename">Subject (JS expression)</div>
+          <pre id="maestro-code-4"><code>vars.action== "Approve"
+? "Claim " + vars.outClaimDetails.claim_id + " – Settlement Approved"
+: "Claim " + vars.outClaimDetails.claim_id + " – Review Decision and Next Steps"</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Send Email</span>
+            </div>
+            <img src="assets/maestro_9_send_approve_reject_email_step2_add_subject.png" alt="To and Subject expression." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>To and Subject expression.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Set <b>To</b> to my email and entered the Subject expression.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="step-24">
+      <div class="num">24</div>
+      <div class="body">
+        <h3>Bind the body</h3>
+        <p>Click the expression icon next to <b>Body</b>, then under <b>Variables → Generate Approval Email</b> choose <code>emailContent (string)</code> and click <b>Save</b>. The body becomes:</p>
+        <div class="copy-wrap">
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'maestro-code-5')"></button>
+<div class="highlight">
+          <div class="filename">Body</div>
+          <pre id="maestro-code-5"><code>vars.emailContent</code></pre>
+        </div>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Maestro · Send Email body</span>
+            </div>
+            <img src="assets/maestro_9_send_approve_reject_email_step3_email_content.png" alt="Body = Generate Approval Email → emailContent." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Body = Generate Approval Email → emailContent.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Bound <b>Body</b> to <code>vars.emailContent</code>.</div></div>
+        </div>
+      </div>
+    </div>
+
+
 
     <nav class="md-footer-nav">
       <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 4 Overview</span></a>
@@ -657,52 +1129,6 @@ graph = builder.compile()</code></pre>
   </main>
 </div>
 
-<script>
-(function(){
-  var sections = Array.prototype.map.call(
-    document.querySelectorAll('.group-header[id]'),
-    function(el){ return { id: el.id, el: el }; }
-  );
-  if (!sections.length) return;
-
-  var sidebarLinks = document.querySelectorAll('.md-sidebar--primary .group-items a[href*="steps.html#group-"]');
-  if (!sidebarLinks.length) return;
-
-  function setActive(id){
-    sidebarLinks.forEach(function(link){
-      var linkHash = link.getAttribute('href').split('#')[1];
-      if (linkHash === id) { link.classList.add('active'); }
-      else { link.classList.remove('active'); }
-    });
-  }
-
-  function onScroll(){
-    var scrollPos = window.scrollY + 90;
-    var current = sections[0].id;
-    for (var i = 0; i < sections.length; i++){
-      if (sections[i].el.offsetTop <= scrollPos) { current = sections[i].id; }
-    }
-    setActive(current);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
-function copyCodeBlock(btn, blockId){
-  var text = document.getElementById(blockId).innerText;
-  navigator.clipboard.writeText(text).then(function(){
-    var original = btn.innerHTML;
-    btn.innerHTML = '✓ Copied';
-    btn.classList.add('copied');
-    setTimeout(function(){
-      btn.innerHTML = original;
-      btn.classList.remove('copied');
-    }, 2000);
-  });
-}
-</script>
-
-<script src="../assets/course.js?v=20261009"></script>
+<script src="../assets/course.js?v=20261010"></script>
 </body>
 </html>
