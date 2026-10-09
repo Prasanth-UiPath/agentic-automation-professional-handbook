@@ -45,7 +45,6 @@
       <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="../part2/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -65,6 +64,7 @@
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row active" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -73,7 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-publish-trigger.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -81,7 +81,7 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 4 · Lesson 2 of 11</span>
+    <span class="eyebrow">Module 4 · Lesson 2 of 12</span>
     <h1>Set Up the Process</h1>
     <div class="rise-divider"></div>
     <p>The Maestro BPMN process ties everything together: it starts when a claim is ready for review, calls your <b>Fraud Detect Agent</b>, downloads the claim document, sends the claim to a supervisor, branches on the decision, runs your <b>Settlement Coded Agent</b>, and sends the notification emails.</p>
@@ -161,7 +161,7 @@
         </figure>
         <div class="adm tip">
           <div class="adm-title">💡 What you get</div>
-          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally the start event <b>Claim Ready for Review</b>.</div>
+          <div class="adm-body">The imported canvas already contains every task and the gateway, with their names. The following lessons configure each one in order: the start event <b>Claim Ready for Review</b>, <b>Fraud Detection Agent</b>, <b>Download File from Record Field</b>, <b>Supervisior_ClaimValidation</b>, <b>Send Notify Email to Claimant</b>, <b>Reviewer Action GateWay</b>, <b>SettlementCodedAgent</b>, <b>Generate Approval Email</b>, <b>Send Approve Email</b>, and finally you run the whole process (Publish and Trigger).</div>
         </div>
         <div class="checklist">
           <div class="row"><span class="box"></span><div>Imported <code>Insurance_Claim_Process.bpmn</code> onto the canvas.</div></div>
@@ -173,7 +173,7 @@
 
     <nav class="md-footer-nav">
       <a class="prev" href="lesson-concepts.html"><span class="dir">← Previous</span><span class="ttl">Concepts</span></a>
-      <a class="next" href="lesson-fraud-agent.html"><span class="dir">Next →</span><span class="ttl">Fraud Detection Agent</span></a>
+      <a class="next" href="lesson-start-event.html"><span class="dir">Next →</span><span class="ttl">Start Event</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

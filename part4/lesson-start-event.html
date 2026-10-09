@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Publish and Trigger · Module 4 · Maestro</title>
+<title>Start Event · Module 4 · Maestro</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -45,7 +45,6 @@
       <a class="lesson-row" href="../part2/lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="../part2/lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="../part2/complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -65,6 +64,7 @@
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-setup.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Set Up the Process</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Start Event</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
@@ -73,7 +73,7 @@
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-start-event.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-publish-trigger.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -81,12 +81,12 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 4 · Lesson 11 of 11</span>
-    <h1>Publish and Trigger</h1>
+    <span class="eyebrow">Module 4 · Lesson 3 of 12</span>
+    <h1>Start Event</h1>
     <div class="rise-divider"></div>
-        <p>The last piece makes the whole process start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
-    <div class="step" id="step-21">
-      <div class="num">21</div>
+        <p>Begin with the start event: it makes the whole process start on its own the moment a claim is ready for a decision. You configure the start event to listen for an <b>updated Data Fabric record</b> whose <code>DecisionInput</code> equals <code>READY_FOR_REVIEW</code>.</p>
+    <div class="step" id="step-3">
+      <div class="num">3</div>
       <div class="body">
         <h3>Open the start event trigger</h3>
         <p>Select the start event <b>Claim Ready for Review</b> on the canvas. In <b>Properties → Implementation</b>, open the <b>Action</b> dropdown (currently <b>None</b>).</p>
@@ -122,8 +122,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-22">
-      <div class="num">22</div>
+    <div class="step" id="step-4">
+      <div class="num">4</div>
       <div class="body">
         <h3>Set the connection and Tenant scope</h3>
         <p>Set <b>Select activity</b> to <b>Record Updated</b> and the <b>UiPath Data Fabric connection</b> to <b>Shared UiPath Data Fabric</b>. Then open <b>Entity Scope</b> and choose <b>Tenant</b>.</p>
@@ -163,8 +163,8 @@
       </div>
     </div>
 
-    <div class="step" id="step-23">
-      <div class="num">23</div>
+    <div class="step" id="step-5">
+      <div class="num">5</div>
       <div class="body">
         <h3>Add the filter</h3>
         <p>Click the <b>Filter</b> field to open the filter builder. Keep <b>All (AND)</b>, add a condition — field <code>DecisionInput</code>, operator <b>Equals</b>, value <code>READY_FOR_REVIEW</code> — and click <b>Save</b>. Only claims marked ready for review will start the process.</p>
@@ -186,38 +186,11 @@
       </div>
     </div>
 
-    <div class="step" id="step-24">
-      <div class="num">24</div>
-      <div class="body">
-        <h3>Debug and check the results</h3>
-        <p>Now that every task is configured, click <b>Debug</b> and run the whole process. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Debug</span>
-            </div>
-            <img src="assets/maestro_1_start_event_start_event_action_step6_debug_and_check_results.png" alt="Execution trail and Global variables after the start event runs." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Execution trail and Global variables after the start event runs.</figcaption>
-        </figure>
-        <div class="adm note">
-          <div class="adm-title">📝 Tip</div>
-          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
-        </div>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
-        </div>
-      </div>
-    </div>
-
 
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-send-email.html"><span class="dir">← Previous</span><span class="ttl">Send the Decision Email</span></a>
-      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 4 Complete</span></a>
+      <a class="prev" href="lesson-setup.html"><span class="dir">← Previous</span><span class="ttl">Set Up the Process</span></a>
+      <a class="next" href="lesson-fraud-agent.html"><span class="dir">Next →</span><span class="ttl">Fraud Detection Agent</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

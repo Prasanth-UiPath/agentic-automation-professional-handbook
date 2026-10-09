@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notify the Claimant · Module 4 · Maestro</title>
+<title>Publish and Trigger · Module 4 · Maestro</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -68,12 +68,12 @@
       <a class="lesson-row" href="lesson-fraud-agent.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Fraud Detection Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-download.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Download the Claim File</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-supervisor.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Supervisor Validation</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-notify-claimant.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Notify the Claimant</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-gateway.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Reviewer Gateway</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-settlement.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Settlement Coded Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-generate-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Generate the Email (GenAI)</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-send-email.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Send the Decision Email</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-publish-trigger.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-publish-trigger.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish and Trigger</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 4 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -81,78 +81,33 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 4 · Lesson 7 of 12</span>
-    <h1>Notify the Claimant</h1>
+    <span class="eyebrow">Module 4 · Lesson 12 of 12</span>
+    <h1>Publish and Trigger</h1>
     <div class="rise-divider"></div>
-        <p>After the supervisor task, the process sends an interim notification to the claimant using the <b>Gmail</b> connector.</p>
-    <div class="step" id="step-14">
-      <div class="num">14</div>
+        <p>With every task configured, run the whole process end to end and confirm the start event triggers it.</p>
+    <div class="step" id="step-24">
+      <div class="num">24</div>
       <div class="body">
-        <h3>Select the connector</h3>
-        <p>Select the task <b>Send Notify Email to Claimant</b> and set <b>Implementation → Action</b> to <b>Connector</b>.</p>
+        <h3>Debug and check the results</h3>
+        <p>Now that every task is configured, click <b>Debug</b> and run the whole process. In the <b>Execution trail</b> the start event should succeed and hand over to <b>Fraud Detection Agent</b>. Under <b>Global variables</b>, check that <code>response</code> holds the claim record.</p>
         <figure>
           <div class="shot">
             <div class="chrome">
               <span class="c" style="background:#FF5F57"></span>
               <span class="c" style="background:#FEBC2E"></span>
               <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Task</span>
+              <span class="url">Maestro · Debug</span>
             </div>
-            <img src="assets/maestro_5_send_notify_email_claimnt_step1_select_connector.png" alt="Action → Connector." loading="lazy" style="display:block;max-width:100%;height:auto;">
+            <img src="assets/maestro_1_start_event_start_event_action_step6_debug_and_check_results.png" alt="Execution trail and Global variables after the start event runs." loading="lazy" style="display:block;max-width:100%;height:auto;">
           </div>
-          <figcaption>Action → Connector.</figcaption>
-        </figure>
-        <p>Set <b>Action</b> to <b>Execute connector activity</b>, click <b>Select activity</b>, search <code>Gmail</code>, and choose <b>Send Email</b>.</p>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Select activity</span>
-            </div>
-            <img src="assets/maestro_5_send_notify_email_claimnt_step2_search_sendemail.png" alt="Select the Gmail Send Email activity." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>Select the Gmail Send Email activity.</figcaption>
-        </figure>
-        <div class="checklist">
-          <div class="row"><span class="box"></span><div>Chose <b>Execute connector activity</b> → Gmail <b>Send Email</b>.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step" id="step-15">
-      <div class="num">15</div>
-      <div class="body">
-        <h3>Map the email fields</h3>
-        <p>Choose the <b>Gmail connection</b> <b>Shared Gmail Connection</b>, set <b>Save as draft</b> = <b>False</b>, and fill the fields. Use <b>your own email address</b> in <b>To</b> so you receive the test email.</p>
-        <table>
-          <thead><tr><th>Field</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>To</td><td>your own email address</td></tr>
-            <tr><td>Subject</td><td><code>vars.outSuggestedResponse?.email_subject</code></td></tr>
-            <tr><td>Body</td><td><code>vars.outSuggestedResponse?.email_body</code></td></tr>
-          </tbody>
-        </table>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">Maestro · Send Email</span>
-            </div>
-            <img src="assets/maestro_5_send_notify_email_claimnt_step3_map_arguments.png" alt="To, Subject, and Body mapped for the claimant notification." loading="lazy" style="display:block;max-width:100%;height:auto;">
-          </div>
-          <figcaption>To, Subject, and Body mapped for the claimant notification.</figcaption>
+          <figcaption>Execution trail and Global variables after the start event runs.</figcaption>
         </figure>
         <div class="adm note">
           <div class="adm-title">📝 Tip</div>
-          <div class="adm-body">Use <b>Insert variable</b> → <b>out_SuggestedResponse</b> → <code>email_subject</code> / <code>email_body</code> if you would rather not type the expressions.</div>
+          <div class="adm-body">Update a record in Data Fabric (set <code>DecisionInput</code> to <code>READY_FOR_REVIEW</code>) to trigger a run. The <code>response</code> variable is what you map into the Fraud agent next.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Set the Gmail connection and <b>Save as draft = False</b>.</div></div>
-          <div class="row"><span class="box"></span><div>Mapped To, Subject, and Body.</div></div>
+          <div class="row"><span class="box"></span><div>Debugged the process and saw the start event succeed with a populated <code>response</code>.</div></div>
         </div>
       </div>
     </div>
@@ -160,8 +115,8 @@
 
 
     <nav class="md-footer-nav">
-      <a class="prev" href="lesson-supervisor.html"><span class="dir">← Previous</span><span class="ttl">Supervisor Validation</span></a>
-      <a class="next" href="lesson-gateway.html"><span class="dir">Next →</span><span class="ttl">Reviewer Gateway</span></a>
+      <a class="prev" href="lesson-send-email.html"><span class="dir">← Previous</span><span class="ttl">Send the Decision Email</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 4 Complete</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
