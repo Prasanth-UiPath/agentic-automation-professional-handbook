@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Concepts &amp; Build · Module 2 · Maestro (BPMN)</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -565,7 +565,7 @@
         <p>This single activity replaces what would otherwise be two separate GenAI activities — one for approval emails, one for rejection emails. Instead, both the <b>Email content</b> and the <b>Example</b> fields use an expression that branches on <code>vars.action == "Approve"</code>, so the same activity produces the right email either way.</p>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'genai-content-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'genai-content-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">email-content.js</div>
             <pre id="genai-content-text"><code>[
@@ -624,7 +624,7 @@
         </figure>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'genai-example-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'genai-example-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">email-example.js</div>
             <pre id="genai-example-text"><code>vars.action == "Approve"
@@ -715,7 +715,7 @@
         <p>Bind the email body to the GenAI activity's output from the previous step. For <b>Subject</b>, use the same branching pattern so one activity covers both outcomes:</p>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'genai-subject-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'genai-subject-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">email-subject.js</div>
             <pre id="genai-subject-text"><code>vars.action == "Approve"
@@ -788,6 +788,6 @@ function copyText(btn, id){
 })();
 </script>
 
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>

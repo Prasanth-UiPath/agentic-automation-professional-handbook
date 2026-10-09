@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Email Process · Module 2 · Maestro (BPMN)</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -104,7 +104,7 @@
         <p>Bind the email body to the GenAI activity's output from the previous step. For <b>Subject</b>, use the same branching pattern so one activity covers both outcomes:</p>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyText(this, 'genai-subject-text')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyText(this, 'genai-subject-text')"></button>
           <div class="highlight prompt-block">
             <div class="filename">email-subject.js</div>
             <pre id="genai-subject-text"><code>vars.action == "Approve"
@@ -145,6 +145,6 @@ function copyText(btn, id){
   });
 }
 </script>
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>
