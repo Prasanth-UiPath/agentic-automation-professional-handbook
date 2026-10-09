@@ -1,0 +1,561 @@
+{
+  "fileName": "Fraud_Agent_Evaluation_Set.json",
+  "id": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+  "name": "Fraud Agent Claims Evaluation",
+  "batchSize": 10,
+  "evaluatorRefs": [],
+  "evaluations": [
+    {
+      "id": "7b9c1a42-5d63-4f18-8c27-91e4a6b30215",
+      "name": "Clean_Claim",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100001",
+          "ClaimIdInput": "CLM-100001",
+          "CustomerNameInput": "Anita Sharma",
+          "PolicyNumberInput": "POL-2026-10001",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$50,000.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "The insured vehicle was damaged in a collision at a city intersection while traveling to work. The bumper, left headlight, and front fender require repair.",
+          "ClaimAmountInput": "$12,500.50",
+          "DecisionInput": "READY_FOR_REVIEW",
+          "DocumentsInput": "repair_invoice.pdf",
+          "ClaimPDF": "claim_100001.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100001",
+          "claim_id": "CLM-100001",
+          "customer_name": "Anita Sharma",
+          "policy_number": "POL-2026-10001",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 12500.5
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 0,
+          "fraud_risk_level": "LOW",
+          "fraud_indicators": "None",
+          "fraud_verdict": "CLEAR",
+          "recommended_action": "Send to Payment Processing"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100001 — Under Review",
+          "email_body": "<p>Dear Anita,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100001</strong> for policy <strong>POL-2026-10001</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "No",
+          "routing_action": "Send to Payment Processing"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "2c8f5d71-9a34-46b2-b1e8-73d5c9024f16",
+      "name": "Round_Amount_Vague_Description",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100002",
+          "ClaimIdInput": "CLM-100002",
+          "CustomerNameInput": "Rahul Mehta",
+          "PolicyNumberInput": "POL-2026-10002",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$80,000.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "Accident happened.",
+          "ClaimAmountInput": "$12,000",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "vehicle_report.pdf",
+          "ClaimPDF": "claim_100002.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100002",
+          "claim_id": "CLM-100002",
+          "customer_name": "Rahul Mehta",
+          "policy_number": "POL-2026-10002",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 12000.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 30,
+          "fraud_risk_level": "MEDIUM",
+          "fraud_indicators": "Claim amount is a suspiciously round number., Incident description is vague or lacks detail.",
+          "fraud_verdict": "REVIEW",
+          "recommended_action": "Send to Supervisor Review Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100002 — Under Review",
+          "email_body": "<p>Dear Rahul,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100002</strong> for policy <strong>POL-2026-10002</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Supervisor Review Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "a61e3c89-24b7-4d50-9f12-68c5a7310e24",
+      "name": "Theft_Partial_Suspicious_Language",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100003",
+          "ClaimIdInput": "CLM-100003",
+          "CustomerNameInput": "Michael Brown",
+          "PolicyNumberInput": "POL-2026-10003",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Partial",
+          "CoverageLimitInput": "$40,000.00",
+          "IncidentSelect": "Theft",
+          "IncidentDescriptionArea": "I was away from the property during the incident. Someone else reported that the vehicle was missing, and I cannot recall when it was last seen.",
+          "ClaimAmountInput": "$8,750",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "police_report.pdf",
+          "ClaimPDF": "claim_100003.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100003",
+          "claim_id": "CLM-100003",
+          "customer_name": "Michael Brown",
+          "policy_number": "POL-2026-10003",
+          "incident_type": "Theft",
+          "claim_amount": 8750.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 45,
+          "fraud_risk_level": "HIGH",
+          "fraud_indicators": "Incident type is in the high-frequency fraud category., Coverage type is Partial., Incident description contains suspicious language.",
+          "fraud_verdict": "SUSPEND",
+          "recommended_action": "Send to Document Collection Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100003 — Under Review",
+          "email_body": "<p>Dear Michael,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100003</strong> for policy <strong>POL-2026-10003</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Document Collection Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "4f72b9c1-63e8-45a0-b527-19d4c8632f75",
+      "name": "Fire_Coverage_Proximity_Suspicious",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100004",
+          "ClaimIdInput": "CLM-100004",
+          "CustomerNameInput": "David Wilson",
+          "PolicyNumberInput": "POL-2026-10004",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$9,000.00",
+          "IncidentSelect": "Fire",
+          "IncidentDescriptionArea": "I was not there when the fire started. Someone else told me about the incident and I cannot recall exactly when it happened.",
+          "ClaimAmountInput": "$8,000",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "fire_report.pdf",
+          "ClaimPDF": "claim_100004.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100004",
+          "claim_id": "CLM-100004",
+          "customer_name": "David Wilson",
+          "policy_number": "POL-2026-10004",
+          "incident_type": "Fire",
+          "claim_amount": 8000.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 50,
+          "fraud_risk_level": "HIGH",
+          "fraud_indicators": "Claim amount is within 15% of or exceeds the coverage limit., Incident type is in the high-frequency fraud category., Incident description contains suspicious language.",
+          "fraud_verdict": "SUSPEND",
+          "recommended_action": "Send to Document Collection Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100004 — Under Review",
+          "email_body": "<p>Dear David,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100004</strong> for policy <strong>POL-2026-10004</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Document Collection Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "8d15a6e2-47c9-4b31-90f6-52e8c7143a09",
+      "name": "Missing_Documents_Inactive_Policy",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100005",
+          "ClaimIdInput": "CLM-100005",
+          "CustomerNameInput": "Priya Nair",
+          "PolicyNumberInput": "POL-2026-10005",
+          "PolicyStatusInput": "Expired",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$100,000.00",
+          "IncidentSelect": "Water Damage",
+          "IncidentDescriptionArea": "A pipe burst inside the property and caused significant water damage to the kitchen flooring, cabinets, and electrical fixtures.",
+          "ClaimAmountInput": "$15,500",
+          "DecisionInput": "PENDING_REVIEW"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100005",
+          "claim_id": "CLM-100005",
+          "customer_name": "Priya Nair",
+          "policy_number": "POL-2026-10005",
+          "incident_type": "Water Damage",
+          "claim_amount": 15500.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 60,
+          "fraud_risk_level": "HIGH",
+          "fraud_indicators": "No supporting documents provided., Claim was submitted against a non-active or unverified policy.",
+          "fraud_verdict": "SUSPEND",
+          "recommended_action": "Send to Document Collection Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100005 — Under Review",
+          "email_body": "<p>Dear Priya,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100005</strong> for policy <strong>POL-2026-10005</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Document Collection Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "b3927f14-6e85-4c20-a931-57d2b8461f03",
+      "name": "Exact_Coverage_Limit",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100006",
+          "ClaimIdInput": "CLM-100006",
+          "CustomerNameInput": "Suresh Kumar",
+          "PolicyNumberInput": "POL-2026-10006",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$54,321.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "The insured vehicle was struck from behind at a traffic signal, damaging the rear bumper, trunk lid, tail lights, and rear quarter panel.",
+          "ClaimAmountInput": "$54,321",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "damage_assessment.pdf",
+          "ClaimPDF": "claim_100006.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100006",
+          "claim_id": "CLM-100006",
+          "customer_name": "Suresh Kumar",
+          "policy_number": "POL-2026-10006",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 54321.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 50,
+          "fraud_risk_level": "HIGH",
+          "fraud_indicators": "Claim amount is within 15% of or exceeds the coverage limit., Claim amount exactly matches the coverage limit.",
+          "fraud_verdict": "SUSPEND",
+          "recommended_action": "Send to Document Collection Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100006 — Under Review",
+          "email_body": "<p>Dear Suresh,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100006</strong> for policy <strong>POL-2026-10006</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Document Collection Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "5a84c219-73f6-4e02-bd51-96c8a4372e10",
+      "name": "Vague_Description",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100007",
+          "ClaimIdInput": "CLM-100007",
+          "CustomerNameInput": "Neha Kapoor",
+          "PolicyNumberInput": "POL-2026-10007",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$75,000.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "Something happened.",
+          "ClaimAmountInput": "$7,500",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "incident_report.pdf",
+          "ClaimPDF": "claim_100007.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100007",
+          "claim_id": "CLM-100007",
+          "customer_name": "Neha Kapoor",
+          "policy_number": "POL-2026-10007",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 7500.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 20,
+          "fraud_risk_level": "MEDIUM",
+          "fraud_indicators": "Incident description is vague or lacks detail.",
+          "fraud_verdict": "REVIEW",
+          "recommended_action": "Send to Supervisor Review Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100007 — Under Review",
+          "email_body": "<p>Dear Neha,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100007</strong> for policy <strong>POL-2026-10007</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Supervisor Review Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "e7164b35-28a9-4d63-85f1-39c7b2046a58",
+      "name": "Inactive_Policy",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100008",
+          "ClaimIdInput": "CLM-100008",
+          "CustomerNameInput": "Arjun Rao",
+          "PolicyNumberInput": "POL-2026-10008",
+          "PolicyStatusInput": "Cancelled",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$60,000.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "The insured vehicle was involved in a rear-end collision that damaged the rear bumper, trunk, tail lights, and exhaust system.",
+          "ClaimAmountInput": "$9,250",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "repair_estimate.pdf",
+          "ClaimPDF": "claim_100008.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100008",
+          "claim_id": "CLM-100008",
+          "customer_name": "Arjun Rao",
+          "policy_number": "POL-2026-10008",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 9250.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 35,
+          "fraud_risk_level": "MEDIUM",
+          "fraud_indicators": "Claim was submitted against a non-active or unverified policy.",
+          "fraud_verdict": "REVIEW",
+          "recommended_action": "Send to Supervisor Review Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100008 — Under Review",
+          "email_body": "<p>Dear Arjun,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100008</strong> for policy <strong>POL-2026-10008</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Supervisor Review Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "c5038e71-94d2-46a5-b820-17f6a3492d85",
+      "name": "Critical_Multiple_Indicators",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100009",
+          "ClaimIdInput": "CLM-100009",
+          "CustomerNameInput": "Vikram Singh",
+          "PolicyNumberInput": "POL-2026-10009",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$20,000.00",
+          "IncidentSelect": "Vehicle Damage",
+          "IncidentDescriptionArea": "Accident happened.",
+          "ClaimAmountInput": "$20,000",
+          "DecisionInput": "PENDING_REVIEW"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100009",
+          "claim_id": "CLM-100009",
+          "customer_name": "Vikram Singh",
+          "policy_number": "POL-2026-10009",
+          "incident_type": "Vehicle Damage",
+          "claim_amount": 20000.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 75,
+          "fraud_risk_level": "CRITICAL",
+          "fraud_indicators": "No supporting documents provided., Claim amount is a suspiciously round number., Claim amount is within 15% of or exceeds the coverage limit., Incident description is vague or lacks detail.",
+          "fraud_verdict": "REJECT",
+          "recommended_action": "Send to Fraud Investigation Team"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100009 — Under Review",
+          "email_body": "<p>Dear Vikram,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100009</strong> for policy <strong>POL-2026-10009</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Fraud Investigation Team"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    },
+    {
+      "id": "9e247c61-53a8-4f02-8d19-72b5c6304a16",
+      "name": "Round_Amount_Incident_Occurred",
+      "inputs": {
+        "in_ClaimData": {
+          "Id": "DF-100010",
+          "ClaimIdInput": "CLM-100010",
+          "CustomerNameInput": "Meera Iyer",
+          "PolicyNumberInput": "POL-2026-10010",
+          "PolicyStatusInput": "Active",
+          "CoverageTypeInput": "Full",
+          "CoverageLimitInput": "$100,000.00",
+          "IncidentSelect": "Property Damage",
+          "IncidentDescriptionArea": "Incident occurred.",
+          "ClaimAmountInput": "$30,000",
+          "DecisionInput": "PENDING_REVIEW",
+          "DocumentsInput": "property_report.pdf",
+          "ClaimPDF": "claim_100010.pdf"
+        }
+      },
+      "expectedOutput": {
+        "out_ClaimDetails": {
+          "record_id": "DF-100010",
+          "claim_id": "CLM-100010",
+          "customer_name": "Meera Iyer",
+          "policy_number": "POL-2026-10010",
+          "incident_type": "Property Damage",
+          "claim_amount": 30000.0
+        },
+        "out_FraudAnalysis": {
+          "fraud_risk_score": 30,
+          "fraud_risk_level": "MEDIUM",
+          "fraud_indicators": "Claim amount is a suspiciously round number., Incident description is vague or lacks detail.",
+          "fraud_verdict": "REVIEW",
+          "recommended_action": "Send to Supervisor Review Queue"
+        },
+        "out_SuggestedResponse": {
+          "email_subject": "Insurance Claim CLM-100010 — Under Review",
+          "email_body": "<p>Dear Meera,</p><p>Thank you for submitting your insurance claim.</p><p>Your claim <strong>CLM-100010</strong> for policy <strong>POL-2026-10010</strong> has been received and is currently under review.</p><p>No final decision has been made. Our claims team will contact you if additional information is required.</p><p>Regards,<br>Claims Processing Team<br>Insurance Claims Department<br>Helpline: 1800-CLAIMS</p>"
+        },
+        "out_Status": {
+          "requires_human_review": "Yes",
+          "routing_action": "Send to Supervisor Review Queue"
+        }
+      },
+      "expectedAgentBehavior": "",
+      "simulationInstructions": "",
+      "simulateInput": false,
+      "inputGenerationInstructions": "",
+      "simulateTools": false,
+      "toolsToSimulate": [],
+      "evalSetId": "76de30ea-e878-45fa-ba0d-e350ed89fc81",
+      "createdAt": "2026-10-08T06:57:45.164Z",
+      "updatedAt": "2026-10-08T06:57:45.164Z"
+    }
+  ],
+  "modelSettings": [],
+  "createdAt": "2026-10-08T06:57:45.164Z",
+  "updatedAt": "2026-10-08T06:57:45.164Z",
+  "agentMemoryEnabled": false,
+  "agentMemorySettings": [],
+  "lineByLineEvaluation": false
+}

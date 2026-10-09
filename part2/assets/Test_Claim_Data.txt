@@ -1,0 +1,18 @@
+{
+  "in_ClaimData": {
+    "ClaimID": "3489-CLM-7040",
+    "PolicyNumber": "POL-2024-23489",
+    "CustomerName": "Priya Singh",
+    "ClaimAmount": 16650,
+    "IncidentType": "Vehicle Damage",
+    "IncidentDescription": "Bumper and headlight repair after collision",
+    "PolicyStatus": "Active",
+    "CoverageType": "Full",
+    "CoverageLimit": 167000,
+    "ClaimFile": {
+      "ID": "2fbc5935-3c1c-463b-278c-08df238e8357",
+      "FullName": "POL-2024-23489_Fraudulent_Active.pdf",
+      "MimeType": "application/pdf"
+    }
+  }
+}
