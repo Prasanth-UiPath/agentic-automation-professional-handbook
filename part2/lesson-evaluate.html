@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concepts · Module 2 · Fraud Agent</title>
+<title>Evaluate the Agent · Module 2 · Fraud Agent</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -42,9 +42,9 @@
     <summary>Module 2 · Fraud Agent</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
@@ -81,20 +81,87 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 2 · Lesson 1 of 4</span>
-    <h1>Concepts</h1>
+    <span class="eyebrow">Module 2 · Lesson 3 of 4</span>
+    <h1>Evaluate the Agent</h1>
     <div class="rise-divider"></div>
-    <h3>What's Agent Builder?</h3>
-    <p><b>Agent Builder</b> is the low-code, visual experience in UiPath Studio Web for designing agents — as opposed to writing one in code with the SDK. From the same "Select agent type" dialog, you can also generate an agent from a plain-language description with Autopilot, or switch to the Code option if you'd rather build a coded agent.</p>
+        <p>An <b>evaluation set</b> runs the agent against many sample claims at once so you can check that scores, verdicts, and routing actions behave as expected before Maestro depends on it. The set provided contains <b>10 claims</b> from a clean claim to a critical multi-indicator one.</p>
+    <div class="step" id="step-6">
+      <div class="num">6</div>
+      <div class="body">
+        <h3>Import the evaluation set</h3>
+        <p>Download the evaluation set below. In the agent tree click <b>Evaluation Sets</b>, then <b>Create → Import</b>.</p>
+        <div class="adm note" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div class="adm-body" style="margin:0;"><b>Fraud_Agent_Evaluation_Set.json</b> — 10 sample claims with their expected outputs.</div>
+          <a href="assets/Fraud_Agent_Evaluation_Set.json" download style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap;background:#fff;border:1px solid var(--code-border);border-radius:6px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--up-orange-dark);">⬇ Download</a>
+        </div>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Evaluation sets</span>
+            </div>
+            <img src="assets/maestro_2_fraud_agent_step7_adding_evaluation_set.png" alt="Evaluation Sets → Create → Import." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Evaluation Sets → Create → Import.</figcaption>
+        </figure>
+        <p>In the <b>Import datasets</b> dialog choose <b>Upload file</b> and select <code>Fraud_Agent_Evaluation_Set.json</code>.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Import datasets</span>
+            </div>
+            <img src="assets/maestro_2_fraud_agent_step8_import_evaluation_set.png" alt="Upload the evaluation set JSON file." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Upload the evaluation set JSON file.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Downloaded <code>Fraud_Agent_Evaluation_Set.json</code>.</div></div>
+          <div class="row"><span class="box"></span><div>Imported it via <b>Evaluation Sets → Create → Import → Upload file</b>.</div></div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Autonomous vs. Conversational</h3>
-    <p>Agent Builder offers two low-code agent types. A <b>Conversational Agent</b> — like the conversational agent from Module 1 — chats with a user in real time. An <b>Autonomous Agent</b> runs a task end to end on its own, with no back-and-forth: it receives inputs, does its reasoning and tool calls, and returns a fixed output shape. The Fraud Detect Agent is autonomous — nobody chats with it, Maestro just calls it and reads the result.</p>
+    <div class="step" id="step-7">
+      <div class="num">7</div>
+      <div class="body">
+        <h3>Run the evaluation</h3>
+        <p>The imported set appears as <b>Fraud Agent Claims Evaluation (copy)</b> with 10 evaluations. Click <b>Run</b> and review the results — compare each claim's fraud score, risk level, verdict, and routing action with what you expect.</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Evaluation sets</span>
+            </div>
+            <img src="assets/maestro_2_fraud_agent_step9_click_run_evaluation_set.png" alt="Run the imported evaluation set." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Run the imported evaluation set.</figcaption>
+        </figure>
+        <div class="adm note">
+          <div class="adm-title">📝 Note</div>
+          <div class="adm-body">The "(copy)" suffix is added automatically on import. A "Default Evaluation Set" may also be listed — ignore it. No evaluators are attached to the imported set, so review the outputs yourself.</div>
+        </div>
+        <div class="adm tip">
+          <div class="adm-title">💡 Optional: single-claim debug</div>
+          <div class="adm-body">You can also click <b>Debug</b> and paste a single claim to inspect one run in detail. A sample is provided: <a href="assets/Test_Claim_Data.txt" download>Test_Claim_Data.txt</a>. Its field names differ slightly from the Data Fabric names used in the evaluation set, so prefer the evaluation set for scoring checks.</div>
+        </div>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Ran the evaluation set and reviewed the results for all 10 claims.</div></div>
+        </div>
+      </div>
+    </div>
 
-    
+
 
     <nav class="md-footer-nav">
-      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 2 Overview</span></a>
-      <a class="next" href="lesson-build.html"><span class="dir">Next →</span><span class="ttl">Build the Agent</span></a>
+      <a class="prev" href="lesson-build.html"><span class="dir">← Previous</span><span class="ttl">Build the Agent</span></a>
+      <a class="next" href="lesson-publish.html"><span class="dir">Next →</span><span class="ttl">Publish the Agent</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>

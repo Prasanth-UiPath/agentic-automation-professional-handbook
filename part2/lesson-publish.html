@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concepts · Module 2 · Fraud Agent</title>
+<title>Publish the Agent · Module 2 · Fraud Agent</title>
 <link rel="stylesheet" href="../assets/course.css?v=20261010">
 </head>
 <body>
@@ -42,10 +42,10 @@
     <summary>Module 2 · Fraud Agent</summary>
     <div class="group-items">
       <a class="lesson-row" href="index.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Overview</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row active" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row" href="lesson-concepts.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Concepts</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-build.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Build the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="lesson-evaluate.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Evaluate the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
-      <a class="lesson-row" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
+      <a class="lesson-row active" href="lesson-publish.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Publish the Agent</span><span class="lesson-status" aria-hidden="true"></span></a>
       <a class="lesson-row" href="complete.html"><span class="lesson-ico">&#9776;</span><span class="lesson-label">Module 2 Complete</span><span class="lesson-status" aria-hidden="true"></span></a>
     </div>
   </details>
@@ -81,20 +81,50 @@
   </nav>
 
   <main class="md-content">
-    <span class="eyebrow">Module 2 · Lesson 1 of 4</span>
-    <h1>Concepts</h1>
+    <span class="eyebrow">Module 2 · Lesson 4 of 4</span>
+    <h1>Publish the Agent</h1>
     <div class="rise-divider"></div>
-    <h3>What's Agent Builder?</h3>
-    <p><b>Agent Builder</b> is the low-code, visual experience in UiPath Studio Web for designing agents — as opposed to writing one in code with the SDK. From the same "Select agent type" dialog, you can also generate an agent from a plain-language description with Autopilot, or switch to the Code option if you'd rather build a coded agent.</p>
+        <p>Maestro can only call agents that are <b>published</b>. Publish yours so you can select it in the Maestro process in Module 4.</p>
+    <div class="step" id="step-8">
+      <div class="num">8</div>
+      <div class="body">
+        <h3>Publish the agent</h3>
+        <p>Open the arrow next to <b>Deploy</b> in the toolbar and choose <b>Publish</b> (or <b>Deploy</b>, which also creates a deployment). Add release notes, confirm the version, and choose a feed (<b>Personal</b> workspace is fine for this workshop).</p>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deploy</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step1_deploy.png" alt="Deploy / Publish menu in the toolbar." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Deploy / Publish menu in the toolbar.</figcaption>
+        </figure>
+        <figure>
+          <div class="shot">
+            <div class="chrome">
+              <span class="c" style="background:#FF5F57"></span>
+              <span class="c" style="background:#FEBC2E"></span>
+              <span class="c" style="background:#28C840"></span>
+              <span class="url">Studio Web · Deployment</span>
+            </div>
+            <img src="assets/conversational_agent_2_get_chat_agent_id_step2_deployemnt_successfull.png" alt="Publish / deployment successful." loading="lazy" style="display:block;max-width:100%;height:auto;">
+          </div>
+          <figcaption>Publish / deployment successful.</figcaption>
+        </figure>
+        <div class="checklist">
+          <div class="row"><span class="box"></span><div>Published the <code>Fraud Detect Agent_YourName</code> agent and saw the success message.</div></div>
+        </div>
+      </div>
+    </div>
 
-    <h3>Autonomous vs. Conversational</h3>
-    <p>Agent Builder offers two low-code agent types. A <b>Conversational Agent</b> — like the conversational agent from Module 1 — chats with a user in real time. An <b>Autonomous Agent</b> runs a task end to end on its own, with no back-and-forth: it receives inputs, does its reasoning and tool calls, and returns a fixed output shape. The Fraud Detect Agent is autonomous — nobody chats with it, Maestro just calls it and reads the result.</p>
 
-    
 
     <nav class="md-footer-nav">
-      <a class="prev" href="index.html"><span class="dir">← Previous</span><span class="ttl">Module 2 Overview</span></a>
-      <a class="next" href="lesson-build.html"><span class="dir">Next →</span><span class="ttl">Build the Agent</span></a>
+      <a class="prev" href="lesson-evaluate.html"><span class="dir">← Previous</span><span class="ttl">Evaluate the Agent</span></a>
+      <a class="next" href="complete.html"><span class="dir">Next →</span><span class="ttl">Module 2 Complete</span></a>
     </nav>
     <div class="md-copyright">The UiPath word mark, logos, and robots are registered trademarks owned by UiPath, Inc. and its affiliates. © 2026 UiPath. All rights reserved. · Training material.</div>
   </main>
