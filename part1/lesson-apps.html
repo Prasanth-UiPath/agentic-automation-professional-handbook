@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apps · Module 1 · Conversational Agent</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -193,7 +193,7 @@
         </div>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyAppHtml(this)">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyAppHtml(this)"></button>
           <div class="highlight prompt-block">
             <div class="filename">custom-html.html</div>
             <pre id="app-html-text"><code>&lt;div style="position:relative; width:100%; height:100%; overflow:hidden; margin:0; padding:0; border:0;"&gt;
@@ -265,6 +265,6 @@ function copyAppHtml(btn){
   });
 }
 </script>
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>

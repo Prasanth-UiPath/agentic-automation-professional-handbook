@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>System Prompt · Module 1 · Conversational Agent</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -108,7 +108,7 @@
         <p>Paste the following system prompt for the <b>Claim Request Agent</b>. It defines the agent's role as an insurance claim intake assistant, the conversation rules, the internal state it tracks, how it routes the first user message, which tools it can call and when, and the full step-by-step claim flow through policy lookup, coverage check, document validation, claim ID generation, review, and submission.</p>
 
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copySystemPrompt(this)">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copySystemPrompt(this)"></button>
           <div class="highlight prompt-block">
             <div class="filename">system-prompt.txt</div>
             <pre id="system-prompt-text"><code>You are an insurance claim intake assistant in a public iframe app. Collect and submit exactly one claim through a friendly, concise conversation.
@@ -302,6 +302,6 @@ function copyAppHtml(btn){
   });
 }
 </script>
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>
