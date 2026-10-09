@@ -84,18 +84,18 @@
     <h2 id="recap">Completion checklist</h2>
     <div class="grid g2">
       <div class="checklist">
-        <div class="row"><span class="box"></span><div>Created the project folder and scaffolded the agent (<code>uip codedagent new</code>)</div></div>
-        <div class="row"><span class="box"></span><div>Wrote Input/Output models + <code>main()</code> in <code>main.py</code></div></div>
-        <div class="row"><span class="box"></span><div>Configured <code>uipath.json</code> and <code>pyproject.toml</code>, and removed <code>langgraph.json</code></div></div>
-        <div class="row"><span class="box"></span><div>Initialized the project (<code>uip codedagent init</code>) and confirmed the entrypoint</div></div>
-        <div class="row"><span class="box"></span><div>Created <code>input.json</code> and tested locally (<code>uip codedagent run … -f input.json</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Created the project folder and a virtual environment (<code>(.venv)</code> active)</div></div>
+        <div class="row"><span class="box"></span><div>Installed packages and authenticated (<code>uipath auth</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Scaffolded the agent (<code>uipath new agent</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Pasted <code>pyproject.toml</code> and <code>main.py</code>; checked <code>langgraph.json</code></div></div>
+        <div class="row"><span class="box"></span><div>Initialized (<code>uipath init</code>) and confirmed <code>uipath.json</code> has no <code>"functions"</code> key</div></div>
+        <div class="row"><span class="box"></span><div>Tested locally (<code>uipath run agent --file input.json</code>)</div></div>
       </div>
       <div class="checklist">
-        <div class="row"><span class="box"></span><div>Packaged the agent (<code>uip codedagent pack</code>)</div></div>
-        <div class="row"><span class="box"></span><div>Logged in to the tenant (<code>uip login</code>)</div></div>
-        <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uip codedagent publish</code>)</div></div>
-        <div class="row"><span class="box"></span><div>Invoked the published agent with <code>-f input.json</code> (<code>uip codedagent invoke</code>)</div></div>
-        <div class="row"><span class="box"></span><div>Confirmed the job &amp; output in Orchestrator</div></div>
+        <div class="row"><span class="box"></span><div>Packaged the agent (<code>uipath pack</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Invoked the agent (<code>uipath invoke</code>)</div></div>
+        <div class="row"><span class="box"></span><div>Confirmed the Type is not "Function (python)" in Orchestrator → Processes</div></div>
       </div>
     </div>
 

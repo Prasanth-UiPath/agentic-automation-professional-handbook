@@ -80,140 +80,81 @@
     <h1>Publish &amp; Run</h1>
     <div class="rise-divider"></div>
 
-    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Package, log in, publish to Orchestrator, and invoke a governed cloud job — the four steps that take your tested agent to production.</p>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:-4px;">Pack, publish to Orchestrator, invoke, and verify that your agent shows up as an <b>Agent</b> — the four steps that take your tested agent to the cloud.</p>
 
     <div class="step" id="step-p1">
-      <div class="num">9</div>
+      <div class="num">17</div>
       <div class="body">
-        <h3>Package the agent</h3>
-        <p>Bundle the project into a versioned package with <code>codedagent pack</code>.</p>
+        <h3>Pack</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-14')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-1')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="code-block-14"><code>PS&gt; uip codedagent pack
-<span class="ok">✓ Package created successfully.</span></code></pre>
+          <pre id="code-block-1"><code>uipath pack</code></pre>
         </div>
         </div>
-        <div class="adm note">
-          <div class="adm-title">📝 Note</div>
-          <div class="adm-body">Confirm the package is created successfully before continuing to the next step.</div>
-        </div>
+        <p>Look for <code>Project successfully packaged.</code></p>
       </div>
     </div>
 
     <div class="step" id="step-p2">
-      <div class="num">10</div>
+      <div class="num">18</div>
       <div class="body">
-        <h3>Log in to UiPath</h3>
-        <p>Authenticate the CLI against your tenant before publishing. Use the organization and tenant appropriate for your environment — the example below is the one used in testing.</p>
+        <h3>Publish</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-15')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-2')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="code-block-15"><code>PS&gt; uip login --authority https://cloud.uipath.com --organization tpenlabs -t AgenticPractice
-<span class="ok">⯈</span> Opening browser for authentication...
-<span class="ok">✓ Login successful.</span></code></pre>
+          <pre id="code-block-2"><code>uipath publish</code></pre>
         </div>
         </div>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/…/authorize</span>
-            </div>
-            <div style="padding:26px;background:#fff;text-align:center;">
-              <p style="font-weight:700;margin:0 0 6px;">UiPath</p>
-              <p style="font-size:14px;margin:0 0 16px;">Authorize the UiPath CLI</p>
-              <button style="background:var(--up-orange);color:#fff;border:0;border-radius:6px;padding:8px 20px;font-size:13px;font-weight:700;">Allow access</button>
-              <p style="font-size:11px;color:var(--muted);margin:14px 0 0;">Scopes: Orchestrator · Studio · Data Service</p>
-            </div>
-          </div>
-          <figcaption>Figure 3 — Browser consent screen shown by <code>uip login</code> (mockup).</figcaption>
-        </figure>
+        <p>Pick your feed when prompted.</p>
       </div>
     </div>
 
     <div class="step" id="step-p3">
-      <div class="num">11</div>
+      <div class="num">19</div>
       <div class="body">
-        <h3>Publish the coded agent</h3>
-        <p>Upload the package to Orchestrator with <code>codedagent publish</code>. When prompted to select a package feed, choose the feed required by your environment — in the tested setup, <b>Personal Workspace Feed</b> was selected.</p>
+        <h3>Invoke</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-16')">📋 Copy</button>
+          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
-          <pre id="code-block-16"><code>PS&gt; uip codedagent publish
-? Select feed:  &gt; Personal Workspace Feed
-                  Tenant Feed
-<span class="ok">⯈</span> Uploading package...
-<span class="ok">✓ Package published successfully.</span>
-  View it in Orchestrator → Packages</code></pre>
+          <pre id="code-block-3"><code>uipath invoke</code></pre>
         </div>
         </div>
-        <figure>
-          <div class="shot">
-            <div class="chrome">
-              <span class="c" style="background:#FF5F57"></span>
-              <span class="c" style="background:#FEBC2E"></span>
-              <span class="c" style="background:#28C840"></span>
-              <span class="url">cloud.uipath.com/…/orchestrator_/packages</span>
-            </div>
-            <div style="padding:0;background:#fff;">
-              <table style="margin:0;border:0;border-radius:0;">
-                <thead><tr><th>Package</th><th>Version</th><th>Type</th></tr></thead>
-                <tbody>
-                  <tr style="background:var(--up-orange-soft);"><td><b>Claims_SettlementAgent</b></td><td>0.0.1</td><td>Agent</td></tr>
-                  <tr><td>InvoiceProcessing</td><td>2.4.0</td><td>Process</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <figcaption>Figure 4 — Your agent listed on the Orchestrator Packages page after publishing (mockup).</figcaption>
-        </figure>
       </div>
     </div>
 
     <div class="step" id="step-p4">
-      <div class="num">12</div>
+      <div class="num">20</div>
       <div class="body">
-        <h3>Invoke the published agent</h3>
-        <p>Run the published agent in the cloud with <code>codedagent invoke</code>, passing the same <code>input.json</code> file with <code>-f</code>.</p>
-        <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-17')">📋 Copy</button>
-<div class="highlight">
-          <div class="filename">PowerShell</div>
-          <pre id="code-block-17"><code>PS&gt; uip codedagent invoke Claims_SettlementAgent -f input.json
-<span class="ok">⯈</span> Job started in Orchestrator.
-
-output
-├── eligible: True
-├── settlement_percentage: 95.0
-├── settlement_amount: 9500.0
-└── message: Settled at 95%
-
-<span class="ok">✓ Successful execution.</span></code></pre>
-        </div>
-        </div>
-        <div class="adm warn">
-          <div class="adm-title">⚠️ Use the JSON file, not inline JSON</div>
-          <div class="adm-body">Always invoke with <code>-f input.json</code>. The inline JSON form (passing the object directly on the command line) was tested and failed validation in this environment.</div>
-        </div>
+        <h3>Verify in Orchestrator</h3>
+        <p>Open <b>Orchestrator → Processes</b> and find <code>&lt;your_name&gt;_Claims_SettlementAgent</code>. Its <b>Type</b> should no longer say <b>Function (python)</b>.</p>
         <div class="adm note">
           <div class="adm-title">ℹ️ Governance for free</div>
           <div class="adm-body">Because it is now an Orchestrator package, the agent inherits RBAC, audit logs, job monitoring, versioning, and one-click rollback — and it can be invoked by any trigger or UiPath process.</div>
         </div>
         <div class="checklist">
-          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uip codedagent pack</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Logged in to the correct organization and tenant (<code>uip login</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uip codedagent publish</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Invoked the published agent with <code>-f input.json</code> (<code>uip codedagent invoke</code>)</div></div>
-          <div class="row"><span class="box"></span><div>Confirmed the job &amp; output in Orchestrator</div></div>
+          <div class="row"><span class="box"></span><div>Packaged the agent (<code>uipath pack</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Published to Orchestrator (<code>uipath publish</code>) and picked my feed</div></div>
+          <div class="row"><span class="box"></span><div>Invoked the agent (<code>uipath invoke</code>)</div></div>
+          <div class="row"><span class="box"></span><div>Confirmed in Orchestrator → Processes that the Type is not "Function (python)"</div></div>
         </div>
       </div>
     </div>
+
+    <h4>Troubleshooting</h4>
+    <table>
+      <thead><tr><th>Symptom</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Still shows as a Function</td><td>Recheck steps 12 and 14, change <code>version</code> in <code>pyproject.toml</code> to <code>0.0.2</code>, then repeat steps 17 and 18.</td></tr>
+        <tr><td>Access denied creating folders or the venv</td><td>You are in a system folder or an Administrator window. Redo step 1.</td></tr>
+        <tr><td>Pasting a multi-line block hangs at the <code>&gt;&gt;</code> prompt</td><td>Press <code>Ctrl+C</code> and use Notepad as in steps 10 to 12.</td></tr>
+        <tr><td><code>FutureWarning</code> about <code>uipath.platform.common.constants</code></td><td>Harmless deprecation notice, not an error.</td></tr>
+        <tr><td>A command differs on your version</td><td>Run <code>uipath --help</code>. Commands follow the UiPath Python SDK docs (<code>uipath …</code>).</td></tr>
+      </tbody>
+    </table>
 
     <nav class="md-footer-nav">
       <a class="prev" href="lesson-build.html"><span class="dir">← Previous</span><span class="ttl">Build the Agent</span></a>
