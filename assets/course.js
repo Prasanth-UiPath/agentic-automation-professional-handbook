@@ -50,13 +50,16 @@
 
   function flash(btn, ok) {
     if (!btn) return;
-    if (btn._origHtml === undefined) btn._origHtml = btn.innerHTML;
     clearTimeout(btn._timer);
-    btn.innerHTML = ok ? '✓ Copied' : 'Press Ctrl+C';
     btn.classList.toggle('copied', !!ok);
+    btn.classList.toggle('copy-failed', !ok);
+    btn.title = ok ? 'Copied!' : 'Copy failed - select the text and press Ctrl+C';
+    btn.setAttribute('aria-label', btn.title);
     btn._timer = setTimeout(function () {
-      btn.innerHTML = btn._origHtml;
       btn.classList.remove('copied');
+      btn.classList.remove('copy-failed');
+      btn.title = 'Copy to clipboard';
+      btn.setAttribute('aria-label', 'Copy to clipboard');
     }, 2000);
   }
 
