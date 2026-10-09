@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Concepts, Build &amp; Publish · Module 4 · Coded Agent</title>
-<link rel="stylesheet" href="../assets/course.css">
+<link rel="stylesheet" href="../assets/course.css?v=20261009">
 </head>
 <body>
 
@@ -252,7 +252,7 @@
         <h3>Go to a folder you own</h3>
         <p>Do not work in <code>C:\Windows\System32</code> or any other system folder — Windows blocks writing there. Use any folder you can write to (Desktop, Documents, a projects folder), in a <b>normal</b> PowerShell window, not Administrator.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-1')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-1')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-1"><code>cd "$HOME\Desktop"</code></pre>
@@ -267,7 +267,7 @@
         <h3>Create the project folder</h3>
         <p>Replace <code>&lt;your_name&gt;</code> with your own name, <b>including the angle brackets</b> — letters, numbers and underscores only, no spaces (for example <code>Minal</code> or <code>Priya_S</code>). Leaving the angle brackets in causes a PowerShell error.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-2')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-2')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-2"><code>mkdir &lt;your_name&gt;_Claims_SettlementAgent</code></pre>
@@ -285,7 +285,7 @@
       <div class="body">
         <h3>Go into the project folder</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-3')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-3')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-3"><code>cd &lt;your_name&gt;_Claims_SettlementAgent</code></pre>
@@ -299,7 +299,7 @@
       <div class="body">
         <h3>Create the virtual environment</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-4')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-4')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-4"><code>python -m venv .venv</code></pre>
@@ -313,7 +313,7 @@
       <div class="body">
         <h3>Allow scripts in this window</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-5')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-5')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-5"><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></pre>
@@ -327,7 +327,7 @@
       <div class="body">
         <h3>Activate the virtual environment</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-6')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-6')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-6"><code>.\.venv\Scripts\Activate.ps1</code></pre>
@@ -345,7 +345,7 @@
       <div class="body">
         <h3>Install the packages</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-7')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-7')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-7"><code>pip install uipath "uipath-langchain&gt;=0.18.0,&lt;0.19.0"</code></pre>
@@ -359,7 +359,7 @@
       <div class="body">
         <h3>Authenticate</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-8')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-8')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-8"><code>uipath auth</code></pre>
@@ -374,7 +374,7 @@
       <div class="body">
         <h3>Scaffold the agent</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-9')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-9')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-9"><code>uipath new agent</code></pre>
@@ -389,7 +389,7 @@
       <div class="body">
         <h3>Open pyproject.toml</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-10')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-10')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-10"><code>notepad pyproject.toml</code></pre>
@@ -397,7 +397,7 @@
         </div>
         <p>Press <code>Ctrl+A</code>, delete everything, paste the block below, then replace the three placeholders (project name, your name, your email). Save with <code>Ctrl+S</code> and close Notepad. The project name must match the folder name from step 2.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-11')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-11')"></button>
 <div class="highlight">
           <div class="filename">pyproject.toml</div>
           <pre id="code-block-11"><code>[project]
@@ -417,7 +417,7 @@ requires-python = "&gt;=3.11"</code></pre>
       <div class="body">
         <h3>Open main.py</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-12')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-12')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-12"><code>notepad main.py</code></pre>
@@ -425,7 +425,7 @@ requires-python = "&gt;=3.11"</code></pre>
         </div>
         <p>Press <code>Ctrl+A</code>, delete everything, paste the following, then save and close. Nothing in this file needs your name.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-13')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-13')"></button>
 <div class="highlight">
           <div class="filename">main.py</div>
           <pre id="code-block-13"><code>from typing import TypedDict
@@ -478,7 +478,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Check langgraph.json</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-14')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-14')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-14"><code>Get-Content langgraph.json</code></pre>
@@ -486,7 +486,7 @@ graph = builder.compile()</code></pre>
         </div>
         <p>It should point to <code>./main.py:graph</code>. If it does not, run <code>notepad langgraph.json</code>, replace the contents with the block below, and save.</p>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-15')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-15')"></button>
 <div class="highlight">
           <div class="filename">langgraph.json</div>
           <pre id="code-block-15"><code>{
@@ -504,7 +504,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Initialize the project</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-16')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-16')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-16"><code>uipath init</code></pre>
@@ -518,7 +518,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Check uipath.json</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-17')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-17')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-17"><code>Get-Content uipath.json</code></pre>
@@ -536,7 +536,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Create the test input</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-18')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-18')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-18"><code>'{"insurance_type": "Theft", "coverage": "Full", "claim_amount": 10000}' | Set-Content input.json</code></pre>
@@ -550,7 +550,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Test locally</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-19')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-19')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-19"><code>uipath run agent --file input.json</code></pre>
@@ -580,7 +580,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Pack</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-20')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-20')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-20"><code>uipath pack</code></pre>
@@ -595,7 +595,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Publish</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-21')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-21')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-21"><code>uipath publish</code></pre>
@@ -610,7 +610,7 @@ graph = builder.compile()</code></pre>
       <div class="body">
         <h3>Invoke</h3>
         <div class="copy-wrap">
-          <button class="copy-btn" onclick="copyCodeBlock(this, 'code-block-22')">📋 Copy</button>
+          <button class="copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard" onclick="copyCodeBlock(this, 'code-block-22')"></button>
 <div class="highlight">
           <div class="filename">PowerShell</div>
           <pre id="code-block-22"><code>uipath invoke</code></pre>
@@ -703,6 +703,6 @@ function copyCodeBlock(btn, blockId){
 }
 </script>
 
-<script src="../assets/course.js?v=20261007"></script>
+<script src="../assets/course.js?v=20261009"></script>
 </body>
 </html>
